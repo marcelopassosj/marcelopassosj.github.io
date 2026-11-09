@@ -79,7 +79,7 @@ header.aberto .menu-cel { opacity: 1; transform: none; visibility: visible; }
 .coluna:nth-child(2) .trilho { animation-direction: reverse; --dur: 72s; }
 .coluna:nth-child(3) .trilho { --dur: 54s; }
 .mosaico:hover .trilho { animation-play-state: paused; }
-.trilho img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 10px; box-shadow: var(--sombra); cursor: pointer; transition: transform .3s; }
+.trilho img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; border-radius: 10px; box-shadow: var(--sombra); cursor: pointer; transition: transform .3s; }
 .trilho img:hover { transform: scale(1.03); }
 @keyframes sobe { to { transform: translateY(-50%); } }
 @media (max-width: 900px) { .abertura { grid-template-columns: 1fr; } .mosaico { height: 460px; transform: rotate(-4deg) scale(1.15); margin: 0 calc(var(--m) * -1); } }
@@ -505,7 +505,7 @@ const ETAPAS = [
   ['Visão geral', 'Os números do mês explicados sem jargão e o próximo ajuste.'],
 ];
 const src = (p, f, nome) => `img/${p.id}/${f}/${nome}.webp`;   // 720 px, só no estudo de caso
-const mini = (p, nome) => `img/${p.id}/mini/${nome}.webp`;        // 360 px, mosaico, cartões e grids (otimizar-imagens.py)
+const mini = (p, nome) => `img/${p.id}/mini/${nome}.webp`;        // 480 px, mosaico, cartões e grids (otimizar-imagens.py)
 
 /* ===== Abertura: mosaico em colunas e números ===== */
 const todos = PROJETOS.flatMap(p => p.posts.map(([n]) => ({ p, n })));
@@ -514,7 +514,7 @@ const mosaico = document.getElementById('mosaico');
 for (let c = 0; c < 3; c++) {
   // 10 posts por coluna bastam para a animação (antes eram todos os 84, cada um em dobro)
   const itens = embaralhado.filter((_, i) => i % 3 === c).slice(0, 10);
-  const html = itens.map(({ p, n }, i) => `<img src="${mini(p, n)}" alt="" ${i < 3 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" width="360" height="480" data-p="${p.id}">`).join('');
+  const html = itens.map(({ p, n }, i) => `<img src="${mini(p, n)}" alt="" ${i < 3 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" width="480" height="640" data-p="${p.id}">`).join('');
   mosaico.insertAdjacentHTML('beforeend', `<div class="coluna"><div class="trilho">${html}${html}</div></div>`);
 }
 mosaico.addEventListener('click', e => { const id = e.target.dataset?.p; if (id) abrirCaso(PROJETOS.findIndex(p => p.id === id)); });
