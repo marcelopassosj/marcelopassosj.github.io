@@ -6,6 +6,7 @@
 <title>Marcelo Passos · Gestão de redes sociais</title>
 <meta name="description" content="Gestão de redes sociais para empresas de Salvador e Lauro de Freitas: plano, calendário, artes, legendas e publicação, com visão geral do mês. Peça um diagnóstico gratuito do seu perfil.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ===== Tokens ===== */
@@ -503,15 +504,17 @@ const ETAPAS = [
   ['Aprovação e publicação', 'Você aprova pelo WhatsApp e eu publico nas datas combinadas.'],
   ['Visão geral', 'Os números do mês explicados sem jargão e o próximo ajuste.'],
 ];
-const src = (p, f, nome) => `img/${p.id}/${f}/${nome}.jpg`;
+const src = (p, f, nome) => `img/${p.id}/${f}/${nome}.webp`;   // 720 px, só no estudo de caso
+const mini = (p, nome) => `img/${p.id}/mini/${nome}.webp`;        // 360 px, mosaico, cartões e grids (otimizar-imagens.py)
 
 /* ===== Abertura: mosaico em colunas e números ===== */
 const todos = PROJETOS.flatMap(p => p.posts.map(([n]) => ({ p, n })));
 const embaralhado = todos.map((v, i) => ({ v, k: (i * 37) % todos.length })).sort((a, b) => a.k - b.k).map(o => o.v);
 const mosaico = document.getElementById('mosaico');
 for (let c = 0; c < 3; c++) {
-  const itens = embaralhado.filter((_, i) => i % 3 === c);
-  const html = itens.map(({ p, n }) => `<img src="${src(p, '34', n)}" alt="" loading="lazy" data-p="${p.id}">`).join('');
+  // 10 posts por coluna bastam para a animação (antes eram todos os 84, cada um em dobro)
+  const itens = embaralhado.filter((_, i) => i % 3 === c).slice(0, 10);
+  const html = itens.map(({ p, n }, i) => `<img src="${mini(p, n)}" alt="" ${i < 3 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" width="360" height="480" data-p="${p.id}">`).join('');
   mosaico.insertAdjacentHTML('beforeend', `<div class="coluna"><div class="trilho">${html}${html}</div></div>`);
 }
 mosaico.addEventListener('click', e => { const id = e.target.dataset?.p; if (id) abrirCaso(PROJETOS.findIndex(p => p.id === id)); });
@@ -523,7 +526,7 @@ const grade = document.getElementById('grade');
 grade.innerHTML = PROJETOS.map((p, i) => `
   <button class="cartao revela" data-cat="${p.cat}" data-i="${i}" style="--cor-fundo:${p.fundo}" aria-label="Abrir projeto ${p.nome}">
     <div class="capa"><span class="selo ${p.estudo ? 'estudo' : ''}">${p.tipo}</span>
-      <div class="posts">${[1, 0, 2].map(k => `<img src="${src(p, '34', p.posts[k][0])}" alt="" loading="lazy">`).join('')}</div></div>
+      <div class="posts">${[1, 0, 2].map(k => `<img src="${mini(p, p.posts[k][0])}" alt="" loading="lazy" decoding="async">`).join('')}</div></div>
     <div class="info"><div><h3>${p.nome}</h3><p>${p.segmento}</p><span class="ver">Ver estudo de caso <span>→</span></span></div>
       <div class="amostras">${p.cores.slice(0, 4).map(c => `<i style="background:${c[1]}" title="${c[0]}"></i>`).join('')}</div></div>
   </button>`).join('');
@@ -583,7 +586,7 @@ function abrirCaso(i) {
       <div class="lateral">
         <div class="celular"><div class="tela">
           <div class="ig-topo"><span class="av">${p.nome[0]}</span><div><b>${p.arroba.slice(1)}</b><small>Prévia do grid do perfil</small></div></div>
-          <div class="ig-grid">${[...p.posts].reverse().map(([n], k) => `<img src="${src(p, '34', n)}" alt="" data-k="${p.posts.length - 1 - k}" loading="lazy">`).join('')}</div>
+          <div class="ig-grid">${[...p.posts].reverse().map(([n], k) => `<img src="${mini(p, n)}" alt="" data-k="${p.posts.length - 1 - k}" loading="lazy">`).join('')}</div>
         </div></div>
         <div class="kit">
           <h4 class="rotulo">Paleta · clique para copiar</h4>
@@ -611,7 +614,7 @@ function montarFaixa() {
   const p = PROJETOS[atual];
   corpo.querySelector('#palco').classList.toggle('f45', formato === '45');
   corpo.querySelector('#faixa').innerHTML = p.posts.map(([n, t]) => `<img src="${src(p, formato, n)}" alt="${t}" draggable="false">`).join('');
-  corpo.querySelector('#minis').innerHTML = p.posts.map(([n], k) => `<button data-k="${k}" aria-label="Post ${k + 1}"><img src="${src(p, '34', n)}" alt=""></button>`).join('');
+  corpo.querySelector('#minis').innerHTML = p.posts.map(([n], k) => `<button data-k="${k}" aria-label="Post ${k + 1}"><img src="${mini(p, n)}" alt=""></button>`).join('');
   ir(slide);
 }
 function ir(k) {

@@ -4,3 +4,7 @@ servidor.mjs
 img/villa/
 img/memorial/
 img/sury/
+otimizar-imagens.py
+img/*/34/*.jpg
+img/*/45/*.jpg
+img/*/grid.jpg
