@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marcelo Passos · Portfólio</title>
+<meta name="description" content="Social media com direção de arte: sistemas visuais para feeds de marcas de gastronomia, serviços e B2B.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== Tokens ===== */
+:root {
+  --papel: #F4F1EA; --papel-2: #EAE5DA; --tinta: #171614; --pedra: #6F6A61; --linha: rgba(23,22,20,.14);
+  --acento: #2E3BEB; --acento-txt: #fff; --sombra: 0 30px 60px -30px rgba(23,22,20,.35);
+  --serif: 'Instrument Serif', Georgia, serif; --sans: 'Inter', system-ui, sans-serif;
+  --m: clamp(16px, 4vw, 56px); color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --papel: #141311; --papel-2: #1E1C19; --tinta: #F1EDE4; --pedra: #A39D92; --linha: rgba(241,237,228,.14);
+  --acento: #7C86FF; --acento-txt: #0b0b14; --sombra: 0 30px 60px -30px rgba(0,0,0,.8); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --papel: #141311; --papel-2: #1E1C19; --tinta: #F1EDE4; --pedra: #A39D92; --linha: rgba(241,237,228,.14);
+  --acento: #7C86FF; --acento-txt: #0b0b14; --sombra: 0 30px 60px -30px rgba(0,0,0,.8); color-scheme: dark; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--papel); color: var(--tinta); font: 400 16px/1.55 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--acento); outline-offset: 3px; border-radius: 4px; }
+.serif { font-family: var(--serif); font-weight: 400; letter-spacing: -.01em; }
+.rotulo { font: 600 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--pedra); }
+
+/* ===== Topo ===== */
+header.topo { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 18px var(--m);
+  background: color-mix(in srgb, var(--papel) 82%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+header.topo.rolou { border-color: var(--linha); }
+.logo { font: 400 26px/1 var(--serif); text-decoration: none; }
+.logo i { color: var(--acento); font-style: normal; }
+nav.menu { display: flex; gap: 22px; align-items: center; font-weight: 500; font-size: 15px; }
+nav.menu a { text-decoration: none; opacity: .75; } nav.menu a:hover { opacity: 1; }
+.tema { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--linha); display: grid; place-items: center; }
+@media (max-width: 640px) { nav.menu a { display: none; } }
+
+/* ===== Abertura ===== */
+.abertura { min-height: 100svh; display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; padding: 110px var(--m) 40px; overflow: hidden; }
+.abertura h1 { font-size: clamp(54px, 8.4vw, 132px); line-height: .92; }
+.abertura h1 em { color: var(--acento); }
+.abertura p.sub { margin-top: 28px; max-width: 470px; font-size: 18px; color: var(--pedra); text-wrap: balance; }
+.abertura .acoes { margin-top: 34px; display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 99px; font-weight: 600; text-decoration: none; transition: transform .2s, background .2s; }
+.btn.cheio { background: var(--acento); color: var(--acento-txt); }
+.btn.linha { border: 1px solid var(--linha); }
+.btn:hover { transform: translateY(-2px); }
+.numeros { margin-top: 48px; display: flex; gap: 34px; }
+.numeros b { display: block; font: 400 44px/1 var(--serif); }
+.numeros span { font-size: 13px; color: var(--pedra); }
+
+.mosaico { height: min(86svh, 820px); display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; transform: rotate(-4deg) scale(1.08);
+  -webkit-mask: linear-gradient(transparent, #000 12%, #000 88%, transparent); mask: linear-gradient(transparent, #000 12%, #000 88%, transparent); }
+.coluna { overflow: hidden; }
+.trilho { display: flex; flex-direction: column; gap: 14px; animation: sobe var(--dur, 60s) linear infinite; }
+.coluna:nth-child(2) .trilho { animation-direction: reverse; --dur: 72s; }
+.coluna:nth-child(3) .trilho { --dur: 54s; }
+.mosaico:hover .trilho { animation-play-state: paused; }
+.trilho img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 10px; box-shadow: var(--sombra); cursor: pointer; transition: transform .3s; }
+.trilho img:hover { transform: scale(1.03); }
+@keyframes sobe { to { transform: translateY(-50%); } }
+@media (max-width: 900px) { .abertura { grid-template-columns: 1fr; } .mosaico { height: 460px; transform: rotate(-4deg) scale(1.15); margin: 0 calc(var(--m) * -1); } }
+@media (prefers-reduced-motion: reduce) { .trilho { animation: none; } html { scroll-behavior: auto; } }
+
+/* ===== Seções ===== */
+section { padding: 110px var(--m); }
+.cab-secao { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 44px; }
+.cab-secao h2 { font-size: clamp(42px, 6vw, 84px); line-height: .95; }
+.filtros { display: flex; gap: 8px; flex-wrap: wrap; }
+.filtros button { padding: 10px 18px; border-radius: 99px; border: 1px solid var(--linha); font-weight: 500; font-size: 14px; transition: background .2s, color .2s; }
+.filtros button[aria-pressed="true"] { background: var(--tinta); color: var(--papel); border-color: var(--tinta); }
+
+/* ===== Cartões ===== */
+.grade { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+@media (max-width: 760px) { .grade { grid-template-columns: 1fr; } }
+.cartao { text-align: left; display: block; width: 100%; transition: opacity .35s, transform .35s; }
+.cartao.oculto { display: none; }
+.cartao.entrando { opacity: 0; transform: translateY(18px); }
+.capa { position: relative; aspect-ratio: 4/3; border-radius: 18px; overflow: hidden; background: var(--cor-fundo); }
+.capa .posts { position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; gap: 4%; padding: 0 7%; }
+.capa .posts img { width: 30%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; box-shadow: 0 20px 40px -18px rgba(0,0,0,.5); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.capa .posts img:nth-child(1) { transform: rotate(-6deg) translateY(10px); }
+.capa .posts img:nth-child(3) { transform: rotate(6deg) translateY(10px); }
+.cartao:hover .capa .posts img:nth-child(1) { transform: rotate(-10deg) translate(-14px, 4px); }
+.cartao:hover .capa .posts img:nth-child(2) { transform: translateY(-10px) scale(1.04); }
+.cartao:hover .capa .posts img:nth-child(3) { transform: rotate(10deg) translate(14px, 4px); }
+.selo { position: absolute; left: 16px; top: 16px; z-index: 2; padding: 7px 12px; border-radius: 99px; font: 600 11px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; background: rgba(255,255,255,.92); color: #171614; }
+.selo.estudo { background: #171614; color: #fff; }
+.info { display: flex; justify-content: space-between; align-items: start; gap: 16px; margin-top: 16px; }
+.info h3 { font: 400 34px/1 var(--serif); }
+.info p { margin-top: 6px; color: var(--pedra); font-size: 15px; }
+.amostras { display: flex; margin-top: 4px; }
+.amostras i { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--papel); margin-left: -6px; }
+.ver { margin-top: 10px; font-weight: 600; font-size: 14px; color: var(--acento); display: inline-flex; gap: 6px; }
+.cartao:hover .ver span { transform: translateX(4px); } .ver span { transition: transform .2s; }
+
+/* ===== Processo ===== */
+.processo { background: var(--papel-2); }
+.etapas { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; counter-reset: e; }
+.etapa { padding: 24px 22px 0 0; border-top: 1px solid var(--linha); position: relative; }
+.etapa::before { counter-increment: e; content: "0" counter(e); font: 400 15px/1 var(--serif); color: var(--acento); display: block; margin-bottom: 18px; }
+.etapa::after { content: ""; position: absolute; top: -5px; left: 0; width: 9px; height: 9px; border-radius: 50%; background: var(--acento); }
+.etapa h4 { font: 600 17px/1.25 var(--sans); }
+.etapa p { margin-top: 8px; font-size: 14px; color: var(--pedra); }
+@media (max-width: 1000px) { .etapas { grid-template-columns: repeat(2, 1fr); row-gap: 36px; } }
+@media (max-width: 520px) { .etapas { grid-template-columns: 1fr; } }
+.revela { opacity: 0; transform: translateY(24px); transition: opacity .7s, transform .7s; }
+.revela.visivel { opacity: 1; transform: none; }
+
+/* ===== Contato ===== */
+.contato { text-align: center; padding-bottom: 80px; }
+.contato h2 { font-size: clamp(48px, 9vw, 140px); line-height: .9; }
+.contato h2 em { color: var(--acento); }
+.contato .btn { margin-top: 36px; font-size: 18px; }
+footer { padding: 26px var(--m) 40px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--pedra); font-size: 13px; border-top: 1px solid var(--linha); }
+
+/* ===== Estudo de caso (painel) ===== */
+dialog.caso { border: 0; padding: 0; width: 100%; max-width: 100%; height: 100%; max-height: 100%; background: var(--papel); color: var(--tinta); overscroll-behavior: contain; }
+dialog.caso::backdrop { background: rgba(10,10,10,.5); }
+dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
+@keyframes abre { from { transform: translateY(40px); opacity: 0; } }
+.caso-topo { position: sticky; top: 0; z-index: 3; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px var(--m);
+  background: color-mix(in srgb, var(--papel) 88%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--linha); }
+.caso-topo .nav-casos { display: flex; gap: 8px; }
+.redondo { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--linha); display: grid; place-items: center; font-size: 18px; transition: background .2s; }
+.redondo:hover { background: var(--papel-2); }
+.caso-corpo { padding: 40px var(--m) 90px; max-width: 1280px; margin: 0 auto; }
+.aviso { display: flex; gap: 12px; align-items: start; padding: 16px 20px; border-radius: 14px; background: var(--tinta); color: var(--papel); margin-bottom: 36px; font-size: 15px; }
+.aviso b { font-weight: 700; }
+.caso-cab { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: end; }
+.caso-cab h2 { font-size: clamp(52px, 7vw, 104px); line-height: .92; }
+.caso-cab .meta { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; }
+.caso-cab .meta div span { display: block; margin-bottom: 6px; }
+@media (max-width: 860px) { .caso-cab { grid-template-columns: 1fr; } }
+.texto-caso { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin: 54px 0; }
+.texto-caso p { font-size: 18px; line-height: 1.6; text-wrap: pretty; }
+.texto-caso h4 { margin-bottom: 12px; }
+@media (max-width: 760px) { .texto-caso { grid-template-columns: 1fr; } }
+
+.vitrine { display: grid; grid-template-columns: 1.5fr 1fr; gap: 28px; align-items: start; }
+@media (max-width: 960px) { .vitrine { grid-template-columns: 1fr; } }
+.vitrine > *, .texto-caso > *, .caso-cab > * { min-width: 0; }
+@media (max-width: 600px) { .palco { padding: 14px; border-radius: 16px; } .seta { width: 40px; height: 40px; } .miniaturas button { flex-basis: 48px; } }
+.palco { background: var(--cor-fundo); border-radius: 22px; padding: 28px; position: relative; }
+.palco-barra { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; color: var(--cor-txt); }
+.alterna { display: inline-flex; padding: 4px; border-radius: 99px; background: rgba(0,0,0,.22); }
+.alterna button { padding: 8px 14px; border-radius: 99px; font: 600 13px/1 var(--sans); color: var(--cor-txt); opacity: .8; }
+.alterna button[aria-pressed="true"] { background: var(--cor-txt); color: var(--cor-fundo); opacity: 1; }
+.contador { font: 600 13px/1 var(--sans); letter-spacing: .08em; }
+.carrossel { position: relative; overflow: hidden; border-radius: 12px; touch-action: pan-y; }
+.faixa { display: flex; transition: transform .55s cubic-bezier(.2,.8,.2,1); }
+.faixa img { flex: 0 0 100%; width: 100%; object-fit: cover; aspect-ratio: 3/4; user-select: none; -webkit-user-drag: none; }
+.palco.f45 .faixa img { aspect-ratio: 4/5; }
+.seta { position: absolute; top: 50%; translate: 0 -50%; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,.92); color: #171614; display: grid; place-items: center; font-size: 20px; box-shadow: 0 8px 20px rgba(0,0,0,.2); }
+.seta.esq { left: 12px; } .seta.dir { right: 12px; }
+.miniaturas { display: flex; gap: 8px; margin-top: 16px; overflow-x: auto; padding-bottom: 4px; }
+.miniaturas button { flex: 0 0 64px; border-radius: 6px; overflow: hidden; opacity: .5; transition: opacity .2s; outline-offset: 2px; }
+.miniaturas button[aria-current="true"] { opacity: 1; outline: 2px solid var(--cor-txt); }
+.miniaturas img { aspect-ratio: 3/4; object-fit: cover; }
+.legenda-post { margin-top: 14px; color: var(--cor-txt); font: 400 22px/1.2 var(--serif); min-height: 2.4em; }
+
+.lateral { display: grid; gap: 28px; }
+.celular { width: min(320px, 100%); margin: 0 auto; border-radius: 44px; padding: 12px; background: #111; box-shadow: var(--sombra); }
+.tela { border-radius: 34px; overflow: hidden; background: #fff; color: #111; }
+.ig-topo { padding: 14px 16px 10px; display: flex; align-items: center; gap: 12px; }
+.ig-topo .av { width: 46px; height: 46px; border-radius: 50%; background: var(--cor-fundo); display: grid; place-items: center; color: var(--cor-txt); font: 400 22px/1 var(--serif); }
+.ig-topo b { font-size: 14px; } .ig-topo small { display: block; font-size: 11px; color: #777; }
+.ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.ig-grid img { aspect-ratio: 3/4; object-fit: cover; cursor: pointer; }
+.kit h4 { margin-bottom: 12px; }
+.paleta { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 10px; }
+.cor { text-align: left; border-radius: 12px; overflow: hidden; border: 1px solid var(--linha); background: var(--papel); transition: transform .2s; }
+.cor:hover { transform: translateY(-3px); }
+.cor i { display: block; height: 54px; }
+.cor span { display: block; padding: 8px 10px; font-size: 12px; line-height: 1.3; }
+.cor span b { display: block; font-size: 13px; }
+.fontes { margin-top: 18px; display: grid; gap: 8px; font-size: 15px; }
+.fontes div { display: flex; justify-content: space-between; border-bottom: 1px solid var(--linha); padding-bottom: 8px; }
+.toast { position: fixed; left: 50%; bottom: 28px; translate: -50% 20px; opacity: 0; z-index: 99; background: var(--tinta); color: var(--papel); padding: 12px 18px; border-radius: 99px; font-weight: 600; font-size: 14px; transition: .3s; pointer-events: none; }
+.toast.on { opacity: 1; translate: -50% 0; }
+.proximo { margin-top: 70px; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-top: 28px; border-top: 1px solid var(--linha); }
+.proximo button { text-align: right; } .proximo button b { display: block; font: 400 clamp(32px, 5vw, 56px)/1 var(--serif); }
+</style>
+</head>
+<body>
+
+<header class="topo" id="topo">
+  <a class="logo" href="#">Marcelo Passos<i>.</i></a>
+  <nav class="menu">
+    <a href="#projetos">Projetos</a><a href="#processo">Processo</a><a href="#contato">Contato</a>
+    <button class="tema" id="tema" aria-label="Alternar tema claro e escuro">◐</button>
+  </nav>
+</header>
+
+<main>
+  <section class="abertura">
+    <div>
+      <span class="rotulo">Portfólio · Social media</span>
+      <h1 class="serif" style="margin-top:22px">Feeds com <em>direção</em> de&nbsp;arte.</h1>
+      <p class="sub">Crio sistemas visuais para Instagram: marca, fotografia, texto e grid pensados juntos, para cada post funcionar sozinho e o perfil inteiro contar uma história.</p>
+      <div class="acoes">
+        <a class="btn cheio" href="#projetos">Ver projetos <span>→</span></a>
+        <a class="btn linha" href="#contato">Falar comigo</a>
+      </div>
+      <div class="numeros" id="numeros"></div>
+    </div>
+    <div class="mosaico" id="mosaico" aria-hidden="true"></div>
+  </section>
+
+  <section id="projetos">
+    <div class="cab-secao">
+      <div><span class="rotulo">Projetos selecionados</span><h2 class="serif" style="margin-top:14px">Trabalhos</h2></div>
+      <div class="filtros" id="filtros" role="group" aria-label="Filtrar projetos"></div>
+    </div>
+    <div class="grade" id="grade"></div>
+  </section>
+
+  <section class="processo" id="processo">
+    <div class="cab-secao"><div><span class="rotulo">Como eu trabalho</span><h2 class="serif" style="margin-top:14px">Processo</h2></div></div>
+    <div class="etapas" id="etapas"></div>
+  </section>
+
+  <section class="contato" id="contato">
+    <span class="rotulo">Vamos conversar</span>
+    <h2 class="serif" style="margin-top:20px">Seu feed pode ter <em>cara própria.</em></h2>
+    <a class="btn cheio" href="mailto:mpassosj@gmail.com">mpassosj@gmail.com <span>→</span></a>
+  </section>
+</main>
+<footer><span>© 2026 Marcelo Passos</span><span>Marcas fictícias criadas para estudo, exceto quando indicado. Villa Camarão: projeto de estudo, não comissionado pela marca.</span></footer>
+
+<dialog class="caso" id="caso" aria-labelledby="caso-titulo">
+  <div class="caso-topo">
+    <span class="rotulo" id="caso-indice"></span>
+    <div class="nav-casos">
+      <button class="redondo" id="caso-ant" aria-label="Projeto anterior">←</button>
+      <button class="redondo" id="caso-prox" aria-label="Próximo projeto">→</button>
+      <button class="redondo" id="caso-fechar" aria-label="Fechar">✕</button>
+    </div>
+  </div>
+  <div class="caso-corpo" id="caso-corpo"></div>
+</dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ===== Dados dos projetos (imagens em img/<id>/34 e /45, geradas por atualizar-imagens.ps1) ===== */
+const PROJETOS = [
+  { id: 'lento', nome: 'Lento', segmento: 'Cafeteria de especialidade', cat: 'gastronomia', tipo: 'Marca fictícia',
+    fundo: '#2A1D17', txt: '#EFE4D2', arroba: '@lentocafe',
+    desafio: 'Criar o feed de uma cafeteria pequena de bairro que torra e coa na hora, para quem já toma café filtrado em casa e quer entender o que é café especial.',
+    conceito: '"Café bom não tem pressa." Cada post mostra o tempo de uma etapa: origem, preparo, prova e conversa. Fotos quentes em tela cheia, títulos condensados curtos e uma comanda de papel para os dados.',
+    entregas: '6 posts · 3:4 e 4:5 · fotos com IA · legendas', fontes: [['Títulos', 'Anton'], ['Texto', 'DM Sans']],
+    cores: [['Espresso', '#2A1D17'], ['Crema', '#EFE4D2'], ['Cereja', '#B8432F'], ['Sálvia', '#7E8C6A'], ['Caramelo', '#D9A86C']],
+    posts: [['post-01-quatro-minutos', 'Cada xícara leva quatro minutos.'], ['post-02-fruta', 'Todo grão já foi fruta.'], ['post-03-notas', 'Chocolate, caramelo e laranja. Sem açúcar.'],
+            ['post-04-metodos', 'Escolha pelo jeito de tomar.'], ['post-05-degustacao', 'Prove seis cafés lado a lado.'], ['post-06-sem-pressa', 'Fica o tempo que quiser.']] },
+  { id: 'tamborim', nome: 'Tamborim', segmento: 'Boteco com samba', cat: 'gastronomia', tipo: 'Marca fictícia',
+    fundo: '#0F4D3F', txt: '#F6EEDD', arroba: '@botecotamborim',
+    desafio: 'Fugir do preto e amarelo que domina o nicho de bares e mostrar um boteco de bairro moderno, onde o produto principal é o encontro.',
+    conceito: '"Boteco é onde a semana vira conversa." Verde-azulejo, tomate e creme; padrão de azulejo, ícones de balcão desenhados à mão e fotos espontâneas com gente de verdade. Regras do CONAR aplicadas em todas as peças.',
+    entregas: '6 posts · 3:4 e 4:5 · fotos com IA · ícones · kit de marca', fontes: [['Títulos', 'Fraunces'], ['Texto', 'Figtree']],
+    cores: [['Azulejo', '#0F4D3F'], ['Tomate', '#BF3A22'], ['Creme', '#F6EEDD'], ['Mostarda', '#F2B33D'], ['Tinta', '#1C2321']],
+    posts: [['post-01-manifesto', 'Aqui a semana vira conversa.'], ['post-02-petisco', 'Bolinho de bacalhau: o último sempre dá briga.'], ['post-03-agenda', 'Roda de samba no quintal.'],
+            ['post-04-mesa', 'Mesa pra seis? A gente junta.'], ['post-05-lista', '3 petiscos que nunca voltam inteiros.'], ['post-06-enquete', 'Qual é o seu pedido de sempre?']] },
+  { id: 'raia', nome: 'Raia', segmento: 'Energia solar residencial', cat: 'servicos', tipo: 'Marca fictícia',
+    fundo: '#0F2E2C', txt: '#F5EEE1', arroba: '@raiasolar',
+    desafio: 'Vender energia solar sem o laranja e os painéis em close que todo o nicho usa, com um tom honesto: nada de promessa milagrosa.',
+    conceito: 'O sol nascente vira o sistema da marca: anéis concêntricos atravessam o layout e a foto fica dentro do sol. Petróleo domina o feed; todo número tem origem ou asterisco explicando.',
+    entregas: '6 posts · 3:4 e 4:5 · personagens fixos com IA · QA', fontes: [['Títulos', 'Bricolage Grotesque'], ['Texto', 'Inter']],
+    cores: [['Petróleo', '#0F2E2C'], ['Sol', '#FFB627'], ['Areia', '#F5EEE1'], ['Papel', '#FFFDF8'], ['Brasa', '#F26B1D']],
+    posts: [['post-01-manifesto', 'Todo dia o sol bate no seu telhado. E vai embora.'], ['post-02-checklist', '3 sinais de que sua casa já pode ir pro solar.'], ['post-03-dado', 'Em quanto tempo o sistema se paga?'],
+            ['post-04-foto', 'A gente cuida de tudo.'], ['post-05-equipe', 'Quem sobe no seu telhado faz diferença.'], ['post-06-conta', 'O dia em que a conta virou boa notícia.']] },
+  { id: 'villa', nome: 'Villa Camarão', segmento: 'Camarão para food service', cat: 'b2b', tipo: 'Projeto de estudo', estudo: true,
+    fundo: '#FF6F61', txt: '#FFFFFF', arroba: '@villacamarao',
+    desafio: 'Exercício de redesenho do feed de uma marca real B2B: manter a identidade existente (só as cores e a fonte que a marca já usa) e tornar os posts mais claros e variados para donos de restaurante.',
+    conceito: 'O dado técnico vira protagonista (gramatura, congelamento individual), as pessoas entram nos posts estáticos e os semicírculos do próprio logo viram moldura das fotos. Textos reescritos a partir de um guia de redação publicitária.',
+    entregas: '6 posts · 3:4 e 4:5 · fotos do site oficial · guia de redação', fontes: [['Títulos e texto', 'Poppins']],
+    cores: [['Coral', '#FF6F61'], ['Vermelho', '#F1494A'], ['Salmão', '#F7A08C'], ['Rosa', '#FFE7E5'], ['Off-white', '#F7F6F2']],
+    posts: [['post-01-gramatura', '80/100 camarões em cada libra.'], ['post-02-iqf', 'Congelado um a um.'], ['post-03-cardapios', 'Do sushi ao gratinado, o mesmo camarão.'],
+            ['post-04-chef', 'Nossos produtos passam pelas mãos dele.'], ['post-05-villa-de-sonhos', 'Seu cardápio movimenta a cadeia inteira.'], ['post-06-10-anos', 'Ajudando restaurantes a vender mais camarão.']] },
+];
+const FILTROS = [['todos', 'Todos'], ['gastronomia', 'Gastronomia'], ['servicos', 'Serviços'], ['b2b', 'B2B']];
+const ETAPAS = [
+  ['Referências', 'Busco projetos bem avaliados no Behance e analiso o perfil atual da marca antes de desenhar.'],
+  ['Marca', 'Conceito em uma frase, paleta, tipografia e o grafismo que vira assinatura do feed.'],
+  ['Fotografia', 'Foto real da marca ou gerada com direção: personagens fixos, mesma luz, mesma cor.'],
+  ['Redação', 'Um leitor, uma ideia, uma ação. Títulos curtos, fatos verificáveis, legenda pronta.'],
+  ['Arte', 'Templates nos formatos 3:4 (feed) e 4:5 (anúncio), com quebras de linha revisadas.'],
+  ['Revisão', 'Checklist de qualidade, prévia no tamanho do celular e o grid do perfil inteiro.'],
+];
+const src = (p, f, nome) => `img/${p.id}/${f}/${nome}.jpg`;
+
+/* ===== Abertura: mosaico em colunas e números ===== */
+const todos = PROJETOS.flatMap(p => p.posts.map(([n]) => ({ p, n })));
+const embaralhado = todos.map((v, i) => ({ v, k: (i * 37) % todos.length })).sort((a, b) => a.k - b.k).map(o => o.v);
+const mosaico = document.getElementById('mosaico');
+for (let c = 0; c < 3; c++) {
+  const itens = embaralhado.filter((_, i) => i % 3 === c);
+  const html = itens.map(({ p, n }) => `<img src="${src(p, '34', n)}" alt="" loading="lazy" data-p="${p.id}">`).join('');
+  mosaico.insertAdjacentHTML('beforeend', `<div class="coluna"><div class="trilho">${html}${html}</div></div>`);
+}
+mosaico.addEventListener('click', e => { const id = e.target.dataset?.p; if (id) abrirCaso(PROJETOS.findIndex(p => p.id === id)); });
+document.getElementById('numeros').innerHTML = [[PROJETOS.length, 'projetos'], [todos.length, 'posts'], [2, 'formatos por post']]
+  .map(([n, t]) => `<div><b data-alvo="${n}">0</b><span>${t}</span></div>`).join('');
+
+/* ===== Filtros e cartões ===== */
+const grade = document.getElementById('grade');
+grade.innerHTML = PROJETOS.map((p, i) => `
+  <button class="cartao revela" data-cat="${p.cat}" data-i="${i}" style="--cor-fundo:${p.fundo}" aria-label="Abrir projeto ${p.nome}">
+    <div class="capa"><span class="selo ${p.estudo ? 'estudo' : ''}">${p.tipo}</span>
+      <div class="posts">${[1, 0, 2].map(k => `<img src="${src(p, '34', p.posts[k][0])}" alt="" loading="lazy">`).join('')}</div></div>
+    <div class="info"><div><h3>${p.nome}</h3><p>${p.segmento}</p><span class="ver">Ver estudo de caso <span>→</span></span></div>
+      <div class="amostras">${p.cores.slice(0, 4).map(c => `<i style="background:${c[1]}" title="${c[0]}"></i>`).join('')}</div></div>
+  </button>`).join('');
+const filtros = document.getElementById('filtros');
+filtros.innerHTML = FILTROS.map(([k, t], i) => `<button data-f="${k}" aria-pressed="${i === 0}">${t}</button>`).join('');
+filtros.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  filtros.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  grade.querySelectorAll('.cartao').forEach(c => {
+    const mostra = b.dataset.f === 'todos' || c.dataset.cat === b.dataset.f;
+    if (mostra && c.classList.contains('oculto')) { c.classList.remove('oculto'); c.classList.add('entrando'); requestAnimationFrame(() => requestAnimationFrame(() => c.classList.remove('entrando'))); }
+    if (!mostra) c.classList.add('oculto');
+  });
+});
+grade.addEventListener('click', e => { const c = e.target.closest('.cartao'); if (c) abrirCaso(+c.dataset.i); });
+
+/* ===== Processo ===== */
+document.getElementById('etapas').innerHTML = ETAPAS.map(([t, d]) => `<div class="etapa revela"><h4>${t}</h4><p>${d}</p></div>`).join('');
+
+/* ===== Estudo de caso ===== */
+const dlg = document.getElementById('caso'), corpo = document.getElementById('caso-corpo');
+let atual = 0, slide = 0, formato = '34';
+function abrirCaso(i) {
+  atual = (i + PROJETOS.length) % PROJETOS.length; slide = 0;
+  const p = PROJETOS[atual];
+  document.getElementById('caso-indice').textContent = `${String(atual + 1).padStart(2, '0')} / ${String(PROJETOS.length).padStart(2, '0')} · ${p.nome}`;
+  corpo.style.setProperty('--cor-fundo', p.fundo); corpo.style.setProperty('--cor-txt', p.txt);
+  corpo.innerHTML = `
+    ${p.estudo ? `<div class="aviso"><span>ⓘ</span><div><b>Projeto de estudo.</b> Exercício pessoal de redesenho, não comissionado nem aprovado pela Villa Camarão. Marca, logotipo e fotos pertencem à empresa e foram usados apenas para fins de estudo.</div></div>` : ''}
+    <div class="caso-cab">
+      <div><span class="rotulo">${p.segmento} · ${p.tipo}</span><h2 class="serif" id="caso-titulo" style="margin-top:16px">${p.nome}</h2></div>
+      <div class="meta">
+        <div><span class="rotulo">Entregas</span>${p.entregas}</div>
+        <div><span class="rotulo">Perfil</span>${p.arroba}${p.estudo ? ' (marca real)' : ' (fictício)'}</div>
+      </div>
+    </div>
+    <div class="texto-caso">
+      <div><h4 class="rotulo">Desafio</h4><p>${p.desafio}</p></div>
+      <div><h4 class="rotulo">Conceito</h4><p>${p.conceito}</p></div>
+    </div>
+    <div class="vitrine">
+      <div class="palco" id="palco">
+        <div class="palco-barra">
+          <div class="alterna" role="group" aria-label="Formato">
+            <button data-f="34" aria-pressed="true">Feed 3:4</button><button data-f="45" aria-pressed="false">Anúncio 4:5</button>
+          </div>
+          <span class="contador" id="contador"></span>
+        </div>
+        <div class="carrossel" id="carrossel">
+          <div class="faixa" id="faixa"></div>
+          <button class="seta esq" id="s-ant" aria-label="Post anterior">←</button>
+          <button class="seta dir" id="s-prox" aria-label="Próximo post">→</button>
+        </div>
+        <div class="legenda-post" id="legenda"></div>
+        <div class="miniaturas" id="minis"></div>
+      </div>
+      <div class="lateral">
+        <div class="celular"><div class="tela">
+          <div class="ig-topo"><span class="av">${p.nome[0]}</span><div><b>${p.arroba.slice(1)}</b><small>Prévia do grid do perfil</small></div></div>
+          <div class="ig-grid">${[...p.posts].reverse().map(([n], k) => `<img src="${src(p, '34', n)}" alt="" data-k="${p.posts.length - 1 - k}" loading="lazy">`).join('')}</div>
+        </div></div>
+        <div class="kit">
+          <h4 class="rotulo">Paleta · clique para copiar</h4>
+          <div class="paleta">${p.cores.map(([n, h]) => `<button class="cor" data-hex="${h}"><i style="background:${h}"></i><span><b>${n}</b>${h}</span></button>`).join('')}</div>
+          <div class="fontes">${p.fontes.map(([u, f]) => `<div><span class="rotulo">${u}</span><span>${f}</span></div>`).join('')}</div>
+        </div>
+      </div>
+    </div>
+    <div class="proximo"><span class="rotulo">Próximo projeto</span><button id="ir-prox"><span class="rotulo">${PROJETOS[(atual + 1) % PROJETOS.length].segmento}</span><b>${PROJETOS[(atual + 1) % PROJETOS.length].nome} →</b></button></div>`;
+  montarFaixa();
+  corpo.querySelector('.alterna').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; formato = b.dataset.f;
+    corpo.querySelectorAll('.alterna button').forEach(x => x.setAttribute('aria-pressed', x === b)); montarFaixa(); });
+  corpo.querySelector('#s-ant').onclick = () => ir(slide - 1);
+  corpo.querySelector('#s-prox').onclick = () => ir(slide + 1);
+  corpo.querySelector('#minis').onclick = e => { const b = e.target.closest('button'); if (b) ir(+b.dataset.k); };
+  corpo.querySelector('.ig-grid').onclick = e => { const k = e.target.dataset?.k; if (k) { ir(+k); corpo.querySelector('#palco').scrollIntoView({ behavior: 'smooth', block: 'center' }); } };
+  corpo.querySelector('.paleta').onclick = e => { const b = e.target.closest('.cor'); if (!b) return;
+    navigator.clipboard?.writeText(b.dataset.hex).then(() => aviso(`${b.dataset.hex} copiado`), () => aviso(b.dataset.hex)); };
+  corpo.querySelector('#ir-prox').onclick = () => { abrirCaso(atual + 1); dlg.scrollTop = 0; };
+  arrastar(corpo.querySelector('#carrossel'));
+  if (!dlg.open) { dlg.showModal(); document.body.style.overflow = 'hidden'; }
+  dlg.scrollTop = 0;
+}
+function montarFaixa() {
+  const p = PROJETOS[atual];
+  corpo.querySelector('#palco').classList.toggle('f45', formato === '45');
+  corpo.querySelector('#faixa').innerHTML = p.posts.map(([n, t]) => `<img src="${src(p, formato, n)}" alt="${t}" draggable="false">`).join('');
+  corpo.querySelector('#minis').innerHTML = p.posts.map(([n], k) => `<button data-k="${k}" aria-label="Post ${k + 1}"><img src="${src(p, '34', n)}" alt=""></button>`).join('');
+  ir(slide);
+}
+function ir(k) {
+  const p = PROJETOS[atual]; slide = (k + p.posts.length) % p.posts.length;
+  corpo.querySelector('#faixa').style.transform = `translateX(${-slide * 100}%)`;
+  corpo.querySelector('#contador').textContent = `${String(slide + 1).padStart(2, '0')} / ${String(p.posts.length).padStart(2, '0')}`;
+  corpo.querySelector('#legenda').textContent = p.posts[slide][1];
+  corpo.querySelectorAll('#minis button').forEach((b, i) => b.setAttribute('aria-current', i === slide));
+}
+function arrastar(el) {
+  let x0 = null;
+  el.addEventListener('pointerdown', e => { if (e.target.closest('.seta')) return; x0 = e.clientX; });
+  el.addEventListener('pointerup', e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) ir(slide + (dx < 0 ? 1 : -1)); });
+}
+function fechar() { dlg.close(); }
+dlg.addEventListener('close', () => { document.body.style.overflow = ''; });
+document.getElementById('caso-fechar').onclick = fechar;
+document.getElementById('caso-ant').onclick = () => abrirCaso(atual - 1);
+document.getElementById('caso-prox').onclick = () => abrirCaso(atual + 1);
+dlg.addEventListener('click', e => { if (e.target === dlg) fechar(); });
+document.addEventListener('keydown', e => { if (!dlg.open) return;
+  if (e.key === 'ArrowRight') ir(slide + 1); if (e.key === 'ArrowLeft') ir(slide - 1); });
+
+/* ===== Detalhes: toast, tema, topo, revelar ao rolar, contadores ===== */
+let tt; function aviso(t) { const el = document.getElementById('toast'); el.textContent = t; el.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => el.classList.remove('on'), 1600); }
+const raiz = document.documentElement;
+try { const t = localStorage.getItem('tema'); if (t) raiz.dataset.theme = t; } catch (e) {}
+document.getElementById('tema').onclick = () => {
+  const escuro = raiz.dataset.theme ? raiz.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  raiz.dataset.theme = escuro ? 'light' : 'dark'; try { localStorage.setItem('tema', raiz.dataset.theme); } catch (e) {}
+};
+addEventListener('scroll', () => document.getElementById('topo').classList.toggle('rolou', scrollY > 20), { passive: true });
+const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visivel'); obs.unobserve(e.target); } }), { threshold: .15 });
+document.querySelectorAll('.revela').forEach(el => obs.observe(el));
+document.querySelectorAll('[data-alvo]').forEach(b => { const alvo = +b.dataset.alvo; let n = 0;
+  const passo = () => { n = Math.min(alvo, n + Math.max(1, Math.round(alvo / 24))); b.textContent = n; if (n < alvo) requestAnimationFrame(passo); }; setTimeout(passo, 400); });
+</script>
+</body>
+</html>
