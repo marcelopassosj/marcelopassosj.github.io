@@ -41,7 +41,21 @@ header.topo.rolou { border-color: var(--linha); }
 nav.menu { display: flex; gap: 22px; align-items: center; font-weight: 500; font-size: 15px; }
 nav.menu a { text-decoration: none; opacity: .75; } nav.menu a:hover { opacity: 1; }
 .tema { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--linha); display: grid; place-items: center; }
-@media (max-width: 640px) { nav.menu a { display: none; } }
+.abre-menu { display: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--linha); place-items: center; }
+.abre-menu span { position: relative; width: 14px; height: 1.5px; background: currentColor; transition: background .2s; }
+.abre-menu span::before, .abre-menu span::after { content: ''; position: absolute; left: 0; width: 14px; height: 1.5px; background: currentColor; transition: transform .25s; }
+.abre-menu span::before { transform: translateY(-5px); } .abre-menu span::after { transform: translateY(5px); }
+header.aberto .abre-menu span { background: transparent; }
+header.aberto .abre-menu span::before { transform: rotate(45deg); } header.aberto .abre-menu span::after { transform: rotate(-45deg); }
+.menu-cel { position: absolute; top: 100%; left: 0; right: 0; display: flex; flex-direction: column; padding: 8px var(--m) 28px;
+  background: var(--papel); border-bottom: 1px solid var(--linha); box-shadow: var(--sombra);
+  opacity: 0; transform: translateY(-8px); visibility: hidden; transition: opacity .2s, transform .2s, visibility .2s; }
+.menu-cel a { font: 400 36px/1 var(--serif); text-decoration: none; padding: 14px 0; border-bottom: 1px solid var(--linha); }
+.menu-cel a:last-child { border-bottom: 0; }
+header.aberto { border-color: var(--linha); background: var(--papel); }
+header.aberto .menu-cel { opacity: 1; transform: none; visibility: visible; }
+@media (max-width: 640px) { nav.menu a { display: none; } .abre-menu { display: grid; } nav.menu { gap: 10px; } }
+@media (min-width: 641px) { .menu-cel { display: none; } }
 
 /* ===== Abertura ===== */
 .abertura { min-height: 100svh; display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; padding: 110px var(--m) 40px; overflow: hidden; }
@@ -197,6 +211,10 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
   <nav class="menu">
     <a href="#projetos">Projetos</a><a href="#processo">Processo</a><a href="#contato">Contato</a>
     <button class="tema" id="tema" aria-label="Alternar tema claro e escuro">◐</button>
+    <button class="abre-menu" id="abre-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-cel"><span></span></button>
+  </nav>
+  <nav class="menu-cel" id="menu-cel" aria-label="Menu">
+    <a href="#projetos">Projetos</a><a href="#processo">Processo</a><a href="#contato">Contato</a>
   </nav>
 </header>
 
@@ -515,6 +533,14 @@ document.getElementById('tema').onclick = () => {
   raiz.dataset.theme = escuro ? 'light' : 'dark'; try { localStorage.setItem('tema', raiz.dataset.theme); } catch (e) {}
 };
 addEventListener('scroll', () => document.getElementById('topo').classList.toggle('rolou', scrollY > 20), { passive: true });
+/* Menu do celular */
+const topo = document.getElementById('topo'), abreMenu = document.getElementById('abre-menu');
+function menuCel(abrir) { topo.classList.toggle('aberto', abrir); abreMenu.setAttribute('aria-expanded', abrir); abreMenu.setAttribute('aria-label', abrir ? 'Fechar menu' : 'Abrir menu'); }
+abreMenu.onclick = () => menuCel(!topo.classList.contains('aberto'));
+document.getElementById('menu-cel').addEventListener('click', e => { if (e.target.closest('a')) menuCel(false); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && topo.classList.contains('aberto')) { menuCel(false); abreMenu.focus(); } });
+document.addEventListener('click', e => { if (topo.classList.contains('aberto') && !topo.contains(e.target)) menuCel(false); });
+matchMedia('(min-width: 641px)').addEventListener('change', e => { if (e.matches) menuCel(false); });
 const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visivel'); obs.unobserve(e.target); } }), { threshold: .15 });
 document.querySelectorAll('.revela').forEach(el => obs.observe(el));
 document.querySelectorAll('[data-alvo]').forEach(b => { const alvo = +b.dataset.alvo; let n = 0;
