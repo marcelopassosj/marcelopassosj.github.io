@@ -129,11 +129,45 @@ section { padding: 110px var(--m); }
 .revela { opacity: 0; transform: translateY(24px); transition: opacity .7s, transform .7s; }
 .revela.visivel { opacity: 1; transform: none; }
 
+/* ===== Sobre ===== */
+.sobre .texto { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+.sobre .dir > p:first-child { margin-top: 0; }
+@media (max-width: 860px) { .sobre .texto { grid-template-columns: 1fr; gap: 28px; } }
+.sobre .cab { display: flex; align-items: center; gap: 22px; margin-top: 18px; }
+.sobre .cab img { width: 88px; height: 88px; flex: none; border-radius: 50%; object-fit: cover; background: #141311; border: 1px solid var(--linha); }
+.sobre h2 { font-size: clamp(42px, 6vw, 84px); line-height: .95; }
+.sobre h2 em { color: var(--acento); }
+.sobre .texto p { margin-top: 22px; font-size: 18px; max-width: 560px; }
+.sobre .texto p + p { margin-top: 14px; color: var(--pedra); font-size: 17px; }
+.fatos { margin-top: 34px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--linha); max-width: 620px; }
+.fatos div { padding: 18px 16px 0 0; }
+.fatos b { display: block; font: 400 30px/1 var(--serif); }
+.fatos span { display: block; margin-top: 6px; font-size: 13px; color: var(--pedra); }
+.sobre .acoes { margin-top: 34px; display: flex; gap: 12px; flex-wrap: wrap; }
+@media (max-width: 520px) { .sobre .cab { gap: 16px; } .sobre .cab img { width: 64px; height: 64px; } }
+@media (max-width: 520px) { .fatos { grid-template-columns: 1fr; } .fatos div { padding: 14px 0; border-bottom: 1px solid var(--linha); display: flex; align-items: baseline; gap: 12px; } .fatos span { margin-top: 0; } }
+
+/* ===== Serviços ===== */
+.servicos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.servico { padding: 28px 24px 26px; border: 1px solid var(--linha); border-radius: 18px; display: flex; flex-direction: column; transition: border-color .2s, transform .2s; }
+.servico:hover { border-color: var(--acento); transform: translateY(-3px); }
+.servico .num { font: 400 15px/1 var(--serif); color: var(--acento); }
+.servico h3 { margin-top: 26px; font: 400 34px/1 var(--serif); }
+.servico p { margin-top: 12px; color: var(--pedra); font-size: 15px; }
+.servico ul { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--linha); list-style: none; display: grid; gap: 8px; font-size: 14px; }
+.servico li::before { content: "—"; color: var(--acento); margin-right: 8px; }
+.nota-servicos { margin-top: 26px; color: var(--pedra); font-size: 15px; }
+.nota-servicos a { color: var(--acento); font-weight: 600; }
+@media (max-width: 1000px) { .servicos { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .servicos { grid-template-columns: 1fr; } }
+
 /* ===== Contato ===== */
 .contato { text-align: center; padding-bottom: 80px; }
 .contato h2 { font-size: clamp(48px, 9vw, 140px); line-height: .9; }
 .contato h2 em { color: var(--acento); }
 .contato .btn { margin-top: 36px; font-size: 18px; }
+.contato .acoes { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.contato p.onde { margin-top: 22px; color: var(--pedra); font-size: 15px; }
 footer { padding: 26px var(--m) 40px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--pedra); font-size: 13px; border-top: 1px solid var(--linha); }
 
 /* ===== Estudo de caso (painel) ===== */
@@ -216,12 +250,12 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
 <header class="topo" id="topo">
   <a class="logo" href="#">Marcelo Passos<i>.</i></a>
   <nav class="menu">
-    <a href="#projetos">Projetos</a><a href="#processo">Processo</a><a href="#contato">Contato</a>
+    <a href="#projetos">Projetos</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#contato">Contato</a>
     <button class="tema" id="tema" aria-label="Alternar tema claro e escuro">◐</button>
     <button class="abre-menu" id="abre-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-cel"><span></span></button>
   </nav>
   <nav class="menu-cel" id="menu-cel" aria-label="Menu">
-    <a href="#projetos">Projetos</a><a href="#processo">Processo</a><a href="#contato">Contato</a>
+    <a href="#projetos">Projetos</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#processo">Processo</a><a href="#contato">Contato</a>
   </nav>
 </header>
 
@@ -248,6 +282,50 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
     <div class="grade" id="grade"></div>
   </section>
 
+  <section class="sobre" id="sobre">
+    <div class="texto revela">
+      <div class="esq">
+      <span class="rotulo">Sobre</span>
+      <div class="cab">
+        <img src="img/sobre/marcelo-passos-avatar.jpg" alt="Foto de Marcelo Passos" loading="lazy" width="88" height="88">
+        <h2 class="serif">Marcelo <em>Passos</em></h2>
+      </div>
+      </div>
+      <div class="dir">
+      <p>Sou publicitário há quase dez anos e hoje me dedico a social media: desenho o feed inteiro de uma marca, da identidade visual à legenda de cada post.</p>
+      <p>Antes do primeiro post, estudo o perfil, o público e a concorrência. Cada projeto deste portfólio parte de um conceito que cabe em uma frase. Moro em Lauro de Freitas e atendo marcas de qualquer cidade a distância, com reuniões por vídeo e aprovação pelo WhatsApp.</p>
+      <div class="fatos">
+        <div><b>~10 anos</b><span>em publicidade</span></div>
+        <div><b>Bahia</b><span>Lauro de Freitas</span></div>
+        <div><b>Brasil</b><span>atendimento a distância</span></div>
+      </div>
+      <div class="acoes">
+        <a class="btn cheio" href="#" data-whats>Chamar no WhatsApp <span>→</span></a>
+        <a class="btn linha" href="#servicos">Ver serviços</a>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="cab-secao"><div><span class="rotulo">O que eu faço</span><h2 class="serif" style="margin-top:14px">Serviços</h2></div></div>
+    <div class="servicos">
+      <article class="servico revela"><span class="num">01</span><h3>Feed mensal</h3>
+        <p>Os posts do mês prontos para publicar, com arte e legenda.</p>
+        <ul><li>Pauta do mês</li><li>Artes no feed 3:4 e no anúncio 4:5</li><li>Legendas revisadas</li></ul></article>
+      <article class="servico revela"><span class="num">02</span><h3>Carrossel</h3>
+        <p>Conteúdo em sequência, do tipo que a pessoa salva e compartilha.</p>
+        <ul><li>Roteiro de cada lâmina</li><li>Capa que funciona sozinha no grid</li><li>Até 10 lâminas</li></ul></article>
+      <article class="servico revela"><span class="num">03</span><h3>Kit de marca</h3>
+        <p>A identidade do perfil para ele ter cara própria em todo post.</p>
+        <ul><li>Paleta e tipografia</li><li>Grafismo da marca</li><li>Templates editáveis no Figma</li></ul></article>
+      <article class="servico revela"><span class="num">04</span><h3>Planejamento</h3>
+        <p>O mês decidido antes da primeira arte: o que postar, quando e por quê.</p>
+        <ul><li>Análise do perfil</li><li>Pilares de conteúdo</li><li>Calendário editorial</li></ul></article>
+    </div>
+    <p class="nota-servicos">Os serviços podem ser contratados separados ou juntos. <a href="#" data-whats>Peça um orçamento pelo WhatsApp →</a></p>
+  </section>
+
   <section class="processo" id="processo">
     <div class="cab-secao"><div><span class="rotulo">Como eu trabalho</span><h2 class="serif" style="margin-top:14px">Processo</h2></div></div>
     <div class="etapas" id="etapas"></div>
@@ -256,7 +334,11 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
   <section class="contato" id="contato">
     <span class="rotulo">Vamos conversar</span>
     <h2 class="serif" style="margin-top:20px">Seu feed pode ter <em>cara própria.</em></h2>
-    <a class="btn cheio" href="mailto:mpassosj@gmail.com">mpassosj@gmail.com <span>→</span></a>
+    <div class="acoes">
+      <a class="btn cheio" href="#" data-whats>WhatsApp (71) 98308-6896 <span>→</span></a>
+      <a class="btn linha" href="mailto:mpassosj@gmail.com">mpassosj@gmail.com</a>
+    </div>
+    <p class="onde">Lauro de Freitas, Bahia · atendimento a distância para todo o Brasil</p>
   </section>
 </main>
 <footer><span>© 2026 Marcelo Passos</span><span>Marcas fictícias criadas para estudo, exceto quando indicado. Villa Camarão, Memorial Joias e Sury Oriental: projetos de estudo, não comissionados pelas marcas.</span></footer>
@@ -544,6 +626,9 @@ document.getElementById('tema').onclick = () => {
   raiz.dataset.theme = escuro ? 'light' : 'dark'; try { localStorage.setItem('tema', raiz.dataset.theme); } catch (e) {}
 };
 addEventListener('scroll', () => document.getElementById('topo').classList.toggle('rolou', scrollY > 20), { passive: true });
+/* WhatsApp: link com mensagem pronta */
+const WHATS = 'https://wa.me/5571983086896?text=' + encodeURIComponent('Olá, Marcelo! Vi seu portfólio e quero conversar sobre o Instagram da minha marca.');
+document.querySelectorAll('[data-whats]').forEach(a => { a.href = WHATS; a.target = '_blank'; a.rel = 'noopener'; });
 /* Menu do celular */
 const topo = document.getElementById('topo'), abreMenu = document.getElementById('abre-menu');
 function menuCel(abrir) { topo.classList.toggle('aberto', abrir); abreMenu.setAttribute('aria-expanded', abrir); abreMenu.setAttribute('aria-label', abrir ? 'Fechar menu' : 'Abrir menu'); }
