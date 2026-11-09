@@ -144,6 +144,13 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
 .caso-topo { position: sticky; top: 0; z-index: 3; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px var(--m);
   background: color-mix(in srgb, var(--papel) 88%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--linha); }
 .caso-topo .nav-casos { display: flex; gap: 8px; }
+.caso-topo .esq { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.caso-topo .esq .rotulo { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.inicio { height: 42px; padding: 0 18px 0 14px; border-radius: 999px; border: 1px solid var(--linha); display: inline-flex; align-items: center; gap: 8px;
+  font-weight: 500; font-size: 15px; white-space: nowrap; transition: background .2s; }
+.inicio:hover { background: var(--papel-2); }
+.inicio svg { width: 16px; height: 16px; }
+@media (max-width: 520px) { .caso-topo .esq .rotulo { display: none; } }
 .redondo { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--linha); display: grid; place-items: center; font-size: 18px; transition: background .2s; }
 .redondo:hover { background: var(--papel-2); }
 .caso-corpo { padding: 40px var(--m) 90px; max-width: 1280px; margin: 0 auto; }
@@ -256,7 +263,10 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
 
 <dialog class="caso" id="caso" aria-labelledby="caso-titulo">
   <div class="caso-topo">
-    <span class="rotulo" id="caso-indice"></span>
+    <div class="esq">
+      <button class="inicio" id="caso-inicio" aria-label="Voltar para a página inicial"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5 8 2.5l6 5"/><path d="M3.5 6.5V13.5h9V6.5"/></svg>Início</button>
+      <span class="rotulo" id="caso-indice"></span>
+    </div>
     <div class="nav-casos">
       <button class="redondo" id="caso-ant" aria-label="Projeto anterior">←</button>
       <button class="redondo" id="caso-prox" aria-label="Próximo projeto">→</button>
@@ -518,6 +528,7 @@ function arrastar(el) {
 function fechar() { dlg.close(); }
 dlg.addEventListener('close', () => { document.body.style.overflow = ''; });
 document.getElementById('caso-fechar').onclick = fechar;
+document.getElementById('caso-inicio').onclick = () => { fechar(); history.replaceState(null, '', location.pathname); scrollTo({ top: 0, behavior: 'instant' }); };
 document.getElementById('caso-ant').onclick = () => abrirCaso(atual - 1);
 document.getElementById('caso-prox').onclick = () => abrirCaso(atual + 1);
 dlg.addEventListener('click', e => { if (e.target === dlg) fechar(); });
