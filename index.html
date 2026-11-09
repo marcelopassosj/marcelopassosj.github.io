@@ -234,7 +234,7 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
     <a class="btn cheio" href="mailto:mpassosj@gmail.com">mpassosj@gmail.com <span>→</span></a>
   </section>
 </main>
-<footer><span>© 2026 Marcelo Passos</span><span>Marcas fictícias criadas para estudo, exceto quando indicado. Villa Camarão: projeto de estudo, não comissionado pela marca.</span></footer>
+<footer><span>© 2026 Marcelo Passos</span><span>Marcas fictícias criadas para estudo, exceto quando indicado. Villa Camarão, Memorial Joias e Sury Oriental: projetos de estudo, não comissionados pelas marcas.</span></footer>
 
 <dialog class="caso" id="caso" aria-labelledby="caso-titulo">
   <div class="caso-topo">
@@ -276,7 +276,7 @@ const PROJETOS = [
     cores: [['Petróleo', '#0F2E2C'], ['Sol', '#FFB627'], ['Areia', '#F5EEE1'], ['Papel', '#FFFDF8'], ['Brasa', '#F26B1D']],
     posts: [['post-01-manifesto', 'Todo dia o sol bate no seu telhado. E vai embora.'], ['post-02-checklist', '3 sinais de que sua casa já pode ir pro solar.'], ['post-03-dado', 'Em quanto tempo o sistema se paga?'],
             ['post-04-foto', 'A gente cuida de tudo.'], ['post-05-equipe', 'Quem sobe no seu telhado faz diferença.'], ['post-06-conta', 'O dia em que a conta virou boa notícia.']] },
-  { id: 'villa', nome: 'Villa Camarão', segmento: 'Camarão para food service', cat: 'b2b', tipo: 'Projeto de estudo', estudo: true,
+  { id: 'villa', nome: 'Villa Camarão', segmento: 'Camarão para food service', cat: 'b2b', tipo: 'Projeto de Estudo', estudo: true,
     fundo: '#FF6F61', txt: '#FFFFFF', arroba: '@villacamarao',
     desafio: 'Exercício de redesenho do feed de uma marca real B2B: manter a identidade existente (só as cores e a fonte que a marca já usa) e tornar os posts mais claros e variados para donos de restaurante.',
     conceito: 'O dado técnico vira protagonista (gramatura, congelamento individual), as pessoas entram nos posts estáticos e os semicírculos do próprio logo viram moldura das fotos. Textos reescritos a partir de um guia de redação publicitária.',
@@ -284,8 +284,88 @@ const PROJETOS = [
     cores: [['Coral', '#FF6F61'], ['Vermelho', '#F1494A'], ['Salmão', '#F7A08C'], ['Rosa', '#FFE7E5'], ['Off-white', '#F7F6F2']],
     posts: [['post-01-gramatura', '80/100 camarões em cada libra.'], ['post-02-iqf', 'Congelado um a um.'], ['post-03-cardapios', 'Do sushi ao gratinado, o mesmo camarão.'],
             ['post-04-chef', 'Nossos produtos passam pelas mãos dele.'], ['post-05-villa-de-sonhos', 'Seu cardápio movimenta a cadeia inteira.'], ['post-06-10-anos', 'Ajudando restaurantes a vender mais camarão.']] },
+  { id: 'memorial', nome: 'Memorial Joias', segmento: 'Semijoias', cat: 'varejo', tipo: 'Projeto de Estudo', estudo: true,
+    fundo: '#4A0E13', txt: '#F3E9DC', arroba: '@memorial_joias',
+    desafio: 'Exercício sobre o rebranding de uma marca real de semijoias: levar a nova identidade vinho e dourado para o feed sem preço nas peças e sem truque gráfico que barateie a marca.',
+    conceito: 'Linguagem de joalheria: fundo vinho aveludado, fios e brilho dourados tirados do próprio logo, títulos em Bodoni com itálico e muito respiro. A variedade vem da foto, da escala e de uma página clara, não de efeitos.',
+    entregas: '6 posts · 3:4 e 4:5 · fotos com IA · legendas', fontes: [['Chapéu', 'Cinzel'], ['Títulos', 'Bodoni Moda'], ['Texto', 'Montserrat']],
+    cores: [['Vinho', '#4A0E13'], ['Dourado', '#D0922A'], ['Ouro claro', '#E8C27A'], ['Pérola', '#F3E9DC'], ['Vinho escuro', '#22060A']],
+    posts: [['post-01-brinco-folha', 'Do lóbulo à cartilagem, sem furo novo.'], ['post-02-mix-colares', 'Três colares, três alturas.'], ['post-03-aneis', 'No dourado ou no ródio.'],
+            ['post-04-autenticas', 'Sua foto pode ser a próxima.'], ['post-05-presente', 'Chega pronta para entregar.'], ['post-06-cuidados', 'Para o banho de ouro durar mais.']] },
+  { id: 'sury', nome: 'Sury Oriental', segmento: 'Restaurante japonês', cat: 'gastronomia', tipo: 'Projeto de Estudo', estudo: true,
+    fundo: '#8E1A16', txt: '#FFFFFF', arroba: '@suryoriental',
+    desafio: 'Redesenhar o feed de um restaurante japonês de bairro usando só o que a marca já tem (cores do logo, fachada e tabela de preços) e deixar claro o rodízio, os preços e o delivery.',
+    conceito: 'A treliça vermelha da fachada vira o grafismo do feed, sempre em malha: moldura da foto, faixa lateral ou textura. Títulos em Cinzel como na tabela do salão, preço em etiqueta e um fato por post.',
+    entregas: '6 posts · 3:4 e 4:5 · grafismo vetorizado · fotos provisórias com IA', fontes: [['Títulos', 'Cinzel'], ['Texto e preços', 'Montserrat']],
+    cores: [['Vermelho Sury', '#D0202A'], ['Vermelho fundo', '#8E1A16'], ['Preto', '#111111'], ['Luz quente', '#FFF3E6'], ['Branco', '#FFFFFF']],
+    posts: [['post-01-rodizio', 'Do ceviche à sobremesa.'], ['post-02-casal', 'Jantar a dois.'], ['post-03-yakisoba', 'Yakisoba mistão.'],
+            ['post-04-crianca', 'Criança de 5 a 9 anos paga metade.'], ['post-05-sem-taxa', 'Aqui não tem taxa de desperdício.'], ['post-06-delivery', 'O Sury vai até você.']] },
+  { id: 'brasa', nome: 'Brasa 77', segmento: 'Hamburgueria smash', cat: 'gastronomia', tipo: 'Marca fictícia',
+    fundo: '#141210', txt: '#F4EBDD', arroba: '@brasa77',
+    desafio: 'Dar personalidade a uma hamburgueria de bairro com cardápio curto num nicho cheio de fotos iguais de hambúrguer, com tom direto e com fome.',
+    conceito: 'A chapa é a protagonista: carvão e mostarda, títulos condensados em caixa-alta, marcas de grelha em diagonal e um carimbo redondo de preço levemente torto. Cada post diz um fato do burger.',
+    entregas: '6 posts · 3:4 e 4:5 · fotos com IA · legendas', fontes: [['Títulos', 'Anton'], ['Texto', 'Archivo']],
+    cores: [['Carvão', '#141210'], ['Mostarda', '#F2B705'], ['Creme', '#F4EBDD'], ['Tomate', '#D93A1E']],
+    posts: [['post-01-smash', 'Borda caramelizada.'], ['post-02-chapa', 'Prensado só quando você pede.'], ['post-03-combo', 'Salgado e doce na mesma bandeja.'],
+            ['post-04-terca', 'O segundo smash sai pela metade.'], ['post-05-delivery', 'Entregamos até meia-noite.'], ['post-06-cardapio', 'Quatro burgers. Só.']] },
+  { id: 'lume', nome: 'Lume', segmento: 'Odontologia humanizada', cat: 'saude', tipo: 'Marca fictícia',
+    fundo: '#24443A', txt: '#F6F3EC', arroba: '@lumeodonto',
+    desafio: 'Comunicar uma clínica odontológica calma e sem pressa dentro das regras do Código de Ética do CFO: sem preço, sem promoção, sem antes e depois e sem promessa de resultado.',
+    conceito: 'O arco de luz, uma meia-lua só de contorno, aparece no chapéu, na foto em arco e no fundo. Serifa suave com itálico terracota no destaque e uma explicação clara por post.',
+    entregas: '6 posts · 3:4 e 4:5 · fotos com IA · regras do CFO', fontes: [['Títulos', 'Fraunces'], ['Texto', 'Manrope']],
+    cores: [['Floresta', '#24443A'], ['Sálvia', '#A9B8A0'], ['Papel', '#F6F3EC'], ['Terracota', '#D9886A']],
+    posts: [['post-01-consulta', 'Primeira consulta de 50 minutos.'], ['post-02-dentista', 'Cada etapa explicada antes de começar.'], ['post-03-sorriso', 'Implante planejado antes da cirurgia.'],
+            ['post-04-alinhador', 'Alinhador que você tira para comer.'], ['post-05-urgencia', 'Urgência também aos sábados.'], ['post-06-fio-dental', 'Fio dental vem antes da escova.']] },
+  { id: 'bicho', nome: 'Bicho Solto', segmento: 'Banho e tosa', cat: 'servicos', tipo: 'Marca fictícia',
+    fundo: '#2B50D8', txt: '#FFF8EC', arroba: '@bichosoltopet',
+    desafio: 'Mostrar um banho e tosa sem gaiola de espera e com leva e traz, para tutores que têm receio de deixar o bicho num pet shop.',
+    conceito: 'Alegre e próximo: amarelo e azul fortes, etiqueta de coleira no chapéu e adesivos com contorno grosso e sombra dura. Cada post responde a um medo do tutor.',
+    entregas: '6 posts · 3:4 e 4:5 · fotos com IA · adesivos', fontes: [['Títulos e texto', 'Bricolage Grotesque']],
+    cores: [['Amarelo', '#FFC83D'], ['Azul', '#2B50D8'], ['Leite', '#FFF8EC'], ['Tinta', '#1A1A1A']],
+    posts: [['post-01-banho', 'Com hora marcada e sem gaiola.'], ['post-02-gatos', 'Manhã só para gatos, sem latido.'], ['post-03-tosa', 'Tosa com pausa quando ele pedir.'],
+            ['post-04-leva-traz', 'A gente busca.'], ['post-05-pacote', '4 banhos no mês, com leva e traz.'], ['post-06-pergunta', 'Banho demais resseca a pele do cão.']] },
+  { id: 'ramo', nome: 'Ramo', segmento: 'Ateliê floral', cat: 'varejo', tipo: 'Marca fictícia',
+    fundo: '#3E5B3A', txt: '#F1E8D8', arroba: '@ramoatelie',
+    desafio: 'Diferenciar um ateliê floral pequeno, que trabalha com flores tropicais brasileiras e monta o buquê na hora, das floriculturas de rosa vermelha e celofane.',
+    conceito: 'Delicado e artesanal: terracota, folha e creme, Garamond com itálico, um ramo fino no chapéu e a etiqueta de ateliê com canto cortado e furo, como a que vai presa ao buquê.',
+    entregas: '6 posts · 3:4 e 4:5 · fotos com IA · legendas', fontes: [['Títulos', 'EB Garamond'], ['Texto', 'Work Sans']],
+    cores: [['Terracota', '#B5552F'], ['Folha', '#3E5B3A'], ['Creme', '#F1E8D8'], ['Rosa-antigo', '#D9A5A0']],
+    posts: [['post-01-buque', 'Buquê tropical, com flores daqui.'], ['post-02-florista', 'Montado na sua frente, em 20 minutos.'], ['post-03-chegada', 'Flores novas toda terça e sexta.'],
+            ['post-04-entrega', 'Pediu cedo, chega hoje.'], ['post-05-assinatura', 'Flores na sua mesa a cada 15 dias.'], ['post-06-cuidados', 'Para o buquê durar mais.']] },
+  { id: 'eixo', nome: 'Eixo', segmento: 'Estúdio de pilates', cat: 'saude', tipo: 'Marca fictícia',
+    fundo: '#1F4E5A', txt: '#E9E1D3', arroba: '@eixopilates',
+    desafio: 'Vender pilates de turma pequena (até três alunos) com avaliação postural, num nicho em que quase todo feed mostra o mesmo aparelho e a mesma pose.',
+    conceito: 'O eixo vira o sistema: uma linha vertical fina com um ponto cor de tijolo, como uma coluna alinhada. Petróleo e areia, serifa com itálico e muito espaço em branco, num tom sereno e preciso.',
+    entregas: '6 posts · 3:4 e 4:5 · fotos com IA · legendas', fontes: [['Títulos', 'Instrument Serif'], ['Texto', 'Outfit']],
+    cores: [['Petróleo', '#1F4E5A'], ['Areia', '#E9E1D3'], ['Tijolo', '#C8643B'], ['Branco', '#FFFFFF']],
+    posts: [['post-01-turma-pequena', 'No máximo três alunos por horário.'], ['post-02-ajuste', 'Cada exercício ajustado ao seu corpo.'], ['post-03-experimental', 'A primeira aula é por nossa conta.'],
+            ['post-04-avaliacao', 'Avaliação postural antes de começar.'], ['post-05-idades', 'Dos 25 aos 70, na mesma turma.'], ['post-06-planos', 'Escolha seu ritmo.']] },
+  { id: 'ponte', nome: 'Ponte', segmento: 'Escola de idiomas', cat: 'servicos', tipo: 'Marca fictícia',
+    fundo: '#2F3BD9', txt: '#F5F3EE', arroba: '@ponteidiomas',
+    desafio: 'Mostrar uma escola de idiomas de turmas de quatro alunos e aulas online ao vivo para adultos sem tempo, com tom jovem e bem-humorado.',
+    conceito: 'Conversa é o produto: balões de fala e destaque em marca-texto limão sobre o azul. Posts alternam prova (turma pequena, professores) e conteúdo útil (erro comum, teste de nível).',
+    entregas: '6 posts · 3:4 e 4:5 · fotos com IA · legendas', fontes: [['Títulos e texto', 'Space Grotesk']],
+    cores: [['Azul', '#2F3BD9'], ['Limão', '#E4F25C'], ['Papel', '#F5F3EE'], ['Tinta', '#121212']],
+    posts: [['post-01-turma', 'Na turma de quatro, todo mundo fala.'], ['post-02-online', 'Ao vivo, no horário da sua rotina.'], ['post-03-professores', 'Quem ensina já morou lá fora.'],
+            ['post-04-erro-comum', 'Idade em inglês se diz com to be.'], ['post-05-viagem', 'Inglês para viagem em 8 semanas.'], ['post-06-teste', 'Descubra seu nível em 15 minutos.']] },
+  { id: 'raso', nome: 'Raso', segmento: 'Protetor solar', cat: 'varejo', tipo: 'Marca fictícia',
+    fundo: '#1FA3C4', txt: '#F2E3C6', arroba: '@rasosolar',
+    desafio: 'Estudo de técnicas 3D para uma marca jovem de protetor solar de praia: ousada no visual, mas com a confiança de skincare.',
+    conceito: 'Letras e números extrudados em 3D (50, 80′, 2H), pílulas e botões com volume de massinha e rótulos aplicados seguindo a curva e a luz de cada embalagem renderizada.',
+    entregas: '6 posts · 3:4 e 4:5 · renders 3D · rótulos aplicados', fontes: [['Títulos e 3D', 'Unbounded'], ['Texto', 'DM Sans']],
+    cores: [['Piscina', '#1FA3C4'], ['Coral', '#FF6B4A'], ['Areia', '#F2E3C6'], ['Tinta', '#10324A'], ['Piscina escuro', '#0E6F8A']],
+    posts: [['post-01-heroi', 'Some na pele em 10 segundos.'], ['post-02-trio', 'Três jeitos de não se queimar.'], ['post-03-agua', 'Minutos de mar sem sair da pele.'],
+            ['post-04-sol', 'Reaplique a cada duas horas.'], ['post-05-bastao', 'Lábio também queima.'], ['post-06-arco', 'Reaplica por cima da maquiagem.']] },
+  { id: 'rotina', nome: 'ROTINA', segmento: 'Básicos masculinos', cat: 'varejo', tipo: 'Marca fictícia',
+    fundo: '#2B373C', txt: '#FFFFFF', arroba: '@rotinabasicos',
+    desafio: 'Vender básicos masculinos (camiseta, moletom, linho, bermuda) com campanhas de impacto, sem modelo e sem cenário, só a peça.',
+    conceito: 'A peça em ghost mannequin flutua sobre um degradê da própria cor, com movimento leve, entre as letras de um título gigante em duas linhas: uma letra fica atrás do tecido, o resto passa na frente.',
+    entregas: '6 posts · 3:4 e 4:5 · fotos com IA recortadas · legendas', fontes: [['Títulos e texto', 'Inter Tight'], ['Logo', 'Unbounded']],
+    cores: [['Ardósia', '#2B373C'], ['Chuva', '#56626E'], ['Terracota', '#C98A66'], ['Mar', '#7FB5D3'], ['Areia', '#EEE9E1']],
+    posts: [['post-01-oliva', 'Verde oliva.'], ['post-02-semana', 'Semana inteira.'], ['post-03-tempo', 'Tempo fechou.'],
+            ['post-04-black', 'Black Friday.'], ['post-05-linho', 'Linho puro.'], ['post-06-praia', 'Modo praia.']] },
 ];
-const FILTROS = [['todos', 'Todos'], ['gastronomia', 'Gastronomia'], ['servicos', 'Serviços'], ['b2b', 'B2B']];
+const FILTROS = [['todos', 'Todos'], ['gastronomia', 'Gastronomia'], ['servicos', 'Serviços'], ['saude', 'Saúde e bem-estar'], ['varejo', 'Varejo e moda'], ['b2b', 'B2B']];
 const ETAPAS = [
   ['Referências', 'Busco projetos bem avaliados no Behance e analiso o perfil atual da marca antes de desenhar.'],
   ['Marca', 'Conceito em uma frase, paleta, tipografia e o grafismo que vira assinatura do feed.'],
@@ -343,7 +423,7 @@ function abrirCaso(i) {
   document.getElementById('caso-indice').textContent = `${String(atual + 1).padStart(2, '0')} / ${String(PROJETOS.length).padStart(2, '0')} · ${p.nome}`;
   corpo.style.setProperty('--cor-fundo', p.fundo); corpo.style.setProperty('--cor-txt', p.txt);
   corpo.innerHTML = `
-    ${p.estudo ? `<div class="aviso"><span>ⓘ</span><div><b>Projeto de estudo.</b> Exercício pessoal de redesenho, não comissionado nem aprovado pela Villa Camarão. Marca, logotipo e fotos pertencem à empresa e foram usados apenas para fins de estudo.</div></div>` : ''}
+    ${p.estudo ? `<div class="aviso"><span>ⓘ</span><div><b>Projeto de Estudo.</b> Exercício pessoal de redesenho, não comissionado nem aprovado pela ${p.nome}. Marca e logotipo pertencem à empresa e foram usados apenas para fins de estudo.</div></div>` : ''}
     <div class="caso-cab">
       <div><span class="rotulo">${p.segmento} · ${p.tipo}</span><h2 class="serif" id="caso-titulo" style="margin-top:16px">${p.nome}</h2></div>
       <div class="meta">
