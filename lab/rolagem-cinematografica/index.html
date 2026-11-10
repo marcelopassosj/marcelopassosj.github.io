@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Barcaça Chocolates</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Protótipo de rolagem cinematográfica para a Barcaça, marca fictícia de chocolate de origem do sul da Bahia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cacau: #1F1209;       /* fundo, medido nas fotos (31,18,9) */
+    --cacau-2: #2B1A0F;
+    --creme: #F1E6D3;
+    --creme-2: rgba(241, 230, 211, .66);
+    --creme-3: rgba(241, 230, 211, .18);
+    --ambar: #E3A23B;       /* casca do fruto maduro */
+    --polpa: #FBF6EE;
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Manrope", system-ui, sans-serif;
+    --gutter: clamp(16px, 5vw, 88px);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--cacau); }
+  body {
+    background: var(--cacau); color: var(--creme);
+    font-family: var(--sans); font-size: 16px; line-height: 1.5;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; font-variation-settings: "SOFT" 60, "opsz" 144; text-wrap: balance; }
+  p { text-wrap: pretty; }
+
+  /* grão de filme sobre tudo */
+  .grao {
+    position: fixed; inset: -50%; z-index: 50; pointer-events: none; opacity: .07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grao 1s steps(4) infinite;
+  }
+  @keyframes grao { 0%{transform:translate(0,0)} 25%{transform:translate(-3%,2%)} 50%{transform:translate(2%,-3%)} 75%{transform:translate(-2%,-1%)} }
+
+  /* topo */
+  .topo {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 40;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px var(--gutter);
+    background: linear-gradient(var(--cacau) 0%, rgba(31,18,9,0) 100%);
+  }
+  .marca { font-family: var(--serif); font-size: 26px; letter-spacing: -.01em; color: var(--creme); text-decoration: none; font-variation-settings: "SOFT" 100, "opsz" 72; }
+  .marca small { font-family: var(--sans); font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: var(--creme-2); margin-left: 8px; vertical-align: 4px; }
+  .topo a.pedir { font-size: 13px; font-weight: 600; letter-spacing: .04em; color: var(--creme); text-decoration: none; border: 1px solid var(--creme-3); padding: 9px 16px; border-radius: 99px; transition: background .3s, color .3s; }
+  .topo a.pedir:hover { background: var(--ambar); color: var(--cacau); border-color: var(--ambar); }
+
+  /* herói */
+  .heroi {
+    position: relative; min-height: 100svh; display: grid; align-content: end;
+    padding: 120px var(--gutter) clamp(48px, 9vh, 96px); overflow: hidden;
+  }
+  .heroi::before {
+    content: ""; position: absolute; width: 90vmax; height: 90vmax; right: -30vmax; top: -25vmax;
+    background: radial-gradient(circle, rgba(227,162,59,.16), rgba(227,162,59,0) 60%); pointer-events: none;
+  }
+  .heroi .fruto {
+    position: absolute; right: -4vw; top: 50%; height: 118%; width: auto; transform: translateY(-50%) rotate(-8deg);
+    opacity: .5; pointer-events: none; user-select: none;
+    -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%); mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+  }
+  .heroi > :not(.fruto) { position: relative; }
+  .rotulo { font-size: 11px; font-weight: 600; letter-spacing: .26em; text-transform: uppercase; color: var(--ambar); display: flex; align-items: center; gap: 14px; }
+  .rotulo::before { content: ""; width: 36px; height: 1px; background: currentColor; }
+  .heroi h1 { font-size: clamp(3.1rem, 10.5vw, 10.5rem); line-height: .94; letter-spacing: -.035em; margin: 22px 0 28px; }
+  .heroi h1 em { display: block; font-style: italic; color: var(--ambar); font-weight: 300; padding-left: .9em; }
+  .heroi h1 .linha { display: block; overflow: hidden; padding-bottom: .06em; }
+  .heroi h1 .linha > span { display: inline-block; }
+  .heroi .apoio { max-width: 30ch; font-size: clamp(1rem, 1.3vw, 1.18rem); color: var(--creme-2); }
+  .heroi .rodape { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
+  .dica { display: flex; align-items: center; gap: 14px; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--creme-2); }
+  .dica i { position: relative; width: 1px; height: 54px; background: var(--creme-3); overflow: hidden; }
+  .dica i::after { content: ""; position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--ambar); animation: desce 1.8s cubic-bezier(.6,0,.3,1) infinite; }
+  @keyframes desce { to { top: 100%; } }
+
+  /* cena fixa */
+  .cena { position: relative; height: 100vh; height: 100svh; overflow: hidden; background: var(--cacau); }
+  .cena canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .cena .sombra { position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(90deg, rgba(31,18,9,.92) 0%, rgba(31,18,9,.55) 34%, rgba(31,18,9,0) 56%); }
+  .etapa {
+    position: absolute; left: var(--gutter); top: 50%; transform: translateY(-50%);
+    width: min(36vw, 520px); z-index: 3;
+  }
+  .etapa .num {
+    position: absolute; left: -.06em; top: -.62em; z-index: -1;
+    font-family: var(--serif); font-size: clamp(9rem, 19vw, 19rem); line-height: 1; font-weight: 300;
+    color: transparent; -webkit-text-stroke: 1px rgba(227,162,59,.3); font-variation-settings: "SOFT" 0, "opsz" 144;
+    opacity: 0;
+  }
+  .etapa .rotulo { opacity: 0; }
+  .etapa h2 { font-size: clamp(2.5rem, 5.4vw, 5.4rem); line-height: 1; letter-spacing: -.03em; margin: 18px 0 22px; }
+  .etapa h2 .p { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .1em; margin-bottom: -.1em; }
+  .etapa h2 .p > span { display: inline-block; }
+  .etapa h2 .p > span:not([style]) { visibility: hidden; } /* até o GSAP assumir */
+  .etapa h2 em { font-style: italic; color: var(--ambar); font-weight: 300; }
+  .etapa p { font-size: clamp(1rem, 1.15vw, 1.12rem); color: var(--creme-2); max-width: 34ch; opacity: 0; }
+  .etapa p strong { color: var(--creme); font-weight: 600; }
+
+  /* agulha da linha do tempo (referência: LP Upward) */
+  .trilho { position: absolute; right: var(--gutter); top: 50%; transform: translateY(-50%); height: min(56vh, 440px); z-index: 3; }
+  .trilho .linha { position: absolute; right: 0; top: 0; bottom: 0; width: 1px; background: var(--creme-3); }
+  .trilho .cheio { position: absolute; right: 0; top: 0; width: 1px; height: 0; background: var(--ambar); }
+  .trilho .agulha { position: absolute; right: -4px; top: 0; width: 9px; height: 9px; border-radius: 50%; background: var(--ambar); box-shadow: 0 0 0 6px rgba(227,162,59,.16); transform: translateY(-50%); }
+  .trilho ol { list-style: none; position: absolute; right: 22px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: space-between; text-align: right; }
+  .trilho li { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--creme-2); opacity: .45; transform: translateY(-50%); transition: opacity .4s, color .4s; white-space: nowrap; }
+  .trilho li b { font-family: var(--serif); font-weight: 400; font-style: italic; letter-spacing: 0; font-size: 14px; margin-right: 8px; text-transform: none; }
+  .trilho li.ativo { opacity: 1; color: var(--creme); }
+
+  /* CTA */
+  .cta { position: relative; padding: clamp(96px, 16vh, 180px) var(--gutter) 56px; display: grid; gap: 64px; }
+  .cta .bloco { max-width: 980px; }
+  .cta h2 { font-size: clamp(2.8rem, 8vw, 8rem); line-height: .96; letter-spacing: -.035em; margin: 22px 0 28px; }
+  .cta h2 em { font-style: italic; color: var(--ambar); font-weight: 300; }
+  .cta p { color: var(--creme-2); font-size: clamp(1rem, 1.3vw, 1.18rem); max-width: 40ch; }
+  .ficha { display: flex; gap: clamp(20px, 4vw, 56px); flex-wrap: wrap; margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--creme-3); }
+  .ficha div { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1; }
+  .ficha span { display: block; font-family: var(--sans); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--creme-2); margin-top: 10px; }
+  .botao {
+    display: inline-flex; align-items: center; gap: 14px; margin-top: 44px;
+    background: var(--ambar); color: var(--cacau); text-decoration: none; font-weight: 700; font-size: 16px;
+    padding: 20px 30px; border-radius: 99px; transition: transform .3s, background .3s;
+  }
+  .botao:hover { transform: translateY(-2px); background: #EDB55A; }
+  .botao svg { width: 18px; height: 18px; }
+  .nota { font-size: 12px; color: var(--creme-2); opacity: .7; border-top: 1px solid var(--creme-3); padding-top: 22px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  /* celular */
+  @media (max-width: 760px) {
+    .topo { padding: 14px 16px; }
+    .marca { font-size: 22px; }
+    .marca small { display: none; }
+    .heroi { padding: 110px 16px 40px; }
+    .heroi h1 { font-size: 15vw; }
+    .heroi h1 em { padding-left: 0; }
+    .heroi .fruto { height: 58%; top: 4%; right: -22vw; transform: rotate(-8deg); opacity: .55; }
+    .topo { background: linear-gradient(var(--cacau) 60%, rgba(31,18,9,0) 100%); padding-bottom: 26px; }
+    .cena .sombra { background: linear-gradient(0deg, rgba(31,18,9,.97) 0%, rgba(31,18,9,.88) 30%, rgba(31,18,9,0) 52%); }
+    .etapa { left: 16px; right: 16px; width: auto; top: auto; bottom: max(28px, env(safe-area-inset-bottom)); transform: none; }
+    .etapa .num { font-size: 7.5rem; top: -.55em; right: -.04em; left: auto; }
+    .etapa h2 { font-size: clamp(2.2rem, 10.5vw, 3rem); margin: 12px 0 12px; }
+    .etapa p { font-size: 15px; }
+    .trilho { right: auto; left: 16px; right: 16px; top: 72px; transform: none; height: auto; }
+    .trilho .linha { left: 0; right: 0; top: 0; bottom: auto; width: auto; height: 1px; }
+    .trilho .cheio { left: 0; top: 0; height: 1px; width: 0; }
+    .trilho .agulha { top: 0; right: auto; left: 0; transform: translate(-50%, -50%); }
+    .trilho ol { position: static; flex-direction: row; justify-content: space-between; padding-top: 14px; }
+    .trilho li { transform: none; font-size: 0; letter-spacing: 0; }
+    .trilho li b { font-size: 13px; margin: 0; }
+    .trilho li.ativo { font-size: 10px; letter-spacing: .14em; }
+    .trilho li.ativo b { margin-right: 6px; }
+    .cta { padding: 96px 16px 32px; gap: 48px; }
+    .botao { width: 100%; justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) { .grao, .dica i::after { animation: none; } }
+</style>
+</head>
+<body>
+<div class="grao" aria-hidden="true"></div>
+
+<header class="topo">
+  <a class="marca" href="#">Barcaça<small>Chocolates</small></a>
+  <a class="pedir" href="#pedir">Pedir</a>
+</header>
+
+<section class="heroi">
+  <img class="fruto" src="quadros/barcaca-01-fruto-gemini-ia.webp" alt="" aria-hidden="true">
+  <div class="rotulo">Chocolate de origem · Ilhéus, BA</div>
+  <h1><span class="linha"><span>Role devagar.</span></span><em class="linha"><span>O cacau não teve pressa.</span></em></h1>
+  <div class="rodape">
+    <p class="apoio">Da mata de Ilhéus até a sua mão, cada etapa da barra passa por esta tela.</p>
+    <div class="dica"><i></i>Role para colher</div>
+  </div>
+</section>
+
+<section class="cena" aria-label="Do fruto à barra, em cinco etapas">
+  <canvas id="tela" aria-hidden="true"></canvas>
+  <div class="sombra"></div>
+
+  <article class="etapa"><span class="num">01</span><div class="rotulo">Colheita</div>
+    <h2>Amadurece <em>à sombra.</em></h2>
+    <p>O cacau cresce sob árvores nativas da Mata Atlântica, no sistema que o sul da Bahia chama de <strong>cabruca</strong>.</p></article>
+  <article class="etapa"><span class="num">02</span><div class="rotulo">Quebra</div>
+    <h2>Abre <em>doce.</em></h2>
+    <p>A polpa branca que envolve as sementes é o que alimenta a fermentação nos dias seguintes.</p></article>
+  <article class="etapa"><span class="num">03</span><div class="rotulo">Secagem</div>
+    <h2>Descansa <em>na barcaça.</em></h2>
+    <p>O teto corre sobre trilhos e cobre as sementes quando chove. Foi dele que tiramos o nome.</p></article>
+  <article class="etapa"><span class="num">04</span><div class="rotulo">Torra</div>
+    <h2>Estala <em>no forno.</em></h2>
+    <p>O calor solta a casca e quebra a semente em nibs, com cheiro de frutas secas.</p></article>
+  <article class="etapa"><span class="num">05</span><div class="rotulo">Barra</div>
+    <h2>Agora, sim, <em>a pressa é sua.</em></h2>
+    <p><strong>70% cacau, 80 g,</strong> de uma única fazenda de Ilhéus.</p></article>
+
+  <nav class="trilho" aria-hidden="true">
+    <div class="linha"></div><div class="cheio"></div><div class="agulha"></div>
+    <ol><li><b>01</b>Colheita</li><li><b>02</b>Quebra</li><li><b>03</b>Secagem</li><li><b>04</b>Torra</li><li><b>05</b>Barra</li></ol>
+  </nav>
+</section>
+
+<section class="cta" id="pedir">
+  <div class="bloco">
+    <div class="rotulo">Safra de novembro</div>
+    <h2>A safra nova <em>já virou barra.</em></h2>
+    <p>Encomendas pelo WhatsApp, com entrega em Salvador e Lauro de Freitas.</p>
+    <div class="ficha">
+      <div>70%<span>cacau</span></div>
+      <div>80 g<span>por barra</span></div>
+      <div>1<span>fazenda de origem</span></div>
+    </div>
+    <a class="botao" href="#pedir">Pedir pelo WhatsApp
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+  <div class="nota"><span>Barcaça Chocolates é uma marca fictícia, criada como estudo de portfólio.</span><span>Imagens geradas por IA.</span></div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(() => {
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+  const captura = /captura/.test(location.search);     // ?captura: rolagem sem suavização, para gravar o vídeo quadro a quadro
+  const celularIni = innerWidth <= 760;
+
+  // amarra palavras de 1 e 2 letras à seguinte (nada de "a" ou "o" sozinho no fim da linha)
+  const amarrar = el => {
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    for (let n; (n = w.nextNode());) n.nodeValue = n.nodeValue.replace(/(^|[\s ])([A-Za-zÀ-ú0-9%]{1,2})\s+/g, '$1$2 ');
+  };
+  document.querySelectorAll('h1, h2, p').forEach(amarrar);
+
+  // títulos das etapas: cada palavra numa máscara
+  document.querySelectorAll('.etapa h2').forEach(h => {
+    const parte = node => {
+      if (node.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        node.nodeValue.split(' ').forEach((pal, i, arr) => {
+          if (!pal) return;
+          const m = document.createElement('span'); m.className = 'p';
+          const s = document.createElement('span'); s.textContent = pal; m.appendChild(s);
+          frag.appendChild(m); if (i < arr.length - 1) frag.appendChild(document.createTextNode(' '));
+        });
+        node.replaceWith(frag);
+      } else [...node.childNodes].forEach(parte);
+    };
+    [...h.childNodes].forEach(parte);
+  });
+
+  // ---------- quadros ----------
+  const arquivos = ['01-fruto', '02-aberto', '03-secagem', '04-torra', '05-barra'].map(n => `quadros/barcaca-${n}-gemini-ia.webp`);
+  const N = arquivos.length;
+  const tela = document.getElementById('tela'), ctx = tela.getContext('2d');
+  let W = 0, H = 0, dpr = 1, celular = false;
+  const estado = { p: 0 };
+  let quadros = [];
+
+  // borda esfumada: cada foto vira um canvas com alfa nas bordas, para fundir com o fundo da página
+  const esfumar = img => {
+    const c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight;
+    const g = c.getContext('2d'); g.drawImage(img, 0, 0);
+    // máscara oval: some com os cantos (onde o fundo da foto varia) e funde a foto no fundo da página
+    g.globalCompositeOperation = 'destination-in';
+    g.save(); g.translate(c.width / 2, c.height / 2); g.scale(1, c.height / c.width);
+    const gr = g.createRadialGradient(0, 0, 0, 0, 0, c.width * .5);
+    gr.addColorStop(0, '#000'); gr.addColorStop(.62, '#000'); gr.addColorStop(1, 'rgba(0,0,0,0)');
+    g.fillStyle = gr; g.fillRect(-c.width, -c.width, c.width * 2, c.width * 2);
+    g.restore();
+    return c;
+  };
+
+  const medir = () => {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = tela.clientWidth; H = tela.clientHeight; celular = W <= 760;
+    tela.width = Math.round(W * dpr); tela.height = Math.round(H * dpr);
+    desenhar();
+  };
+
+  // poeira de luz (partículas quentes)
+  const poeira = Array.from({ length: 46 }, () => ({ x: Math.random(), y: Math.random(), r: .4 + Math.random() * 1.6, v: .00015 + Math.random() * .0004, f: Math.random() * 6.28 }));
+  const reduzir = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let tempo = 0;
+
+  const suave = t => t * t * (3 - 2 * t);
+  function desenhar() {
+    if (!quadros.length || !W) return;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.fillStyle = '#1F1209'; ctx.fillRect(0, 0, W, H);
+
+    const p = Math.max(0, Math.min(N - 1, estado.p));
+    const i = Math.floor(p), f = p - i;
+    const t = f > .6 ? suave((f - .6) / .4) : 0;          // a troca acontece nos últimos 40% de cada trecho
+
+    // enquadramento: no desktop a foto ocupa a altura e fica à direita; no celular, centralizada e maior
+    const base = celular ? Math.max(W / 896 * 1.35, H * .62 / 1200 * 1.35) : Math.min(H / 1200 * 1.04, W * .5 / 896 * 1.04);
+    const cx = celular ? W * .5 : W * .57;
+    const cy = celular ? H * .40 : H * .5;
+
+    const pinta = (k, alfa, desfoque) => {
+      if (k < 0 || k >= N || alfa <= 0) return;
+      const d = p - k;                                       // -1 chegando, 0 no centro, +1 saindo
+      const s = base * (1 + .07 * d);
+      const w = 896 * s, h = 1200 * s;
+      ctx.save();
+      ctx.globalAlpha = alfa;
+      if (desfoque > .3) ctx.filter = `blur(${desfoque.toFixed(1)}px)`;
+      ctx.translate(cx, cy - d * H * .025);
+      ctx.rotate(d * .025);
+      ctx.drawImage(quadros[k], -w / 2, -h / 2, w, h);
+      ctx.restore();
+    };
+    pinta(i, 1, t * 8);
+    pinta(i + 1, t, (1 - t) * 8);
+
+    // poeira, mais forte na torra (calor) e mais fraca no fim
+    if (!reduzir) {
+      const calor = Math.max(0, 1 - Math.abs(p - 3)) * .8 + .35;
+      ctx.globalCompositeOperation = 'lighter';
+      poeira.forEach(q => {
+        const x = (q.x + Math.sin(tempo * .0004 + q.f) * .01) * W;
+        const y = ((q.y - tempo * q.v) % 1 + 1) % 1 * H;
+        ctx.fillStyle = `rgba(227,162,59,${(.10 + .25 * Math.abs(Math.sin(tempo * .001 + q.f))) * calor})`;
+        ctx.beginPath(); ctx.arc(x, y, q.r, 0, 6.283); ctx.fill();
+      });
+      ctx.globalCompositeOperation = 'source-over';
+    }
+  }
+
+  // ---------- agulha ----------
+  const cheio = document.querySelector('.trilho .cheio'), agulha = document.querySelector('.trilho .agulha');
+  const itens = [...document.querySelectorAll('.trilho li')];
+  let ativo = -1;
+  const agulhaAtualiza = () => {
+    const r = Math.max(0, Math.min(1, estado.p / (N - 1)));
+    if (celular) { cheio.style.width = (r * 100) + '%'; agulha.style.left = (r * 100) + '%'; agulha.style.top = '0'; cheio.style.height = '1px'; }
+    else { cheio.style.height = (r * 100) + '%'; agulha.style.top = (r * 100) + '%'; agulha.style.left = ''; cheio.style.width = '1px'; }
+    const a = Math.min(N - 1, Math.floor(estado.p + .2));    // troca o rótulo no meio da troca de imagem
+    if (a !== ativo) { ativo = a; itens.forEach((li, k) => li.classList.toggle('ativo', k === a)); }
+  };
+
+  // ---------- linha do tempo da rolagem ----------
+  const etapas = [...document.querySelectorAll('.etapa')];
+  gsap.set('.etapa h2 .p > span', { yPercent: 110 });
+  const tl = gsap.timeline({
+    defaults: { ease: 'power3.out' },
+    scrollTrigger: { trigger: '.cena', start: 'top top', end: () => '+=' + (window.innerHeight * 6), pin: true, scrub: captura ? true : .7, anticipatePin: 1 }
+  });
+  // imagem: p vai de 0 a 4 entre os tempos 0.15 e 4.15 (o trecho final segura a barra)
+  tl.to(estado, { p: N - 1, duration: N - 1, ease: 'none', onUpdate: () => { desenhar(); agulhaAtualiza(); } }, .15);
+
+  etapas.forEach((el, k) => {
+    const num = el.querySelector('.num'), rot = el.querySelector('.rotulo'), pal = el.querySelectorAll('h2 .p > span'), ap = el.querySelector('p');
+    // tempo T da linha do tempo: imagem p = T - .15; a troca k -> k+1 vai de T = k+.75 a k+1.15
+    const entra = k;                                         // entra quando a nova imagem está assentando
+    tl.fromTo(num, { opacity: 0, yPercent: 18 }, { opacity: 1, yPercent: 0, duration: .4 }, entra)
+      .fromTo(rot, { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: .25 }, entra + .02)
+      .fromTo(pal, { yPercent: 110 }, { yPercent: 0, duration: .3, stagger: .04 }, entra + .04)
+      .fromTo(ap, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .25 }, entra + .14);
+    if (k < N - 1) {
+      const sai = k + .75;                                     // sai quando a imagem começa a trocar
+      tl.to(pal, { yPercent: -110, duration: .25, stagger: .03, ease: 'power2.in' }, sai)
+        .to([rot, ap], { opacity: 0, y: -12, duration: .2, ease: 'power2.in' }, sai)
+        .to(num, { opacity: 0, yPercent: -12, duration: .3, ease: 'power2.in' }, sai);
+    }
+  });
+  tl.to({}, { duration: .9 });                                  // respiro antes do CTA
+
+  // herói: título sobe e some ao rolar
+  gsap.from('.heroi h1 .linha > span', { yPercent: 105, duration: 1.1, ease: 'power4.out', stagger: .12, delay: .15 });
+  gsap.from(['.heroi .rotulo', '.heroi .rodape'], { opacity: 0, y: 16, duration: .9, delay: .55, stagger: .1 });
+  gsap.to('.heroi h1', { yPercent: -18, opacity: .2, ease: 'none', scrollTrigger: { trigger: '.heroi', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.fromTo('.heroi .fruto', { opacity: 0, scale: .92 }, { opacity: celularIni ? .55 : .5, scale: 1, duration: 1.6, ease: 'power2.out', delay: .1 });
+  gsap.to('.heroi .fruto', { yPercent: -14, rotate: 4, ease: 'none', scrollTrigger: { trigger: '.heroi', start: 'top top', end: 'bottom top', scrub: true } });
+
+  // CTA
+  gsap.from('.cta .bloco > *', { opacity: 0, y: 30, duration: .9, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: '.cta', start: 'top 70%' } });
+
+  // ---------- carregar ----------
+  Promise.all(arquivos.map(src => new Promise((ok, erro) => { const im = new Image(); im.onload = () => ok(im); im.onerror = erro; im.src = src; })))
+    .then(imgs => {
+      quadros = imgs.map(esfumar);
+      medir(); agulhaAtualiza();
+      ScrollTrigger.refresh();
+      const loop = ms => { tempo = ms; desenhar(); requestAnimationFrame(loop); };
+      if (!reduzir) requestAnimationFrame(loop);
+    });
+  window.addEventListener('resize', () => { medir(); agulhaAtualiza(); });
+})();
+</script>
+</body>
+</html>
