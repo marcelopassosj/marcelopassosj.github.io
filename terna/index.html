@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terna Crochê · Marcelo Passos</title>
+<meta name="description" content="Estudo de caso: análise de perfil, kit de marca e 6 posts para a Terna Crochê, crochê feito à mão em Salvador.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --papel: #F4F1EA; --papel-2: #EAE5DA; --tinta: #171614; --pedra: #6F6A61; --linha: rgba(23,22,20,.14);
+  --acento: #2E3BEB; --sombra: 0 30px 60px -30px rgba(23,22,20,.35);
+  --serif: 'Instrument Serif', Georgia, serif; --sans: 'Inter', system-ui, sans-serif;
+  --m: clamp(16px, 4vw, 56px); color-scheme: light;
+  --rosa: #FFE8E8; --cafe: #5E4632; --caramelo: #A27447;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --papel: #141311; --papel-2: #1E1C19; --tinta: #F1EDE4; --pedra: #A39D92; --linha: rgba(241,237,228,.14);
+  --acento: #7C86FF; --sombra: 0 30px 60px -30px rgba(0,0,0,.8); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --papel: #141311; --papel-2: #1E1C19; --tinta: #F1EDE4; --pedra: #A39D92; --linha: rgba(241,237,228,.14);
+  --acento: #7C86FF; --sombra: 0 30px 60px -30px rgba(0,0,0,.8); color-scheme: dark; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--papel); color: var(--tinta); font: 400 16px/1.55 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+.serif { font-family: var(--serif); font-weight: 400; letter-spacing: -.01em; }
+.rotulo { font: 600 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--pedra); }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--m); }
+header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--papel) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--linha); }
+header .wrap { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+header a { text-decoration: none; font-weight: 600; }
+header .voltar { font-weight: 500; color: var(--pedra); }
+header .voltar:hover { color: var(--tinta); }
+
+.hero { background: var(--rosa); color: var(--cafe); }
+.hero .wrap { padding-top: clamp(56px, 9vw, 120px); padding-bottom: clamp(48px, 7vw, 96px); display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: end; }
+.hero .rotulo { color: var(--caramelo); }
+.hero h1 { font-size: clamp(56px, 9vw, 128px); line-height: .92; margin-top: 18px; }
+.hero h1 i { color: var(--caramelo); }
+.hero p { font-size: clamp(17px, 1.6vw, 20px); max-width: 520px; margin-top: 24px; }
+.hero .grid-previa { border-radius: 6px; box-shadow: 0 30px 60px -30px rgba(94,70,50,.45); }
+
+section { padding: clamp(56px, 8vw, 112px) 0; border-bottom: 1px solid var(--linha); }
+h2 { font-size: clamp(36px, 5vw, 64px); line-height: 1; margin: 14px 0 28px; }
+.duas { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 72px); }
+.duas p { font-size: 18px; max-width: 560px; }
+.ficha { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--linha); }
+.ficha b { display: block; font-weight: 500; margin-top: 10px; }
+.cores { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.cores span { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.cores i { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--linha); }
+
+.posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 1.6vw, 22px); }
+.posts figure { margin: 0; }
+.posts img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; box-shadow: var(--sombra); }
+.posts figcaption { font-size: 14px; color: var(--pedra); margin-top: 10px; }
+.kit { max-width: 860px; margin: 0 auto; border-radius: 6px; box-shadow: var(--sombra); }
+.etapas { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; counter-reset: e; }
+.etapas li { border-top: 1px solid var(--tinta); padding-top: 16px; counter-increment: e; }
+.etapas li::before { content: counter(e, decimal-leading-zero); font: 400 32px/1 var(--serif); display: block; margin-bottom: 14px; }
+.etapas b { display: block; font-weight: 600; margin-bottom: 6px; }
+.etapas p { font-size: 15px; color: var(--pedra); }
+footer { padding: 48px 0 64px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--pedra); font-size: 14px; }
+
+@media (max-width: 820px) {
+  .hero .wrap, .duas { grid-template-columns: 1fr; }
+  .ficha { grid-template-columns: 1fr; }
+  .posts { grid-template-columns: repeat(2, 1fr); }
+  .etapas { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a href="../">Marcelo Passos</a><a class="voltar" href="../#projetos">← Ver outros projetos</a></div></header>
+
+<div class="hero"><div class="wrap">
+  <div>
+    <span class="rotulo">Crochê feito à mão · Salvador · Cliente</span>
+    <h1 class="serif">Terna<br><i>Crochê</i></h1>
+    <p>Análise do perfil, referências, kit de marca e os primeiros 6 posts para a Bruna, que faz crochê para a mesa e para vestir.</p>
+  </div>
+  <img class="grid-previa" src="../img/terna/grid.webp" alt="Grid com os 6 posts da Terna Crochê" width="900" height="796">
+</div></div>
+
+<section><div class="wrap duas">
+  <div><span class="rotulo">Desafio</span><h2 class="serif">Um perfil bonito que não dizia o que vendia.</h2></div>
+  <div>
+    <p>Eram 105 seguidores, 7 posts em 16 meses e quatro meses sem publicar. A bio falava de amor e de história, mas não dizia o que ela faz, como encomendar nem por que o acabamento dela é diferente. O grid misturava cores, letras e duas logos.</p>
+    <p style="margin-top:18px">A análise mostrou o caminho: os posts que mais engajavam eram a peça pronta, em uso, e a Bruna aparecendo.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap duas">
+  <div><span class="rotulo">Conceito</span><h2 class="serif">Ternura <i>tem medida.</i></h2></div>
+  <div>
+    <p>O nome pede delicadeza; o argumento de venda é a precisão. Cada post junta as duas coisas: o carinho fica no título e o dado concreto no detalhe (encaixe, fio, agulha, nome da peça).</p>
+    <p style="margin-top:18px">A identidade usa só o que a marca já tinha: o rosa e o caramelo da logo, o café e o cru das peças. Um fio caramelo sai da peça e sublinha o texto, uma vez por post.</p>
+  </div>
+</div>
+<div class="wrap"><div class="ficha">
+  <div><span class="rotulo">Entregas</span><b>Análise do perfil · referências · kit de marca · 6 posts 3:4 · legendas</b></div>
+  <div><span class="rotulo">Tipografia</span><b>EB Garamond (títulos) · Jost (texto)</b></div>
+  <div><span class="rotulo">Cores</span><div class="cores">
+    <span><i style="background:#FFE8E8"></i>Rosa</span><span><i style="background:#A27447"></i>Caramelo</span><span><i style="background:#5E4632"></i>Café</span><span><i style="background:#F1E6D8"></i>Cru</span><span><i style="background:#D8304A"></i>Framboesa</span>
+  </div></div>
+</div></div></section>
+
+<section><div class="wrap">
+  <span class="rotulo">Posts</span><h2 class="serif">Seis posts, seis funções.</h2>
+  <div class="posts">
+    <figure><img src="../img/terna/34/post-01-apresentacao.webp" alt="Ternura tem medida." loading="lazy" width="720" height="960"><figcaption>Apresentação, para fixar no perfil.</figcaption></figure>
+    <figure><img src="../img/terna/34/post-02-hexagonos.webp" alt="Sete hexágonos, nenhuma fresta." loading="lazy" width="720" height="960"><figcaption>O acabamento como prova.</figcaption></figure>
+    <figure><img src="../img/terna/34/post-03-ondas.webp" alt="Toda mesa tem sua maré." loading="lazy" width="720" height="960"><figcaption>Cada peça ganha um nome.</figcaption></figure>
+    <figure><img src="../img/terna/34/post-04-cropped.webp" alt="O sol de Salvador pede menos pano." loading="lazy" width="720" height="960"><figcaption>Crochê para vestir, com selo de venda.</figcaption></figure>
+    <figure><img src="../img/terna/34/post-05-processo.webp" alt="Ainda não está pronto. Já está bonito." loading="lazy" width="720" height="960"><figcaption>O processo, na voz dela.</figcaption></figure>
+    <figure><img src="../img/terna/34/post-06-encomenda.webp" alt="Uma peça sua em quatro passos." loading="lazy" width="720" height="960"><figcaption>Como encomendar, em quatro passos.</figcaption></figure>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="rotulo">Kit de marca</span><h2 class="serif">Cores, letras e o fio.</h2>
+  <img class="kit" src="../img/terna/kit.webp" alt="Prancha do kit de marca da Terna Crochê" loading="lazy" width="1200" height="3034">
+</div></section>
+
+<section><div class="wrap">
+  <span class="rotulo">Processo</span><h2 class="serif">Do diagnóstico ao post.</h2>
+  <ol class="etapas">
+    <li><b>Análise do perfil</b><p>Números, o que engajava e o que faltava na bio e nos destaques.</p></li>
+    <li><b>Referências</b><p>Projetos de crochê bem avaliados no Behance e perfis do nicho no Instagram.</p></li>
+    <li><b>Kit de marca</b><p>Paleta tirada da logo e das peças, letras, grafismo do fio e regras de foto.</p></li>
+    <li><b>Posts e legendas</b><p>Seis posts com funções diferentes e legendas com um pedido claro.</p></li>
+  </ol>
+</div></section>
+
+<footer><div class="wrap"><span>Terna Crochê · @terna.croche · Salvador</span><a href="../">marcelopassosj.github.io</a></div></footer>
+</body>
+</html>
