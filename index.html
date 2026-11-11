@@ -65,9 +65,9 @@ header.aberto .menu-cel { opacity: 1; transform: none; visibility: visible; }
 .abertura h1 { font-size: clamp(44px, 6vw, 92px); line-height: .95; font-weight: 900; letter-spacing: -.045em; }
 @media (min-width: 901px) { .l1 { white-space: nowrap; } }
 .giro { display: block; height: 1.1em; overflow: hidden; color: var(--acento-tx); }
-.giro > span { display: block; animation: palavra 6s cubic-bezier(.7,0,.2,1) infinite; }
+.giro > span { display: block; animation: palavra 12s cubic-bezier(.7,0,.2,1) infinite; }
 .giro b { display: block; height: 1.1em; font-weight: inherit; }
-@keyframes palavra { 0%,26% { transform: translateY(0); } 33%,59% { transform: translateY(-25%); } 66%,92% { transform: translateY(-50%); } 100% { transform: translateY(-75%); } }
+@keyframes palavra { 0.00%,13.00% { transform: translateY(-0.0000%); } 16.67%,29.67% { transform: translateY(-14.2857%); } 33.33%,46.33% { transform: translateY(-28.5714%); } 50.00%,63.00% { transform: translateY(-42.8571%); } 66.67%,79.67% { transform: translateY(-57.1429%); } 83.33%,96.33% { transform: translateY(-71.4286%); } 100% { transform: translateY(-85.7143%); } }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .abertura p.sub { margin-top: 26px; max-width: 520px; font-size: 19px; color: var(--pedra); text-wrap: balance; }
 .abertura .acoes { margin-top: 34px; display: flex; gap: 12px; flex-wrap: wrap; }
@@ -108,7 +108,7 @@ header.aberto .menu-cel { opacity: 1; transform: none; visibility: visible; }
 }
 @media (prefers-reduced-motion: reduce) {
   .trilho, .letreiro > div, .ponto { animation: none; }
-  .giro > span { animation: none; transform: translateY(-50%); }
+  .giro > span { animation: none; transform: translateY(-71.4286%); }
   html { scroll-behavior: auto; }
 }
 
@@ -305,7 +305,7 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
   <section class="abertura">
     <div class="txt">
       <span class="rotulo"><span class="ponto" aria-hidden="true"></span>Gestão de redes sociais · Salvador e Lauro de Freitas</span>
-      <h1 class="serif" style="margin-top:22px"><span class="l1">Seu Instagram com</span> <span class="sr">plano, rotina e objetivo.</span><span class="giro" aria-hidden="true"><span><b>plano.</b><b>rotina.</b><b>objetivo.</b><b>plano.</b></span></span></h1>
+      <h1 class="serif" style="margin-top:22px"><span class="l1">Seu Instagram com</span> <span class="sr">plano, rotina, identidade, calendário, constância e objetivo.</span><span class="giro" aria-hidden="true"><span><b>plano.</b><b>rotina.</b><b>identidade.</b><b>calendário.</b><b>constância.</b><b>objetivo.</b><b>plano.</b></span></span></h1>
       <p class="sub">Sou publicitário e venho do planejamento de mídia. Organizo o conteúdo da sua empresa como uma campanha: para quem falar, o que postar e com que frequência.</p>
       <div class="acoes">
         <a class="btn cheio" href="#contato">Diagnóstico gratuito <span>→</span></a>
