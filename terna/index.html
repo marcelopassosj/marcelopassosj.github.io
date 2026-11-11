@@ -14,7 +14,7 @@
   --acento: #2E3BEB; --sombra: 0 30px 60px -30px rgba(23,22,20,.35);
   --serif: 'Instrument Serif', Georgia, serif; --sans: 'Inter', system-ui, sans-serif;
   --m: clamp(16px, 4vw, 56px); color-scheme: light;
-  --rosa: #FFE8E8; --cafe: #5E4632; --caramelo: #A27447;
+  --rosa: #FFE6E7; --cafe: #5E4632; --caramelo: #A27447;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --papel: #141311; --papel-2: #1E1C19; --tinta: #F1EDE4; --pedra: #A39D92; --linha: rgba(241,237,228,.14);
@@ -57,6 +57,9 @@ h2 { font-size: clamp(36px, 5vw, 64px); line-height: 1; margin: 14px 0 28px; }
 .posts figure { margin: 0; }
 .posts img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; box-shadow: var(--sombra); }
 .posts figcaption { font-size: 14px; color: var(--pedra); margin-top: 10px; }
+.manual { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(10px, 1.6vw, 20px); }
+.manual img { width: 100%; border-radius: 4px; box-shadow: var(--sombra); }
+.botao { display: inline-block; padding: 14px 22px; border-radius: 999px; background: var(--tinta); color: var(--papel); text-decoration: none; font-weight: 500; }
 .kit { max-width: 860px; margin: 0 auto; border-radius: 6px; box-shadow: var(--sombra); }
 .etapas { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; counter-reset: e; }
 .etapas li { border-top: 1px solid var(--tinta); padding-top: 16px; counter-increment: e; }
@@ -70,6 +73,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   .hero .wrap, .duas { grid-template-columns: 1fr; }
   .ficha { grid-template-columns: 1fr; }
   .posts { grid-template-columns: repeat(2, 1fr); }
+  .manual { grid-template-columns: 1fr; }
   .etapas { grid-template-columns: 1fr 1fr; }
 }
 </style>
@@ -80,8 +84,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 <div class="hero"><div class="wrap">
   <div>
     <span class="rotulo">Crochê feito à mão · Salvador · Cliente</span>
-    <h1 class="serif">Terna<br><i>Crochê</i></h1>
-    <p>Análise do perfil, referências, kit de marca e os primeiros 6 posts para a Bruna, que faz crochê para a mesa e para vestir.</p>
+    <h1 class="serif" style="margin-top:28px"><img src="../img/terna/logo.svg" alt="Terna crochet" width="627" height="344" style="width:min(520px,100%)"></h1>
+    <p>Análise do perfil, referências, kit e manual de marca e os primeiros 6 posts para a Bruna, que faz crochê para a mesa e para vestir.</p>
   </div>
   <img class="grid-previa" src="../img/terna/grid.webp" alt="Grid com os 6 posts da Terna Crochê" width="900" height="796">
 </div></div>
@@ -102,10 +106,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   </div>
 </div>
 <div class="wrap"><div class="ficha">
-  <div><span class="rotulo">Entregas</span><b>Análise do perfil · referências · kit de marca · 6 posts 3:4 · legendas</b></div>
+  <div><span class="rotulo">Entregas</span><b>Análise do perfil · referências · logo vetorizada · kit e manual de marca · 6 posts 3:4 · legendas</b></div>
   <div><span class="rotulo">Tipografia</span><b>EB Garamond (títulos) · Jost (texto)</b></div>
   <div><span class="rotulo">Cores</span><div class="cores">
-    <span><i style="background:#FFE8E8"></i>Rosa</span><span><i style="background:#A27447"></i>Caramelo</span><span><i style="background:#5E4632"></i>Café</span><span><i style="background:#F1E6D8"></i>Cru</span><span><i style="background:#D8304A"></i>Framboesa</span>
+    <span><i style="background:#FFE8E8"></i>Rosa</span><span><i style="background:#C38138"></i>Caramelo</span><span><i style="background:#A27447"></i>Tostado</span><span><i style="background:#5E4632"></i>Café</span><span><i style="background:#F1E6D8"></i>Cru</span><span><i style="background:#D8304A"></i>Framboesa</span>
   </div></div>
 </div></div></section>
 
@@ -127,11 +131,27 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 </div></section>
 
 <section><div class="wrap">
+  <span class="rotulo">Manual de uso</span><h2 class="serif">A logo, <i>com regras.</i></h2>
+  <p style="font-size:18px;max-width:720px;margin:-8px 0 36px">A logo recebida em imagem foi vetorizada e ganhou três versões (principal, assinatura e símbolo) em quatro cores. O manual define fundos, área de proteção, tamanho mínimo, usos incorretos e aplicações.</p>
+  <div class="manual">
+    <img src="../img/terna/manual/pagina-01.webp" alt="Capa do manual" loading="lazy" width="1280" height="720">
+    <img src="../img/terna/manual/pagina-03.webp" alt="Versões da logo" loading="lazy" width="1280" height="720">
+    <img src="../img/terna/manual/pagina-04.webp" alt="Cores" loading="lazy" width="1280" height="720">
+    <img src="../img/terna/manual/pagina-05.webp" alt="Logo sobre fundos" loading="lazy" width="1280" height="720">
+    <img src="../img/terna/manual/pagina-06.webp" alt="Área de proteção e tamanho mínimo" loading="lazy" width="1280" height="720">
+    <img src="../img/terna/manual/pagina-07.webp" alt="Usos incorretos" loading="lazy" width="1280" height="720">
+    <img src="../img/terna/manual/pagina-08.webp" alt="Aplicações" loading="lazy" width="1280" height="720">
+    <img src="../img/terna/manual/pagina-09.webp" alt="Arquivos" loading="lazy" width="1280" height="720">
+  </div>
+  <p style="margin-top:28px"><a class="botao" href="../img/terna/manual-terna-crochet.pdf" target="_blank" rel="noopener">Abrir o manual em PDF →</a></p>
+</div></section>
+
+<section><div class="wrap">
   <span class="rotulo">Processo</span><h2 class="serif">Do diagnóstico ao post.</h2>
   <ol class="etapas">
     <li><b>Análise do perfil</b><p>Números, o que engajava e o que faltava na bio e nos destaques.</p></li>
     <li><b>Referências</b><p>Projetos de crochê bem avaliados no Behance e perfis do nicho no Instagram.</p></li>
-    <li><b>Kit de marca</b><p>Paleta tirada da logo e das peças, letras, grafismo do fio e regras de foto.</p></li>
+    <li><b>Kit e manual</b><p>Logo vetorizada, paleta tirada da logo e das peças, letras, grafismo do fio e regras de uso.</p></li>
     <li><b>Posts e legendas</b><p>Seis posts com funções diferentes e legendas com um pedido claro.</p></li>
   </ol>
 </div></section>
