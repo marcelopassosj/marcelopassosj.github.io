@@ -3,17 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Marcelo Passos · Gestão de redes sociais</title>
-<meta name="description" content="Gestão de redes sociais para empresas de Salvador, região e outras cidades: plano, calendário, artes, legendas e publicação, com visão geral do mês. Peça um diagnóstico gratuito do seu perfil.">
+<title>Marcelo Passos · Estratégia, design e conteúdo para marcas</title>
+<meta name="description" content="Publicitário de mídia desde 2019. Branding, social media, design, audiovisual, sites e planejamento de mídia para empresas de qualquer cidade. Peça um orçamento ou um diagnóstico gratuito do seu perfil.">
+<link rel="canonical" href="https://marcelopassosj.github.io/">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Marcelo Passos. Marcas, campanhas e experiências digitais. Com estratégia.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Marcelo Passos · Estratégia, design e conteúdo para marcas">
+<meta property="og:description" content="Publicitário de mídia desde 2019. Marca, conteúdo, sites e campanhas com método de planejamento de mídia.">
+<meta property="og:url" content="https://marcelopassosj.github.io/">
+<meta property="og:image" content="https://marcelopassosj.github.io/og-marcelo-passos.jpg">
+<meta name="theme-color" content="#0F0F0E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F0F0E'/%3E%3Ccircle cx='16' cy='16' r='8' fill='%23C8F54A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js'); try { const t = localStorage.getItem('tema'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
 <style>
-/* ===== Tokens ===== */
+/* ===== Tokens (identidade oficial, extraída do portfólio publicado em 12/11/2026) ===== */
 :root {
   --papel: #0F0F0E; --papel-2: #191917; --tinta: #F4F4F0; --pedra: #A8A8A0; --linha: rgba(244,244,240,.14);
   --acento: #C8F54A; --acento-txt: #0F0F0E; --acento-tx: #C8F54A; --sombra: 0 30px 60px -30px rgba(0,0,0,.8);
-  --serif: 'Inter Tight', system-ui, sans-serif; --sans: 'Inter Tight', system-ui, sans-serif;
+  --sans: 'Inter Tight', system-ui, sans-serif;
   --m: clamp(16px, 4vw, 56px); color-scheme: dark;
 }
 :root[data-theme="light"] {
@@ -21,26 +34,29 @@
   --acento-tx: #4A7300; --sombra: 0 30px 60px -30px rgba(15,15,14,.35); color-scheme: light; }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body { background: var(--papel); color: var(--tinta); font: 400 16px/1.55 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-img { display: block; max-width: 100%; }
+img, video { display: block; max-width: 100%; }
+img[height] { height: auto; }   /* width/height só reservam proporção (sem layout shift) */
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 a { color: inherit; }
 :focus-visible { outline: 2px solid var(--acento-tx); outline-offset: 3px; border-radius: 4px; }
-.serif { font-family: var(--serif); font-weight: 800; letter-spacing: -.04em; }
-.serif em { font-style: normal; }
-.rotulo { font: 600 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--pedra); }
+.pular { position: absolute; left: 12px; top: -60px; z-index: 50; background: var(--acento); color: var(--acento-txt); padding: 10px 16px; border-radius: 8px; font-weight: 700; }
+.pular:focus { top: 12px; }
+.titulo { font-weight: 800; letter-spacing: -.04em; }
+.rotulo { font: 600 13px/1.2 var(--sans); letter-spacing: .01em; color: var(--pedra); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* ===== Topo ===== */
-header.topo { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 18px var(--m);
+header.topo { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 16px var(--m);
   background: color-mix(in srgb, var(--papel) 82%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
 header.topo.rolou { border-color: var(--linha); }
-.logo { font: 800 21px/1 var(--serif); letter-spacing: -.03em; text-decoration: none; }
+.logo { font: 800 21px/1 var(--sans); letter-spacing: -.03em; text-decoration: none; padding: 8px 0; }
 .logo i { color: var(--acento-tx); font-style: normal; }
 nav.menu { display: flex; gap: 22px; align-items: center; font-weight: 500; font-size: 15px; }
-nav.menu a { text-decoration: none; opacity: .75; } nav.menu a:hover { opacity: 1; }
-.tema { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--linha); display: grid; place-items: center; }
-.abre-menu { display: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--linha); place-items: center; }
+nav.menu a { text-decoration: none; opacity: .75; padding: 6px 0; } nav.menu a:hover { opacity: 1; }
+.tema, .abre-menu { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--linha); display: grid; place-items: center; }
+.abre-menu { display: none; }
 .abre-menu span { position: relative; width: 14px; height: 1.5px; background: currentColor; transition: background .2s; }
 .abre-menu span::before, .abre-menu span::after { content: ''; position: absolute; left: 0; width: 14px; height: 1.5px; background: currentColor; transition: transform .25s; }
 .abre-menu span::before { transform: translateY(-5px); } .abre-menu span::after { transform: translateY(5px); }
@@ -49,372 +65,451 @@ header.aberto .abre-menu span::before { transform: rotate(45deg); } header.abert
 .menu-cel { position: absolute; top: 100%; left: 0; right: 0; display: flex; flex-direction: column; padding: 8px var(--m) 28px;
   background: var(--papel); border-bottom: 1px solid var(--linha); box-shadow: var(--sombra);
   opacity: 0; transform: translateY(-8px); visibility: hidden; transition: opacity .2s, transform .2s, visibility .2s; }
-.menu-cel a { font: 800 36px/1 var(--serif); text-decoration: none; padding: 14px 0; border-bottom: 1px solid var(--linha); }
+.menu-cel a { font: 800 34px/1 var(--sans); letter-spacing: -.03em; text-decoration: none; padding: 14px 0; border-bottom: 1px solid var(--linha); }
 .menu-cel a:last-child { border-bottom: 0; }
 header.aberto { border-color: var(--linha); background: var(--papel); }
 header.aberto .menu-cel { opacity: 1; transform: none; visibility: visible; }
-@media (max-width: 640px) { nav.menu a { display: none; } .abre-menu { display: grid; } nav.menu { gap: 10px; } }
-@media (min-width: 641px) { .menu-cel { display: none; } }
+@media (max-width: 760px) { nav.menu a { display: none; } .abre-menu { display: grid; } nav.menu { gap: 10px; } }
+@media (min-width: 761px) { .menu-cel { display: none; } }
 
 /* ===== Abertura ===== */
-.abertura { position: relative; min-height: 100svh; display: flex; align-items: center; padding: 100px var(--m) 108px; overflow: hidden; isolation: isolate; }
-.abertura .txt { position: relative; z-index: 2; max-width: min(900px, 62vw); }
-.abertura .rotulo { display: inline-flex; align-items: center; gap: 10px; letter-spacing: .02em; text-transform: none; font-size: 14px; }
-.ponto { width: 8px; height: 8px; border-radius: 50%; background: var(--acento); animation: pisca 1.6s ease-in-out infinite; }
-@keyframes pisca { 50% { opacity: .25; } }
-.abertura h1 { font-size: clamp(44px, 6vw, 92px); line-height: .95; font-weight: 900; letter-spacing: -.045em; }
-@media (min-width: 901px) { .l1 { white-space: nowrap; } }
-.giro { display: block; height: 1.1em; overflow: hidden; color: var(--acento-tx); }
-.giro > span { display: block; animation: palavra 12s cubic-bezier(.7,0,.2,1) infinite; }
-.giro b { display: block; height: 1.1em; font-weight: inherit; }
-@keyframes palavra { 0.00%,13.00% { transform: translateY(-0.0000%); } 16.67%,29.67% { transform: translateY(-14.2857%); } 33.33%,46.33% { transform: translateY(-28.5714%); } 50.00%,63.00% { transform: translateY(-42.8571%); } 66.67%,79.67% { transform: translateY(-57.1429%); } 83.33%,96.33% { transform: translateY(-71.4286%); } 100% { transform: translateY(-85.7143%); } }
-.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.abertura p.sub { margin-top: 26px; max-width: 520px; font-size: 19px; color: var(--pedra); text-wrap: balance; }
-.abertura .acoes { margin-top: 34px; display: flex; gap: 12px; flex-wrap: wrap; }
-.btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 22px; border-radius: 10px; font-weight: 700; text-decoration: none; transition: transform .2s, background .2s; }
+.abertura { position: relative; min-height: 100svh; display: flex; align-items: center; padding: 104px var(--m) 120px; overflow: hidden; isolation: isolate; }
+.abertura .txt { position: relative; z-index: 2; max-width: min(860px, 60vw); }
+.abertura .rotulo { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 500; }
+.ponto { width: 8px; height: 8px; border-radius: 50%; background: var(--acento); }
+.abertura h1 { margin-top: 22px; font-size: clamp(44px, 5.7vw, 90px); line-height: .98; font-weight: 900; letter-spacing: -.05em; }
+.abertura h1 span { display: block; }
+.abertura h1 .enfase { color: var(--acento-tx); }
+.giro { height: 1.14em; overflow: hidden; }
+.giro > span > span { line-height: 1.14; }
+.js .giro > span { animation: palavra 7.5s cubic-bezier(.7, 0, .2, 1) infinite; }
+@keyframes palavra {
+  0%, 27% { transform: translateY(0); }
+  33.33%, 60.33% { transform: translateY(-25%); }
+  66.67%, 93.67% { transform: translateY(-50%); }
+  100% { transform: translateY(-75%); }
+}
+.abertura p.sub { margin-top: 26px; max-width: 34em; font-size: 19px; color: var(--pedra); text-wrap: pretty; }
+.acoes { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.btn { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 14px 22px; border-radius: 10px; font-weight: 700; text-decoration: none; transition: transform .2s, background .2s, border-color .2s; }
 .btn.cheio { background: var(--acento); color: var(--acento-txt); }
 .btn.linha { border: 1px solid var(--linha); }
+.btn.linha:hover { border-color: var(--tinta); }
 .btn:hover { transform: translateY(-2px); }
-.numeros { margin-top: 36px; display: flex; gap: 34px; }
-.numeros b { display: block; font: 800 36px/1 var(--sans); letter-spacing: -.03em; }
-.numeros span { font-size: 13px; color: var(--pedra); }
+.link-rec { margin-top: 22px; display: inline-block; font-size: 15px; color: var(--pedra); }
+.link-rec a { color: var(--tinta); font-weight: 600; text-underline-offset: 4px; }
 
-.mosaico { position: absolute; z-index: 0; top: -14%; right: -9%; width: 52vw; height: 132%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; transform: rotate(-8deg); }
+.mosaico { position: absolute; z-index: 0; top: -14%; right: -9%; width: 50vw; height: 132%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; transform: rotate(-8deg); }
 .abertura::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background: linear-gradient(90deg, var(--papel) 0%, var(--papel) 52%, color-mix(in srgb, var(--papel) 0%, transparent) 74%); }
 .coluna { overflow: hidden; }
 .trilho { display: flex; flex-direction: column; gap: 16px; animation: sobe var(--dur, 60s) linear infinite; }
 .coluna:nth-child(2) .trilho { animation-direction: reverse; --dur: 72s; }
 .coluna:nth-child(3) .trilho { --dur: 54s; }
-.mosaico:hover .trilho { animation-play-state: paused; }
-.trilho img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; border-radius: 14px; box-shadow: var(--sombra); cursor: pointer; transition: transform .3s; }
-.trilho img:hover { transform: scale(1.04); }
+.trilho img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; border-radius: 14px; box-shadow: var(--sombra); }
 @keyframes sobe { to { transform: translateY(-50%); } }
 
-.letreiro { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; height: 64px; background: var(--acento); color: #0F0F0E; overflow: hidden; display: flex; align-items: center; }
-.letreiro > div { display: flex; white-space: nowrap; animation: corre 26s linear infinite; font: 800 22px/1 var(--sans); letter-spacing: -.01em; text-transform: uppercase; }
-.letreiro span { display: inline-flex; align-items: center; gap: 44px; padding: 0 22px; }
-.letreiro svg { width: 16px; height: 16px; }
+/* Faixa das áreas: animada, com pausa (WCAG 2.2.2) e versão estática em movimento reduzido */
+.faixa-areas { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; height: 64px; background: var(--acento); color: #0F0F0E; display: flex; align-items: center; }
+.faixa-areas .corre { flex: 1; overflow: hidden; height: 100%; display: flex; align-items: center; }
+.faixa-areas .corre > div { display: flex; white-space: nowrap; animation: corre 34s linear infinite; font: 800 22px/1 var(--sans); letter-spacing: -.01em; text-transform: uppercase; }
+.faixa-areas span.item { display: inline-flex; align-items: center; gap: 40px; padding: 0 20px; }
+.faixa-areas svg { width: 16px; height: 16px; }
+.faixa-areas.parada .corre > div { animation-play-state: paused; }
+.abertura:has(.faixa-areas.parada) :is(.trilho, .giro > span) { animation-play-state: paused; }
+.pausa { flex: none; height: 100%; padding: 0 18px; border-left: 1px solid rgba(15,15,14,.25); color: #0F0F0E; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; gap: 8px; }
+.pausa:focus-visible { outline-color: #0F0F0E; outline-offset: -4px; }
 @keyframes corre { to { transform: translateX(-50%); } }
+.faixa-areas .grupo { display: contents; }
 
 @media (max-width: 900px) {
-  .abertura { display: block; padding: 110px var(--m) 0; min-height: 0; }
+  .abertura { display: block; padding: 108px var(--m) 0; min-height: 0; }
   .abertura .txt { max-width: none; }
+  .abertura h1 { font-size: clamp(40px, 11.5vw, 72px); }
   .abertura::before { display: none; }
-  .mosaico { position: relative; top: auto; right: auto; width: auto; height: 460px; margin: 48px calc(var(--m) * -1) 0; transform: rotate(-6deg) scale(1.15);
+  .mosaico { position: relative; top: auto; right: auto; width: auto; height: 420px; margin: 48px calc(var(--m) * -1) 0; transform: rotate(-6deg) scale(1.15);
     -webkit-mask: linear-gradient(transparent, #000 14%, #000 86%, transparent); mask: linear-gradient(transparent, #000 14%, #000 86%, transparent); }
-  .letreiro { position: relative; margin: 0 calc(var(--m) * -1); height: 54px; }
-  .letreiro > div { font-size: 18px; }
+  .faixa-areas { position: relative; margin: 0 calc(var(--m) * -1); height: 54px; }
+  .faixa-areas .corre > div { font-size: 18px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .trilho, .letreiro > div, .ponto { animation: none; }
-  .giro > span { animation: none; transform: translateY(-71.4286%); }
+  .trilho, .js .giro > span { animation: none; }
+  .faixa-areas .corre > div { animation: none; flex-wrap: wrap; white-space: normal; row-gap: 6px; font-size: 15px; padding: 10px 0; }
+  .faixa-areas .dup { display: none; }
+  .faixa-areas { height: auto; min-height: 64px; } .pausa { display: none; }
   html { scroll-behavior: auto; }
+  * { transition-duration: .01s !important; }
+}
+@media (max-width: 480px) {
+  .abertura h1 { font-size: clamp(27px, 9.15vw, 44px); }
 }
 
 /* ===== Seções ===== */
-section { padding: 110px var(--m); }
-.cab-secao { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 44px; }
-.cab-secao h2 { font-size: clamp(42px, 6vw, 84px); line-height: .95; }
-.filtros { display: flex; gap: 8px; flex-wrap: wrap; }
-.filtros button { padding: 10px 16px; border-radius: 8px; border: 1px solid var(--linha); font-weight: 500; font-size: 14px; transition: background .2s, color .2s; }
-.filtros button[aria-pressed="true"] { background: var(--tinta); color: var(--papel); border-color: var(--tinta); }
+section { padding: 112px var(--m); }
+.cab-secao { display: flex; justify-content: space-between; align-items: end; gap: 24px 40px; flex-wrap: wrap; margin-bottom: 44px; }
+.cab-secao h2, .sobre h2, .recrut h2 { font-size: clamp(42px, 6vw, 84px); line-height: .95; }
+.cab-secao p.intro { max-width: 36em; color: var(--pedra); font-size: 17px; }
+.js .revela { opacity: 0; transform: translateY(24px); transition: opacity .7s, transform .7s; }
+.js .revela.visivel { opacity: 1; transform: none; }
 
-/* ===== Cartões ===== */
-.grade { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+/* ===== Trabalhos ===== */
+.aviso-cases { margin: 0 0 24px; font-size: 14px; color: var(--pedra); }
+.area .situacao, .oferta .situacao { color: var(--pedra); font-size: .875em; }
+.ver-projetos { margin-top: 24px; }
+.filtros { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+.filtros button { min-height: 44px; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--linha); font-weight: 500; font-size: 14px; transition: background .2s, color .2s; }
+.filtros button[aria-pressed="true"] { background: var(--tinta); color: var(--papel); border-color: var(--tinta); }
+.grade { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 28px; }
 @media (max-width: 760px) { .grade { grid-template-columns: 1fr; } }
-.cartao { text-align: left; display: block; width: 100%; transition: opacity .35s, transform .35s; }
-.cartao.oculto { display: none; }
-.cartao.entrando { opacity: 0; transform: translateY(18px); }
+.cartao { position: relative; }
+.cartao.destaque { grid-column: 1 / -1; display: grid; grid-template-columns: 1.4fr 1fr; gap: 36px; align-items: center; }
+.cartao.destaque .capa { aspect-ratio: 16/9; }
+.cartao.destaque h3 { font-size: clamp(44px, 5vw, 72px); }
+.cartao.destaque .resumo { margin-top: 14px; font-size: 17px; color: var(--pedra); max-width: 34em; }
+@media (max-width: 860px) { .cartao.destaque { grid-template-columns: 1fr; gap: 0; } .cartao.destaque .capa { aspect-ratio: 4/3; } }
 .capa { position: relative; aspect-ratio: 4/3; border-radius: 18px; overflow: hidden; background: var(--cor-fundo); }
 .capa .posts { position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; gap: 4%; padding: 0 7%; }
-.capa .posts img { width: 30%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; box-shadow: 0 20px 40px -18px rgba(0,0,0,.5); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.capa .posts img { width: 30%; max-width: 230px; height: auto; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; box-shadow: 0 20px 40px -18px rgba(0,0,0,.5); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
 .capa .posts img:nth-child(1) { transform: rotate(-6deg) translateY(10px); }
 .capa .posts img:nth-child(3) { transform: rotate(6deg) translateY(10px); }
-.cartao:hover .capa .posts img:nth-child(1) { transform: rotate(-10deg) translate(-14px, 4px); }
-.cartao:hover .capa .posts img:nth-child(2) { transform: translateY(-10px) scale(1.04); }
-.cartao:hover .capa .posts img:nth-child(3) { transform: rotate(10deg) translate(14px, 4px); }
-.selo { position: absolute; left: 16px; top: 16px; z-index: 2; padding: 7px 12px; border-radius: 99px; font: 600 11px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; background: rgba(255,255,255,.92); color: #171614; }
-.selo.estudo { background: #171614; color: #fff; }
+.cartao:hover .capa .posts img:nth-child(1), .cartao:focus-within .capa .posts img:nth-child(1) { transform: rotate(-10deg) translate(-14px, 4px); }
+.cartao:hover .capa .posts img:nth-child(2), .cartao:focus-within .capa .posts img:nth-child(2) { transform: translateY(-10px) scale(1.04); }
+.cartao:hover .capa .posts img:nth-child(3), .cartao:focus-within .capa .posts img:nth-child(3) { transform: rotate(10deg) translate(14px, 4px); }
+.selo { position: absolute; left: 14px; top: 14px; z-index: 2; padding: 7px 12px; border-radius: 99px; font: 600 12px/1 var(--sans); background: rgba(255,255,255,.94); color: #171614; }
 .info { display: flex; justify-content: space-between; align-items: start; gap: 16px; margin-top: 16px; }
-.info h3 { font: 800 34px/1 var(--serif); }
-.info p { margin-top: 6px; color: var(--pedra); font-size: 15px; }
-.amostras { display: flex; margin-top: 4px; }
+.info h3 { font: 800 34px/1 var(--sans); letter-spacing: -.04em; }
+.info p.seg { margin-top: 6px; color: var(--pedra); font-size: 15px; }
+.amostras { display: flex; margin-top: 4px; flex: none; }
 .amostras i { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--papel); margin-left: -6px; }
-.ver { margin-top: 10px; font-weight: 600; font-size: 14px; color: var(--acento-tx); display: inline-flex; gap: 6px; }
-.cartao:hover .ver span { transform: translateX(4px); } .ver span { transition: transform .2s; }
+.abrir { margin-top: 10px; font-weight: 600; font-size: 15px; color: var(--acento-tx); display: inline-flex; gap: 6px; padding: 4px 0; text-align: left; }
+.abrir::after { content: ""; position: absolute; inset: 0; z-index: 3; }   /* cartão inteiro clicável, um só controle */
+.abrir span { transition: transform .2s; } .cartao:hover .abrir span { transform: translateX(4px); }
+noscript p { padding: 18px 20px; border: 1px dashed var(--linha); border-radius: 12px; color: var(--pedra); }
 
-/* ===== Processo ===== */
+/* ===== Áreas e ofertas ===== */
+.areas { border-top: 1px solid var(--linha); }
+.area { display: grid; grid-template-columns: minmax(220px, 1fr) 1.3fr 1fr; gap: 12px 40px; padding: 30px 0; border-bottom: 1px solid var(--linha); align-items: baseline; }
+.area h3 { font: 800 clamp(28px, 3vw, 40px)/1 var(--sans); letter-spacing: -.035em; }
+.area p { color: var(--pedra); font-size: 16px; max-width: 32em; }
+.area ul { list-style: none; display: grid; gap: 6px; font-size: 15px; }
+.area li::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--acento-tx); margin: 0 10px 2px 0; }
+@media (max-width: 900px) { .area { grid-template-columns: 1fr; } }
+.fora { margin-top: 24px; color: var(--pedra); font-size: 15px; max-width: 52em; }
+.ofertas { margin-top: 84px; }
+.ofertas > h3 { font: 800 clamp(30px, 3.4vw, 46px)/1 var(--sans); letter-spacing: -.035em; }
+.ofertas > p { margin-top: 12px; color: var(--pedra); max-width: 40em; }
+.trio { margin-top: 34px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.oferta { padding: 26px 28px 8px 0; border-top: 2px solid var(--tinta); margin-right: 28px; }
+.oferta h4 { font: 800 26px/1.05 var(--sans); letter-spacing: -.03em; }
+.oferta .para { margin-top: 8px; color: var(--acento-tx); font-weight: 600; font-size: 15px; }
+.oferta p { margin-top: 12px; color: var(--pedra); font-size: 15px; }
+.oferta dl { margin-top: 16px; font-size: 14px; display: grid; gap: 10px; }
+.oferta dt { font-weight: 700; } .oferta dd { color: var(--pedra); }
+@media (max-width: 900px) { .trio { grid-template-columns: 1fr; gap: 26px; } .oferta { margin-right: 0; } }
+
+/* ===== Método ===== */
 .processo { background: var(--papel-2); }
-.etapas { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; counter-reset: e; }
+.etapas { display: grid; grid-template-columns: repeat(6, 1fr); counter-reset: e; list-style: none; }
 .etapa { padding: 24px 22px 0 0; border-top: 1px solid var(--linha); position: relative; }
-.etapa::before { counter-increment: e; content: "0" counter(e); font: 800 15px/1 var(--serif); color: var(--acento-tx); display: block; margin-bottom: 18px; }
+.etapa::before { counter-increment: e; content: "0" counter(e); font: 800 15px/1 var(--sans); color: var(--acento-tx); display: block; margin-bottom: 18px; }
 .etapa::after { content: ""; position: absolute; top: -5px; left: 0; width: 9px; height: 9px; border-radius: 50%; background: var(--acento); }
-.etapa h4 { font: 600 17px/1.25 var(--sans); }
-.etapa p { margin-top: 8px; font-size: 14px; color: var(--pedra); }
+.etapa h3 { font: 700 18px/1.25 var(--sans); }
+.etapa p { margin-top: 8px; font-size: 14.5px; color: var(--pedra); }
 @media (max-width: 1000px) { .etapas { grid-template-columns: repeat(2, 1fr); row-gap: 36px; } }
 @media (max-width: 520px) { .etapas { grid-template-columns: 1fr; } }
-.revela { opacity: 0; transform: translateY(24px); transition: opacity .7s, transform .7s; }
-.revela.visivel { opacity: 1; transform: none; }
 
 /* ===== Sobre ===== */
 .sobre .texto { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
-.sobre .dir > p:first-child { margin-top: 0; }
 @media (max-width: 860px) { .sobre .texto { grid-template-columns: 1fr; gap: 28px; } }
 .sobre .cab { display: flex; align-items: center; gap: 22px; margin-top: 18px; }
 .sobre .cab img { width: 88px; height: 88px; flex: none; border-radius: 50%; object-fit: cover; background: #141311; border: 1px solid var(--linha); }
-.sobre h2 { font-size: clamp(42px, 6vw, 84px); line-height: .95; }
-.sobre h2 em { color: var(--acento-tx); }
-.sobre .texto p { margin-top: 22px; font-size: 18px; max-width: 560px; }
-.sobre .texto p + p { margin-top: 14px; color: var(--pedra); font-size: 17px; }
-.fatos { margin-top: 34px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--linha); max-width: 620px; }
+.sobre .dir p { font-size: 18px; max-width: 34em; }
+.sobre .dir p + p { margin-top: 14px; color: var(--pedra); font-size: 17px; }
+.fatos { margin-top: 34px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--linha); max-width: 640px; }
 .fatos div { padding: 18px 16px 0 0; }
-.fatos b { display: block; font: 800 30px/1 var(--serif); }
-.fatos span { display: block; margin-top: 6px; font-size: 13px; color: var(--pedra); }
-.sobre .acoes { margin-top: 34px; display: flex; gap: 12px; flex-wrap: wrap; }
-@media (max-width: 520px) { .sobre .cab { gap: 16px; } .sobre .cab img { width: 64px; height: 64px; } }
-@media (max-width: 520px) { .fatos { grid-template-columns: 1fr; } .fatos div { padding: 14px 0; border-bottom: 1px solid var(--linha); display: flex; align-items: baseline; gap: 12px; } .fatos span { margin-top: 0; } }
+.fatos b { display: block; font: 800 26px/1.05 var(--sans); letter-spacing: -.03em; }
+.fatos span { display: block; margin-top: 6px; font-size: 13.5px; color: var(--pedra); }
+@media (max-width: 520px) { .sobre .cab img { width: 64px; height: 64px; } .fatos { grid-template-columns: 1fr; } .fatos div { padding: 14px 0; border-bottom: 1px solid var(--linha); } }
 
-/* ===== Serviços ===== */
-.servicos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-.servico { padding: 28px 24px 26px; border: 1px solid var(--linha); border-radius: 18px; display: flex; flex-direction: column; transition: border-color .2s, transform .2s; }
-.servico:hover { border-color: var(--acento-tx); transform: translateY(-3px); }
-.servico .num { font: 800 15px/1 var(--serif); color: var(--acento-tx); }
-.servico h3 { margin-top: 26px; font: 800 34px/1 var(--serif); }
-.servico p { margin-top: 12px; color: var(--pedra); font-size: 15px; }
-.servico ul { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--linha); list-style: none; display: grid; gap: 8px; font-size: 14px; }
-.servico li::before { content: "—"; color: var(--acento-tx); margin-right: 8px; }
-.nota-servicos { margin-top: 26px; color: var(--pedra); font-size: 15px; }
-.nota-servicos a { color: var(--acento-tx); font-weight: 600; }
-@media (max-width: 1000px) { .servicos { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .servicos { grid-template-columns: 1fr; } }
+/* ===== Para equipes ===== */
+.recrut { border-top: 1px solid var(--linha); display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px 64px; align-items: end; }
+.recrut p { color: var(--pedra); font-size: 17px; max-width: 34em; }
+.recrut ul { margin-top: 18px; list-style: none; display: grid; gap: 8px; font-size: 15px; }
+.recrut li::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--acento-tx); margin: 0 10px 2px 0; }
+@media (max-width: 860px) { .recrut { grid-template-columns: 1fr; } }
 
 /* ===== Contato ===== */
-.contato { text-align: center; padding-bottom: 80px; }
-.contato h2 { font-size: clamp(48px, 9vw, 140px); line-height: .9; }
-.contato h2 em { color: var(--acento-tx); }
-.contato .btn { margin-top: 36px; font-size: 18px; }
-.contato p.onde { margin-top: 22px; color: var(--pedra); font-size: 15px; }
-.contato .intro-diag { margin: 26px auto 0; max-width: 560px; font-size: 18px; color: var(--pedra); text-wrap: balance; }
-.diag { margin: 36px auto 0; max-width: 820px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: left; }
-.diag label span { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
-.diag input, .diag select { width: 100%; font: inherit; font-size: 16px; color: var(--tinta); background: var(--papel); border: 1px solid var(--linha); border-radius: 12px; padding: 14px 16px; }
+.contato { text-align: center; padding-bottom: 80px; background: var(--papel-2); }
+.contato h2 { font-size: clamp(46px, 8.6vw, 132px); line-height: .9; }
+.contato .intro-diag { margin: 26px auto 0; max-width: 36em; font-size: 18px; color: var(--pedra); text-wrap: balance; }
+.diag { margin: 36px auto 0; max-width: 860px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: left; }
+.diag label span { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 8px; }
+.diag input, .diag select { width: 100%; min-height: 52px; font: inherit; font-size: 16px; color: var(--tinta); background: var(--papel); border: 1px solid var(--linha); border-radius: 12px; padding: 14px 16px; }
 .diag input:focus, .diag select:focus { outline: 2px solid var(--acento-tx); outline-offset: 1px; border-color: transparent; }
 .diag .btn { grid-column: 1 / -1; justify-self: center; margin-top: 12px; border: 0; cursor: pointer; font-size: 17px; }
-.contato .outros { margin-top: 22px; font-size: 15px; color: var(--pedra); }
+.diag .nota { grid-column: 1 / -1; text-align: center; font-size: 13.5px; color: var(--pedra); }
+.contato .outros { margin-top: 26px; font-size: 15px; color: var(--pedra); }
 .contato .outros a { color: var(--tinta); font-weight: 600; }
+.contato p.onde { margin-top: 12px; color: var(--pedra); font-size: 15px; }
 @media (max-width: 760px) { .diag { grid-template-columns: 1fr; } .diag .btn { justify-self: stretch; justify-content: center; } }
-footer { padding: 26px var(--m) 40px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--pedra); font-size: 13px; border-top: 1px solid var(--linha); }
+footer { padding: 26px var(--m) 40px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--pedra); font-size: 13.5px; border-top: 1px solid var(--linha); }
 
-/* ===== Estudo de caso (painel) ===== */
+/* ===== Estudo de caso ===== */
 dialog.caso { border: 0; padding: 0; width: 100%; max-width: 100%; height: 100%; max-height: 100%; background: var(--papel); color: var(--tinta); overscroll-behavior: contain; }
 dialog.caso::backdrop { background: rgba(10,10,10,.5); }
 dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
+@media (prefers-reduced-motion: reduce) {
+  dialog.caso[open] { animation: none; }
+}
 @keyframes abre { from { transform: translateY(40px); opacity: 0; } }
-.caso-topo { position: sticky; top: 0; z-index: 3; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px var(--m);
+.caso-topo { position: sticky; top: 0; z-index: 3; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px var(--m);
   background: color-mix(in srgb, var(--papel) 88%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--linha); }
 .caso-topo .nav-casos { display: flex; gap: 8px; }
 .caso-topo .esq { display: flex; align-items: center; gap: 16px; min-width: 0; }
 .caso-topo .esq .rotulo { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.inicio { height: 42px; padding: 0 18px 0 14px; border-radius: 999px; border: 1px solid var(--linha); display: inline-flex; align-items: center; gap: 8px;
-  font-weight: 500; font-size: 15px; white-space: nowrap; transition: background .2s; }
-.inicio:hover { background: var(--papel-2); }
+.inicio { height: 44px; padding: 0 18px 0 14px; border-radius: 999px; border: 1px solid var(--linha); display: inline-flex; align-items: center; gap: 8px; font-weight: 500; font-size: 15px; white-space: nowrap; }
+.inicio:hover, .redondo:hover { background: var(--papel-2); }
 .inicio svg { width: 16px; height: 16px; }
 @media (max-width: 520px) { .caso-topo .esq .rotulo { display: none; } }
-.redondo { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--linha); display: grid; place-items: center; font-size: 18px; transition: background .2s; }
-.redondo:hover { background: var(--papel-2); }
-.caso-corpo { padding: 40px var(--m) 90px; max-width: 1280px; margin: 0 auto; }
-.aviso { display: flex; gap: 12px; align-items: start; padding: 16px 20px; border-radius: 14px; background: var(--tinta); color: var(--papel); margin-bottom: 36px; font-size: 15px; }
-.aviso b { font-weight: 700; }
+.redondo { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--linha); display: grid; place-items: center; font-size: 18px; }
+.caso-corpo { padding: 32px var(--m) 90px; max-width: 1280px; margin: 0 auto; }
+.nota-caso { color: var(--pedra); font-size: 14px; margin-bottom: 24px; }
 .caso-cab { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: end; }
 .caso-cab h2 { font-size: clamp(52px, 7vw, 104px); line-height: .92; }
 .caso-cab .meta { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; }
 .caso-cab .meta div span { display: block; margin-bottom: 6px; }
 @media (max-width: 860px) { .caso-cab { grid-template-columns: 1fr; } }
-.texto-caso { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin: 54px 0; }
-.texto-caso p { font-size: 18px; line-height: 1.6; text-wrap: pretty; }
-.texto-caso h4 { margin-bottom: 12px; }
+.texto-caso { display: grid; grid-template-columns: repeat(2, 1fr); gap: 36px 40px; margin: 50px 0; }
+.texto-caso p { font-size: 18px; line-height: 1.6; text-wrap: pretty; max-width: 36em; }
+.texto-caso h3 { margin-bottom: 10px; }
+.texto-caso ul { list-style: none; display: grid; gap: 10px; font-size: 17px; }
+.texto-caso li { padding-left: 18px; position: relative; } .texto-caso li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--acento-tx); }
 @media (max-width: 760px) { .texto-caso { grid-template-columns: 1fr; } }
-
 .vitrine { display: grid; grid-template-columns: 1.5fr 1fr; gap: 28px; align-items: start; }
 @media (max-width: 960px) { .vitrine { grid-template-columns: 1fr; } }
 .vitrine > *, .texto-caso > *, .caso-cab > * { min-width: 0; }
-@media (max-width: 600px) { .palco { padding: 14px; border-radius: 16px; } .seta { width: 40px; height: 40px; } .miniaturas button { flex-basis: 48px; } }
 .palco { background: var(--cor-fundo); border-radius: 22px; padding: 28px; position: relative; }
+@media (max-width: 600px) { .palco { padding: 14px; border-radius: 16px; } }
 .palco-barra { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; color: var(--cor-txt); }
 .alterna { display: inline-flex; padding: 4px; border-radius: 99px; background: rgba(0,0,0,.22); }
-.alterna button { padding: 8px 14px; border-radius: 99px; font: 600 13px/1 var(--sans); color: var(--cor-txt); opacity: .8; }
-.alterna button[aria-pressed="true"] { background: var(--cor-txt); color: var(--cor-fundo); opacity: 1; }
+.alterna button { min-height: 36px; padding: 8px 14px; border-radius: 99px; font: 600 13px/1 var(--sans); color: var(--cor-txt); }
+.alterna button[aria-pressed="true"] { background: var(--cor-txt); color: var(--cor-fundo); }
 .contador { font: 600 13px/1 var(--sans); letter-spacing: .08em; }
 .carrossel { position: relative; overflow: hidden; border-radius: 12px; touch-action: pan-y; }
 .faixa { display: flex; transition: transform .55s cubic-bezier(.2,.8,.2,1); }
 .faixa img { flex: 0 0 100%; width: 100%; object-fit: cover; aspect-ratio: 3/4; user-select: none; -webkit-user-drag: none; }
 .palco.f45 .faixa img { aspect-ratio: 4/5; }
-.seta { position: absolute; top: 50%; translate: 0 -50%; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,.92); color: #171614; display: grid; place-items: center; font-size: 20px; box-shadow: 0 8px 20px rgba(0,0,0,.2); }
+.seta { position: absolute; top: 50%; translate: 0 -50%; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,.94); color: #171614; display: grid; place-items: center; font-size: 20px; box-shadow: 0 8px 20px rgba(0,0,0,.2); }
 .seta.esq { left: 12px; } .seta.dir { right: 12px; }
-.miniaturas { display: flex; gap: 8px; margin-top: 16px; overflow-x: auto; padding-bottom: 4px; }
-.miniaturas button { flex: 0 0 64px; border-radius: 6px; overflow: hidden; opacity: .5; transition: opacity .2s; outline-offset: 2px; }
+.seta:focus-visible { outline-color: #fff; }
+.miniaturas { display: flex; gap: 8px; margin-top: 16px; overflow-x: auto; padding: 4px 2px; }
+.miniaturas button { flex: 0 0 64px; border-radius: 6px; overflow: hidden; opacity: .55; transition: opacity .2s; outline-offset: 2px; }
 .miniaturas button[aria-current="true"] { opacity: 1; outline: 2px solid var(--cor-txt); }
 .miniaturas img { aspect-ratio: 3/4; object-fit: cover; }
-.legenda-post { margin-top: 14px; color: var(--cor-txt); font: 800 22px/1.2 var(--serif); min-height: 2.4em; }
-
+.legenda-post { margin-top: 14px; color: var(--cor-txt); font: 800 22px/1.2 var(--sans); letter-spacing: -.02em; min-height: 2.4em; }
 .lateral { display: grid; gap: 28px; }
-.reels { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center; margin-top: 54px; padding: 40px; border-radius: 22px; background: var(--cor-fundo); color: var(--cor-txt); }
-.reels p { font-size: 18px; line-height: 1.6; max-width: 46ch; margin: 12px 0 16px; text-wrap: pretty; }
-.reels small { opacity: .75; font-size: 13px; }
-.reels .celular { margin: 0; }
-.reels video { display: block; width: 100%; height: auto; aspect-ratio: 9/16; border-radius: 32px; background: #111; }
-@media (max-width: 760px) { .reels { grid-template-columns: 1fr; padding: 20px; gap: 24px; } .reels .celular { margin: 0 auto; } }
 .celular { width: min(320px, 100%); margin: 0 auto; border-radius: 44px; padding: 12px; background: #111; box-shadow: var(--sombra); }
 .tela { border-radius: 34px; overflow: hidden; background: #fff; color: #111; }
 .ig-topo { padding: 14px 16px 10px; display: flex; align-items: center; gap: 12px; }
-.ig-topo .av { width: 46px; height: 46px; border-radius: 50%; background: var(--cor-fundo); display: grid; place-items: center; color: var(--cor-txt); font: 800 22px/1 var(--serif); }
-.ig-topo b { font-size: 14px; } .ig-topo small { display: block; font-size: 11px; color: #777; }
+.ig-topo .av { width: 46px; height: 46px; border-radius: 50%; background: var(--cor-fundo); display: grid; place-items: center; color: var(--cor-txt); font: 800 22px/1 var(--sans); }
+.ig-topo b { font-size: 14px; } .ig-topo small { display: block; font-size: 11px; color: #666; }
 .ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-.ig-grid img { aspect-ratio: 3/4; object-fit: cover; cursor: pointer; }
-.kit h4 { margin-bottom: 12px; }
+.ig-grid button img { aspect-ratio: 3/4; object-fit: cover; }
+.kit h3 { margin-bottom: 12px; }
 .paleta { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 10px; }
-.cor { text-align: left; border-radius: 12px; overflow: hidden; border: 1px solid var(--linha); background: var(--papel); transition: transform .2s; }
-.cor:hover { transform: translateY(-3px); }
+.cor { text-align: left; border-radius: 12px; overflow: hidden; border: 1px solid var(--linha); background: var(--papel); }
 .cor i { display: block; height: 54px; }
 .cor span { display: block; padding: 8px 10px; font-size: 12px; line-height: 1.3; }
 .cor span b { display: block; font-size: 13px; }
 .fontes { margin-top: 18px; display: grid; gap: 8px; font-size: 15px; }
 .fontes div { display: flex; justify-content: space-between; border-bottom: 1px solid var(--linha); padding-bottom: 8px; }
+.reels { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center; margin-top: 54px; padding: 40px; border-radius: 22px; background: var(--cor-fundo); color: var(--cor-txt); }
+.reels p { font-size: 18px; line-height: 1.6; max-width: 46ch; margin: 12px 0 16px; }
+.reels small { opacity: .8; font-size: 13px; }
+.reels .celular { margin: 0; }
+.reels video { width: 100%; height: auto; aspect-ratio: 9/16; border-radius: 32px; background: #111; }
+@media (max-width: 760px) { .reels { grid-template-columns: 1fr; padding: 20px; gap: 24px; } .reels .celular { margin: 0 auto; } }
 .toast { position: fixed; left: 50%; bottom: 28px; translate: -50% 20px; opacity: 0; z-index: 99; background: var(--tinta); color: var(--papel); padding: 12px 18px; border-radius: 99px; font-weight: 600; font-size: 14px; transition: .3s; pointer-events: none; }
 .toast.on { opacity: 1; translate: -50% 0; }
 .proximo { margin-top: 70px; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-top: 28px; border-top: 1px solid var(--linha); }
-.proximo button { text-align: right; } .proximo button b { display: block; font: 800 clamp(32px, 5vw, 56px)/1 var(--serif); }
+.proximo button { text-align: right; } .proximo button b { display: block; font: 800 clamp(32px, 5vw, 56px)/1 var(--sans); letter-spacing: -.04em; }
+[hidden] { display: none !important; }
 </style>
+<noscript><style>
+  .mosaico, .faixa-areas, .tema, .abre-menu, .diag, .intro-diag { display: none; }
+  @media (max-width: 900px) { .abertura { padding-bottom: 64px; } }
+</style></noscript>
 </head>
-<body>
-
+<body id="inicio">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
 <header class="topo" id="topo">
-  <a class="logo" href="#">Marcelo Passos<i>.</i></a>
-  <nav class="menu">
-    <a href="#projetos">Projetos</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#contato">Contato</a>
-    <button class="tema" id="tema" aria-label="Alternar tema claro e escuro">◐</button>
+  <a class="logo" href="#inicio" aria-label="Marcelo Passos, início">Marcelo Passos<i>.</i></a>
+  <nav class="menu" aria-label="Principal">
+    <a href="#trabalhos">Trabalhos</a><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a><a href="#equipes">Para equipes</a><a href="#contato">Contato</a>
+    <button class="tema" id="tema" aria-label="Alternar tema claro e escuro"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>
     <button class="abre-menu" id="abre-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-cel"><span></span></button>
   </nav>
-  <nav class="menu-cel" id="menu-cel" aria-label="Menu">
-    <a href="#projetos">Projetos</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#processo">Processo</a><a href="#contato">Contato</a>
+  <nav class="menu-cel" id="menu-cel" aria-label="Menu do celular">
+    <a href="#trabalhos">Trabalhos</a><a href="#servicos">Serviços</a><a href="#processo">Método</a><a href="#sobre">Sobre</a><a href="#equipes">Para equipes</a><a href="#contato">Contato</a>
   </nav>
 </header>
 
-<main>
-  <section class="abertura">
+<main id="conteudo" tabindex="-1">
+  <section class="abertura" aria-labelledby="titulo-abertura">
     <div class="txt">
-      <span class="rotulo"><span class="ponto" aria-hidden="true"></span>Gestão de redes sociais para empresas</span>
-      <h1 class="serif" style="margin-top:22px"><span class="l1">Seu Instagram com</span> <span class="sr">plano, rotina, identidade, calendário, constância e objetivo.</span><span class="giro" aria-hidden="true"><span><b>plano.</b><b>rotina.</b><b>identidade.</b><b>calendário.</b><b>constância.</b><b>objetivo.</b><b>plano.</b></span></span></h1>
-      <p class="sub">Sou publicitário e venho do planejamento de mídia. Organizo o conteúdo da sua empresa como uma campanha: para quem falar, o que postar e com que frequência.</p>
+      <span class="rotulo"><span class="ponto" aria-hidden="true"></span>Publicitário de mídia desde 2019</span>
+      <h1 class="titulo" id="titulo-abertura"><span>Marcas, campanhas</span> <span>e experiências digitais.</span> <span class="sr">Com estratégia.</span><span class="enfase giro" aria-hidden="true"><span><span>Com estratégia.</span><span>Com identidade.</span><span>Com objetivo.</span><span>Com estratégia.</span></span></span></h1>
+      <p class="sub">Planejo mídia desde 2019. Conecto estratégia, Branding, criação e Web Design, com apoio de inteligência artificial, a partir do público, do canal e do objetivo de cada projeto.</p>
       <div class="acoes">
-        <a class="btn cheio" href="#contato">Diagnóstico gratuito <span>→</span></a>
-        <a class="btn linha" href="#projetos">Ver trabalhos</a>
+        <a class="btn cheio" href="#contato">Pedir um orçamento</a>
+        <a class="btn linha" href="#trabalhos">Ver trabalhos</a>
       </div>
-      <div class="numeros" id="numeros"></div>
+      <p class="link-rec">Está contratando? <a href="#equipes">Veja meu perfil para vagas</a></p>
     </div>
     <div class="mosaico" id="mosaico" aria-hidden="true"></div>
-    <div class="letreiro" aria-hidden="true"><div><span>Gestão mensal<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg></span><span>Carrossel<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg></span><span>Kit de marca<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg></span><span>Planejamento<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg></span><span>Gestão mensal<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg></span><span>Carrossel<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg></span><span>Kit de marca<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg></span><span>Planejamento<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg></span><span>Gestão mensal<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg></span><span>Carrossel<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg></span><span>Kit de marca<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg></span><span>Planejamento<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg></span><span>Gestão mensal<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg></span><span>Carrossel<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg></span><span>Kit de marca<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg></span><span>Planejamento<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg></span></div></div>
-  </section>
-
-  <section id="projetos">
-    <div class="cab-secao">
-      <div><span class="rotulo">Projetos selecionados</span><h2 class="serif" style="margin-top:14px">Trabalhos</h2></div>
-      <div class="filtros" id="filtros" role="group" aria-label="Filtrar projetos"></div>
+    <div class="faixa-areas" id="faixa-areas">
+      <div class="corre"><div id="faixa-itens"><span class="sr">Áreas: </span></div></div>
+      <button class="pausa" id="pausa" aria-pressed="false" aria-label="Pausar animações da abertura"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="1" width="3" height="10" fill="currentColor"/><rect x="7" y="1" width="3" height="10" fill="currentColor"/></svg><span id="pausa-txt">Pausar</span></button>
     </div>
-    <div class="grade" id="grade"></div>
   </section>
 
-  <section class="sobre" id="sobre">
+  <section id="trabalhos" aria-labelledby="titulo-trabalhos">
+    <div class="cab-secao">
+      <h2 class="titulo" id="titulo-trabalhos">Trabalhos</h2>
+      <p class="intro">Feeds, campanhas e identidades com estratégia por trás de cada peça. Clique num projeto para ver o desafio, o conceito e os posts nos dois formatos.</p>
+    </div>
+    <p class="aviso-cases" role="note">Cases de estudo com marcas fictícias, fotos geradas com IA e eventuais números simulados.</p>
+    <div class="filtros" id="filtros" role="group" aria-label="Filtrar projetos por segmento"></div>
+    <div class="grade" id="grade"></div>
+    <button type="button" class="btn linha ver-projetos" id="ver-projetos" aria-controls="grade" hidden>Ver todos os projetos</button>
+    <noscript><p>Os estudos de caso abrem com JavaScript. Se preferir, peça os cases em PDF pelo e-mail mpassosj@gmail.com.</p></noscript>
+  </section>
+
+  <section id="servicos" aria-labelledby="titulo-servicos">
+    <div class="cab-secao">
+      <h2 class="titulo" id="titulo-servicos">O que eu faço</h2>
+      <p class="intro">Seis áreas que conversam entre si. Dá para contratar uma só ou juntar várias numa das ofertas abaixo.</p>
+    </div>
+    <div class="areas" id="areas">
+      <div class="area revela"><h3>Branding</h3><p>Posicionamento, nome e identidade para a marca ser reconhecida e lembrada.</p><ul><li>Diagnóstico e posicionamento</li><li>Naming com checagem de nome</li><li>Identidade verbal</li><li>Paleta, tipografia e grafismo</li><li>Modelos editáveis no Figma</li><li>Branding para clientes e logotipos complexos <span class="situacao">· sob consulta</span></li></ul></div>
+      <div class="area revela"><h3>Social media</h3><p>Planejamento e produção de conteúdo com objetivo para cada post.</p><ul><li>Linha editorial e calendário</li><li>Posts, carrosséis e legendas</li><li>Gestão mensal com aprovação <span class="situacao">· sob consulta</span></li></ul></div>
+      <div class="area revela"><h3>Design e publicidade</h3><p>Peças de campanha e anúncios com conceito antes do layout.</p><ul><li>Criativos para anúncios</li><li>Materiais de campanha</li><li>Editáveis em Figma (PSD sob pedido)</li></ul></div>
+      <div class="area revela"><h3>Audiovisual</h3><p>Stories e Reels de motion com materiais existentes. <span class="situacao">Em validação.</span></p><ul><li>Roteiro e storyboard</li><li>Reels e Stories animados</li><li>Trilha licenciada quando houver</li></ul></div>
+      <div class="area revela"><h3>Web design</h3><p>Landing pages e sites estáticos. <span class="situacao">Em validação.</span></p><ul><li>Landing page de campanha</li><li>Site institucional e portfólio</li><li>Cardápio ou catálogo on-line</li></ul></div>
+      <div class="area revela"><h3>Planejamento de mídia</h3><p>Onde, quando e com quanto anunciar, com a leitura de quem trabalha com mídia desde 2019.</p><ul><li>Plano de mídia offline</li><li>Planejamento de mídia digital paga <span class="situacao">· sob consulta</span></li><li>Calendário e praças</li><li>Leitura de resultados e ajuste</li></ul></div>
+    </div>
+    <p class="fora">Ainda fora do escopo: gestão diária de tráfego pago, loja virtual, CMS, backend, login, integrações, formulários com coleta, edição de vídeo gravado, locução e legendas de fala e atendimento de comentários e directs. Se você precisar, indico um parceiro.</p>
+    <div class="ofertas">
+      <h3>Ofertas combinadas</h3>
+      <p>Pacotes de escopo para os pedidos mais comuns. O orçamento sai depois de uma conversa sobre o seu caso.</p>
+      <div class="trio" id="ofertas">
+        <article class="oferta revela"><h4>Presença Digital</h4><p class="para">Para quem vai começar ou se reposicionar</p><p>Marca e site juntos, do diagnóstico à entrega. <span class="situacao">Site sob consulta.</span></p>
+          <dl><div><dt>Inclui</dt><dd>Estratégia de marca, kit visual e site responsivo com instruções de manutenção</dd></div><div><dt>Combinado</dt><dd>Domínio e hospedagem ficam no nome da empresa. Sem loja virtual.</dd></div></dl></article>
+        <article class="oferta revela"><h4>Comunicação Contínua</h4><p class="para">Para marcas que precisam de constância</p><p>Planejamento e produção mensal de conteúdo. <span class="situacao">Motion e publicação manual sob consulta.</span></p>
+          <dl><div><dt>Inclui</dt><dd>Calendário, posts, carrosséis, Stories e Reels de motion, legendas e visão geral do mês</dd></div><div><dt>Combinado</dt><dd>Você aprova antes de publicar. Sem gravação de vídeo nem atendimento de directs.</dd></div></dl></article>
+        <article class="oferta revela"><h4>Campanhas e Crescimento</h4><p class="para">Para lançamentos e datas importantes</p><p>Estratégia, criativos, landing e um plano para medir o que funcionou. <span class="situacao">Landing e mídia digital paga sob consulta.</span></p>
+          <dl><div><dt>Inclui</dt><dd>Plano de mídia, criativos (com teste A/B se fizer sentido), landing page e plano de mensuração</dd></div><div><dt>Combinado</dt><dd>A verba de mídia é paga direto à plataforma. Nenhum resultado é prometido sem histórico.</dd></div></dl></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="processo" id="processo" aria-labelledby="titulo-processo">
+    <div class="cab-secao">
+      <h2 class="titulo" id="titulo-processo">Método</h2>
+      <p class="intro">O mesmo caminho de um plano de mídia, aplicado a marca, conteúdo e site.</p>
+    </div>
+    <ol class="etapas" id="etapas">
+      <li class="etapa revela"><h3>Diagnóstico</h3><p>O ponto de partida: marca, público, concorrência e o que já existe.</p></li>
+      <li class="etapa revela"><h3>Estratégia</h3><p>Objetivo, posicionamento e a ideia que vai guiar tudo.</p></li>
+      <li class="etapa revela"><h3>Plano e calendário</h3><p>Cada peça ou página com data, canal e função.</p></li>
+      <li class="etapa revela"><h3>Criação</h3><p>Texto antes do layout; depois design, vídeo ou site.</p></li>
+      <li class="etapa revela"><h3>Aprovação e entrega</h3><p>Você aprova cada etapa e recebe finais e editáveis.</p></li>
+      <li class="etapa revela"><h3>Leitura e ajuste</h3><p>O que os números disseram, sem jargão, e o próximo passo.</p></li>
+    </ol>
+  </section>
+
+  <section class="sobre" id="sobre" aria-labelledby="titulo-sobre">
     <div class="texto revela">
       <div class="esq">
-      <span class="rotulo">Sobre</span>
-      <div class="cab">
-        <img src="img/sobre/marcelo-passos-avatar.jpg" alt="Foto de Marcelo Passos" loading="lazy" width="88" height="88">
-        <h2 class="serif">Marcelo <em>Passos</em></h2>
-      </div>
+        <div class="cab">
+          <img src="img/sobre/marcelo-passos-avatar.jpg" alt="Retrato de Marcelo Passos" loading="lazy" width="88" height="88">
+          <h2 class="titulo" id="titulo-sobre">Sobre</h2>
+        </div>
       </div>
       <div class="dir">
-      <p>Sou publicitário e trabalho com mídia desde 2019, no planejamento e na compra de espaço em rádio, TV, portais e mídia exterior. Já cuidei de verbas que, somadas, passam de R$ 5 milhões.</p>
-      <p>Hoje levo esse método para as redes. Cada perfil que eu cuido tem público definido, um objetivo para cada post e um calendário que é cumprido. Trabalho de Lauro de Freitas (BA) e atendo empresas de qualquer cidade.</p>
-      <div class="fatos">
-        <div><b>Desde 2019</b><span>em mídia e publicidade</span></div>
-        <div><b>Mídia off</b><span>rádio, TV, portais e OOH</span></div>
-        <div><b>Redes</b><span>plano, calendário e números</span></div>
-      </div>
-      <div class="acoes">
-        <a class="btn cheio" href="#" data-whats>Chamar no WhatsApp <span>→</span></a>
-        <a class="btn linha" href="#servicos">Ver serviços</a>
-      </div>
+        <p>Sou Marcelo Passos, publicitário. Trabalho com mídia desde 2019, no planejamento e na compra de espaço em rádio, TV, portais e mídia exterior, e participei de campanhas que, somadas, movimentaram mais de R$ 5 milhões em mídia.</p>
+        <p>Hoje levo esse método para marca, conteúdo e sites: público definido, objetivo para cada peça e um calendário que é cumprido. Uso inteligência artificial para pesquisar, prototipar e gerar imagens. Tudo passa pela minha revisão, e nenhum dado é inventado.</p>
+        <p>Moro em Lauro de Freitas (BA) e atendo empresas de qualquer cidade.</p>
+        <div class="fatos">
+          <div><b>Mídia</b><span>planejamento e compra em rádio, TV, portais e OOH</span></div>
+          <div><b>Design</b><span>identidade, peças, Reels de motion e sites</span></div>
+          <div><b>IA</b><span>pesquisa, imagem e protótipo, com revisão humana</span></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="servicos">
-    <div class="cab-secao"><div><span class="rotulo">O que eu faço</span><h2 class="serif" style="margin-top:14px">Serviços</h2></div></div>
-    <div class="servicos">
-      <article class="servico revela"><span class="num">01</span><h3>Gestão mensal</h3>
-        <p>O mês planejado, produzido e publicado. Você aprova tudo pelo WhatsApp.</p>
-        <ul><li>Calendário do mês</li><li>Artes e legendas</li><li>Publicação e visão geral do mês</li></ul></article>
-      <article class="servico revela"><span class="num">02</span><h3>Carrossel</h3>
-        <p>Conteúdo que explica alguma coisa, do tipo que o seu cliente salva.</p>
-        <ul><li>Roteiro de cada lâmina</li><li>Capa que funciona sozinha no grid</li><li>Até 10 lâminas</li></ul></article>
-      <article class="servico revela"><span class="num">03</span><h3>Kit de marca</h3>
-        <p>Cores, fontes e modelos para o perfil ser reconhecido em qualquer post.</p>
-        <ul><li>Paleta e tipografia</li><li>Grafismo da marca</li><li>Modelos editáveis no Figma</li></ul></article>
-      <article class="servico revela"><span class="num">04</span><h3>Planejamento</h3>
-        <p>Público, objetivo e frequência definidos antes do primeiro post, como num plano de mídia.</p>
-        <ul><li>Análise do perfil</li><li>Pilares de conteúdo</li><li>Calendário editorial</li></ul></article>
+  <section class="recrut" id="equipes" aria-labelledby="titulo-equipes">
+    <div>
+      <h2 class="titulo" id="titulo-equipes">Para equipes</h2>
+      <p style="margin-top:22px">Procuro uma vaga em agência ou marca, em mídia, social media ou marketing. Junto, num só profissional, a leitura de mídia e a produção de conteúdo.</p>
+      <ul>
+        <li>Planejamento de mídia off e on</li>
+        <li>Estratégia e calendário de conteúdo</li>
+        <li>Direção de arte, peças e Reels de motion</li>
+        <li>Sites e landing pages em HTML e CSS</li>
+      </ul>
     </div>
-    <p class="nota-servicos">Os serviços podem ser contratados separados ou juntos. Tráfego pago e atendimento de comentários e directs ficam fora do escopo; se precisar, indico um parceiro. <a href="#contato">Comece pelo diagnóstico gratuito →</a></p>
+    <div class="acoes">
+      <a class="btn cheio" href="https://www.linkedin.com/in/marcelopassosj/" target="_blank" rel="noopener">Ver perfil no LinkedIn</a>
+      <a class="btn linha" href="mailto:mpassosj@gmail.com?subject=Pedido%20de%20curr%C3%ADculo">Pedir currículo por e-mail</a>
+    </div>
   </section>
 
-  <section class="processo" id="processo">
-    <div class="cab-secao"><div><span class="rotulo">Como eu trabalho</span><h2 class="serif" style="margin-top:14px">Processo</h2></div></div>
-    <div class="etapas" id="etapas"></div>
-  </section>
-
-  <section class="contato" id="contato">
-    <span class="rotulo">Diagnóstico gratuito</span>
-    <h2 class="serif" style="margin-top:20px">Vamos olhar o seu <em>perfil juntos.</em></h2>
-    <p class="intro-diag">Preencha os três campos e a conversa abre no meu WhatsApp. Eu analiso o seu perfil e devolvo um diagnóstico de uma página, com três ajustes para fazer ainda esta semana.</p>
+  <section class="contato" id="contato" aria-labelledby="titulo-contato">
+    <h2 class="titulo" id="titulo-contato">Vamos falar do seu projeto.</h2>
+    <p class="intro-diag">Conte em três campos o que você precisa e a conversa abre no meu WhatsApp. Para perfis do Instagram, o primeiro diagnóstico é gratuito: uma página com três ajustes para fazer na mesma semana.</p>
     <form class="diag" id="diag">
-      <label><span>@ do perfil da empresa</span><input name="perfil" required placeholder="@suaempresa" autocomplete="off"></label>
-      <label><span>O que a empresa faz</span><input name="empresa" required placeholder="Ex.: padaria no Imbuí"></label>
-      <label><span>Principal objetivo</span>
-        <select name="objetivo" required>
+      <label><span>O que você precisa</span>
+        <select name="pedido" required>
           <option value="" disabled selected>Escolha uma opção</option>
-          <option>Vender mais pelo Instagram</option>
-          <option>Ser mais conhecida na região</option>
-          <option>Organizar a rotina de posts</option>
+          <option>Diagnóstico gratuito do perfil</option>
+          <option>Marca ou identidade visual</option>
+          <option>Conteúdo e redes sociais</option>
+          <option>Site ou landing page</option>
+          <option>Campanha ou plano de mídia</option>
           <option>Ainda não sei</option>
         </select></label>
-      <button class="btn cheio" type="submit">Pedir diagnóstico pelo WhatsApp <span>→</span></button>
+      <label><span>Empresa ou @ do perfil</span><input name="empresa" required placeholder="Ex.: @suaempresa" autocomplete="organization"></label>
+      <label><span>O que a empresa faz</span><input name="segmento" required placeholder="Ex.: padaria de bairro"></label>
+      <button class="btn cheio" type="submit">Abrir conversa no WhatsApp</button>
+      <p class="nota">Nada é guardado neste site: o texto vai pronto para o WhatsApp e você decide se envia.</p>
     </form>
-    <p class="outros">Prefere falar direto? <a href="#" data-whats>WhatsApp (71) 98308-6896</a> · <a href="mailto:mpassosj@gmail.com">mpassosj@gmail.com</a></p>
+    <noscript><p>Use um dos links abaixo para falar sobre seu projeto.</p></noscript>
+    <p class="outros">Prefere falar direto? <a href="https://wa.me/5571983086896" data-whats>WhatsApp (71) 98308-6896</a> · <a href="mailto:mpassosj@gmail.com">mpassosj@gmail.com</a></p>
     <p class="onde">Lauro de Freitas (BA) · atendo empresas de qualquer cidade</p>
   </section>
 </main>
-<footer><span>© 2026 Marcelo Passos</span><span>Todas as marcas deste portfólio são fictícias, criadas para estudo. Fotos dos projetos geradas com IA; retrato tratado com IA.</span></footer>
+<footer><span>© 2026 Marcelo Passos</span><span>Retrato tratado com IA.</span></footer>
 
 <dialog class="caso" id="caso" aria-labelledby="caso-titulo">
   <div class="caso-topo">
     <div class="esq">
-      <button class="inicio" id="caso-inicio" aria-label="Voltar para a página inicial"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5 8 2.5l6 5"/><path d="M3.5 6.5V13.5h9V6.5"/></svg>Início</button>
+      <button class="inicio" id="caso-inicio"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5 8 2.5l6 5"/><path d="M3.5 6.5V13.5h9V6.5"/></svg>Início</button>
       <span class="rotulo" id="caso-indice"></span>
     </div>
     <div class="nav-casos">
       <button class="redondo" id="caso-ant" aria-label="Projeto anterior">←</button>
       <button class="redondo" id="caso-prox" aria-label="Próximo projeto">→</button>
-      <button class="redondo" id="caso-fechar" aria-label="Fechar">✕</button>
+      <button class="redondo" id="caso-fechar" aria-label="Fechar estudo de caso">✕</button>
     </div>
   </div>
   <div class="caso-corpo" id="caso-corpo"></div>
 </dialog>
-<div class="toast" id="toast" role="status"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-/* ===== Dados dos projetos (imagens em img/<id>/34 e /45, geradas por atualizar-imagens.ps1) ===== */
+/* ===== Dados dos projetos: copiados do portfolio/index.html publicado (mesmas imagens em img/<id>/) ===== */
 const PROJETOS = [
   { id: 'lento', nome: 'Lento', segmento: 'Cafeteria de especialidade', cat: 'gastronomia', tipo: 'Marca fictícia',
     fundo: '#2A1D17', txt: '#EFE4D2', arroba: '@lentocafe',
@@ -540,135 +635,165 @@ const PROJETOS = [
     posts: [['post-01-inspira', 'O top acompanha o braço e fica no lugar.'], ['post-02-desce', 'Testada no agachamento: estica e continua opaca.'], ['post-03-pausa', 'O cós de 9 cm não enrola quando você senta.'],
             ['post-04-segura', 'Alças cruzadas que firmam o top no salto.'], ['post-05-solta', 'Estica nas quatro direções e seca rápido.'], ['post-06-tome-folego', 'Feita em Lauro de Freitas, do PP ao GG.']] },
 ];
-const FILTROS = [['todos', 'Todos'], ['gastronomia', 'Gastronomia'], ['servicos', 'Serviços'], ['saude', 'Saúde e bem-estar'], ['varejo', 'Varejo e moda'], ['b2b', 'B2B']];
-const ETAPAS = [
-  ['Diagnóstico', 'O perfil atual, o seu público e o que a concorrência já faz.'],
-  ['Plano', 'O objetivo do mês e quantas vezes postar.'],
-  ['Calendário', 'Cada post com data e função.'],
-  ['Produção', 'Arte e legenda de cada post.'],
-  ['Aprovação e publicação', 'Você aprova pelo WhatsApp e eu publico nas datas combinadas.'],
-  ['Visão geral', 'Os números do mês explicados sem jargão e o próximo ajuste.'],
-];
-const src = (p, f, nome) => `img/${p.id}/${f}/${nome}.webp`;   // 720 px, só no estudo de caso
-const mini = (p, nome) => `img/${p.id}/mini/${nome}.webp`;        // 480 px, mosaico, cartões e grids (otimizar-imagens.py)
 
-/* ===== Abertura: mosaico em colunas e números ===== */
+/* ===== Camada estratégica (Fase 8). Só reorganiza fatos já publicados; nada inventado. ===== */
+const EXTRA = {
+  folego: { destaque: true, resumo: 'Lançamento de uma marca de roupa de treino feminina: conceito, seis posts com a mesma modelo, teste cego de textos e Reels.',
+    decisoes: ['Uma respiração dividida em seis comandos, um por pose, para dar ritmo ao grid.', 'Fundo na cor da própria roupa (tom sobre tom) em vez de cenário de academia.', 'Cada título prova um atributo da peça no movimento, sem falar de corpo como troféu.', 'A mesma modelo em todas as fotos, com ficha de consistência.'] },
+  lume: { decisoes: ['Regras do Código de Ética do CFO aplicadas desde o briefing: sem preço, promoção, antes e depois ou promessa.', 'O arco de luz vira sistema: chapéu, recorte da foto e fundo.', 'Uma explicação clara por post, para reduzir o medo da consulta.'] },
+  kaze: { decisoes: ['Rodízio, preço e delivery claros para quem decide pelo Instagram.', 'A treliça vermelha como grafismo único, sempre em malha.', 'Reels com cortes na batida da trilha e preço na volta da bateria.'] },
+};
+
+
+const FILTROS = [['todos', 'Todos'], ['gastronomia', 'Gastronomia'], ['servicos', 'Serviços'], ['saude', 'Saúde e bem-estar'], ['varejo', 'Varejo e moda'], ['b2b', 'B2B']];
+const ordemDestaques = ['folego', 'lume', 'kaze', 'raia', 'tamborim', 'lento'];
+const LISTA = [
+  ...ordemDestaques.map(id => PROJETOS.find(p => p.id === id)),
+  ...PROJETOS.filter(p => !ordemDestaques.includes(p.id)),
+];
+const src = (p, f, nome) => `img/${p.id}/${f}/${nome}.webp`;
+const mini = (p, nome) => `img/${p.id}/mini/${nome}.webp`;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+/* ===== Faixa das áreas ===== */
+const estrela = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/></svg>';
+const nomesAreas = [...document.querySelectorAll('#areas h3')].map(t => t.textContent);
+const umaVolta = nomesAreas.map(n => `<span class="item">${n}${estrela}</span>`).join('');
+document.getElementById('faixa-itens').insertAdjacentHTML('beforeend', `<span class="grupo">${umaVolta}</span><span class="grupo dup" aria-hidden="true">${umaVolta}${umaVolta}${umaVolta}</span>`);
+const faixa = document.getElementById('faixa-areas'), pausa = document.getElementById('pausa');
+pausa.onclick = () => { const parar = !faixa.classList.contains('parada'); faixa.classList.toggle('parada', parar);
+  pausa.setAttribute('aria-pressed', parar); pausa.setAttribute('aria-label', parar ? 'Retomar animações da abertura' : 'Pausar animações da abertura');
+  document.getElementById('pausa-txt').textContent = parar ? 'Retomar' : 'Pausar'; };
+
+/* ===== Mosaico (decorativo) ===== */
 const todos = PROJETOS.flatMap(p => p.posts.map(([n]) => ({ p, n })));
 const embaralhado = todos.map((v, i) => ({ v, k: (i * 37) % todos.length })).sort((a, b) => a.k - b.k).map(o => o.v);
 const mosaico = document.getElementById('mosaico');
 for (let c = 0; c < 3; c++) {
-  // 10 posts por coluna bastam para a animação (antes eram todos os 84, cada um em dobro)
   const itens = embaralhado.filter((_, i) => i % 3 === c).slice(0, 10);
-  const html = itens.map(({ p, n }, i) => `<img src="${mini(p, n)}" alt="" ${i < 3 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" width="480" height="640" data-p="${p.id}">`).join('');
+  const html = itens.map(({ p, n }, i) => `<img src="${mini(p, n)}" alt="" ${i < 3 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" width="480" height="640">`).join('');
   mosaico.insertAdjacentHTML('beforeend', `<div class="coluna"><div class="trilho">${html}${html}</div></div>`);
 }
-mosaico.addEventListener('click', e => { const id = e.target.dataset?.p; if (id) abrirCaso(PROJETOS.findIndex(p => p.id === id)); });
-document.getElementById('numeros').innerHTML = [[PROJETOS.length, 'projetos'], [todos.length, 'posts'], [2, 'formatos por post']]
-  .map(([n, t]) => `<div><b data-alvo="${n}">0</b><span>${t}</span></div>`).join('');
 
-/* ===== Filtros e cartões ===== */
+/* ===== Cartões e filtros ===== */
 const grade = document.getElementById('grade');
-grade.innerHTML = PROJETOS.map((p, i) => `
-  <button class="cartao revela" data-cat="${p.cat}" data-i="${i}" style="--cor-fundo:${p.fundo}" aria-label="Abrir projeto ${p.nome}">
-    <div class="capa"><span class="selo ${p.estudo ? 'estudo' : ''}">${p.tipo}</span>
-      <div class="posts">${[1, 0, 2].map(k => `<img src="${mini(p, p.posts[k][0])}" alt="" loading="lazy" decoding="async">`).join('')}</div></div>
-    <div class="info"><div><h3>${p.nome}</h3><p>${p.segmento}</p><span class="ver">Ver estudo de caso <span>→</span></span></div>
-      <div class="amostras">${p.cores.slice(0, 4).map(c => `<i style="background:${c[1]}" title="${c[0]}"></i>`).join('')}</div></div>
-  </button>`).join('');
+grade.innerHTML = LISTA.map(p => { const x = EXTRA[p.id] || {}; const i = LISTA.indexOf(p);
+  return `<article class="cartao revela ${x.destaque ? 'destaque' : ''}" data-cat="${p.cat}" ${i >= ordemDestaques.length ? 'hidden' : ''} style="--cor-fundo:${p.fundo}">
+    <div class="capa"><span class="selo">${x.destaque ? 'Case completo · marca fictícia' : 'Case de estudo · marca fictícia'}</span>
+      <div class="posts">${[1, 0, 2].map(k => `<img src="${mini(p, p.posts[k][0])}" alt="" loading="lazy" decoding="async" width="480" height="640">`).join('')}</div></div>
+    <div class="info"><div><h3>${esc(p.nome)}</h3><p class="seg">${esc(p.segmento)}</p>${x.resumo ? `<p class="resumo">${esc(x.resumo)}</p>` : ''}
+      <button class="abrir" data-i="${i}" aria-haspopup="dialog">Ver estudo de caso<span class="sr"> de ${esc(p.nome)}</span> <span aria-hidden="true">→</span></button></div>
+      <div class="amostras" aria-hidden="true">${p.cores.slice(0, 4).map(c => `<i style="background:${c[1]}"></i>`).join('')}</div></div>
+  </article>`; }).join('');
 const filtros = document.getElementById('filtros');
 filtros.innerHTML = FILTROS.map(([k, t], i) => `<button data-f="${k}" aria-pressed="${i === 0}">${t}</button>`).join('');
+const verProjetos = document.getElementById('ver-projetos');
+const cartoes = [...grade.querySelectorAll('.cartao')];
+let mostrarTodos = false;
+verProjetos.hidden = false;
+verProjetos.addEventListener('click', () => {
+  mostrarTodos = true;
+  cartoes.forEach(c => { c.hidden = false; });
+  cartoes[ordemDestaques.length].querySelector('.abrir').focus();
+  verProjetos.hidden = true;
+});
 filtros.addEventListener('click', e => {
-  const b = e.target.closest('button'); if (!b) return;
+  const b = e.target.closest('button');
+  if (!b) return;
   filtros.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
-  grade.querySelectorAll('.cartao').forEach(c => {
-    const mostra = b.dataset.f === 'todos' || c.dataset.cat === b.dataset.f;
-    if (mostra && c.classList.contains('oculto')) { c.classList.remove('oculto'); c.classList.add('entrando'); requestAnimationFrame(() => requestAnimationFrame(() => c.classList.remove('entrando'))); }
-    if (!mostra) c.classList.add('oculto');
+  const todos = b.dataset.f === 'todos';
+  verProjetos.hidden = !todos || mostrarTodos;
+  cartoes.forEach((c, i) => {
+    c.hidden = todos ? !mostrarTodos && i >= ordemDestaques.length : c.dataset.cat !== b.dataset.f;
   });
 });
-grade.addEventListener('click', e => { const c = e.target.closest('.cartao'); if (c) abrirCaso(+c.dataset.i); });
+grade.addEventListener('click', e => { const b = e.target.closest('.abrir'); if (b) abrirCaso(+b.dataset.i, b); });
 
-/* ===== Processo ===== */
-document.getElementById('etapas').innerHTML = ETAPAS.map(([t, d]) => `<div class="etapa revela"><h4>${t}</h4><p>${d}</p></div>`).join('');
+/* ===== Áreas, ofertas, método ===== */
+/* Áreas, ofertas e método estão no HTML (funcionam sem JavaScript). A faixa usa os títulos das áreas no HTML. */
 
 /* ===== Estudo de caso ===== */
 const dlg = document.getElementById('caso'), corpo = document.getElementById('caso-corpo');
-let atual = 0, slide = 0, formato = '34';
-function abrirCaso(i) {
-  atual = (i + PROJETOS.length) % PROJETOS.length; slide = 0;
-  const p = PROJETOS[atual];
-  document.getElementById('caso-indice').textContent = `${String(atual + 1).padStart(2, '0')} / ${String(PROJETOS.length).padStart(2, '0')} · ${p.nome}`;
+let atual = 0, slide = 0, formato = '34', origem = null;
+function blocoLista(titulo, itens) { return `<div><h3 class="rotulo">${titulo}</h3><ul>${itens.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`; }
+function abrirCaso(i, quem) {
+  if (quem) origem = quem;
+  atual = (i + LISTA.length) % LISTA.length; slide = 0;
+  const p = LISTA[atual], x = EXTRA[p.id] || {}, prox = LISTA[(atual + 1) % LISTA.length];
+  document.getElementById('caso-indice').textContent = `${String(atual + 1).padStart(2, '0')} / ${String(LISTA.length).padStart(2, '0')} · ${p.nome}`;
   corpo.style.setProperty('--cor-fundo', p.fundo); corpo.style.setProperty('--cor-txt', p.txt);
   corpo.innerHTML = `
-    ${p.estudo ? `<div class="aviso"><span>ⓘ</span><div><b>Projeto de Estudo.</b> Exercício pessoal de redesenho, não comissionado nem aprovado pela ${p.nome}. Marca e logotipo pertencem à empresa e foram usados apenas para fins de estudo.</div></div>` : ''}
+    <p class="nota-caso">Marca fictícia criada para estudo.</p>
     <div class="caso-cab">
-      <div><span class="rotulo">${p.segmento} · ${p.tipo}</span><h2 class="serif" id="caso-titulo" style="margin-top:16px">${p.nome}</h2></div>
+      <div><span class="rotulo">${esc(p.segmento)}</span><h2 class="titulo" id="caso-titulo" tabindex="-1" style="margin-top:16px">${esc(p.nome)}</h2></div>
       <div class="meta">
-        <div><span class="rotulo">Entregas</span>${p.entregas}</div>
-        <div><span class="rotulo">Perfil</span>${p.arroba}${p.estudo ? ' (marca real)' : ' (fictício)'}</div>
+        <div><span class="rotulo">Entregas</span>${esc(p.entregas)}</div>
+        <div><span class="rotulo">Perfil</span>${esc(p.arroba)} (fictício)</div>
       </div>
     </div>
     <div class="texto-caso">
-      <div><h4 class="rotulo">Desafio</h4><p>${p.desafio}</p></div>
-      <div><h4 class="rotulo">Conceito</h4><p>${p.conceito}</p></div>
+      <div><h3 class="rotulo">Desafio</h3><p>${esc(p.desafio)}</p></div>
+      <div><h3 class="rotulo">Conceito</h3><p>${esc(p.conceito)}</p></div>
+      ${x.decisoes ? blocoLista('Decisões', x.decisoes) : ''}
     </div>
     <div class="vitrine">
       <div class="palco" id="palco">
         <div class="palco-barra">
-          <div class="alterna" role="group" aria-label="Formato">
-            <button data-f="34" aria-pressed="true">Feed 3:4</button><button data-f="45" aria-pressed="false">Anúncio 4:5</button>
+          <div class="alterna" role="group" aria-label="Formato do post">
+            <button data-f="34" aria-pressed="${formato === '34'}">Feed 3:4</button><button data-f="45" aria-pressed="${formato === '45'}">Feed 4:5</button>
           </div>
-          <span class="contador" id="contador"></span>
+          <span class="contador" id="contador" aria-live="polite"></span>
         </div>
-        <div class="carrossel" id="carrossel">
+        <div class="carrossel" id="carrossel" aria-roledescription="carrossel" aria-label="Posts de ${esc(p.nome)}">
           <div class="faixa" id="faixa"></div>
           <button class="seta esq" id="s-ant" aria-label="Post anterior">←</button>
           <button class="seta dir" id="s-prox" aria-label="Próximo post">→</button>
         </div>
-        <div class="legenda-post" id="legenda"></div>
+        <p class="legenda-post" id="legenda"></p>
         <div class="miniaturas" id="minis"></div>
       </div>
       <div class="lateral">
         <div class="celular"><div class="tela">
-          <div class="ig-topo"><span class="av">${p.nome[0]}</span><div><b>${p.arroba.slice(1)}</b><small>Prévia do grid do perfil</small></div></div>
-          <div class="ig-grid">${[...p.posts].reverse().map(([n], k) => `<img src="${mini(p, n)}" alt="" data-k="${p.posts.length - 1 - k}" loading="lazy">`).join('')}</div>
+          <div class="ig-topo"><span class="av" aria-hidden="true">${esc(p.nome[0])}</span><div><b>${esc(p.arroba.slice(1))}</b><small>Prévia do grid do perfil</small></div></div>
+          <div class="ig-grid">${[...p.posts].reverse().map(([n, t], k) => `<button data-k="${p.posts.length - 1 - k}" aria-label="Ver post: ${esc(t)}"><img src="${mini(p, n)}" alt="" loading="lazy"></button>`).join('')}</div>
         </div></div>
         <div class="kit">
-          <h4 class="rotulo">Paleta · clique para copiar</h4>
-          <div class="paleta">${p.cores.map(([n, h]) => `<button class="cor" data-hex="${h}"><i style="background:${h}"></i><span><b>${n}</b>${h}</span></button>`).join('')}</div>
+          <h3 class="rotulo">Paleta (clique para copiar o código)</h3>
+          <div class="paleta">${p.cores.map(([n, h]) => `<button class="cor" data-hex="${h}" aria-label="Copiar ${esc(n)} ${h}"><i style="background:${h}"></i><span><b>${esc(n)}</b>${h}</span></button>`).join('')}</div>
           <div class="fontes">${p.fontes.map(([u, f]) => `<div><span class="rotulo">${u}</span><span>${f}</span></div>`).join('')}</div>
         </div>
       </div>
     </div>
     ${p.reels ? `<div class="reels">
-      <div class="celular"><div class="tela"><video src="${p.reels.src}" poster="${p.reels.capa}" controls playsinline preload="none" aria-label="${p.reels.titulo}"></video></div></div>
-      <div><h4 class="rotulo">${p.reels.titulo}</h4><p>${p.reels.texto}</p><small>${p.reels.credito}</small></div>
+      <div class="celular"><div class="tela"><video src="${p.reels.src}" poster="${p.reels.capa}" controls playsinline preload="none" aria-label="${esc(p.reels.titulo)}"></video></div></div>
+      <div><h3 class="rotulo">${esc(p.reels.titulo)}</h3><p>${esc(p.reels.texto)}</p><small>${esc(p.reels.credito)}</small></div>
     </div>` : ''}
-    <div class="proximo"><span class="rotulo">Próximo projeto</span><button id="ir-prox"><span class="rotulo">${PROJETOS[(atual + 1) % PROJETOS.length].segmento}</span><b>${PROJETOS[(atual + 1) % PROJETOS.length].nome} →</b></button></div>`;
+    <div class="proximo"><span class="rotulo">Próximo projeto</span><button id="ir-prox"><span class="rotulo">${esc(prox.segmento)}</span><b>${esc(prox.nome)} →</b></button></div>`;
   montarFaixa();
   corpo.querySelector('.alterna').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; formato = b.dataset.f;
-    corpo.querySelectorAll('.alterna button').forEach(x => x.setAttribute('aria-pressed', x === b)); montarFaixa(); });
+    corpo.querySelectorAll('.alterna button').forEach(y => y.setAttribute('aria-pressed', y === b)); montarFaixa(); });
   corpo.querySelector('#s-ant').onclick = () => ir(slide - 1);
   corpo.querySelector('#s-prox').onclick = () => ir(slide + 1);
   corpo.querySelector('#minis').onclick = e => { const b = e.target.closest('button'); if (b) ir(+b.dataset.k); };
-  corpo.querySelector('.ig-grid').onclick = e => { const k = e.target.dataset?.k; if (k) { ir(+k); corpo.querySelector('#palco').scrollIntoView({ behavior: 'smooth', block: 'center' }); } };
+  corpo.querySelector('.ig-grid').onclick = e => { const b = e.target.closest('button'); if (b) { ir(+b.dataset.k); corpo.querySelector('#palco').scrollIntoView({ behavior: 'smooth', block: 'center' }); } };
   corpo.querySelector('.paleta').onclick = e => { const b = e.target.closest('.cor'); if (!b) return;
     navigator.clipboard?.writeText(b.dataset.hex).then(() => aviso(`${b.dataset.hex} copiado`), () => aviso(b.dataset.hex)); };
-  corpo.querySelector('#ir-prox').onclick = () => { abrirCaso(atual + 1); dlg.scrollTop = 0; };
+  corpo.querySelector('#ir-prox').onclick = () => { abrirCaso(atual + 1); dlg.scrollTop = 0; corpo.querySelector('#caso-titulo').focus?.(); };
   arrastar(corpo.querySelector('#carrossel'));
   if (!dlg.open) { dlg.showModal(); document.body.style.overflow = 'hidden'; }
   dlg.scrollTop = 0;
 }
 function montarFaixa() {
-  const p = PROJETOS[atual];
+  const p = LISTA[atual];
   corpo.querySelector('#palco').classList.toggle('f45', formato === '45');
-  corpo.querySelector('#faixa').innerHTML = p.posts.map(([n, t]) => `<img src="${src(p, formato, n)}" alt="${t}" draggable="false">`).join('');
-  corpo.querySelector('#minis').innerHTML = p.posts.map(([n], k) => `<button data-k="${k}" aria-label="Post ${k + 1}"><img src="${mini(p, n)}" alt=""></button>`).join('');
+  corpo.querySelector('#faixa').innerHTML = p.posts.map(([n, t], k) => `<img src="${src(p, formato, n)}" alt="Post ${k + 1} de ${p.posts.length}: ${esc(t)}" draggable="false" ${k ? 'loading="lazy"' : ''}>`).join('');
+  corpo.querySelector('#minis').innerHTML = p.posts.map(([n], k) => `<button data-k="${k}" aria-label="Ir para o post ${k + 1}"><img src="${mini(p, n)}" alt=""></button>`).join('');
   ir(slide);
 }
 function ir(k) {
-  const p = PROJETOS[atual]; slide = (k + p.posts.length) % p.posts.length;
+  const p = LISTA[atual]; slide = (k + p.posts.length) % p.posts.length;
   corpo.querySelector('#faixa').style.transform = `translateX(${-slide * 100}%)`;
+  corpo.querySelectorAll('#faixa img').forEach((im, i) => im.setAttribute('aria-hidden', i !== slide));
   corpo.querySelector('#contador').textContent = `${String(slide + 1).padStart(2, '0')} / ${String(p.posts.length).padStart(2, '0')}`;
   corpo.querySelector('#legenda').textContent = p.posts[slide][1];
   corpo.querySelectorAll('#minis button').forEach((b, i) => b.setAttribute('aria-current', i === slide));
@@ -677,49 +802,40 @@ function arrastar(el) {
   let x0 = null;
   el.addEventListener('pointerdown', e => { if (e.target.closest('.seta')) return; x0 = e.clientX; });
   el.addEventListener('pointerup', e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) ir(slide + (dx < 0 ? 1 : -1)); });
+  el.addEventListener('pointercancel', () => { x0 = null; });
 }
-function fechar() { dlg.close(); }
-dlg.addEventListener('close', () => { document.body.style.overflow = ''; });
-document.getElementById('caso-fechar').onclick = fechar;
-document.getElementById('caso-inicio').onclick = () => { fechar(); history.replaceState(null, '', location.pathname); scrollTo({ top: 0, behavior: 'instant' }); };
+dlg.addEventListener('close', () => { document.body.style.overflow = ''; origem?.focus(); });
+document.getElementById('caso-fechar').onclick = () => dlg.close();
+document.getElementById('caso-inicio').onclick = () => { origem = null; dlg.close(); scrollTo({ top: 0, behavior: 'instant' }); document.querySelector('.logo').focus(); };
 document.getElementById('caso-ant').onclick = () => abrirCaso(atual - 1);
 document.getElementById('caso-prox').onclick = () => abrirCaso(atual + 1);
-dlg.addEventListener('click', e => { if (e.target === dlg) fechar(); });
-document.addEventListener('keydown', e => { if (!dlg.open) return;
+dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+dlg.addEventListener('keydown', e => { if (e.target.closest('input, select, video')) return;
   if (e.key === 'ArrowRight') ir(slide + 1); if (e.key === 'ArrowLeft') ir(slide - 1); });
 
-/* ===== Detalhes: toast, tema, topo, revelar ao rolar, contadores ===== */
+/* ===== Detalhes ===== */
 let tt; function aviso(t) { const el = document.getElementById('toast'); el.textContent = t; el.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => el.classList.remove('on'), 1600); }
 const raiz = document.documentElement;
-try { const t = localStorage.getItem('tema'); if (t) raiz.dataset.theme = t; } catch (e) {}
-document.getElementById('tema').onclick = () => {
-  const escuro = raiz.dataset.theme !== 'light';
-  raiz.dataset.theme = escuro ? 'light' : 'dark'; try { localStorage.setItem('tema', raiz.dataset.theme); } catch (e) {}
-};
+document.getElementById('tema').onclick = () => { const escuro = raiz.dataset.theme !== 'light';
+  raiz.dataset.theme = escuro ? 'light' : 'dark'; try { localStorage.setItem('tema', raiz.dataset.theme); } catch (e) {} };
 addEventListener('scroll', () => document.getElementById('topo').classList.toggle('rolou', scrollY > 20), { passive: true });
-/* WhatsApp: link com mensagem pronta */
-const WHATS = 'https://wa.me/5571983086896?text=' + encodeURIComponent('Olá, Marcelo! Vi seu portfólio e quero conversar sobre o Instagram da minha empresa.');
+const NUM = '5571983086896';
+const WHATS = `https://wa.me/${NUM}?text=` + encodeURIComponent('Olá, Marcelo! Vi seu site e quero conversar sobre um projeto.');
 document.querySelectorAll('[data-whats]').forEach(a => { a.href = WHATS; a.target = '_blank'; a.rel = 'noopener'; });
-/* Diagnóstico gratuito: monta a mensagem com os três campos e abre o WhatsApp (nada é guardado no site) */
 document.getElementById('diag').addEventListener('submit', e => {
-  e.preventDefault();
-  const f = new FormData(e.target);
-  const perfil = String(f.get('perfil')).trim().replace(/^@?/, '@');
-  const msg = `Olá, Marcelo! Quero o diagnóstico gratuito do meu perfil.\n\nPerfil: ${perfil}\nA empresa: ${String(f.get('empresa')).trim()}\nObjetivo: ${f.get('objetivo')}`;
-  window.open('https://wa.me/5571983086896?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  e.preventDefault(); const f = new FormData(e.target);
+  const msg = `Olá, Marcelo! Vim pelo seu site.\n\nPreciso de: ${f.get('pedido')}\nEmpresa: ${String(f.get('empresa')).trim()}\nO que fazemos: ${String(f.get('segmento')).trim()}`;
+  window.open(`https://wa.me/${NUM}?text=` + encodeURIComponent(msg), '_blank', 'noopener');
 });
-/* Menu do celular */
 const topo = document.getElementById('topo'), abreMenu = document.getElementById('abre-menu');
 function menuCel(abrir) { topo.classList.toggle('aberto', abrir); abreMenu.setAttribute('aria-expanded', abrir); abreMenu.setAttribute('aria-label', abrir ? 'Fechar menu' : 'Abrir menu'); }
 abreMenu.onclick = () => menuCel(!topo.classList.contains('aberto'));
 document.getElementById('menu-cel').addEventListener('click', e => { if (e.target.closest('a')) menuCel(false); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && topo.classList.contains('aberto')) { menuCel(false); abreMenu.focus(); } });
 document.addEventListener('click', e => { if (topo.classList.contains('aberto') && !topo.contains(e.target)) menuCel(false); });
-matchMedia('(min-width: 641px)').addEventListener('change', e => { if (e.matches) menuCel(false); });
-const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visivel'); obs.unobserve(e.target); } }), { threshold: .15 });
+matchMedia('(min-width: 761px)').addEventListener('change', e => { if (e.matches) menuCel(false); });
+const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visivel'); obs.unobserve(e.target); } }), { threshold: .12 });
 document.querySelectorAll('.revela').forEach(el => obs.observe(el));
-document.querySelectorAll('[data-alvo]').forEach(b => { const alvo = +b.dataset.alvo; let n = 0;
-  const passo = () => { n = Math.min(alvo, n + Math.max(1, Math.round(alvo / 24))); b.textContent = n; if (n < alvo) requestAnimationFrame(passo); }; setTimeout(passo, 400); });
 </script>
 </body>
 </html>
