@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marcelo Passos · Estratégia, design e conteúdo para marcas</title>
-<meta name="description" content="Publicitário de mídia desde 2019. Branding, social media, design, audiovisual, sites e planejamento de mídia para empresas de qualquer cidade. Peça um orçamento ou um diagnóstico gratuito do seu perfil.">
+<meta name="description" content="Marcelo Passos é publicitário e atua com mídia desde 2019. Conheça seu trabalho em branding, conteúdo, design, audiovisual, sites e campanhas.">
 <link rel="canonical" href="https://marcelopassosj.github.io/">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="Marcelo Passos · Estratégia, design e conteúdo para marcas">
-<meta property="og:description" content="Publicitário de mídia desde 2019. Marca, conteúdo, sites e campanhas com método de planejamento de mídia.">
+<meta property="og:description" content="Portfólio de Marcelo Passos, publicitário com experiência em planejamento de mídia, estratégia de marca, conteúdo e web design.">
 <meta property="og:url" content="https://marcelopassosj.github.io/">
 <meta property="og:image" content="https://marcelopassosj.github.io/og-marcelo-passos.jpg">
 <meta name="theme-color" content="#0F0F0E">
@@ -198,7 +198,8 @@ noscript p { padding: 18px 20px; border: 1px dashed var(--linha); border-radius:
 .ofertas { margin-top: 84px; }
 .ofertas > h3 { font: 800 clamp(30px, 3.4vw, 46px)/1 var(--sans); letter-spacing: -.035em; }
 .ofertas > p { margin-top: 12px; color: var(--pedra); max-width: 40em; }
-.trio { margin-top: 34px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.trio { margin-top: 34px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
+@media (min-width: 901px) and (max-width: 1180px) { .trio { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 26px; } }
 .oferta { padding: 26px 28px 8px 0; border-top: 2px solid var(--tinta); margin-right: 28px; }
 .oferta h4 { font: 800 26px/1.05 var(--sans); letter-spacing: -.03em; }
 .oferta .para { margin-top: 8px; color: var(--acento-tx); font-weight: 600; font-size: 15px; }
@@ -359,14 +360,14 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
 <main id="conteudo" tabindex="-1">
   <section class="abertura" aria-labelledby="titulo-abertura">
     <div class="txt">
-      <span class="rotulo"><span class="ponto" aria-hidden="true"></span>Publicitário de mídia desde 2019</span>
+      <span class="rotulo"><span class="ponto" aria-hidden="true"></span>Publicitário · Planejamento de mídia desde 2019</span>
       <h1 class="titulo" id="titulo-abertura"><span>Marcas, campanhas</span> <span>e experiências digitais.</span> <span class="sr">Com estratégia.</span><span class="enfase giro" aria-hidden="true"><span><span>Com estratégia.</span><span>Com identidade.</span><span>Com objetivo.</span><span>Com estratégia.</span></span></span></h1>
-      <p class="sub">Planejo mídia desde 2019. Conecto estratégia, Branding, criação e Web Design, com apoio de inteligência artificial, a partir do público, do canal e do objetivo de cada projeto.</p>
+      <p class="sub">Dê direção à sua marca. Conte com minha experiência em planejamento de mídia para definir quem alcançar, o que comunicar e onde.</p>
       <div class="acoes">
-        <a class="btn cheio" href="#contato">Pedir um orçamento</a>
-        <a class="btn linha" href="#trabalhos">Ver trabalhos</a>
+        <a class="btn cheio" href="#contato">Peça um orçamento</a>
+        <a class="btn linha" href="#trabalhos">Veja os trabalhos</a>
       </div>
-      <p class="link-rec">Está contratando? <a href="#equipes">Veja meu perfil para vagas</a></p>
+      <p class="link-rec"><a href="#equipes">Conheça meu perfil profissional</a></p>
     </div>
     <div class="mosaico" id="mosaico" aria-hidden="true"></div>
     <div class="faixa-areas" id="faixa-areas">
@@ -378,39 +379,41 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
   <section id="trabalhos" aria-labelledby="titulo-trabalhos">
     <div class="cab-secao">
       <h2 class="titulo" id="titulo-trabalhos">Trabalhos</h2>
-      <p class="intro">Feeds, campanhas e identidades com estratégia por trás de cada peça. Clique num projeto para ver o desafio, o conceito e os posts nos dois formatos.</p>
+      <p class="intro">Abra um projeto. Veja o desafio, conheça o conceito e explore as peças.</p>
     </div>
-    <p class="aviso-cases" role="note">Cases de estudo com marcas fictícias, fotos geradas com IA e eventuais números simulados.</p>
+    <p class="aviso-cases" role="note">Os estudos apresentam marcas fictícias, imagens geradas com IA e, em alguns casos, dados simulados.</p>
     <div class="filtros" id="filtros" role="group" aria-label="Filtrar projetos por segmento"></div>
     <div class="grade" id="grade"></div>
-    <button type="button" class="btn linha ver-projetos" id="ver-projetos" aria-controls="grade" hidden>Ver todos os projetos</button>
+    <button type="button" class="btn linha ver-projetos" id="ver-projetos" aria-controls="grade" hidden>Veja todos os projetos</button>
     <noscript><p>Os estudos de caso abrem com JavaScript. Se preferir, peça os cases em PDF pelo e-mail mpassosj@gmail.com.</p></noscript>
   </section>
 
   <section id="servicos" aria-labelledby="titulo-servicos">
     <div class="cab-secao">
-      <h2 class="titulo" id="titulo-servicos">O que eu faço</h2>
-      <p class="intro">Seis áreas que conversam entre si. Dá para contratar uma só ou juntar várias numa das ofertas abaixo.</p>
+      <h2 class="titulo" id="titulo-servicos">Serviços</h2>
+      <p class="intro">Escolha um serviço ou combine os que seu projeto precisa.</p>
     </div>
     <div class="areas" id="areas">
-      <div class="area revela"><h3>Branding</h3><p>Posicionamento, nome e identidade para a marca ser reconhecida e lembrada.</p><ul><li>Diagnóstico e posicionamento</li><li>Naming com checagem de nome</li><li>Identidade verbal</li><li>Paleta, tipografia e grafismo</li><li>Modelos editáveis no Figma</li><li>Branding para clientes e logotipos complexos <span class="situacao">· sob consulta</span></li></ul></div>
-      <div class="area revela"><h3>Social media</h3><p>Planejamento e produção de conteúdo com objetivo para cada post.</p><ul><li>Linha editorial e calendário</li><li>Posts, carrosséis e legendas</li><li>Gestão mensal com aprovação <span class="situacao">· sob consulta</span></li></ul></div>
-      <div class="area revela"><h3>Design e publicidade</h3><p>Peças de campanha e anúncios com conceito antes do layout.</p><ul><li>Criativos para anúncios</li><li>Materiais de campanha</li><li>Editáveis em Figma (PSD sob pedido)</li></ul></div>
-      <div class="area revela"><h3>Audiovisual</h3><p>Stories e Reels de motion com materiais existentes. <span class="situacao">Em validação.</span></p><ul><li>Roteiro e storyboard</li><li>Reels e Stories animados</li><li>Trilha licenciada quando houver</li></ul></div>
-      <div class="area revela"><h3>Web design</h3><p>Landing pages e sites estáticos. <span class="situacao">Em validação.</span></p><ul><li>Landing page de campanha</li><li>Site institucional e portfólio</li><li>Cardápio ou catálogo on-line</li></ul></div>
-      <div class="area revela"><h3>Planejamento de mídia</h3><p>Onde, quando e com quanto anunciar, com a leitura de quem trabalha com mídia desde 2019.</p><ul><li>Plano de mídia offline</li><li>Planejamento de mídia digital paga <span class="situacao">· sob consulta</span></li><li>Calendário e praças</li><li>Leitura de resultados e ajuste</li></ul></div>
+      <div class="area revela"><h3>Branding</h3><p>Defina o posicionamento da sua marca e dê a ela um nome e uma identidade.</p><ul><li>Diagnóstico e posicionamento</li><li>Naming com checagem de nome</li><li>Identidade verbal</li><li>Paleta, tipografia e grafismo</li><li>Modelos editáveis no Figma</li><li>Branding para clientes e logotipos complexos <span class="situacao">· sob consulta</span></li></ul></div>
+      <div class="area revela"><h3>Social media</h3><p>Organize sua presença nas redes com planejamento editorial e produção de conteúdo.</p><ul><li>Linha editorial e calendário</li><li>Posts, carrosséis e legendas</li><li>Gestão mensal com aprovação <span class="situacao">· sob consulta</span></li></ul></div>
+      <div class="area revela"><h3>Design e publicidade</h3><p>Dê um conceito à sua campanha e leve a ideia para as peças e os anúncios.</p><ul><li>Criativos para anúncios</li><li>Materiais de campanha</li><li>Editáveis em Figma (PSD sob pedido)</li></ul></div>
+      <div class="area revela"><h3>Audiovisual</h3><p>Transforme seus materiais em Stories e Reels animados. <span class="situacao">Em validação.</span></p><ul><li>Roteiro e storyboard</li><li>Reels e Stories animados</li><li>Trilha licenciada quando houver</li></ul></div>
+      <div class="area revela"><h3>Web design</h3><p>Apresente seu negócio com um site estático ou lance uma campanha com uma landing page. <span class="situacao">Em validação.</span></p><ul><li>Landing page de campanha</li><li>Site institucional e portfólio</li><li>Cardápio ou catálogo on-line</li></ul></div>
+      <div class="area revela"><h3>Planejamento de mídia</h3><p>Escolha onde e quando anunciar e quanto investir em cada campanha.</p><ul><li>Plano de mídia offline</li><li>Planejamento de mídia digital paga <span class="situacao">· sob consulta</span></li><li>Calendário e praças</li><li>Leitura de resultados e ajuste</li></ul></div>
     </div>
     <p class="fora">Ainda fora do escopo: gestão diária de tráfego pago, loja virtual, CMS, backend, login, integrações, formulários com coleta, edição de vídeo gravado, locução e legendas de fala e atendimento de comentários e directs. Se você precisar, indico um parceiro.</p>
     <div class="ofertas">
-      <h3>Ofertas combinadas</h3>
-      <p>Pacotes de escopo para os pedidos mais comuns. O orçamento sai depois de uma conversa sobre o seu caso.</p>
+      <h3>Pacotes e serviços avulsos</h3>
+      <p>Peça um orçamento para as entregas que você precisa.</p>
       <div class="trio" id="ofertas">
-        <article class="oferta revela"><h4>Presença Digital</h4><p class="para">Para quem vai começar ou se reposicionar</p><p>Marca e site juntos, do diagnóstico à entrega. <span class="situacao">Site sob consulta.</span></p>
+        <article class="oferta revela"><h4>Presença Digital</h4><p class="para">Para quem vai começar ou se reposicionar</p><p>Crie ou atualize sua marca e leve a nova identidade para o site. <span class="situacao">Site sob consulta.</span></p>
           <dl><div><dt>Inclui</dt><dd>Estratégia de marca, kit visual e site responsivo com instruções de manutenção</dd></div><div><dt>Combinado</dt><dd>Domínio e hospedagem ficam no nome da empresa. Sem loja virtual.</dd></div></dl></article>
-        <article class="oferta revela"><h4>Comunicação Contínua</h4><p class="para">Para marcas que precisam de constância</p><p>Planejamento e produção mensal de conteúdo. <span class="situacao">Motion e publicação manual sob consulta.</span></p>
+        <article class="oferta revela"><h4>Comunicação Contínua</h4><p class="para">Para marcas que precisam de constância</p><p>Organize a pauta do mês e mantenha suas redes atualizadas. <span class="situacao">Motion e publicação manual sob consulta.</span></p>
           <dl><div><dt>Inclui</dt><dd>Calendário, posts, carrosséis, Stories e Reels de motion, legendas e visão geral do mês</dd></div><div><dt>Combinado</dt><dd>Você aprova antes de publicar. Sem gravação de vídeo nem atendimento de directs.</dd></div></dl></article>
-        <article class="oferta revela"><h4>Campanhas e Crescimento</h4><p class="para">Para lançamentos e datas importantes</p><p>Estratégia, criativos, landing e um plano para medir o que funcionou. <span class="situacao">Landing e mídia digital paga sob consulta.</span></p>
+        <article class="oferta revela"><h4>Campanhas e Crescimento</h4><p class="para">Para lançamentos e datas importantes</p><p>Planeje o lançamento, crie as peças e defina como medir os resultados. <span class="situacao">Landing e mídia digital paga sob consulta.</span></p>
           <dl><div><dt>Inclui</dt><dd>Plano de mídia, criativos (com teste A/B se fizer sentido), landing page e plano de mensuração</dd></div><div><dt>Combinado</dt><dd>A verba de mídia é paga direto à plataforma. Nenhum resultado é prometido sem histórico.</dd></div></dl></article>
+        <article class="oferta revela"><h4>Perfil da Empresa no Google</h4><p class="para">Para negócios que atendem em Salvador e região</p><p>Atualize seu perfil para que os clientes encontrem sua empresa na Busca do Google e no Maps.</p>
+          <dl><div><dt>Inclui</dt><dd>Revisão de categoria, descrição, endereço, horários, fotos e links de contato</dd></div><div><dt>Combinado</dt><dd>Você mantém a propriedade do perfil. Implantação por unidade e manutenção opcional.</dd></div></dl></article>
       </div>
     </div>
   </section>
@@ -418,15 +421,15 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
   <section class="processo" id="processo" aria-labelledby="titulo-processo">
     <div class="cab-secao">
       <h2 class="titulo" id="titulo-processo">Método</h2>
-      <p class="intro">O mesmo caminho de um plano de mídia, aplicado a marca, conteúdo e site.</p>
+      <p class="intro">Acompanhe o projeto do diagnóstico à análise dos resultados.</p>
     </div>
     <ol class="etapas" id="etapas">
-      <li class="etapa revela"><h3>Diagnóstico</h3><p>O ponto de partida: marca, público, concorrência e o que já existe.</p></li>
-      <li class="etapa revela"><h3>Estratégia</h3><p>Objetivo, posicionamento e a ideia que vai guiar tudo.</p></li>
-      <li class="etapa revela"><h3>Plano e calendário</h3><p>Cada peça ou página com data, canal e função.</p></li>
-      <li class="etapa revela"><h3>Criação</h3><p>Texto antes do layout; depois design, vídeo ou site.</p></li>
-      <li class="etapa revela"><h3>Aprovação e entrega</h3><p>Você aprova cada etapa e recebe finais e editáveis.</p></li>
-      <li class="etapa revela"><h3>Leitura e ajuste</h3><p>O que os números disseram, sem jargão, e o próximo passo.</p></li>
+      <li class="etapa revela"><h3>Diagnóstico</h3><p>Comece pela marca, pelo público, pela concorrência e pelos materiais que você já tem.</p></li>
+      <li class="etapa revela"><h3>Estratégia</h3><p>Alinhe comigo o objetivo, o posicionamento e o conceito do projeto.</p></li>
+      <li class="etapa revela"><h3>Plano e calendário</h3><p>Acompanhe o calendário de entregas por prazo, canal e finalidade.</p></li>
+      <li class="etapa revela"><h3>Criação</h3><p>Veja o conceito ganhar forma no texto, nas peças, nos vídeos ou nas páginas.</p></li>
+      <li class="etapa revela"><h3>Aprovação e entrega</h3><p>Aprove cada etapa e receba os arquivos finais e editáveis.</p></li>
+      <li class="etapa revela"><h3>Leitura e ajuste</h3><p>Confira os indicadores e defina os próximos ajustes.</p></li>
     </ol>
   </section>
 
@@ -439,8 +442,8 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
         </div>
       </div>
       <div class="dir">
-        <p>Sou Marcelo Passos, publicitário. Trabalho com mídia desde 2019, no planejamento e na compra de espaço em rádio, TV, portais e mídia exterior, e participei de campanhas que, somadas, movimentaram mais de R$ 5 milhões em mídia.</p>
-        <p>Hoje levo esse método para marca, conteúdo e sites: público definido, objetivo para cada peça e um calendário que é cumprido. Uso inteligência artificial para pesquisar, prototipar e gerar imagens. Tudo passa pela minha revisão, e nenhum dado é inventado.</p>
+        <p>Sou Marcelo Passos, publicitário. Desde 2019, atuo no planejamento e na compra de mídia em rádio, TV, portais e mídia exterior. Participei de campanhas que, juntas, somaram mais de R$ 5 milhões em investimento em mídia.</p>
+        <p>Também desenvolvo projetos de marca, conteúdo e web design, com objetivos, públicos e prazos definidos. Uso inteligência artificial como apoio à pesquisa, à prototipagem e à geração de imagens. Reviso os materiais antes da entrega.</p>
         <p>Moro em Lauro de Freitas (BA) e atendo empresas de qualquer cidade.</p>
         <div class="fatos">
           <div><b>Mídia</b><span>planejamento e compra em rádio, TV, portais e OOH</span></div>
@@ -454,23 +457,23 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
   <section class="recrut" id="equipes" aria-labelledby="titulo-equipes">
     <div>
       <h2 class="titulo" id="titulo-equipes">Para equipes</h2>
-      <p style="margin-top:22px">Procuro uma vaga em agência ou marca, em mídia, social media ou marketing. Junto, num só profissional, a leitura de mídia e a produção de conteúdo.</p>
+      <p style="margin-top:22px">Busco oportunidades em mídia, social media ou marketing, em agências ou equipes internas. Minha experiência combina planejamento e compra de mídia com estratégia editorial, direção de arte e produção de conteúdo.</p>
       <ul>
-        <li>Planejamento de mídia off e on</li>
+        <li>Planejamento de mídia offline e digital</li>
         <li>Estratégia e calendário de conteúdo</li>
         <li>Direção de arte, peças e Reels de motion</li>
         <li>Sites e landing pages em HTML e CSS</li>
       </ul>
     </div>
     <div class="acoes">
-      <a class="btn cheio" href="https://www.linkedin.com/in/marcelopassosj/" target="_blank" rel="noopener">Ver perfil no LinkedIn</a>
-      <a class="btn linha" href="mailto:mpassosj@gmail.com?subject=Pedido%20de%20curr%C3%ADculo">Pedir currículo por e-mail</a>
+      <a class="btn cheio" href="https://www.linkedin.com/in/marcelopassosj/" target="_blank" rel="noopener">Veja meu perfil no LinkedIn</a>
+      <a class="btn linha" href="mailto:mpassosj@gmail.com?subject=Pedido%20de%20curr%C3%ADculo">Peça meu currículo por e-mail</a>
     </div>
   </section>
 
   <section class="contato" id="contato" aria-labelledby="titulo-contato">
-    <h2 class="titulo" id="titulo-contato">Vamos falar do seu projeto.</h2>
-    <p class="intro-diag">Conte em três campos o que você precisa e a conversa abre no meu WhatsApp. Para perfis do Instagram, o primeiro diagnóstico é gratuito: uma página com três ajustes para fazer na mesma semana.</p>
+    <h2 class="titulo" id="titulo-contato">Conte o que você quer criar.</h2>
+    <p class="intro-diag">Preencha o formulário e inicie a conversa pelo WhatsApp. Peça um diagnóstico gratuito do Instagram e receba uma página com três sugestões para aplicar na mesma semana.</p>
     <form class="diag" id="diag">
       <label><span>O que você precisa</span>
         <select name="pedido" required>
@@ -484,11 +487,11 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
         </select></label>
       <label><span>Empresa ou @ do perfil</span><input name="empresa" required placeholder="Ex.: @suaempresa" autocomplete="organization"></label>
       <label><span>O que a empresa faz</span><input name="segmento" required placeholder="Ex.: padaria de bairro"></label>
-      <button class="btn cheio" type="submit">Abrir conversa no WhatsApp</button>
-      <p class="nota">Nada é guardado neste site: o texto vai pronto para o WhatsApp e você decide se envia.</p>
+      <button class="btn cheio" type="submit">Abra a conversa no WhatsApp</button>
+      <p class="nota">O site prepara a mensagem sem armazenar os dados do formulário. Revise a mensagem no WhatsApp antes de enviar.</p>
     </form>
     <noscript><p>Use um dos links abaixo para falar sobre seu projeto.</p></noscript>
-    <p class="outros">Prefere falar direto? <a href="https://wa.me/5571983086896" data-whats>WhatsApp (71) 98308-6896</a> · <a href="mailto:mpassosj@gmail.com">mpassosj@gmail.com</a></p>
+    <p class="outros">Fale comigo pelo <a href="https://wa.me/5571983086896" data-whats>WhatsApp (71) 98308-6896</a> · <a href="mailto:mpassosj@gmail.com">mpassosj@gmail.com</a></p>
     <p class="onde">Lauro de Freitas (BA) · atendo empresas de qualquer cidade</p>
   </section>
 </main>
@@ -515,48 +518,48 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
 const PROJETOS = [
   { id: 'lento', nome: 'Lento', segmento: 'Cafeteria de especialidade', cat: 'gastronomia', tipo: 'Marca fictícia',
     fundo: '#2A1D17', txt: '#EFE4D2', arroba: '@lentocafe',
-    desafio: 'Criar o feed de uma cafeteria pequena de bairro que torra e coa na hora, para quem já toma café filtrado em casa e quer entender o que é café especial.',
-    conceito: '"Café bom não tem pressa." Cada post mostra o tempo de uma etapa: origem, preparo, prova e conversa. Fotos quentes em tela cheia, títulos condensados curtos e uma comanda de papel para os dados.',
+    desafio: "Apresente o café especial a quem já prepara café filtrado em casa, valorizando a torra e o preparo feitos na hora em uma cafeteria de bairro.",
+    conceito: "\"Café bom não tem pressa.\" A série apresenta o tempo de cada etapa, da origem à conversa à mesa. Fotografias em tons quentes ocupam o quadro, e uma comanda de papel reúne as informações de cada peça.",
     entregas: '6 posts · 3:4 e 4:5 · fotos com IA · legendas', fontes: [['Títulos', 'Anton'], ['Texto', 'DM Sans']],
     cores: [['Espresso', '#2A1D17'], ['Crema', '#EFE4D2'], ['Cereja', '#B8432F'], ['Sálvia', '#7E8C6A'], ['Caramelo', '#D9A86C']],
     posts: [['post-01-quatro-minutos', 'Cada xícara leva quatro minutos.'], ['post-02-fruta', 'Todo grão já foi fruta.'], ['post-03-notas', 'Chocolate, caramelo e laranja. Sem açúcar.'],
             ['post-04-metodos', 'Escolha pelo jeito de tomar.'], ['post-05-degustacao', 'Prove seis cafés lado a lado.'], ['post-06-sem-pressa', 'Fica o tempo que quiser.']] },
   { id: 'tamborim', nome: 'Tamborim', segmento: 'Boteco com samba', cat: 'gastronomia', tipo: 'Marca fictícia',
     fundo: '#0F4D3F', txt: '#F6EEDD', arroba: '@botecotamborim',
-    desafio: 'Fugir do preto e amarelo que domina o nicho de bares e mostrar um boteco de bairro moderno, onde o produto principal é o encontro.',
-    conceito: '"Boteco é onde a semana vira conversa." Verde-azulejo, tomate e creme; padrão de azulejo, ícones de balcão desenhados à mão e fotos espontâneas com gente de verdade. Regras do CONAR aplicadas em todas as peças.',
+    desafio: "Construa uma identidade para um boteco de bairro que valoriza o encontro entre amigos.",
+    conceito: "\"Boteco é onde a semana vira conversa.\" A identidade combina verde-azulejo, tomate e creme com padrões de azulejo, ilustrações de balcão e imagens que recriam cenas espontâneas. O estudo considerou as diretrizes do CONAR na criação das peças.",
     entregas: '6 posts · 3:4 e 4:5 · fotos com IA · ícones · kit de marca', fontes: [['Títulos', 'Fraunces'], ['Texto', 'Figtree']],
     cores: [['Azulejo', '#0F4D3F'], ['Tomate', '#BF3A22'], ['Creme', '#F6EEDD'], ['Mostarda', '#F2B33D'], ['Tinta', '#1C2321']],
     posts: [['post-01-manifesto', 'Aqui a semana vira conversa.'], ['post-02-petisco', 'Bolinho de bacalhau: o último sempre dá briga.'], ['post-03-agenda', 'Roda de samba no quintal.'],
             ['post-04-mesa', 'Mesa pra seis? A gente junta.'], ['post-05-lista', '3 petiscos que nunca voltam inteiros.'], ['post-06-enquete', 'Qual é o seu pedido de sempre?']] },
   { id: 'raia', nome: 'Raia', segmento: 'Energia solar residencial', cat: 'servicos', tipo: 'Marca fictícia',
     fundo: '#0F2E2C', txt: '#F5EEE1', arroba: '@raiasolar',
-    desafio: 'Vender energia solar sem o laranja e os painéis em close que todo o nicho usa, com um tom honesto: nada de promessa milagrosa.',
-    conceito: 'O sol nascente vira o sistema da marca: anéis concêntricos atravessam o layout e a foto fica dentro do sol. Petróleo domina o feed; todo número tem origem ou asterisco explicando.',
+    desafio: "Apresente a energia solar com uma identidade própria e explicar as estimativas de economia de forma transparente.",
+    conceito: "O sol nascente inspira anéis concêntricos que organizam as composições e emolduram as imagens. O azul-petróleo predomina, e os dados vêm acompanhados de fonte ou nota explicativa.",
     entregas: '6 posts · 3:4 e 4:5 · personagens fixos com IA · QA', fontes: [['Títulos', 'Bricolage Grotesque'], ['Texto', 'Inter']],
     cores: [['Petróleo', '#0F2E2C'], ['Sol', '#FFB627'], ['Areia', '#F5EEE1'], ['Papel', '#FFFDF8'], ['Brasa', '#F26B1D']],
     posts: [['post-01-manifesto', 'Todo dia o sol bate no seu telhado. E vai embora.'], ['post-02-checklist', '3 sinais de que sua casa já pode ir pro solar.'], ['post-03-dado', 'Em quanto tempo o sistema se paga?'],
             ['post-04-foto', 'A gente cuida de tudo.'], ['post-05-equipe', 'Quem sobe no seu telhado faz diferença.'], ['post-06-conta', 'O dia em que a conta virou boa notícia.']] },
   { id: 'marulho', nome: 'Marulho Pescados', segmento: 'Camarão para food service', cat: 'b2b', tipo: 'Marca fictícia',
     fundo: '#FF6F61', txt: '#FFFFFF', arroba: '@marulhopescados',
-    desafio: 'Falar com donos de restaurante, um público B2B que compra pelo dado técnico, e tornar os posts de um fornecedor de camarão claros e variados.',
-    conceito: 'O dado técnico vira protagonista (gramatura, congelamento individual), as pessoas entram nos posts estáticos e o semicírculo do símbolo vira moldura das fotos. Textos reescritos a partir de um guia de redação publicitária.',
+    desafio: "Apresente um fornecedor de camarão a donos de restaurantes, com conteúdo que ajude na avaliação técnica do produto.",
+    conceito: "As peças destacam informações como gramatura e congelamento individual. O semicírculo da marca emoldura as imagens, e um guia de redação orienta a linguagem dos posts.",
     entregas: '6 posts · 3:4 e 4:5 · fotos com IA · guia de redação', fontes: [['Títulos e texto', 'Poppins']],
     cores: [['Coral', '#FF6F61'], ['Vermelho', '#F1494A'], ['Salmão', '#F7A08C'], ['Rosa', '#FFE7E5'], ['Off-white', '#F7F6F2']],
     posts: [['post-01-gramatura', '80/100 camarões em cada libra.'], ['post-02-iqf', 'Congelado um a um.'], ['post-03-cardapios', 'Do sushi ao gratinado, o mesmo camarão.'],
             ['post-04-chef', 'Nossos produtos passam pelas mãos dele.'], ['post-05-comunidade', 'Seu cardápio movimenta a cadeia inteira.'], ['post-06-10-anos', 'Ajudando restaurantes a vender mais camarão.']] },
   { id: 'ambar', nome: 'Âmbar Semijoias', segmento: 'Semijoias', cat: 'varejo', tipo: 'Marca fictícia',
     fundo: '#4A0E13', txt: '#F3E9DC', arroba: '@ambarsemijoias',
-    desafio: 'Levar uma identidade vinho e dourado para o feed sem preço nas peças e sem truque gráfico que barateie a marca.',
-    conceito: 'Linguagem de joalheria: fundo vinho aveludado, fios e brilho dourados como assinatura, títulos em Bodoni com itálico e muito respiro. A variedade vem da foto, da escala e de uma página clara, não de efeitos.',
+    desafio: "Traduza a identidade em vinho e dourado para uma série de posts que valorize o acabamento e a composição das semijoias.",
+    conceito: "Fundo vinho aveludado, detalhes dourados e títulos em Bodoni definem a linguagem visual. A série varia o enquadramento, a escala e o uso de fundos claros.",
     entregas: '6 posts · 3:4 e 4:5 · fotos com IA · legendas', fontes: [['Chapéu', 'Cinzel'], ['Títulos', 'Bodoni Moda'], ['Texto', 'Montserrat']],
     cores: [['Vinho', '#4A0E13'], ['Dourado', '#D0922A'], ['Ouro claro', '#E8C27A'], ['Pérola', '#F3E9DC'], ['Vinho escuro', '#22060A']],
     posts: [['post-01-brinco-folha', 'Do lóbulo à cartilagem, sem furo novo.'], ['post-02-mix-colares', 'Três colares, três alturas.'], ['post-03-aneis', 'No dourado ou no ródio.'],
             ['post-04-autenticas', 'Sua foto pode ser a próxima.'], ['post-05-presente', 'Chega pronta para entregar.'], ['post-06-cuidados', 'Para o banho de ouro durar mais.']] },
   { id: 'kaze', nome: 'Kaze', segmento: 'Restaurante japonês', cat: 'gastronomia', tipo: 'Marca fictícia',
     fundo: '#8E1A16', txt: '#FFFFFF', arroba: '@kazeculinaria',
-    desafio: 'Montar o feed de um restaurante japonês de bairro e deixar claro o rodízio, os preços e o delivery para quem decide onde jantar pelo Instagram.',
-    conceito: 'Uma treliça vermelha vira o grafismo do feed, sempre em malha: moldura da foto, faixa lateral ou textura. Títulos em Cinzel, preço em etiqueta e um fato por post.',
+    desafio: "Organize as informações de rodízio, preços e delivery para quem escolhe onde jantar pelo Instagram.",
+    conceito: "A treliça vermelha funciona como moldura, faixa lateral ou textura. Títulos em Cinzel e etiquetas de preço dão hierarquia às informações, com um tema por peça.",
     entregas: '6 posts · 1 Reels · 3:4 e 4:5 · grafismo vetorizado · fotos com IA', fontes: [['Títulos', 'Cinzel'], ['Texto e preços', 'Montserrat']],
     reels: { src: 'video/kaze-reels.mp4', capa: 'video/kaze-reels-capa.webp', titulo: 'Reels do rodízio',
       texto: 'Motion de 20 segundos para quem nunca foi ao rodízio. Cada corte cai na batida da trilha, a treliça faz as transições e o preço entra quando a bateria volta.',
@@ -566,72 +569,72 @@ const PROJETOS = [
             ['post-04-crianca', 'Criança de 5 a 9 anos paga metade.'], ['post-05-sem-taxa', 'Aqui não tem taxa de desperdício.'], ['post-06-delivery', 'O Kaze vai até você.']] },
   { id: 'brasa', nome: 'Brasa 77', segmento: 'Hamburgueria smash', cat: 'gastronomia', tipo: 'Marca fictícia',
     fundo: '#141210', txt: '#F4EBDD', arroba: '@brasa77',
-    desafio: 'Dar personalidade a uma hamburgueria de bairro com cardápio curto num nicho cheio de fotos iguais de hambúrguer, com tom direto e com fome.',
-    conceito: 'A chapa é a protagonista: carvão e mostarda, títulos condensados em caixa-alta, marcas de grelha em diagonal e um carimbo redondo de preço levemente torto. Cada post diz um fato do burger.',
+    desafio: "Crie uma identidade para uma hamburgueria de bairro e dar destaque aos diferenciais de um cardápio enxuto.",
+    conceito: "A chapa inspira a paleta de carvão e mostarda, as marcas de grelha e os selos de preço. Cada peça destaca uma característica do produto ou do serviço.",
     entregas: '6 posts · 3:4 e 4:5 · fotos com IA · legendas', fontes: [['Títulos', 'Anton'], ['Texto', 'Archivo']],
     cores: [['Carvão', '#141210'], ['Mostarda', '#F2B705'], ['Creme', '#F4EBDD'], ['Tomate', '#D93A1E']],
     posts: [['post-01-smash', 'Borda caramelizada.'], ['post-02-chapa', 'Prensado só quando você pede.'], ['post-03-combo', 'Salgado e doce na mesma bandeja.'],
             ['post-04-terca', 'O segundo smash sai pela metade.'], ['post-05-delivery', 'Entregamos até meia-noite.'], ['post-06-cardapio', 'Quatro burgers. Só.']] },
   { id: 'lume', nome: 'Lume', segmento: 'Odontologia humanizada', cat: 'saude', tipo: 'Marca fictícia',
     fundo: '#24443A', txt: '#F6F3EC', arroba: '@lumeodonto',
-    desafio: 'Comunicar uma clínica odontológica calma e sem pressa dentro das regras do Código de Ética do CFO: sem preço, sem promoção, sem antes e depois e sem promessa de resultado.',
-    conceito: 'O arco de luz, uma meia-lua só de contorno, aparece no chapéu, na foto em arco e no fundo. Serifa suave com itálico terracota no destaque e uma explicação clara por post.',
+    desafio: "Apresente uma clínica odontológica com foco no acolhimento e no tempo dedicado a cada atendimento, considerando as restrições éticas da publicidade odontológica.",
+    conceito: "Um arco de luz se repete nos enquadramentos e nos fundos. A tipografia serifada e os destaques em terracota acompanham textos que explicam um aspecto do atendimento por peça.",
     entregas: '6 posts · 3:4 e 4:5 · fotos com IA · regras do CFO', fontes: [['Títulos', 'Fraunces'], ['Texto', 'Manrope']],
     cores: [['Floresta', '#24443A'], ['Sálvia', '#A9B8A0'], ['Papel', '#F6F3EC'], ['Terracota', '#D9886A']],
     posts: [['post-01-consulta', 'Primeira consulta de 50 minutos.'], ['post-02-dentista', 'Cada etapa explicada antes de começar.'], ['post-03-sorriso', 'Implante planejado antes da cirurgia.'],
             ['post-04-alinhador', 'Alinhador que você tira para comer.'], ['post-05-urgencia', 'Urgência também aos sábados.'], ['post-06-fio-dental', 'Fio dental vem antes da escova.']] },
   { id: 'bicho', nome: 'Bicho Solto', segmento: 'Banho e tosa', cat: 'servicos', tipo: 'Marca fictícia',
     fundo: '#2B50D8', txt: '#FFF8EC', arroba: '@bichosoltopet',
-    desafio: 'Mostrar um banho e tosa sem gaiola de espera e com leva e traz, para tutores que têm receio de deixar o bicho num pet shop.',
-    conceito: 'Alegre e próximo: amarelo e azul fortes, etiqueta de coleira no chapéu e adesivos com contorno grosso e sombra dura. Cada post responde a um medo do tutor.',
+    desafio: "Apresente o banho e tosa sem gaiolas de espera e o serviço de transporte para tutores preocupados com a adaptação do animal.",
+    conceito: "Amarelo e azul, etiquetas inspiradas em coleiras e adesivos de traço espesso compõem a identidade. Cada post responde a uma dúvida sobre o atendimento.",
     entregas: '6 posts · 3:4 e 4:5 · fotos com IA · adesivos', fontes: [['Títulos e texto', 'Bricolage Grotesque']],
     cores: [['Amarelo', '#FFC83D'], ['Azul', '#2B50D8'], ['Leite', '#FFF8EC'], ['Tinta', '#1A1A1A']],
     posts: [['post-01-banho', 'Com hora marcada e sem gaiola.'], ['post-02-gatos', 'Manhã só para gatos, sem latido.'], ['post-03-tosa', 'Tosa com pausa quando ele pedir.'],
             ['post-04-leva-traz', 'A gente busca.'], ['post-05-pacote', '4 banhos no mês, com leva e traz.'], ['post-06-pergunta', 'Banho demais resseca a pele do cão.']] },
   { id: 'ramo', nome: 'Ramo', segmento: 'Ateliê floral', cat: 'varejo', tipo: 'Marca fictícia',
     fundo: '#3E5B3A', txt: '#F1E8D8', arroba: '@ramoatelie',
-    desafio: 'Diferenciar um ateliê floral pequeno, que trabalha com flores tropicais brasileiras e monta o buquê na hora, das floriculturas de rosa vermelha e celofane.',
-    conceito: 'Delicado e artesanal: terracota, folha e creme, Garamond com itálico, um ramo fino no chapéu e a etiqueta de ateliê com canto cortado e furo, como a que vai presa ao buquê.',
+    desafio: "Valorize a seleção de flores tropicais brasileiras e a montagem de buquês na hora em um ateliê floral.",
+    conceito: "A paleta combina terracota, verde-folha e creme. A tipografia Garamond, o ramo ilustrado e a etiqueta inspirada nas dos buquês reforçam o caráter artesanal.",
     entregas: '6 posts · 3:4 e 4:5 · fotos com IA · legendas', fontes: [['Títulos', 'EB Garamond'], ['Texto', 'Work Sans']],
     cores: [['Terracota', '#B5552F'], ['Folha', '#3E5B3A'], ['Creme', '#F1E8D8'], ['Rosa-antigo', '#D9A5A0']],
     posts: [['post-01-buque', 'Buquê tropical, com flores daqui.'], ['post-02-florista', 'Montado na sua frente, em 20 minutos.'], ['post-03-chegada', 'Flores novas toda terça e sexta.'],
             ['post-04-entrega', 'Pediu cedo, chega hoje.'], ['post-05-assinatura', 'Flores na sua mesa a cada 15 dias.'], ['post-06-cuidados', 'Para o buquê durar mais.']] },
   { id: 'eixo', nome: 'Eixo', segmento: 'Estúdio de pilates', cat: 'saude', tipo: 'Marca fictícia',
     fundo: '#1F4E5A', txt: '#E9E1D3', arroba: '@eixopilates',
-    desafio: 'Vender pilates de turma pequena (até três alunos) com avaliação postural, num nicho em que quase todo feed mostra o mesmo aparelho e a mesma pose.',
-    conceito: 'O eixo vira o sistema: uma linha vertical fina com um ponto cor de tijolo, como uma coluna alinhada. Petróleo e areia, serifa com itálico e muito espaço em branco, num tom sereno e preciso.',
+    desafio: "Apresente a avaliação postural e as turmas de até três alunos como diferenciais de um estúdio de pilates.",
+    conceito: "Uma linha vertical com um ponto em tom de tijolo remete ao alinhamento da coluna. A paleta de azul-petróleo e areia, a tipografia serifada e o espaço em branco mantêm a composição serena.",
     entregas: '6 posts · 3:4 e 4:5 · fotos com IA · legendas', fontes: [['Títulos', 'Instrument Serif'], ['Texto', 'Outfit']],
     cores: [['Petróleo', '#1F4E5A'], ['Areia', '#E9E1D3'], ['Tijolo', '#C8643B'], ['Branco', '#FFFFFF']],
     posts: [['post-01-turma-pequena', 'No máximo três alunos por horário.'], ['post-02-ajuste', 'Cada exercício ajustado ao seu corpo.'], ['post-03-experimental', 'A primeira aula é por nossa conta.'],
             ['post-04-avaliacao', 'Avaliação postural antes de começar.'], ['post-05-idades', 'Dos 25 aos 70, na mesma turma.'], ['post-06-planos', 'Escolha seu ritmo.']] },
   { id: 'ponte', nome: 'Ponte', segmento: 'Escola de idiomas', cat: 'servicos', tipo: 'Marca fictícia',
     fundo: '#2F3BD9', txt: '#F5F3EE', arroba: '@ponteidiomas',
-    desafio: 'Mostrar uma escola de idiomas de turmas de quatro alunos e aulas online ao vivo para adultos sem tempo, com tom jovem e bem-humorado.',
-    conceito: 'Conversa é o produto: balões de fala e destaque em marca-texto limão sobre o azul. Posts alternam prova (turma pequena, professores) e conteúdo útil (erro comum, teste de nível).',
+    desafio: "Apresente aulas online ao vivo, em turmas de quatro alunos, a adultos com pouco tempo para estudar.",
+    conceito: "Balões de fala e marca-texto em verde-limão remetem à conversação. A série alterna informações sobre turmas e professores com dicas de idioma e um teste de nível.",
     entregas: '6 posts · 3:4 e 4:5 · fotos com IA · legendas', fontes: [['Títulos e texto', 'Space Grotesk']],
     cores: [['Azul', '#2F3BD9'], ['Limão', '#E4F25C'], ['Papel', '#F5F3EE'], ['Tinta', '#121212']],
     posts: [['post-01-turma', 'Turma pequena é assim: todo mundo fala.'], ['post-02-online', 'Ao vivo, no horário da sua rotina.'], ['post-03-professores', 'Quem ensina já morou lá fora.'],
             ['post-04-erro-comum', 'Idade em inglês se diz com to be.'], ['post-05-viagem', 'Inglês para viagem em 8 semanas.'], ['post-06-teste', 'Descubra seu nível em 15 minutos.']] },
   { id: 'raso', nome: 'Raso', segmento: 'Protetor solar', cat: 'varejo', tipo: 'Marca fictícia',
     fundo: '#1FA3C4', txt: '#F2E3C6', arroba: '@rasosolar',
-    desafio: 'Estudo de técnicas 3D para uma marca jovem de protetor solar de praia: ousada no visual, mas com a confiança de skincare.',
-    conceito: 'Letras e números extrudados em 3D (50, 80′, 2H), pílulas e botões com volume de massinha e rótulos aplicados seguindo a curva e a luz de cada embalagem renderizada.',
+    desafio: "Explore recursos de 3D para uma marca jovem de protetor solar, com uma linguagem visual que remete à praia e ao cuidado com a pele.",
+    conceito: "Tipografia extrudada e elementos volumétricos compõem a série. Os rótulos acompanham a curvatura e a iluminação das embalagens renderizadas.",
     entregas: '6 posts · 3:4 e 4:5 · renders 3D · rótulos aplicados', fontes: [['Títulos e 3D', 'Unbounded'], ['Texto', 'DM Sans']],
     cores: [['Piscina', '#1FA3C4'], ['Coral', '#FF6B4A'], ['Areia', '#F2E3C6'], ['Tinta', '#10324A'], ['Piscina escuro', '#0E6F8A']],
     posts: [['post-01-heroi', 'Some na pele em 10 segundos.'], ['post-02-trio', 'Três jeitos de não se queimar.'], ['post-03-agua', 'Minutos de mar sem sair da pele.'],
             ['post-04-sol', 'Reaplique a cada duas horas.'], ['post-05-bastao', 'Lábio também queima.'], ['post-06-arco', 'Reaplica por cima da maquiagem.']] },
   { id: 'rotina', nome: 'ROTINA', segmento: 'Básicos masculinos', cat: 'varejo', tipo: 'Marca fictícia',
     fundo: '#2B373C', txt: '#FFFFFF', arroba: '@rotinabasicos',
-    desafio: 'Vender básicos masculinos (camiseta, moletom, linho, bermuda) com campanhas de impacto, sem modelo e sem cenário, só a peça.',
-    conceito: 'A peça em ghost mannequin flutua sobre um degradê da própria cor, com movimento leve, entre as letras de um título gigante em duas linhas: uma letra fica atrás do tecido, o resto passa na frente.',
+    desafio: "Crie uma campanha de básicos masculinos em que as peças sustentem a composição sem modelos ou cenários.",
+    conceito: "As roupas aparecem em manequim invisível sobre degradês da mesma cor. A tipografia passa à frente e atrás do tecido para criar profundidade.",
     entregas: '6 posts · 3:4 e 4:5 · fotos com IA recortadas · legendas', fontes: [['Títulos e texto', 'Inter Tight'], ['Logo', 'Unbounded']],
     cores: [['Ardósia', '#2B373C'], ['Chuva', '#56626E'], ['Terracota', '#C98A66'], ['Mar', '#7FB5D3'], ['Areia', '#EEE9E1']],
     posts: [['post-01-oliva', 'Verde oliva.'], ['post-02-semana', 'Semana inteira.'], ['post-03-tempo', 'Tempo fechou.'],
             ['post-04-black', 'Black Friday.'], ['post-05-linho', 'Linho puro.'], ['post-06-praia', 'Modo praia.']] },
   { id: 'folego', nome: 'Fôlego', segmento: 'Roupa de treino feminina', cat: 'varejo', tipo: 'Marca fictícia',
     fundo: '#45251A', txt: '#F4E9DE', arroba: '@folegotreino',
-    desafio: 'Lançar a primeira coleção de uma marca de roupa de treino feminina feita em Lauro de Freitas (BA), para mulheres que treinam no calor e não querem pensar na roupa, num nicho cheio de "no pain no gain" e de corpo como troféu.',
-    conceito: '"Tome fôlego." A série divide uma respiração em seis comandos, um por pose: inspira, desce, pausa, segura, solta e, no fecho, tome fôlego. Tom sobre tom, com o fundo na cor da própria roupa, um verbo em serifa por post e a mesma modelo em todas as fotos.',
+    desafio: "Apresente a primeira coleção de uma marca de roupas de treino femininas de Lauro de Freitas (BA), voltada a mulheres que treinam no calor.",
+    conceito: "\"Tome fôlego.\" A série organiza seis poses a partir de verbos ligados à respiração e ao movimento. A mesma modelo aparece em todas as fotos, com fundos que retomam as cores das peças.",
     entregas: '6 posts · 3:4 e 4:5 · modelo fixa com IA · teste cego de textos · legendas', fontes: [['Títulos', 'Instrument Serif'], ['Texto', 'Figtree']],
     cores: [['Argila', '#B56F51'], ['Areia', '#D3AE8D'], ['Cacau', '#45251A'], ['Tinta', '#2A150D'], ['Creme', '#F4E9DE']],
     posts: [['post-01-inspira', 'O top acompanha o braço e fica no lugar.'], ['post-02-desce', 'Testada no agachamento: estica e continua opaca.'], ['post-03-pausa', 'O cós de 9 cm não enrola quando você senta.'],
