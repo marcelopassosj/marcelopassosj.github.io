@@ -1,0 +1,583 @@
+<!doctype html><html lang="pt-BR"><head><meta name="robots" content="noindex"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>Plano Mídia On + Off</title>
+<script src="../consentimento.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: a media-plan sheet. A flowchart (weeks × frentes) on top, then one block per week with checkable insertions. */
+:root {
+  --bg: #f4f6f9;
+  --paper: #ffffff;
+  --ink: #16202c;
+  --muted: #5b6878;
+  --line: #d9dfe7;
+  --accent: #2c56d6;
+  --accent-soft: #e3eafc;
+  --meta: #0f8a7e;
+  --meta-soft: #dcf1ee;
+  --pratica: #c4770d;
+  --pratica-soft: #fbeedb;
+  --cv: #7a4fc9;
+  --cv-soft: #ece4fa;
+  --ok: #1f8a4c;
+  --font-display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "Consolas", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f141b; --paper: #161d27; --ink: #e6ebf2; --muted: #98a4b4; --line: #2a3442;
+    --accent: #7d9cff; --accent-soft: #1d2a4d; --meta: #4cc7b8; --meta-soft: #123430;
+    --pratica: #f0a64a; --pratica-soft: #3a2a12; --cv: #b393f2; --cv-soft: #2c2142; --ok: #5bd18b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f141b; --paper: #161d27; --ink: #e6ebf2; --muted: #98a4b4; --line: #2a3442;
+  --accent: #7d9cff; --accent-soft: #1d2a4d; --meta: #4cc7b8; --meta-soft: #123430;
+  --pratica: #f0a64a; --pratica-soft: #3a2a12; --cv: #b393f2; --cv-soft: #2c2142; --ok: #5bd18b;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 15px; line-height: 1.55;
+}
+.wrap {
+  max-width: 980px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 64px;
+  display: grid; gap: 28px;
+}
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+/* Header */
+header { display: grid; gap: 10px; }
+.eyebrow { font-family: var(--font-data); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 6vw, 46px); line-height: 1.05; margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+.lede { margin: 0; max-width: 64ch; color: var(--muted); }
+.meter { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 6px; }
+.bar { flex: 1 1 260px; height: 10px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.bar > span { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 99px; transition: width .4s ease; }
+.meter-num { font-family: var(--font-data); font-variant-numeric: tabular-nums; font-size: 14px; }
+.save { font-family: var(--font-data); font-size: 12px; color: var(--muted); }
+
+/* Flowchart */
+.sheet { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; }
+.flow { overflow-x: auto; }
+.flow table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 13px; }
+.flow th, .flow td { border-bottom: 1px solid var(--line); padding: 8px 10px; text-align: left; }
+.flow thead th { font-family: var(--font-data); font-weight: 500; font-size: 12px; color: var(--muted); white-space: nowrap; }
+.flow thead th small { display: block; font-size: 11px; color: var(--muted); opacity: .8; }
+.flow tbody th { font-family: var(--font-display); font-weight: 600; font-size: 14px; white-space: nowrap; width: 120px; }
+.flow td { padding: 8px 4px; }
+.flow tr:last-child th, .flow tr:last-child td { border-bottom: 0; }
+.flow tfoot td, .flow tfoot th { border-top: 1px solid var(--line); border-bottom: 0; font-family: var(--font-data); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.ins { height: 18px; border-radius: 4px; }
+.ins.g { background: var(--accent); } .ins.m { background: var(--meta); } .ins.p { background: var(--pratica); } .ins.c { background: var(--cv); }
+.flow-note { padding: 10px 12px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); }
+
+/* Weeks */
+.weeks { display: grid; gap: 18px; }
+.week { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 18px 18px 8px; display: grid; gap: 6px; }
+.week-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+.week-head h2 { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 22px; text-wrap: balance; }
+.week-head .when { font-family: var(--font-data); font-size: 12px; color: var(--muted); }
+.week-why { margin: 0 0 6px; color: var(--muted); max-width: 70ch; }
+.count { font-family: var(--font-data); font-size: 12px; font-variant-numeric: tabular-nums; padding: 2px 8px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
+.count.full { background: var(--ok); color: var(--paper); }
+
+ul.tasks { list-style: none; margin: 0; padding: 0; }
+ul.tasks li { border-top: 1px solid var(--line); }
+ul.tasks label { display: grid; grid-template-columns: 22px 1fr auto; gap: 12px; align-items: start; padding: 11px 0; cursor: pointer; }
+ul.tasks input[type=checkbox] { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--accent); cursor: pointer; }
+.t-text { min-width: 0; }
+.t-text b { font-weight: 600; }
+.t-text small { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+.tag { font-family: var(--font-data); font-size: 11px; padding: 2px 7px; border-radius: 4px; white-space: nowrap; align-self: center; }
+.tag.g { background: var(--accent-soft); color: var(--accent); }
+.tag.m { background: var(--meta-soft); color: var(--meta); }
+.tag.p { background: var(--pratica-soft); color: var(--pratica); }
+.tag.c { background: var(--cv-soft); color: var(--cv); }
+li.done .t-text b { text-decoration: line-through; text-decoration-color: var(--muted); color: var(--muted); }
+
+/* Metrics */
+.metrics { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 12px; }
+.metrics h2 { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 22px; }
+.metrics p { margin: 0; color: var(--muted); max-width: 70ch; }
+.mgrid { overflow-x: auto; }
+.mgrid table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 14px; }
+.mgrid th, .mgrid td { padding: 8px 8px; border-bottom: 1px solid var(--line); text-align: right; font-variant-numeric: tabular-nums; }
+.mgrid th:first-child, .mgrid td:first-child { text-align: left; }
+.mgrid thead th { font-family: var(--font-data); font-weight: 500; font-size: 12px; color: var(--muted); }
+.mgrid input { width: 100%; max-width: 110px; font: inherit; font-family: var(--font-data); font-size: 14px; text-align: right; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); }
+.calc { font-family: var(--font-data); color: var(--ink); }
+.calc.empty { color: var(--muted); }
+
+/* Quiz */
+.quiz { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 14px; scroll-margin-top: 16px; }
+.quiz-head { display: grid; gap: 6px; }
+.quiz h2 { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 22px; }
+.quiz-head p { margin: 0; color: var(--muted); max-width: 70ch; }
+.qtabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.qtab { font: inherit; font-size: 13px; padding: 6px 12px; border-radius: 99px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; display: inline-flex; gap: 8px; align-items: center; }
+.qtab[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.qtab .best { font-family: var(--font-data); font-size: 11px; opacity: .85; }
+#qForm { display: grid; gap: 14px; }
+fieldset.qq { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px 10px; margin: 0; min-width: 0; display: grid; gap: 4px; }
+fieldset.qq legend { padding: 0 4px; font-weight: 600; font-size: 15px; }
+fieldset.qq legend .qn { font-family: var(--font-data); font-size: 12px; color: var(--muted); margin-right: 6px; font-weight: 500; }
+.qopt { display: grid; grid-template-columns: 20px 1fr; gap: 8px; align-items: start; padding: 5px 4px; border-radius: 6px; cursor: pointer; }
+.qopt input { margin: 4px 0 0; accent-color: var(--accent); }
+.qopt.right { background: color-mix(in srgb, var(--ok) 16%, transparent); }
+.qopt.wrong { background: color-mix(in srgb, var(--pratica) 18%, transparent); }
+.qexp { font-size: 14px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 8px; margin-top: 4px; }
+.qexp b { color: var(--ink); }
+fieldset.qq.ok { border-color: var(--ok); }
+fieldset.qq.bad { border-color: var(--pratica); }
+.qbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.btn { font: inherit; font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.qscore { font-family: var(--font-data); font-size: 14px; font-variant-numeric: tabular-nums; }
+
+/* Notes */
+.notes { display: grid; gap: 8px; font-size: 14px; color: var(--muted); }
+.notes h3 { margin: 0; font-family: var(--font-display); font-size: 17px; color: var(--ink); }
+.notes ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+
+@media (max-width: 520px) {
+  ul.tasks label { grid-template-columns: 22px 1fr; }
+  ul.tasks .tag { grid-column: 2; justify-self: start; }
+}
+@media (prefers-reduced-motion: reduce) { .bar > span { transition: none; } }
+</style>
+
+</head><body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Plano de estudo · Marcelo Passos · 16/11 a 27/12/2026</div>
+    <h1>Plano Mídia On + Off</h1>
+    <p class="lede">Seis semanas para somar Google Ads e Meta Ads à experiência em TV, rádio e OOH. Cerca de 1 hora por dia. Ao final, a resposta para "experiência prática em Google Ads e Meta Ads" passa a ser sim, com números próprios para mostrar.</p>
+    <div class="meter">
+      <div class="bar" role="progressbar" aria-label="Progresso do plano" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="bar"></span></div>
+      <span class="meter-num" id="meterNum">0 de 0 tarefas</span>
+      <span class="save" id="saveState">Carregando progresso…</span>
+    </div>
+  </header>
+
+  <section class="sheet" aria-label="Flowchart do plano">
+    <div class="flow">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Frente</th>
+            <th scope="col">S1<small>16–22/11</small></th>
+            <th scope="col">S2<small>23–29/11</small></th>
+            <th scope="col">S3<small>30/11–06/12</small></th>
+            <th scope="col">S4<small>07–13/12</small></th>
+            <th scope="col">S5<small>14–20/12</small></th>
+            <th scope="col">S6<small>21–27/12</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Google Ads</th><td><div class="ins g"></div></td><td><div class="ins g"></div></td><td><div class="ins g"></div></td><td></td><td><div class="ins g"></div></td><td></td></tr>
+          <tr><th scope="row">Meta Ads</th><td><div class="ins m"></div></td><td></td><td></td><td><div class="ins m"></div></td><td><div class="ins m"></div></td><td></td></tr>
+          <tr><th scope="row">Prática real</th><td></td><td></td><td></td><td></td><td><div class="ins p"></div></td><td></td></tr>
+          <tr><th scope="row">Currículo</th><td></td><td></td><td></td><td></td><td></td><td><div class="ins c"></div></td></tr>
+        </tbody>
+        <tfoot>
+          <tr><th scope="row">Feito</th><td id="f1">–</td><td id="f2">–</td><td id="f3">–</td><td id="f4">–</td><td id="f5">–</td><td id="f6">–</td></tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="flow-note">Lido como um plano de mídia: cada barra é uma frente "no ar" naquela semana.</div>
+  </section>
+
+  <section class="weeks" id="weeks" aria-label="Semanas"></section>
+
+  <section class="quiz" id="simulados" aria-labelledby="qTitle">
+    <div class="quiz-head">
+      <h2 id="qTitle">Simulados</h2>
+      <p>Dez questões de treino por certificação, escritas pelo Claude no estilo das provas. Não são as questões oficiais. Acertou 9 ou 10, a tarefa do simulado é marcada sozinha no plano.</p>
+    </div>
+    <div class="qtabs" role="tablist" aria-label="Escolha o simulado" id="qTabs"></div>
+    <form id="qForm" novalidate></form>
+    <div class="qbar">
+      <button type="submit" form="qForm" class="btn primary" id="qCheck">Corrigir</button>
+      <button type="button" class="btn" id="qReset">Refazer</button>
+      <span class="qscore" id="qScore" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <section class="metrics" aria-labelledby="mTitle">
+    <h2 id="mTitle">Registro da campanha (semana 5)</h2>
+    <p>Preencha ao fim dos 7 dias com os números do Gerenciador e do Google Ads. CPM, CPC, CTR e custo por contato são calculados aqui. São esses os números que entram no portfólio e na entrevista.</p>
+    <div class="mgrid">
+      <table>
+        <thead>
+          <tr><th scope="col">Plataforma</th><th scope="col">Verba (R$)</th><th scope="col">Impressões</th><th scope="col">Cliques</th><th scope="col">Contatos</th><th scope="col">CPM</th><th scope="col">CPC</th><th scope="col">CTR</th><th scope="col">R$/contato</th></tr>
+        </thead>
+        <tbody id="mBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="notes">
+    <h3>Bom saber</h3>
+    <ul>
+      <li>Certificações do Google valem 1 ano. As da Meta valem 2 anos.</li>
+      <li>No Skillshop, uma reprovação só deixa refazer a prova depois de 24 horas.</li>
+      <li>Os cursos do Blueprint são grátis, mas dão só selos de conclusão. A certificação oficial da Meta é paga.</li>
+      <li>Não há lista oficial de 2026 das provas. Confira as disponíveis no Skillshop e o preço da Meta na hora da inscrição.</li>
+      <li>Em entrevista, conte a campanha da semana 5 com números reais e sem prometer resultado.</li>
+    </ul>
+  </section>
+</div>
+
+<script>
+const WEEKS = [
+  { n: 1, title: "Primeiro contato", when: "16–22/11", why: "Conhecer as duas plataformas por dentro, ainda sem gastar, e fechar a certificação de Google Analytics que ficou em 78%.", tasks: [
+    { id: "s1e", t: "Estudar as seções opcionais do curso de GA4", d: "Relatórios, Explorar, atribuição e onde fica cada relatório. O curso está em 1 de 25 aulas.", tag: "g", link: "https://skillshop.docebosaas.com/learn/courses/11517/certificacao-do-google-analytics" },
+    { id: "s1f", t: "Simulado de GA4 (meta 90%)", d: "Marca sozinho quando você passa de 90%. Para mais rodadas, peça ao Claude.", tag: "g", quiz: "ga4" },
+    { id: "s1g", t: "Refazer a prova de Certificação do Google Analytics", d: "Mínimo 80% para passar, meta 90%. 50 questões em 75 minutos. Primeira tentativa: 78% em 11/11.", tag: "g", link: "https://skillshop.docebosaas.com/learn/courses/11517/certificacao-do-google-analytics" },
+    { id: "s1a", t: "Trilha Google Ads Search no Skillshop", d: "Grátis.", tag: "g", link: "https://skillshop.withgoogle.com/" },
+    { id: "s1b", t: "Criar conta no Google Ads", d: "Sem ativar campanha. Só para conhecer as telas.", tag: "g", link: "https://ads.google.com/" },
+    { id: "s1c", t: "Abrir o Gerenciador de Anúncios da Meta", d: "Explorar campanha, conjunto e anúncio sem publicar.", tag: "m", link: "https://adsmanager.facebook.com/" },
+    { id: "s1d", t: "Cursos introdutórios do Meta Blueprint", d: "Gerenciador de Anúncios, objetivos de campanha e públicos. Grátis.", tag: "m", link: "https://www.facebookblueprint.com/" }
+  ]},
+  { n: 2, title: "Primeira certificação", when: "23–29/11", why: "Fechar a primeira prova e montar uma campanha de pesquisa completa.", tasks: [
+    { id: "s2s", t: "Simulado Google Ads Search (meta 90%)", d: "Antes da prova.", tag: "g", quiz: "search" },
+    { id: "s2a", t: "Prova Google Ads Search", d: "Grátis, no Skillshop.", tag: "g", link: "https://skillshop.withgoogle.com/" },
+    { id: "s2b", t: "Rascunho de campanha de pesquisa", d: "Palavras-chave, anúncios responsivos, lances e orçamento.", tag: "g" }
+  ]},
+  { n: 3, title: "Ponte com o off-line", when: "30/11–06/12", why: "Display e vídeo falam a língua que você já conhece: alcance, frequência e CPM.", tasks: [
+    { id: "s3s1", t: "Simulado Google Ads Display (meta 90%)", d: "Antes da prova.", tag: "g", quiz: "display" },
+    { id: "s3a", t: "Certificação Google Ads Display", d: "", tag: "g", link: "https://skillshop.withgoogle.com/" },
+    { id: "s3s2", t: "Simulado Google Ads Video (meta 90%)", d: "Antes da prova.", tag: "g", quiz: "video" },
+    { id: "s3b", t: "Certificação Google Ads Video (YouTube)", d: "", tag: "g", link: "https://skillshop.withgoogle.com/" },
+    { id: "s3c", t: "Bônus: certificação Display & Video 360", d: "O DV360 foi pergunta da OpusMúltipla.", tag: "g", link: "https://skillshop.withgoogle.com/" },
+    { id: "s3d", t: "Três frases ligando TV e OOH a display e vídeo", d: "Para usar em entrevista: alcance, frequência, CPM, praça.", tag: "c" }
+  ]},
+  { n: 4, title: "Meta a fundo", when: "07–13/12", why: "Os módulos que aparecem nas vagas de mídia on.", tasks: [
+    { id: "s4a", t: "Estrutura: campanha, conjunto e anúncio", d: "Meta Blueprint.", tag: "m", link: "https://www.facebookblueprint.com/" },
+    { id: "s4b", t: "Públicos personalizados e semelhantes", d: "Meta Blueprint.", tag: "m", link: "https://www.facebookblueprint.com/" },
+    { id: "s4c", t: "Pixel e API de Conversões", d: "Meta Blueprint.", tag: "m", link: "https://www.facebookblueprint.com/" },
+    { id: "s4d", t: "Testes A/B e leitura de relatórios", d: "Meta Blueprint.", tag: "m", link: "https://www.facebookblueprint.com/" },
+    { id: "s4e", t: "Simulado Meta Ads (meta 90%)", d: "Fecha a semana e prepara a certificação opcional.", tag: "m", quiz: "meta" }
+  ]},
+  { n: 5, title: "Experiência prática real", when: "14–20/12", why: "A semana que muda a resposta de \"conhecimento\" para \"experiência prática\". Total de R$ 70 a 140.", tasks: [
+    { id: "s5a", t: "Campanha Meta do diagnóstico gratuito", d: "R$ 5 a 10 por dia, 7 dias. Objetivo mensagens ou cadastros, donos de negócio em Salvador e região.", tag: "p" },
+    { id: "s5b", t: "Campanha Google de pesquisa", d: "R$ 5 a 10 por dia, 7 dias. Termos como \"social media Salvador\".", tag: "p" },
+    { id: "s5c", t: "Registrar os números", d: "Verba, impressões, cliques e contatos no registro abaixo.", tag: "p" },
+    { id: "s5s", t: "Simulado Google Ads Measurement (meta 90%)", d: "Antes da prova.", tag: "g", quiz: "measure" },
+    { id: "s5d", t: "Certificação Google Ads Measurement", d: "", tag: "g", link: "https://skillshop.withgoogle.com/" }
+  ]},
+  { n: 6, title: "Virar currículo", when: "21–27/12", why: "Transformar o que foi feito em prova para recrutador e para o filtro da Gupy.", tasks: [
+    { id: "s6a", t: "Caso no portfólio com números reais", d: "Sem prometer resultado.", tag: "c", link: "https://marcelopassosj.github.io" },
+    { id: "s6b", t: "Gupy: certificações em Conquistas e certificados", d: "", tag: "c", link: "https://login.gupy.io/candidates/curriculum" },
+    { id: "s6c", t: "Gupy: trocar duas habilidades por Google Ads e Meta Ads", d: "Sai \"Protocolos de Rede de Transmissão de TV\" e \"Faturamento de Serviços\".", tag: "c", link: "https://login.gupy.io/candidates/curriculum" },
+    { id: "s6d", t: "PDFs: \"Mídia on e off-line\" com as plataformas", d: "Nas duas versões do currículo.", tag: "c" },
+    { id: "s6e", t: "Opcional: Meta Certified Digital Marketing Associate", d: "Paga, cerca de US$ 99. Só se as vagas pedirem.", tag: "m" }
+  ]}
+];
+const TAGNAME = { g: "Google", m: "Meta", p: "Prática", c: "Currículo" };
+const PLATS = [ { id: "meta", name: "Meta Ads" }, { id: "google", name: "Google Ads" } ];
+const FIELDS = ["verba", "imp", "cliques", "contatos"];
+const LS_KEY = "plano-midia-on-off";
+
+let state = { done: {}, m: {}, q: {} };
+let ref = null, saveTimer = null, saving = false, pending = false;
+
+function readLocal() { try { const s = localStorage.getItem(LS_KEY); return s ? JSON.parse(s) : null; } catch (e) { return null; } }
+function writeLocal() { try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch (e) {} }
+
+function el(tag, attrs, kids) {
+  const n = document.createElement(tag);
+  for (const k in (attrs || {})) { if (k === "text") n.textContent = attrs[k]; else n.setAttribute(k, attrs[k]); }
+  (kids || []).forEach(c => n.appendChild(c));
+  return n;
+}
+
+function buildWeeks() {
+  const root = document.getElementById("weeks");
+  WEEKS.forEach(w => {
+    const ul = el("ul", { class: "tasks" });
+    w.tasks.forEach(t => {
+      const cb = el("input", { type: "checkbox", id: "cb-" + t.id });
+      cb.addEventListener("change", () => { if (cb.checked) state.done[t.id] = new Date().toISOString().slice(0, 10); else delete state.done[t.id]; render(); queueSave(); });
+      const title = el("b", { text: t.t });
+      const txt = el("span", { class: "t-text" }, [title]);
+      if (t.d || t.link) {
+        const sm = el("small", {});
+        if (t.d) sm.appendChild(document.createTextNode(t.d + (t.link ? " " : "")));
+        if (t.link) { const a = el("a", { href: t.link, target: "_blank", rel: "noopener", text: "Abrir ↗" }); a.addEventListener("click", e => e.stopPropagation()); sm.appendChild(a); }
+        txt.appendChild(sm);
+      }
+      if (t.quiz) {
+        const sm = el("small", {});
+        const a = el("a", { href: "#simulados", text: "Fazer o simulado ↓" });
+        a.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); openQuiz(t.quiz); });
+        sm.appendChild(a);
+        const b = el("span", { id: "qb-" + t.id, class: "save" });
+        sm.appendChild(document.createTextNode("  ")); sm.appendChild(b);
+        txt.appendChild(sm);
+      }
+      const lab = el("label", { for: "cb-" + t.id }, [cb, txt, el("span", { class: "tag " + t.tag, text: TAGNAME[t.tag] })]);
+      ul.appendChild(el("li", { id: "li-" + t.id }, [lab]));
+    });
+    const head = el("div", { class: "week-head" }, [
+      el("h2", { text: "Semana " + w.n + " · " + w.title }),
+      el("span", { class: "when" }, [document.createTextNode(w.when + "  "), el("span", { class: "count", id: "c" + w.n, text: "0/" + w.tasks.length })])
+    ]);
+    root.appendChild(el("article", { class: "week", "aria-label": "Semana " + w.n }, [head, el("p", { class: "week-why", text: w.why }), ul]));
+  });
+}
+
+function buildMetrics() {
+  const body = document.getElementById("mBody");
+  PLATS.forEach(p => {
+    const tr = el("tr", {}, [el("td", { text: p.name })]);
+    FIELDS.forEach(f => {
+      const inp = el("input", { type: "number", min: "0", step: f === "verba" ? "0.01" : "1", inputmode: "decimal", id: "m-" + p.id + "-" + f, "aria-label": p.name + " " + f });
+      inp.addEventListener("input", () => { state.m[p.id] = state.m[p.id] || {}; const v = inp.value === "" ? null : Number(inp.value); state.m[p.id][f] = v; renderMetrics(); queueSave(); });
+      tr.appendChild(el("td", {}, [inp]));
+    });
+    ["cpm", "cpc", "ctr", "cpl"].forEach(k => tr.appendChild(el("td", { class: "calc empty", id: "k-" + p.id + "-" + k, text: "–" })));
+    body.appendChild(tr);
+  });
+}
+
+const brl = v => "R$ " + v.toFixed(2).replace(".", ",");
+function renderMetrics() {
+  PLATS.forEach(p => {
+    const m = state.m[p.id] || {};
+    FIELDS.forEach(f => { const inp = document.getElementById("m-" + p.id + "-" + f); const v = m[f]; if (document.activeElement !== inp) inp.value = (v === null || v === undefined) ? "" : v; });
+    const out = {
+      cpm: m.verba && m.imp ? brl(m.verba / m.imp * 1000) : null,
+      cpc: m.verba && m.cliques ? brl(m.verba / m.cliques) : null,
+      ctr: m.imp && m.cliques != null && m.imp > 0 ? (m.cliques / m.imp * 100).toFixed(2).replace(".", ",") + "%" : null,
+      cpl: m.verba && m.contatos ? brl(m.verba / m.contatos) : null
+    };
+    for (const k in out) { const c = document.getElementById("k-" + p.id + "-" + k); c.textContent = out[k] || "–"; c.classList.toggle("empty", !out[k]); }
+  });
+}
+
+function render() {
+  let total = 0, done = 0;
+  WEEKS.forEach(w => {
+    let wd = 0;
+    w.tasks.forEach(t => {
+      total++;
+      const on = !!state.done[t.id];
+      if (on) { done++; wd++; }
+      document.getElementById("cb-" + t.id).checked = on;
+      document.getElementById("li-" + t.id).classList.toggle("done", on);
+    });
+    const c = document.getElementById("c" + w.n);
+    c.textContent = wd + "/" + w.tasks.length;
+    c.classList.toggle("full", wd === w.tasks.length);
+    document.getElementById("f" + w.n).textContent = wd + "/" + w.tasks.length;
+  });
+  const pct = total ? Math.round(done / total * 100) : 0;
+  document.getElementById("bar").style.width = pct + "%";
+  document.querySelector(".bar").setAttribute("aria-valuenow", pct);
+  document.getElementById("meterNum").textContent = done + " de " + total + " tarefas · " + pct + "%";
+  renderMetrics();
+  renderQuizBadges();
+}
+
+function setSave(t) { document.getElementById("saveState").textContent = t; }
+
+function queueSave() {
+  writeLocal();
+  if (!ref) { setSave("Salvo só neste navegador"); return; }
+  clearTimeout(saveTimer);
+  setSave("Salvando…");
+  saveTimer = setTimeout(flush, 700);
+}
+async function flush() {
+  if (saving) { pending = true; return; }
+  saving = true;
+  try { await ref.set(JSON.parse(JSON.stringify(state))); setSave("Salvo na sua conta"); }
+  catch (e) { setSave(e && e.code === "invalid_argument" ? "Só leitura: você não pode salvar aqui" : "Não salvou. Tente marcar de novo em instantes."); }
+  saving = false;
+  if (pending) { pending = false; flush(); }
+}
+
+const QUIZ = {
+  ga4: { name: "Google Analytics (GA4)", task: "s1f", qs: [
+    { q: "Qual é a hierarquia correta no Google Analytics 4?", o: ["Propriedade → Conta → Fluxo de dados", "Conta → Propriedade → Fluxo de dados", "Conta → Visualização → Propriedade", "Fluxo de dados → Conta → Propriedade"], a: 1, e: "A conta é a empresa, a propriedade é o site ou app, e o fluxo de dados é cada origem (web, iOS, Android). \"Visualização\" era do Universal Analytics." },
+    { q: "Rolagem de página, cliques de saída, busca no site e downloads de arquivo são coletados sem código extra quando você ativa:", o: ["Eventos personalizados", "Google Signals", "Medição otimizada", "Vinculação com o BigQuery"], a: 2, e: "A medição otimizada é ativada no fluxo de dados web e coleta esses eventos automaticamente." },
+    { q: "Um envio de formulário de contato deve aparecer como resultado de negócio. O que você faz com esse evento?", o: ["Marca como evento-chave", "Cria um público com ele", "Registra como métrica personalizada", "Cria uma meta de destino"], a: 0, e: "No GA4 as ações importantes são marcadas como eventos-chave (o nome atual de conversão). Metas de destino eram do Universal Analytics." },
+    { q: "Você quer ver em que etapa do processo de cadastro as pessoas desistem. Qual técnica de Explorar usa?", o: ["Exploração livre", "Sobreposição de segmentos", "Exploração de funil", "Tabela de coorte"], a: 2, e: "A exploração de funil mostra as etapas em sequência e a taxa de abandono entre elas." },
+    { q: "Por padrão, por quanto tempo o GA4 guarda dados no nível do usuário e do evento usados nas explorações?", o: ["2 meses", "26 meses", "14 meses", "Sem limite"], a: 0, e: "O padrão é 2 meses. Em propriedades padrão dá para aumentar para 14 meses nas configurações de retenção de dados." },
+    { q: "Você envia o parâmetro \"tipo_plano\" junto de um evento e quer usá-lo nos relatórios. O que precisa fazer?", o: ["Nada, ele aparece sozinho em todos os relatórios", "Registrá-lo como dimensão personalizada com escopo de evento", "Criar um novo fluxo de dados", "Ativar o Google Signals"], a: 1, e: "Parâmetros enviados com eventos só ficam disponíveis nos relatórios depois de registrados como dimensão (ou métrica) personalizada." },
+    { q: "Qual é o modelo de atribuição padrão nos relatórios do GA4?", o: ["Último clique", "Primeiro clique", "Linear", "Baseado em dados"], a: 3, e: "O GA4 usa atribuição baseada em dados como padrão, distribuindo o crédito conforme a contribuição real de cada ponto de contato." },
+    { q: "Onde você vincula uma conta do Google Ads à propriedade do GA4?", o: ["Em Relatórios, na visão geral", "Em Administrador, em Links de produtos", "Em Explorar, numa exploração livre", "Na própria conta do Google Merchant Center"], a: 1, e: "As vinculações com Google Ads, BigQuery e outros produtos ficam em Administrador > Links de produtos." },
+    { q: "No GA4, uma sessão engajada é aquela que:", o: ["Dura mais de 10 segundos, tem um evento-chave ou tem 2 ou mais visualizações de página/tela", "Tem pelo menos 1 clique em anúncio", "Vem de um usuário recorrente", "Começa pela página inicial"], a: 0, e: "Essa definição sustenta métricas como taxa de engajamento, que substituiu a lógica da taxa de rejeição do Universal Analytics." },
+    { q: "Você quer ver por quais páginas as pessoas passam depois de entrar pela página de um produto. Qual técnica usa?", o: ["Exploração de funil", "Exploração de caminho", "Valor da vida útil do usuário", "Tabela de coorte"], a: 1, e: "A exploração de caminho mostra a sequência de páginas ou eventos a partir de um ponto inicial ou até um ponto final." }
+  ]},
+  search: { name: "Google Ads Search", task: "s2s", qs: [
+    { q: "Qual tipo de correspondência de palavra-chave alcança o maior número de pesquisas relacionadas?", o: ["Exata", "De frase", "Ampla", "Negativa"], a: 2, e: "A correspondência ampla mostra anúncios para pesquisas relacionadas ao significado da palavra-chave, inclusive sem os termos exatos." },
+    { q: "Seus anúncios de \"curso de marketing\" aparecem para quem busca \"curso de marketing grátis\" e você não quer isso. O que usa?", o: ["Palavra-chave negativa \"grátis\"", "Lance menor", "Correspondência ampla", "Outro grupo de anúncios"], a: 0, e: "Palavras-chave negativas impedem que o anúncio apareça para pesquisas que contêm aquele termo." },
+    { q: "Quantos títulos e descrições um anúncio responsivo de pesquisa aceita, no máximo?", o: ["5 títulos e 2 descrições", "15 títulos e 4 descrições", "10 títulos e 5 descrições", "3 títulos e 2 descrições"], a: 1, e: "Até 15 títulos e 4 descrições. O Google combina e testa as variações." },
+    { q: "Quais são os componentes do Índice de Qualidade?", o: ["Lance, orçamento e horário", "CTR esperada, relevância do anúncio e experiência na página de destino", "Impressões, cliques e conversões", "Idade da conta e histórico de pagamento"], a: 1, e: "O Índice de Qualidade (1 a 10) é um diagnóstico baseado nesses três componentes." },
+    { q: "Você quer o maior número de conversões possível dentro do orçamento diário, sem definir um custo-alvo. Qual estratégia de lances?", o: ["CPC manual", "Maximizar cliques", "Maximizar conversões", "Parcela de impressões desejada"], a: 2, e: "Maximizar conversões é Smart Bidding: ajusta os lances em cada leilão para conseguir mais conversões com o orçamento." },
+    { q: "O que determina se o anúncio aparece e em que posição?", o: ["Só o valor do lance", "A classificação do anúncio", "O tamanho do orçamento", "A idade da campanha"], a: 1, e: "A classificação do anúncio considera lance, qualidade, limites mínimos, contexto da pesquisa e impacto dos recursos." },
+    { q: "Qual relatório mostra as buscas reais que as pessoas fizeram e que acionaram seus anúncios?", o: ["Relatório de palavras-chave", "Relatório de termos de pesquisa", "Relatório de leilão", "Relatório de locais"], a: 1, e: "Ele mostra os termos de pesquisa reais. É dali que saem novas palavras-chave e negativas." },
+    { q: "Sitelinks, frases de destaque e números de telefone adicionados ao anúncio são chamados de:", o: ["Recursos (antes chamados de extensões)", "Públicos", "Segmentos de afinidade", "Palavras-chave dinâmicas"], a: 0, e: "Recursos acrescentam informações e links ao anúncio e costumam melhorar a CTR." },
+    { q: "Você quer pagar em média R$ 40 por cadastro. Qual estratégia de lances se encaixa?", o: ["ROAS desejado", "CPA desejado", "Maximizar cliques", "CPM visível"], a: 1, e: "Com CPA desejado você informa o custo médio por conversão que aceita pagar." },
+    { q: "Qual é a estrutura de uma conta do Google Ads?", o: ["Conta → Campanhas → Grupos de anúncios → Anúncios e palavras-chave", "Conta → Palavras-chave → Campanhas → Anúncios", "Campanha → Conta → Anúncios", "Grupo de anúncios → Campanha → Conta"], a: 0, e: "Orçamento e configurações ficam na campanha. Palavras-chave e anúncios ficam no grupo de anúncios." }
+  ]},
+  display: { name: "Google Ads Display", task: "s3s1", qs: [
+    { q: "Segundo o Google, a Rede de Display alcança aproximadamente quantos usuários de internet no mundo?", o: ["Cerca de 30%", "Cerca de 50%", "Mais de 90%", "Só usuários do YouTube"], a: 2, e: "O Google divulga que a Rede de Display alcança mais de 90% dos usuários de internet, em sites, apps e propriedades do Google." },
+    { q: "Num anúncio de display responsivo, você:", o: ["Envia uma única imagem pronta", "Envia recursos (imagens, títulos, logos, descrições) e o Google monta as combinações", "Escreve código HTML5", "Só escolhe o tamanho do banner"], a: 1, e: "O Google combina os recursos e ajusta o formato a cada espaço disponível." },
+    { q: "Você quer mostrar anúncios para quem já visitou seu site. O que usa?", o: ["Segmentos de afinidade", "Segmentos de dados próprios (remarketing)", "Segmentação por tópico", "Palavras-chave negativas"], a: 1, e: "Remarketing usa seus dados próprios, como visitantes do site ou listas de clientes." },
+    { q: "O que a segmentação otimizada faz?", o: ["Restringe os anúncios só aos segmentos escolhidos", "Busca novas pessoas com chance de converter, além dos segmentos escolhidos", "Exclui sites de baixa qualidade", "Aumenta o lance em celulares"], a: 1, e: "Ela usa sinais como seus segmentos e conversões para encontrar novos públicos com probabilidade de converter." },
+    { q: "Numa campanha de reconhecimento, você quer pagar só por impressões que puderam ser vistas. Qual lance?", o: ["CPC manual", "CPA desejado", "CPM visível (vCPM)", "ROAS desejado"], a: 2, e: "O vCPM cobra por mil impressões visíveis. Bom para reconhecimento de marca." },
+    { q: "Seu cliente não quer aparecer ao lado de conteúdo sensível. O que você configura?", o: ["Exclusões de conteúdo e de posicionamentos", "Limite de frequência", "Segmentação otimizada", "Programação de anúncios"], a: 0, e: "As exclusões controlam onde o anúncio pode ou não aparecer, para proteger a marca." },
+    { q: "Segmentos de afinidade são indicados para alcançar:", o: ["Quem está pesquisando ativamente para comprar agora", "Pessoas com interesses e hábitos amplos, para reconhecimento", "Só quem já comprou de você", "Pessoas de uma lista de e-mails"], a: 1, e: "Afinidade é parecido com o público de TV: interesses e estilo de vida. Bom para alcance e reconhecimento." },
+    { q: "Segmentos no mercado reúnem pessoas que:", o: ["Estão pesquisando e planejando comprar algo da sua categoria", "Moram perto da sua loja", "Já viram seu vídeo no YouTube", "Têm interesse geral por esportes"], a: 0, e: "No mercado são pessoas com intenção de compra recente, mais perto da conversão." },
+    { q: "Escolher palavras-chave ou tópicos na Rede de Display serve para:", o: ["Aparecer em resultados de busca", "Aparecer em páginas cujo conteúdo trata desses assuntos (segmentação contextual)", "Bloquear sites", "Criar listas de remarketing"], a: 1, e: "É a segmentação contextual: o anúncio aparece em páginas relacionadas ao tema, como escolher um programa de TV pelo conteúdo." },
+    { q: "Para evitar que a mesma pessoa veja o anúncio muitas vezes, você usa:", o: ["Segmentação otimizada", "Limite de frequência", "Lance manual", "Exclusão de dispositivos"], a: 1, e: "O limite de frequência define o máximo de impressões por pessoa em um período, a mesma lógica de frequência média da mídia off." }
+  ]},
+  video: { name: "Google Ads Video", task: "s3s2", qs: [
+    { q: "Num anúncio in-stream pulável, depois de quantos segundos o espectador pode pular?", o: ["3", "5", "10", "15"], a: 1, e: "O botão de pular aparece depois de 5 segundos. Os primeiros segundos precisam prender a atenção." },
+    { q: "Qual é a duração máxima de um anúncio bumper?", o: ["6 segundos", "10 segundos", "15 segundos", "30 segundos"], a: 0, e: "Bumper tem até 6 segundos e não pode ser pulado. Serve para frequência e lembrança." },
+    { q: "Como bumpers normalmente são comprados?", o: ["CPC", "CPM desejado", "CPA desejado", "Custo por instalação"], a: 1, e: "Bumpers são formatos de alcance e são comprados por impressões, com CPM desejado." },
+    { q: "Qual estudo mede o efeito de uma campanha de vídeo em lembrança do anúncio e consideração?", o: ["Brand Lift", "Teste A/B de página", "Relatório de termos de pesquisa", "Atribuição por último clique"], a: 0, e: "O Brand Lift compara quem viu e quem não viu o anúncio, usando pesquisas curtas." },
+    { q: "Como se calcula a taxa de visualização?", o: ["Cliques ÷ impressões", "Visualizações ÷ impressões", "Conversões ÷ cliques", "Impressões ÷ alcance"], a: 1, e: "É a parcela de impressões que viraram visualização. Indica se o criativo prende a atenção." },
+    { q: "O que é o ABCD do Google para criativos de vídeo?", o: ["Atrair, Branding, Conectar, Direcionar", "Alcance, Busca, Clique, Dados", "Anúncio, Bumper, Campanha, Display", "Atenção, Base, Custo, Desempenho"], a: 0, e: "Atrair atenção cedo, mostrar a marca, conectar com emoção ou utilidade e direcionar para uma ação." },
+    { q: "Você quer alcançar o máximo de pessoas únicas com um orçamento definido. Qual objetivo de campanha de vídeo?", o: ["Vendas", "Tráfego do site", "Alcance (reconhecimento)", "Leads"], a: 2, e: "Campanhas de alcance otimizam por pessoas únicas, o equivalente a comprar alcance em TV." },
+    { q: "Num in-stream pulável, quando o Google conta uma visualização?", o: ["Assim que o anúncio começa", "Quando a pessoa assiste 30 segundos (ou o anúncio inteiro, se for menor) ou interage", "Só quando a pessoa clica", "Depois de 5 segundos"], a: 1, e: "Por isso, no lance por visualização, você paga quando a pessoa assiste de verdade ou interage." },
+    { q: "Para contar uma história em etapas (primeiro um vídeo de apresentação, depois um de oferta), você usa:", o: ["Sequência de anúncios de vídeo", "Limite de frequência", "Segmentação por tópico", "Exclusão de conteúdo"], a: 0, e: "A sequência define a ordem em que a mesma pessoa vê os vídeos." },
+    { q: "Onde aparecem os anúncios in-feed do YouTube?", o: ["Só antes de vídeos, sem opção de pular", "Nos resultados de pesquisa do YouTube, na página inicial e ao lado de vídeos relacionados", "Só em sites parceiros", "Só na TV aberta"], a: 1, e: "No in-feed a pessoa vê uma miniatura e clica para assistir. É uma visualização por escolha." }
+  ]},
+  measure: { name: "Google Ads Measurement", task: "s5s", qs: [
+    { q: "O que é necessário no site para medir conversões do Google Ads?", o: ["A tag do Google com a ação de conversão configurada", "Só vincular o YouTube", "Um anúncio de display", "Uma lista de remarketing"], a: 0, e: "A tag do Google (ou o Gerenciador de tags) registra a ação quando ela acontece no site." },
+    { q: "O que fazem as conversões otimizadas (enhanced conversions)?", o: ["Aumentam o lance automaticamente", "Usam dados próprios com hash, como e-mail, para melhorar a precisão da medição", "Criam anúncios novos", "Excluem cliques inválidos"], a: 1, e: "Os dados são criptografados (hash) e cruzados com contas Google para recuperar conversões que se perderiam." },
+    { q: "Qual é a janela de conversão padrão para cliques em muitas ações de conversão?", o: ["1 dia", "7 dias", "30 dias", "90 dias"], a: 2, e: "O padrão é 30 dias após o clique e pode ser ajustado de 1 a 90 dias, conforme o ciclo de compra." },
+    { q: "Você quer testar uma nova estratégia de lances sem arriscar toda a campanha. O que usa?", o: ["Experimentos", "Recomendações", "Limite de frequência", "Relatório de leilão"], a: 0, e: "Os experimentos dividem o tráfego entre a versão original e a de teste para comparar com segurança." },
+    { q: "Qual modelo de atribuição o Google Ads recomenda e usa como padrão?", o: ["Último clique", "Baseado em dados", "Primeiro clique", "Decaimento de tempo"], a: 1, e: "O baseado em dados distribui o crédito conforme a contribuição real de cada clique ou interação." },
+    { q: "Seu cliente fecha vendas por telefone, fora do site. Como levar essas vendas ao Google Ads?", o: ["Importação de conversões off-line (por exemplo, com o GCLID)", "Aumentando o orçamento", "Criando um anúncio de chamada", "Excluindo celulares"], a: 0, e: "O identificador do clique é guardado no CRM e a venda é importada depois, ligando o clique ao resultado real." },
+    { q: "O que é a modelagem de conversões?", o: ["Criar anúncios com IA", "Estimar conversões que não podem ser observadas diretamente, por limites de cookies ou consentimento", "Copiar campanhas", "Escolher palavras-chave"], a: 1, e: "Ela preenche lacunas de medição com estimativas estatísticas." },
+    { q: "Para que serve o modo de consentimento?", o: ["Para ajustar o comportamento das tags conforme o consentimento de cookies do usuário", "Para aprovar anúncios", "Para liberar o acesso de outros usuários à conta", "Para definir o orçamento"], a: 0, e: "Ele respeita a escolha do usuário e ainda permite modelagem quando os cookies são negados." },
+    { q: "Para usar a estratégia ROAS desejado, o que suas conversões precisam ter?", o: ["Valores de conversão", "Só contagem de cliques", "Um vídeo vinculado", "Público semelhante"], a: 0, e: "Sem valor por conversão não há como calcular retorno sobre o investimento em anúncios." },
+    { q: "Qual é a diferença entre ação de conversão principal e secundária?", o: ["Não há diferença", "Principais entram na coluna Conversões e orientam os lances; secundárias ficam só para observação", "Secundárias custam mais", "Principais só valem para vídeo"], a: 1, e: "Assim você acompanha micro-ações sem que elas distorçam a otimização dos lances." }
+  ]},
+  meta: { name: "Meta Ads", task: "s4e", qs: [
+    { q: "Em que nível você define público, orçamento (sem orçamento de campanha), posicionamentos e programação?", o: ["Campanha", "Conjunto de anúncios", "Anúncio", "Conta de anúncios"], a: 1, e: "A campanha define o objetivo, o conjunto de anúncios define para quem, onde e quanto, e o anúncio é o criativo." },
+    { q: "Um público semelhante (lookalike) é criado a partir de:", o: ["Um público de origem, como clientes ou visitantes do site", "Palavras-chave", "Uma lista de sites", "O horário de veiculação"], a: 0, e: "A Meta busca pessoas parecidas com o público de origem no país escolhido." },
+    { q: "Para que serve a API de Conversões junto com o Pixel?", o: ["Para enviar eventos direto do servidor, reduzindo a perda de dados por bloqueadores e navegadores", "Para criar anúncios em vídeo", "Para agendar posts orgânicos", "Para aumentar o orçamento"], a: 0, e: "Pixel (navegador) e API de Conversões (servidor) juntos dão uma medição mais completa." },
+    { q: "O que fazem os posicionamentos Advantage+ (automáticos)?", o: ["Mostram o anúncio só no Feed do Instagram", "Distribuem o anúncio entre os posicionamentos onde ele tende a render mais", "Limitam a frequência", "Excluem o Facebook"], a: 1, e: "A Meta recomenda deixar automático para ter mais alcance e custo menor, salvo restrição de marca." },
+    { q: "Num teste A/B bem feito na Meta, você muda:", o: ["Tudo de uma vez", "Uma variável só, como o criativo ou o público", "Só o nome da campanha", "O objetivo e o público juntos"], a: 1, e: "Mudar uma variável por vez permite saber o que causou a diferença de resultado." },
+    { q: "O que faz o orçamento Advantage+ da campanha?", o: ["Divide o orçamento igualmente entre os conjuntos", "Distribui o orçamento da campanha entre os conjuntos com melhores oportunidades em tempo real", "Dobra o orçamento aos fins de semana", "Pausa anúncios ruins"], a: 1, e: "O orçamento fica no nível da campanha e a Meta redistribui entre os conjuntos." },
+    { q: "Na Meta, frequência significa:", o: ["Quantas pessoas viram o anúncio", "A média de vezes que cada pessoa viu o anúncio", "Quantos cliques por dia", "Quantos anúncios há no conjunto"], a: 1, e: "Frequência = impressões ÷ alcance. É o mesmo conceito da mídia off que você já domina." },
+    { q: "Públicos personalizados são criados a partir de:", o: ["Interesses gerais", "Seus dados próprios: visitantes do site, lista de clientes ou quem interagiu com seu perfil", "Palavras-chave de busca", "Faixa de renda informada pela Meta"], a: 1, e: "São pessoas que já têm relação com a marca, a base para remarketing e para públicos semelhantes." },
+    { q: "Seu anúncio custou R$ 120 e teve 40.000 impressões. Qual foi o CPM?", o: ["R$ 0,30", "R$ 3,00", "R$ 30,00", "R$ 300,00"], a: 1, e: "CPM = custo ÷ impressões × 1.000 = 120 ÷ 40.000 × 1.000 = R$ 3,00." },
+    { q: "O que é a fase de aprendizado de um conjunto de anúncios?", o: ["O período em que a Meta testa a entrega; costuma precisar de cerca de 50 eventos de otimização em 7 dias para sair dela", "Um curso obrigatório do Blueprint", "O período de aprovação do anúncio", "Os primeiros 30 dias da conta"], a: 0, e: "Mudanças grandes, como trocar público ou orçamento de forma brusca, podem reiniciar o aprendizado." }
+  ]}
+};
+const QORDER = ["ga4", "search", "display", "video", "measure", "meta"];
+let curQuiz = "ga4";
+
+function buildQuizTabs() {
+  const box = document.getElementById("qTabs");
+  QORDER.forEach(k => {
+    const b = el("button", { type: "button", class: "qtab", role: "tab", id: "qt-" + k, "aria-selected": "false" }, [el("span", { text: QUIZ[k].name }), el("span", { class: "best", id: "qtb-" + k })]);
+    b.addEventListener("click", () => { curQuiz = k; renderQuiz(); });
+    box.appendChild(b);
+  });
+}
+function renderQuiz() {
+  QORDER.forEach(k => document.getElementById("qt-" + k).setAttribute("aria-selected", k === curQuiz ? "true" : "false"));
+  const form = document.getElementById("qForm");
+  form.innerHTML = "";
+  QUIZ[curQuiz].qs.forEach((it, i) => {
+    const fs = el("fieldset", { class: "qq", id: "qq-" + i });
+    const lg = el("legend", {}, [el("span", { class: "qn", text: (i + 1) + "/10" }), document.createTextNode(it.q)]);
+    fs.appendChild(lg);
+    it.o.forEach((op, j) => {
+      const id = "q-" + curQuiz + "-" + i + "-" + j;
+      const inp = el("input", { type: "radio", name: "q" + i, value: String(j), id: id });
+      fs.appendChild(el("label", { class: "qopt", for: id, id: "lo-" + i + "-" + j }, [inp, el("span", { text: op })]));
+    });
+    const ex = el("div", { class: "qexp", id: "qe-" + i });
+    ex.hidden = true;
+    fs.appendChild(ex);
+    form.appendChild(fs);
+  });
+  document.getElementById("qScore").textContent = "";
+}
+function gradeQuiz(e) {
+  e.preventDefault();
+  const set = QUIZ[curQuiz];
+  let ok = 0, answered = 0;
+  set.qs.forEach((it, i) => {
+    const pick = document.querySelector('input[name="q' + i + '"]:checked');
+    const v = pick ? Number(pick.value) : -1;
+    if (v >= 0) answered++;
+    const right = v === it.a;
+    if (right) ok++;
+    const fs = document.getElementById("qq-" + i);
+    fs.classList.toggle("ok", right); fs.classList.toggle("bad", !right);
+    it.o.forEach((_, j) => { const l = document.getElementById("lo-" + i + "-" + j); l.classList.toggle("right", j === it.a); l.classList.toggle("wrong", j === v && !right); });
+    const ex = document.getElementById("qe-" + i);
+    ex.innerHTML = "";
+    ex.appendChild(el("b", { text: right ? "Certo. " : (v < 0 ? "Sem resposta. " : "Errado. ") }));
+    ex.appendChild(document.createTextNode("Resposta: " + it.o[it.a] + ". " + it.e));
+    ex.hidden = false;
+  });
+  const pct = Math.round(ok / set.qs.length * 100);
+  const prev = state.q[curQuiz] || 0;
+  state.q[curQuiz] = Math.max(prev, pct);
+  if (pct >= 90 && !state.done[set.task]) state.done[set.task] = new Date().toISOString().slice(0, 10);
+  render(); queueSave();
+  const msg = ok + " de " + set.qs.length + " · " + pct + "%" + (pct >= 90 ? " · meta batida" : " · meta 90%") + " · melhor: " + state.q[curQuiz] + "%" + (answered < set.qs.length ? " · " + (set.qs.length - answered) + " sem resposta" : "");
+  document.getElementById("qScore").textContent = msg;
+  document.getElementById("qScore").scrollIntoView({ block: "nearest", behavior: "smooth" });
+}
+function renderQuizBadges() {
+  QORDER.forEach(k => {
+    const best = state.q[k];
+    const t = document.getElementById("qtb-" + k); if (t) t.textContent = best != null ? best + "%" : "";
+    const b = document.getElementById("qb-" + QUIZ[k].task); if (b) b.textContent = best != null ? "Melhor nota: " + best + "%" : "";
+  });
+}
+function openQuiz(k) { curQuiz = k; renderQuiz(); document.getElementById("simulados").scrollIntoView({ behavior: "smooth", block: "start" }); }
+
+buildQuizTabs();
+renderQuiz();
+document.getElementById("qForm").addEventListener("submit", gradeQuiz);
+document.getElementById("qReset").addEventListener("click", renderQuiz);
+buildWeeks();
+buildMetrics();
+const local = readLocal();
+if (local) state = { done: local.done || {}, m: local.m || {}, q: local.q || {} };
+render();
+setSave(local ? "Salvo só neste navegador" : "Nada marcado ainda");
+
+(async () => {
+  const db = window.claude && window.claude.use ? await window.claude.use("db") : null;
+  if (!db) { setSave(local ? "Salvo só neste navegador" : "Progresso fica neste navegador"); return; }
+  ref = db.doc("progresso/plano");
+  const timer = setTimeout(() => setSave("Sem conexão com o salvamento ainda. Marcações ficam neste navegador."), 10000);
+  ref.onSnapshot(snap => {
+    if (!snap.metadata.fromCache) clearTimeout(timer);
+    if (snap.exists) {
+      const d = snap.data();
+      if (!snap.metadata.hasPendingWrites) { state = { done: Object.assign({}, d.done || {}), m: JSON.parse(JSON.stringify(d.m || {})), q: Object.assign({}, d.q || {}) }; writeLocal(); render(); }
+      if (!saving && !snap.metadata.hasPendingWrites) setSave("Salvo na sua conta");
+    } else if (!snap.metadata.fromCache) {
+      setSave("Pronto para salvar na sua conta");
+      if (Object.keys(state.done).length || Object.keys(state.m).length) queueSave();
+    }
+  }, () => { clearTimeout(timer); ref = null; setSave("Salvo só neste navegador"); });
+})();
+</script>
+
+</body></html>
