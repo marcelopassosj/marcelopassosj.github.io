@@ -64,7 +64,7 @@
     caixa = document.createElement('div');
     caixa.className = 'cc'; caixa.hidden = true;
     caixa.setAttribute('role', 'region'); caixa.setAttribute('aria-label', 'Aviso de cookies');
-    caixa.innerHTML = '<p><strong>Posso medir esta visita?</strong><span>Uso cookies do Google Analytics para contar as visitas e saber de que cidade elas vêm. Nada é medido sem o seu aceite.</span></p>' +
+    caixa.innerHTML = '<p><strong>Este site usa cookies</strong><span>Utilizamos cookies para analisar o tráfego e melhorar a sua experiência de navegação. Ao clicar em "Aceitar", você concorda com o uso de cookies de análise, conforme a Lei Geral de Proteção de Dados (LGPD).</span></p>' +
       '<div class="cc-botoes"><button type="button" class="cc-nao">Recusar</button><button type="button" class="cc-sim">Aceitar</button></div>';
     document.body.appendChild(caixa);
     caixa.querySelector('.cc-sim').addEventListener('click', function () { gravar('aceito'); ativar(); fechar(); });
