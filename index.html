@@ -155,7 +155,6 @@ section { padding: 112px var(--m); }
 /* ===== Trabalhos ===== */
 .aviso-cases { margin: 0 0 24px; font-size: 14px; color: var(--pedra); }
 .area .situacao, .oferta .situacao { color: var(--pedra); font-size: .875em; }
-.ver-projetos { margin-top: 24px; }
 .filtros { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
 .filtros button { min-height: 44px; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--linha); font-weight: 500; font-size: 14px; transition: background .2s, color .2s; }
 .filtros button[aria-pressed="true"] { background: var(--tinta); color: var(--papel); border-color: var(--tinta); }
@@ -384,7 +383,6 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
     <p class="aviso-cases" role="note">Os estudos apresentam marcas fictícias, imagens geradas com IA e, em alguns casos, dados simulados.</p>
     <div class="filtros" id="filtros" role="group" aria-label="Filtrar projetos por segmento"></div>
     <div class="grade" id="grade"></div>
-    <button type="button" class="btn linha ver-projetos" id="ver-projetos" aria-controls="grade" hidden>Veja todos os projetos</button>
     <noscript><p>Os estudos de caso abrem com JavaScript. Se preferir, peça os cases em PDF pelo e-mail mpassosj@gmail.com.</p></noscript>
   </section>
 
@@ -534,7 +532,7 @@ const PROJETOS = [
             ['post-04-mesa', 'Mesa pra seis? A gente junta.'], ['post-05-lista', '3 petiscos que nunca voltam inteiros.'], ['post-06-enquete', 'Qual é o seu pedido de sempre?']] },
   { id: 'raia', nome: 'Raia', segmento: 'Energia solar residencial', cat: 'servicos', tipo: 'Marca fictícia',
     fundo: '#0F2E2C', txt: '#F5EEE1', arroba: '@raiasolar',
-    desafio: "Apresente a energia solar com uma identidade própria e explicar as estimativas de economia de forma transparente.",
+    desafio: "Apresente a energia solar com uma identidade própria e explique as estimativas de economia de forma transparente.",
     conceito: "O sol nascente inspira anéis concêntricos que organizam as composições e emolduram as imagens. O azul-petróleo predomina, e os dados vêm acompanhados de fonte ou nota explicativa.",
     entregas: '6 posts · 3:4 e 4:5 · personagens fixos com IA · QA', fontes: [['Títulos', 'Bricolage Grotesque'], ['Texto', 'Inter']],
     cores: [['Petróleo', '#0F2E2C'], ['Sol', '#FFB627'], ['Areia', '#F5EEE1'], ['Papel', '#FFFDF8'], ['Brasa', '#F26B1D']],
@@ -569,7 +567,7 @@ const PROJETOS = [
             ['post-04-crianca', 'Criança de 5 a 9 anos paga metade.'], ['post-05-sem-taxa', 'Aqui não tem taxa de desperdício.'], ['post-06-delivery', 'O Kaze vai até você.']] },
   { id: 'brasa', nome: 'Brasa 77', segmento: 'Hamburgueria smash', cat: 'gastronomia', tipo: 'Marca fictícia',
     fundo: '#141210', txt: '#F4EBDD', arroba: '@brasa77',
-    desafio: "Crie uma identidade para uma hamburgueria de bairro e dar destaque aos diferenciais de um cardápio enxuto.",
+    desafio: "Crie uma identidade para uma hamburgueria de bairro e dê destaque aos diferenciais de um cardápio enxuto.",
     conceito: "A chapa inspira a paleta de carvão e mostarda, as marcas de grelha e os selos de preço. Cada peça destaca uma característica do produto ou do serviço.",
     entregas: '6 posts · 3:4 e 4:5 · fotos com IA · legendas', fontes: [['Títulos', 'Anton'], ['Texto', 'Archivo']],
     cores: [['Carvão', '#141210'], ['Mostarda', '#F2B705'], ['Creme', '#F4EBDD'], ['Tomate', '#D93A1E']],
@@ -683,7 +681,7 @@ for (let c = 0; c < 3; c++) {
 /* ===== Cartões e filtros ===== */
 const grade = document.getElementById('grade');
 grade.innerHTML = LISTA.map(p => { const x = EXTRA[p.id] || {}; const i = LISTA.indexOf(p);
-  return `<article class="cartao revela ${x.destaque ? 'destaque' : ''}" data-cat="${p.cat}" ${i >= ordemDestaques.length ? 'hidden' : ''} style="--cor-fundo:${p.fundo}">
+  return `<article class="cartao revela ${x.destaque ? 'destaque' : ''}" data-cat="${p.cat}" style="--cor-fundo:${p.fundo}">
     <div class="capa"><span class="selo">${x.destaque ? 'Case completo · marca fictícia' : 'Case de estudo · marca fictícia'}</span>
       <div class="posts">${[1, 0, 2].map(k => `<img src="${mini(p, p.posts[k][0])}" alt="" loading="lazy" decoding="async" width="480" height="640">`).join('')}</div></div>
     <div class="info"><div><h3>${esc(p.nome)}</h3><p class="seg">${esc(p.segmento)}</p>${x.resumo ? `<p class="resumo">${esc(x.resumo)}</p>` : ''}
@@ -692,24 +690,14 @@ grade.innerHTML = LISTA.map(p => { const x = EXTRA[p.id] || {}; const i = LISTA.
   </article>`; }).join('');
 const filtros = document.getElementById('filtros');
 filtros.innerHTML = FILTROS.map(([k, t], i) => `<button data-f="${k}" aria-pressed="${i === 0}">${t}</button>`).join('');
-const verProjetos = document.getElementById('ver-projetos');
 const cartoes = [...grade.querySelectorAll('.cartao')];
-let mostrarTodos = false;
-verProjetos.hidden = false;
-verProjetos.addEventListener('click', () => {
-  mostrarTodos = true;
-  cartoes.forEach(c => { c.hidden = false; });
-  cartoes[ordemDestaques.length].querySelector('.abrir').focus();
-  verProjetos.hidden = true;
-});
 filtros.addEventListener('click', e => {
   const b = e.target.closest('button');
   if (!b) return;
   filtros.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
   const todos = b.dataset.f === 'todos';
-  verProjetos.hidden = !todos || mostrarTodos;
-  cartoes.forEach((c, i) => {
-    c.hidden = todos ? !mostrarTodos && i >= ordemDestaques.length : c.dataset.cat !== b.dataset.f;
+  cartoes.forEach(c => {
+    c.hidden = !todos && c.dataset.cat !== b.dataset.f;
   });
 });
 grade.addEventListener('click', e => { const b = e.target.closest('.abrir'); if (b) abrirCaso(+b.dataset.i, b); });
