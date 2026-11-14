@@ -328,6 +328,20 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
 .reels { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center; margin-top: 54px; padding: 40px; border-radius: 22px; background: var(--cor-fundo); color: var(--cor-txt); }
 .reels p { font-size: 18px; line-height: 1.6; max-width: 46ch; margin: 12px 0 16px; }
 .reels small { opacity: .8; font-size: 13px; }
+/* Carrossel infinito: os slides ficam colados (gap 0) para a imagem continuar entre eles */
+.ci { margin-top: 54px; padding: 40px; border-radius: 22px; background: var(--cor-fundo); color: var(--cor-txt); }
+.ci-cab { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 24px; }
+.ci-cab p { font-size: 18px; line-height: 1.6; max-width: 52ch; margin-top: 12px; }
+.ci-ctrl { display: flex; align-items: center; gap: 10px; flex: none; }
+.ci-ctrl .seta { position: static; translate: none; }
+.ci-ctrl .seta:disabled { opacity: .35; cursor: default; }
+.ci-trilho { display: flex; gap: 0; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; border-radius: 12px; scrollbar-width: none; cursor: grab; }
+.ci-trilho::-webkit-scrollbar { display: none; }
+.ci-trilho.arrastando { scroll-snap-type: none; cursor: grabbing; }
+.ci-trilho img { flex: 0 0 min(400px, 82vw); width: min(400px, 82vw); height: auto; aspect-ratio: 3/4; scroll-snap-align: start; user-select: none; -webkit-user-drag: none; }
+.ci-trilho img + img { margin-left: -1px; }   /* 1 px de sobreposição apaga o fio de subpixel na emenda */
+.ci-dica { margin-top: 14px; font-size: 14px; opacity: .75; }
+@media (max-width: 760px) { .ci { padding: 20px 0 20px 20px; } .ci-cab { flex-direction: column; align-items: start; padding-right: 20px; } .ci-trilho { border-radius: 12px 0 0 12px; } }
 .reels .celular { margin: 0; }
 .reels video { width: 100%; height: auto; aspect-ratio: 9/16; border-radius: 32px; background: #111; }
 @media (max-width: 760px) { .reels { grid-template-columns: 1fr; padding: 20px; gap: 24px; } .reels .celular { margin: 0 auto; } }
@@ -639,10 +653,32 @@ const PROJETOS = [
     cores: [['Argila', '#B56F51'], ['Areia', '#D3AE8D'], ['Cacau', '#45251A'], ['Tinta', '#2A150D'], ['Creme', '#F4E9DE']],
     posts: [['post-01-inspira', 'O top acompanha o braço e fica no lugar.'], ['post-02-desce', 'Testada no agachamento: estica e continua opaca.'], ['post-03-pausa', 'O cós de 9 cm não enrola quando você senta.'],
             ['post-04-segura', 'Alças cruzadas que firmam o top no salto.'], ['post-05-solta', 'Estica nas quatro direções e seca rápido.'], ['post-06-tome-folego', 'Feita em Lauro de Freitas, do PP ao GG.']] },
+  { id: 'esquadro', nome: 'Esquadro', segmento: 'Reforma de apartamentos', cat: 'servicos', tipo: 'Marca fictícia', so34: true,
+    fundo: '#17191C', txt: '#F1EDE6', arroba: '@esquadroreformas',
+    desafio: "Apresente uma empresa de reforma de apartamentos a quem tem medo de reformar: orçamento que cresce no meio da obra, prazo que não se cumpre e condomínio que barra o serviço.",
+    conceito: "\"Reforma no esquadro.\" A ferramenta que confere o ângulo reto dá nome à marca e vira a promessa de seguir o combinado. Cada peça nomeia uma dor da pesquisa e mostra a prova contra ela: vistoria antes do orçamento, data no contrato, NBR 16280 e pagamento por etapa.",
+    entregas: '6 posts · 3:4 · carrossel infinito de 10 slides · fotos com IA · pesquisa de dores', fontes: [['Títulos e texto', 'Archivo'], ['Rótulos e medidas', 'IBM Plex Mono']],
+    cores: [['Cal', '#F1EDE6'], ['Grafite', '#17191C'], ['Cobalto', '#2442D6'], ['Concreto', '#C9C3B9']],
+    posts: [['post-01', 'A surpresa mora dentro da parede.'], ['post-02', 'Dia 45: a chave volta para você.'], ['post-03', '90° em cada canto.'],
+            ['post-04', 'O síndico vai pedir. A gente já levou.'], ['post-05', 'Acompanhe a obra sem pisar na poeira.'], ['post-06', 'Você paga a etapa que viu pronta.']],
+    carrossel: { titulo: 'Carrossel infinito · 5 perguntas antes de assinar a reforma',
+      texto: 'Dez slides cortados de uma tela contínua. A régua do esquadro corre pela base de todos, e a imagem de cada slide invade o começo do seguinte. Só imagem e linha atravessam a emenda; o texto fica sempre inteiro.',
+      slides: ['Capa: 5 perguntas para fazer antes de assinar a reforma, sobre a foto de uma parede aberta com canos enferrujados.',
+        'Contrato de reforma assinado sem estas respostas vira aposta.',
+        'Pergunta 1: o orçamento inclui vistoria da hidráulica e da elétrica? Com um orçamento em papel.',
+        'Pergunta 2: qual é a data de entrega? E se atrasar? Com um calendário de 45 dias.',
+        'Pergunta 3: quem leva os documentos ao condomínio? Com a foto de um corredor protegido.',
+        'Pergunta 4: como eu acompanho a obra sem ir até lá? Com a foto de uma cozinha em obra.',
+        'Pergunta 5: quanto eu pago antes de ver a obra andar? Com a régua de parcelas por etapa.',
+        'Lista para salvar e conferir as cinco perguntas na visita técnica.',
+        'Na Esquadro, as cinco respostas já vêm no contrato. Sobre a foto de uma sala reformada.',
+        'Agende a visita técnica, com a assinatura da marca.'] } },
 ];
 
 /* ===== Camada estratégica (Fase 8). Só reorganiza fatos já publicados; nada inventado. ===== */
 const EXTRA = {
+  esquadro: { destaque: true, resumo: 'Pesquisa das dores de quem vai reformar, seis posts com uma prova cada e um carrossel infinito de dez slides.',
+    decisoes: ['Uma dor por peça, tirada de reclamações públicas e da norma de reformas em condomínio (NBR 16280), cada uma respondida com uma prova.', 'O esquadro vira sistema: cantoneira em L sobre as fotos, linhas de cota e régua.', 'No carrossel, a régua corre pelos dez slides e só imagem e linha cruzam a emenda.', 'Marcas reais que a IA colocou nas fotos foram desfocadas, ou a foto foi refeita.'] },
   folego: { destaque: true, resumo: 'Lançamento de uma marca de roupa de treino feminina: conceito, seis posts com a mesma modelo, teste cego de textos e Reels.',
     decisoes: ['Uma respiração dividida em seis comandos, um por pose, para dar ritmo ao grid.', 'Fundo na cor da própria roupa (tom sobre tom) em vez de cenário de academia.', 'Cada título prova um atributo da peça no movimento, sem falar de corpo como troféu.', 'A mesma modelo em todas as fotos, com ficha de consistência.'] },
   lume: { decisoes: ['Regras do Código de Ética do CFO aplicadas desde o briefing: sem preço, promoção, antes e depois ou promessa.', 'O arco de luz vira sistema: chapéu, recorte da foto e fundo.', 'Uma explicação clara por post, para reduzir o medo da consulta.'] },
@@ -651,7 +687,7 @@ const EXTRA = {
 
 
 const FILTROS = [['todos', 'Todos'], ['gastronomia', 'Gastronomia'], ['servicos', 'Serviços'], ['saude', 'Saúde e bem-estar'], ['varejo', 'Varejo e moda'], ['b2b', 'B2B']];
-const ordemDestaques = ['folego', 'lume', 'kaze', 'raia', 'tamborim', 'lento'];
+const ordemDestaques = ['esquadro', 'folego','lume', 'kaze', 'raia', 'tamborim', 'lento'];
 const LISTA = [
   ...ordemDestaques.map(id => PROJETOS.find(p => p.id === id)),
   ...PROJETOS.filter(p => !ordemDestaques.includes(p.id)),
@@ -715,6 +751,7 @@ function abrirCaso(i, quem) {
   if (quem) origem = quem;
   atual = (i + LISTA.length) % LISTA.length; slide = 0;
   const p = LISTA[atual], x = EXTRA[p.id] || {}, prox = LISTA[(atual + 1) % LISTA.length];
+  if (p.so34) formato = '34';   // case sem versão 4:5
   document.getElementById('caso-indice').textContent = `${String(atual + 1).padStart(2, '0')} / ${String(LISTA.length).padStart(2, '0')} · ${p.nome}`;
   corpo.style.setProperty('--cor-fundo', p.fundo); corpo.style.setProperty('--cor-txt', p.txt);
   corpo.innerHTML = `
@@ -734,9 +771,9 @@ function abrirCaso(i, quem) {
     <div class="vitrine">
       <div class="palco" id="palco">
         <div class="palco-barra">
-          <div class="alterna" role="group" aria-label="Formato do post">
+          ${p.so34 ? '<span class="contador">Feed 3:4</span>' : `<div class="alterna" role="group" aria-label="Formato do post">
             <button data-f="34" aria-pressed="${formato === '34'}">Feed 3:4</button><button data-f="45" aria-pressed="${formato === '45'}">Feed 4:5</button>
-          </div>
+          </div>`}
           <span class="contador" id="contador" aria-live="polite"></span>
         </div>
         <div class="carrossel" id="carrossel" aria-roledescription="carrossel" aria-label="Posts de ${esc(p.nome)}">
@@ -763,9 +800,21 @@ function abrirCaso(i, quem) {
       <div class="celular"><div class="tela"><video src="${p.reels.src}" poster="${p.reels.capa}" controls playsinline preload="none" aria-label="${esc(p.reels.titulo)}"></video></div></div>
       <div><h3 class="rotulo">${esc(p.reels.titulo)}</h3><p>${esc(p.reels.texto)}</p><small>${esc(p.reels.credito)}</small></div>
     </div>` : ''}
+    ${p.carrossel ? `<section class="ci" aria-labelledby="ci-titulo">
+      <div class="ci-cab">
+        <div><h3 class="rotulo" id="ci-titulo">${esc(p.carrossel.titulo)}</h3><p>${esc(p.carrossel.texto)}</p></div>
+        <div class="ci-ctrl"><span class="contador" id="ci-cont" aria-live="polite"></span>
+          <button class="seta" id="ci-ant" aria-label="Slide anterior do carrossel">←</button><button class="seta" id="ci-prox" aria-label="Próximo slide do carrossel">→</button></div>
+      </div>
+      <div class="ci-trilho" id="ci-trilho" tabindex="0" aria-roledescription="carrossel" aria-label="Carrossel de ${p.carrossel.slides.length} slides; use as setas do teclado para passar">
+        ${p.carrossel.slides.map((t, k) => `<img src="img/${p.id}/carrossel/slide-${String(k + 1).padStart(2, '0')}.webp" alt="Slide ${k + 1} de ${p.carrossel.slides.length}: ${esc(t)}" width="720" height="960" draggable="false" loading="lazy" decoding="async">`).join('')}
+      </div>
+      <p class="ci-dica">Arraste para o lado: as imagens continuam de um slide para o outro.</p>
+    </section>` : ''}
     <div class="proximo"><span class="rotulo">Próximo projeto</span><button id="ir-prox"><span class="rotulo">${esc(prox.segmento)}</span><b>${esc(prox.nome)} →</b></button></div>`;
   montarFaixa();
-  corpo.querySelector('.alterna').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; formato = b.dataset.f;
+  if (p.carrossel) carrosselInfinito();
+  corpo.querySelector('.alterna')?.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; formato = b.dataset.f;
     corpo.querySelectorAll('.alterna button').forEach(y => y.setAttribute('aria-pressed', y === b)); montarFaixa(); });
   corpo.querySelector('#s-ant').onclick = () => ir(slide - 1);
   corpo.querySelector('#s-prox').onclick = () => ir(slide + 1);
@@ -792,6 +841,27 @@ function ir(k) {
   corpo.querySelector('#contador').textContent = `${String(slide + 1).padStart(2, '0')} / ${String(p.posts.length).padStart(2, '0')}`;
   corpo.querySelector('#legenda').textContent = p.posts[slide][1];
   corpo.querySelectorAll('#minis button').forEach((b, i) => b.setAttribute('aria-current', i === slide));
+}
+/* Carrossel infinito: slides colados (sem vão) para a imagem continuar de um para o outro.
+   Rolagem nativa com encaixe; setas e contador; arrastar com o mouse no computador. */
+function carrosselInfinito() {
+  const tr = corpo.querySelector('#ci-trilho'), cont = corpo.querySelector('#ci-cont'), n = tr.children.length;
+  const larg = () => tr.children[0].getBoundingClientRect().width || 1;
+  const atualCi = () => Math.min(n - 1, Math.round(tr.scrollLeft / larg()));
+  const conta = () => { const k = atualCi(); cont.textContent = `${String(k + 1).padStart(2, '0')} / ${String(n).padStart(2, '0')}`;
+    corpo.querySelector('#ci-ant').disabled = tr.scrollLeft < 4; corpo.querySelector('#ci-prox').disabled = tr.scrollLeft > tr.scrollWidth - tr.clientWidth - 4; };
+  const vai = d => tr.scrollTo({ left: (atualCi() + d) * larg(), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  corpo.querySelector('#ci-ant').onclick = () => vai(-1);
+  corpo.querySelector('#ci-prox').onclick = () => vai(1);
+  tr.addEventListener('scroll', () => requestAnimationFrame(conta), { passive: true });
+  tr.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); vai(e.key === 'ArrowRight' ? 1 : -1); } });
+  let x0 = null, s0 = 0;   // arrastar com o mouse (no toque, a rolagem nativa já resolve)
+  tr.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; x0 = e.clientX; s0 = tr.scrollLeft; tr.classList.add('arrastando'); });
+  addEventListener('pointermove', e => { if (x0 !== null) tr.scrollLeft = s0 - (e.clientX - x0); });
+  addEventListener('pointerup', () => { if (x0 === null) return; const moveu = tr.scrollLeft - s0; x0 = null; tr.classList.remove('arrastando');
+    const k = Math.round(tr.scrollLeft / larg()) + (Math.abs(moveu) > 40 && Math.abs(moveu) < larg() / 2 ? Math.sign(moveu) : 0);
+    tr.scrollTo({ left: k * larg(), behavior: 'smooth' }); });
+  conta(); requestAnimationFrame(conta);   // de novo quando o diálogo já está visível
 }
 function arrastar(el) {
   let x0 = null;
