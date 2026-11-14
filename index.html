@@ -677,8 +677,7 @@ const PROJETOS = [
 
 /* ===== Camada estratégica (Fase 8). Só reorganiza fatos já publicados; nada inventado. ===== */
 const EXTRA = {
-  esquadro: { destaque: true, resumo: 'Pesquisa das dores de quem vai reformar, seis posts com uma prova cada e um carrossel infinito de dez slides.',
-    decisoes: ['Uma dor por peça, tirada de reclamações públicas e da norma de reformas em condomínio (NBR 16280), cada uma respondida com uma prova.', 'O esquadro vira sistema: cantoneira em L sobre as fotos, linhas de cota e régua.', 'No carrossel, a régua corre pelos dez slides e só imagem e linha cruzam a emenda.', 'Marcas reais que a IA colocou nas fotos foram desfocadas, ou a foto foi refeita.'] },
+  esquadro: { decisoes: ['Uma dor por peça, tirada de reclamações públicas e da norma de reformas em condomínio (NBR 16280), cada uma respondida com uma prova.', 'O esquadro vira sistema: cantoneira em L sobre as fotos, linhas de cota e régua.', 'No carrossel, a régua corre pelos dez slides e só imagem e linha cruzam a emenda.', 'Marcas reais que a IA colocou nas fotos foram desfocadas, ou a foto foi refeita.'] },
   folego: { destaque: true, resumo: 'Lançamento de uma marca de roupa de treino feminina: conceito, seis posts com a mesma modelo, teste cego de textos e Reels.',
     decisoes: ['Uma respiração dividida em seis comandos, um por pose, para dar ritmo ao grid.', 'Fundo na cor da própria roupa (tom sobre tom) em vez de cenário de academia.', 'Cada título prova um atributo da peça no movimento, sem falar de corpo como troféu.', 'A mesma modelo em todas as fotos, com ficha de consistência.'] },
   lume: { decisoes: ['Regras do Código de Ética do CFO aplicadas desde o briefing: sem preço, promoção, antes e depois ou promessa.', 'O arco de luz vira sistema: chapéu, recorte da foto e fundo.', 'Uma explicação clara por post, para reduzir o medo da consulta.'] },
@@ -687,7 +686,7 @@ const EXTRA = {
 
 
 const FILTROS = [['todos', 'Todos'], ['gastronomia', 'Gastronomia'], ['servicos', 'Serviços'], ['saude', 'Saúde e bem-estar'], ['varejo', 'Varejo e moda'], ['b2b', 'B2B']];
-const ordemDestaques = ['esquadro', 'folego','lume', 'kaze', 'raia', 'tamborim', 'lento'];
+const ordemDestaques = ['folego', 'esquadro', 'lume', 'kaze', 'raia', 'tamborim', 'lento'];
 const LISTA = [
   ...ordemDestaques.map(id => PROJETOS.find(p => p.id === id)),
   ...PROJETOS.filter(p => !ordemDestaques.includes(p.id)),
