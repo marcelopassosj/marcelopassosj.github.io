@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marcelo Passos · Estratégia, design e conteúdo para marcas</title>
-<meta name="description" content="Marcelo Passos é publicitário e atua com mídia desde 2019. Conheça seu trabalho em branding, conteúdo, design, audiovisual, sites e campanhas.">
+<meta name="description" content="Marcelo Passos é publicitário e atua com mídia desde 2019. Conheça seu trabalho em branding, conteúdo, design, sites e campanhas.">
 <link rel="canonical" href="https://marcelopassosj.github.io/">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -109,16 +109,12 @@ header.aberto .menu-cel { opacity: 1; transform: none; visibility: visible; }
 .trilho img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; border-radius: 14px; box-shadow: var(--sombra); }
 @keyframes sobe { to { transform: translateY(-50%); } }
 
-/* Faixa das áreas: animada, com pausa (WCAG 2.2.2) e versão estática em movimento reduzido */
+/* Faixa das áreas: animada, com versão estática em movimento reduzido */
 .faixa-areas { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; height: 64px; background: var(--acento); color: #0F0F0E; display: flex; align-items: center; }
 .faixa-areas .corre { flex: 1; overflow: hidden; height: 100%; display: flex; align-items: center; }
 .faixa-areas .corre > div { display: flex; white-space: nowrap; animation: corre 34s linear infinite; font: 800 22px/1 var(--sans); letter-spacing: -.01em; text-transform: uppercase; }
 .faixa-areas span.item { display: inline-flex; align-items: center; gap: 40px; padding: 0 20px; }
 .faixa-areas svg { width: 16px; height: 16px; }
-.faixa-areas.parada .corre > div { animation-play-state: paused; }
-.abertura:has(.faixa-areas.parada) :is(.trilho, .giro > span) { animation-play-state: paused; }
-.pausa { flex: none; height: 100%; padding: 0 18px; border-left: 1px solid rgba(15,15,14,.25); color: #0F0F0E; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; gap: 8px; }
-.pausa:focus-visible { outline-color: #0F0F0E; outline-offset: -4px; }
 @keyframes corre { to { transform: translateX(-50%); } }
 .faixa-areas .grupo { display: contents; }
 
@@ -136,7 +132,7 @@ header.aberto .menu-cel { opacity: 1; transform: none; visibility: visible; }
   .trilho, .js .giro > span { animation: none; }
   .faixa-areas .corre > div { animation: none; flex-wrap: wrap; white-space: normal; row-gap: 6px; font-size: 15px; padding: 10px 0; }
   .faixa-areas .dup { display: none; }
-  .faixa-areas { height: auto; min-height: 64px; } .pausa { display: none; }
+  .faixa-areas { height: auto; min-height: 64px; }
   html { scroll-behavior: auto; }
   * { transition-duration: .01s !important; }
 }
@@ -387,7 +383,6 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
     <div class="mosaico" id="mosaico" aria-hidden="true"></div>
     <div class="faixa-areas" id="faixa-areas">
       <div class="corre"><div id="faixa-itens"><span class="sr">Áreas: </span></div></div>
-      <button class="pausa" id="pausa" aria-pressed="false" aria-label="Pausar animações da abertura"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="1" width="3" height="10" fill="currentColor"/><rect x="7" y="1" width="3" height="10" fill="currentColor"/></svg><span id="pausa-txt">Pausar</span></button>
     </div>
   </section>
 
@@ -411,7 +406,6 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
       <div class="area revela"><h3>Branding</h3><p>Defina o posicionamento da sua marca e dê a ela um nome e uma identidade.</p><ul><li>Diagnóstico e posicionamento</li><li>Naming com checagem de nome</li><li>Identidade verbal</li><li>Paleta, tipografia e grafismo</li><li>Branding para clientes e logotipos complexos <span class="situacao">· sob consulta</span></li></ul></div>
       <div class="area revela"><h3>Social media</h3><p>Organize sua presença nas redes com planejamento editorial e produção de conteúdo.</p><ul><li>Linha editorial e calendário</li><li>Posts, carrosséis e legendas</li><li>Gestão mensal com aprovação <span class="situacao">· sob consulta</span></li></ul></div>
       <div class="area revela"><h3>Design e publicidade</h3><p>Dê um conceito à sua campanha e leve a ideia para as peças e os anúncios.</p><ul><li>Criativos para anúncios</li><li>Materiais de campanha</li></ul></div>
-      <div class="area revela"><h3>Audiovisual</h3><p>Transforme seus materiais em Stories e Reels animados. <span class="situacao">Em validação.</span></p><ul><li>Roteiro e storyboard</li><li>Reels e Stories animados</li><li>Trilha licenciada quando houver</li></ul></div>
       <div class="area revela"><h3>Web design</h3><p>Apresente seu negócio com um site estático ou lance uma campanha com uma landing page. <span class="situacao">Em validação.</span></p><ul><li>Landing page de campanha</li><li>Site institucional e portfólio</li><li>Cardápio ou catálogo on-line</li></ul></div>
       <div class="area revela"><h3>Planejamento de mídia</h3><p>Escolha onde e quando anunciar e quanto investir em cada campanha.</p><ul><li>Plano de mídia offline</li><li>Planejamento de mídia digital paga <span class="situacao">· sob consulta</span></li><li>Calendário e praças</li><li>Leitura de resultados e ajuste</li></ul></div>
     </div>
@@ -456,7 +450,7 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
         </div>
       </div>
       <div class="dir">
-        <p>Sou Marcelo Passos, publicitário. Desde 2019, atuo no planejamento e na compra de mídia em rádio, TV, portais e mídia exterior. Participei de campanhas que, juntas, somaram mais de R$ 5 milhões em investimento em mídia.</p>
+        <p>Sou Marcelo Passos, publicitário. Desde 2019, atuo no planejamento e na compra de mídia em rádio, TV, portais e mídia exterior. Participei de campanhas que, juntas, somaram mais de R$ 5 milhões em investimento em mídia. Recentemente, me inscrevi na graduação em Marketing Digital da Unijorge.</p>
         <p>Também desenvolvo projetos de marca, conteúdo e web design, com objetivos, públicos e prazos definidos. Uso inteligência artificial como apoio à pesquisa, à prototipagem e à geração de imagens. Reviso os materiais antes da entrega.</p>
         <p>Moro em Lauro de Freitas (BA) e atendo empresas de qualquer cidade.</p>
         <div class="fatos">
@@ -700,10 +694,6 @@ const estrela = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l3 9 
 const nomesAreas = [...document.querySelectorAll('#areas h3')].map(t => t.textContent);
 const umaVolta = nomesAreas.map(n => `<span class="item">${n}${estrela}</span>`).join('');
 document.getElementById('faixa-itens').insertAdjacentHTML('beforeend', `<span class="grupo">${umaVolta}</span><span class="grupo dup" aria-hidden="true">${umaVolta}${umaVolta}${umaVolta}</span>`);
-const faixa = document.getElementById('faixa-areas'), pausa = document.getElementById('pausa');
-pausa.onclick = () => { const parar = !faixa.classList.contains('parada'); faixa.classList.toggle('parada', parar);
-  pausa.setAttribute('aria-pressed', parar); pausa.setAttribute('aria-label', parar ? 'Retomar animações da abertura' : 'Pausar animações da abertura');
-  document.getElementById('pausa-txt').textContent = parar ? 'Retomar' : 'Pausar'; };
 
 /* ===== Mosaico (decorativo) ===== */
 const todos = PROJETOS.flatMap(p => p.posts.map(([n]) => ({ p, n })));
