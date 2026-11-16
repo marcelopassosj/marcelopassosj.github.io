@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mídia na rua · Marcelo Passos</title>
+<meta name="description" content="Campanhas reais em que Marcelo Passos atuou como executivo de mídia: planejamento, escolha de pontos, acompanhamento da veiculação e relatórios.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F0F0E'/%3E%3Ccircle cx='16' cy='16' r='8' fill='%23C8F54A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>try { const t = localStorage.getItem('tema'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+<style>
+:root {
+  --papel: #0F0F0E; --papel-2: #191917; --tinta: #F4F4F0; --pedra: #A8A8A0; --linha: rgba(244,244,240,.14);
+  --acento: #C8F54A; --acento-txt: #0F0F0E; --acento-tx: #C8F54A; --sombra: 0 30px 60px -30px rgba(0,0,0,.8);
+  --sans: 'Inter Tight', system-ui, sans-serif; --m: clamp(16px, 4vw, 56px); color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --papel: #F4F4F0; --papel-2: #E8E8E2; --tinta: #0F0F0E; --pedra: #5E5E57; --linha: rgba(15,15,14,.14);
+  --acento-tx: #4A7300; --sombra: 0 30px 60px -30px rgba(15,15,14,.35); color-scheme: light; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--papel); color: var(--tinta); font: 400 16px/1.55 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; text-decoration: underline; }
+:focus-visible { outline: 2px solid var(--acento-tx); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--m); }
+.rotulo { font: 600 13px/1.3 var(--sans); color: var(--pedra); }
+.rotulo b { color: var(--acento-tx); font-weight: 600; }
+
+header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--papel) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--linha); }
+header .wrap { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+header a { text-decoration: none; }
+.logo { font: 800 21px/1 var(--sans); letter-spacing: -.03em; }
+.logo i { color: var(--acento-tx); font-style: normal; }
+.voltar { font-weight: 500; color: var(--pedra); } .voltar:hover { color: var(--tinta); }
+
+.abertura { padding: clamp(64px, 10vw, 140px) 0 clamp(48px, 7vw, 96px); border-bottom: 1px solid var(--linha); }
+.abertura h1 { font: 800 clamp(52px, 10vw, 136px)/.9 var(--sans); letter-spacing: -.05em; margin-top: 20px; }
+.abertura h1 i { font-style: normal; color: var(--acento-tx); }
+.abertura p { font-size: clamp(18px, 1.7vw, 21px); max-width: 720px; margin-top: 32px; }
+.indice { display: flex; flex-wrap: wrap; gap: 8px 10px; margin-top: 40px; list-style: none; }
+.indice a { display: inline-block; padding: 8px 14px; border: 1px solid var(--linha); border-radius: 999px; text-decoration: none; font-size: 14px; font-weight: 500; }
+.indice a:hover { border-color: var(--tinta); }
+
+.caso { padding: clamp(56px, 8vw, 112px) 0; border-bottom: 1px solid var(--linha); scroll-margin-top: 64px; }
+.caso h2 { font: 800 clamp(34px, 5vw, 64px)/1 var(--sans); letter-spacing: -.04em; margin: 14px 0 0; max-width: 900px; }
+.caso .sub { font-size: 18px; max-width: 680px; margin-top: 18px; color: var(--pedra); }
+.ficha { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 28px; margin: 36px 0 40px; padding-top: 24px; border-top: 1px solid var(--linha); }
+.ficha div > b { display: block; font-weight: 500; margin-top: 8px; }
+.num { display: block; font: 800 clamp(26px, 3vw, 36px)/1 var(--sans); letter-spacing: -.03em; margin-top: 10px; }
+.num + small { display: block; font-size: 14px; color: var(--pedra); margin-top: 6px; }
+.num:not(:first-of-type) { margin-top: 18px; }
+.fonte { font-size: 13px; color: var(--pedra); margin-top: 14px; }
+
+.galeria { columns: 3 260px; column-gap: clamp(10px, 1.4vw, 18px); }
+.galeria figure { break-inside: avoid; margin: 0 0 clamp(10px, 1.4vw, 18px); }
+.galeria img, .destaque img { width: 100%; border-radius: 6px; box-shadow: var(--sombra); background: var(--papel-2); }
+figcaption { font-size: 14px; color: var(--pedra); margin-top: 8px; }
+.destaque { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 2vw, 28px); align-items: start; margin-bottom: clamp(10px, 1.4vw, 18px); }
+.destaque figure { margin: 0; }
+.stories { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(10px, 1.4vw, 18px); max-width: 720px; }
+.stories img { border-radius: 10px; }
+.audio { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 18px 20px; border: 1px solid var(--linha); border-radius: 12px; margin: 0 0 clamp(18px, 2vw, 28px); }
+.audio audio { flex: 1 1 280px; min-width: 0; }
+.audio b { font-weight: 600; }
+
+.parede { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(18px, 2.4vw, 32px); align-items: start; }
+.parede figure { margin: 0; }
+.parede img { width: 100%; border-radius: 6px; box-shadow: var(--sombra); background: var(--papel-2); }
+.parede figcaption b { display: block; color: var(--tinta); font-weight: 600; font-size: 16px; }
+
+.fecho { padding: clamp(64px, 9vw, 120px) 0; }
+.fecho h2 { font: 800 clamp(30px, 4vw, 48px)/1.05 var(--sans); letter-spacing: -.04em; max-width: 760px; }
+.acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.btn { display: inline-block; padding: 15px 24px; border-radius: 999px; text-decoration: none; font-weight: 600; border: 1px solid var(--tinta); }
+.btn.cheio { background: var(--acento); color: var(--acento-txt); border-color: var(--acento); }
+footer { padding: 32px 0 48px; border-top: 1px solid var(--linha); }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--pedra); font-size: 14px; }
+
+@media (max-width: 820px) {
+  .ficha { grid-template-columns: 1fr; gap: 22px; }
+  .destaque { grid-template-columns: 1fr; }
+  .parede { grid-template-columns: 1fr; }
+}
+</style>
+<script src="../consentimento.js" defer></script>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="../">Marcelo Passos<i>.</i></a><a class="voltar" href="../#equipes">← Voltar ao portfólio</a></div></header>
+
+<main>
+<section class="abertura"><div class="wrap">
+  <span class="rotulo"><b>Campanhas reais</b> · executivo de mídia · Bahia e Sergipe</span>
+  <h1>Mídia na rua<i>.</i></h1>
+  <p>Desde 2019 atuo como executivo de mídia em agências e veículos da Bahia. Nas campanhas desta página, eu planejei a mídia, escolhi os pontos e os veículos, acompanhei cada veiculação e entreguei os relatórios ao cliente. As peças foram criadas pelas agências e pelas marcas. O meu trabalho foi levá-las ao lugar e à hora certos e provar que chegaram lá.</p>
+  <ul class="indice" aria-label="Campanhas nesta página">
+    <li><a href="#bosque">Bosque · JVF</a></li><li><a href="#igua">Iguá Sergipe</a></li><li><a href="#ism">São Miguel + Salvador FM</a></li><li><a href="#brahma">Brahma · Copa do Nordeste</a></li>
+    <li><a href="#bela-vista">Shopping Bela Vista</a></li><li><a href="#martagao">Martagão Gesteira</a></li><li><a href="#outdoor">Outdoor e DOOH</a></li><li><a href="#sociedade">Rádio Sociedade</a></li>
+  </ul>
+</div></section>
+
+<section class="caso" id="bosque"><div class="wrap">
+  <span class="rotulo">JVF Empreendimentos · Salvador · abril de 2026</span>
+  <h2>Bosque Caminho das Árvores: um lançamento em todos os meios.</h2>
+  <p class="sub">TV, rádio, outdoor e telas digitais em shoppings, elevadores, academias e supermercados ao mesmo tempo, para o lançamento de um residencial no Caminho das Árvores.</p>
+  <div class="ficha">
+    <div><span class="rotulo">Meios</span><b>TV (VT 30", VT 15" e vinhetas) · rádio · outdoor simples e duplo · DOOH em shoppings, elevadores, academia e supermercado</b></div>
+    <div><span class="rotulo">Meu papel</span><b>Executivo de mídia · planejamento, escolha de pontos, acompanhamento da veiculação e relatório</b></div>
+    <div><span class="rotulo">Estimativa de impactos</span>
+      <span class="num">14,2 milhões</span><small>na TV, em 30 dias</small>
+      <span class="num">2,9 milhões</span><small>por semana no outdoor</small>
+      <p class="fonte">Fonte: estimativas informadas pelos veículos.</p></div>
+  </div>
+  <div class="audio"><b>Spot de rádio · 30"</b><audio controls preload="none" src="spot-bosque.mp3">Seu navegador não toca áudio.</audio></div>
+  <div class="destaque">
+    <figure><img src="../img/midia/bosque-shopping.webp" alt="Tela suspensa no Salvador Shopping com a marca Bosque Caminho das Árvores e o telefone da JVF" width="1200" height="1572" loading="lazy"><figcaption>Tela suspensa no Salvador Shopping.</figcaption></figure>
+    <div class="galeria" style="columns:1">
+      <figure><img src="../img/midia/bosque-outdoor-noite.webp" alt="Outdoor iluminado do Bosque à noite, na Av. Tancredo Neves" width="697" height="462" loading="lazy"><figcaption>Outdoor na Av. Tancredo Neves, à noite.</figcaption></figure>
+      <figure><img src="../img/midia/bosque-outdoor-dia.webp" alt="Outdoor duplo do Bosque em avenida do Caminho das Árvores" width="619" height="466" loading="lazy"><figcaption>Outdoor duplo no Caminho das Árvores.</figcaption></figure>
+    </div>
+  </div>
+  <div class="galeria">
+    <figure><img src="../img/midia/bosque-elevador.webp" alt="Tela de elevador comercial exibindo a campanha do Bosque" width="900" height="713" loading="lazy"><figcaption>Elevadores comerciais.</figcaption></figure>
+    <figure><img src="../img/midia/bosque-academia.webp" alt="Tela da campanha acima dos aparelhos de uma academia" width="900" height="429" loading="lazy"><figcaption>Academia no Shopping da Bahia.</figcaption></figure>
+    <figure><img src="../img/midia/bosque-loja.webp" alt="Painel digital com a marca JVF dentro de um empório" width="900" height="677" loading="lazy"><figcaption>Painel em empório.</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="caso" id="igua"><div class="wrap">
+  <span class="rotulo">Iguá Sergipe · Aracaju e Sergipe · fevereiro e março de 2026</span>
+  <h2>Iguá: trabalho e cuidado que chegam juntos.</h2>
+  <p class="sub">A campanha das obras de saneamento ocupou a cidade em três escalas: a empena de um prédio, cartazes no nível da calçada e a traseira dos ônibus.</p>
+  <div class="ficha">
+    <div><span class="rotulo">Meios</span><b>Empena · cartaz de rua · busdoor nas frotas Coopertalse e Atalaia</b></div>
+    <div><span class="rotulo">Meu papel</span><b>Executivo de mídia · planejamento, escolha de pontos, acompanhamento da veiculação e relatório</b></div>
+    <div><span class="rotulo">Veiculação</span><b>Busdoor de 05/02 a 04/03/2026, com checking fotográfico de cada ônibus</b></div>
+  </div>
+  <div class="destaque">
+    <figure><img src="../img/midia/igua-empena.webp" alt="Empena da Iguá Sergipe em prédio, com o título 20 grandes obras em todo o estado" width="900" height="1560" loading="lazy"><figcaption>Empena: 20 grandes obras em todo o estado.</figcaption></figure>
+    <div class="galeria" style="columns:2 140px">
+      <figure><img src="../img/midia/igua-cartaz.webp" alt="Cartaz da Iguá colado em muro amarelo" width="382" height="520" loading="lazy"><figcaption>Cartaz de rua.</figcaption></figure>
+      <figure><img src="../img/midia/igua-bus-1.webp" alt="Traseira de ônibus Coopertalse com a campanha da Iguá" width="457" height="376" loading="lazy"><figcaption>Busdoor · Coopertalse.</figcaption></figure>
+      <figure><img src="../img/midia/igua-bus-3.webp" alt="Traseira de ônibus Atalaia com a campanha da Iguá" width="400" height="438" loading="lazy"><figcaption>Busdoor · Atalaia.</figcaption></figure>
+      <figure><img src="../img/midia/igua-bus-2.webp" alt="Outra traseira de ônibus Coopertalse com a campanha" width="449" height="370" loading="lazy"><figcaption>Uma das versões da peça.</figcaption></figure>
+      <figure><img src="../img/midia/igua-bus-4.webp" alt="Ônibus Atalaia à noite com a campanha da Iguá" width="496" height="547" loading="lazy"><figcaption>Checking noturno.</figcaption></figure>
+    </div>
+  </div>
+</div></section>
+
+<section class="caso" id="ism"><div class="wrap">
+  <span class="rotulo">Indústrias São Miguel · Salvador FM 92.3 · julho de 2025 a fevereiro de 2026</span>
+  <h2>São Miguel nas maiores festas de rua de Salvador.</h2>
+  <p class="sub">Patrocínio no rádio somado a blitz no meio da festa e conteúdo nas redes da Salvador FM, em quatro ações: Copa Cajazeiras (julho e novembro), Lavagem do Bonfim e Festa de Iemanjá.</p>
+  <div class="ficha">
+    <div><span class="rotulo">Meios</span><b>Chamadas de 30" · testemunhal de 60" · flash ao vivo de 90" · blitz presencial · stories e feed</b></div>
+    <div><span class="rotulo">Meu papel</span><b>Executivo de mídia · planejamento, acompanhamento da veiculação e relatório das ativações</b></div>
+    <div><span class="rotulo">Estimativa de impactos</span>
+      <span class="num">2 milhões</span><small>no rádio, nas quatro ações</small>
+      <span class="num">105 mil</span><small>pessoas impactadas nas blitz</small>
+      <span class="num">78 mil</span><small>visualizações de stories e feed</small>
+      <p class="fonte">Fonte: relatório de ativações da Salvador FM (estimativas).</p></div>
+  </div>
+  <div class="destaque">
+    <figure><img src="../img/midia/ism-bonfim.webp" alt="Equipe da Salvador FM com camisas e placas da rádio na Lavagem do Bonfim" width="1200" height="900" loading="lazy"><figcaption>Blitz da Salvador FM na Lavagem do Bonfim.</figcaption></figure>
+    <div class="stories">
+      <figure><img src="../img/midia/ism-story-1.webp" alt="Story da Salvador FM convidando para o Bonfim" width="473" height="826" loading="lazy"></figure>
+      <figure><img src="../img/midia/ism-story-2.webp" alt="Story com a Igreja do Bonfim" width="468" height="826" loading="lazy"></figure>
+      <figure><img src="../img/midia/ism-story-3.webp" alt="Story gravado no meio do cortejo" width="463" height="826" loading="lazy"></figure>
+    </div>
+  </div>
+</div></section>
+
+<section class="caso" id="brahma"><div class="wrap">
+  <span class="rotulo">Brahma · Copa do Nordeste · Fortaleza · abril de 2022</span>
+  <h2>Show da Lampions: Xand Avião no intervalo da final.</h2>
+  <p class="sub">Patrocinadora oficial da Copa do Nordeste, a Brahma montou em menos de três minutos um bar cenográfico no gramado da Arena Castelão, com 50 bailarinos e o show de Xand Avião no intervalo da final entre Fortaleza e Sport, transmitida para todo o Brasil.</p>
+  <div class="ficha">
+    <div><span class="rotulo">Ação</span><b>Patrocínio da competição · show no intervalo da final · transmissão em TV, streaming e internet</b></div>
+    <div><span class="rotulo">Meu papel</span><b>Executivo de mídia · planejamento, acompanhamento da veiculação e relatório</b></div>
+    <div><span class="rotulo">Público</span>
+      <span class="num">60 mil</span><small>torcedores no estádio</small>
+      <p class="fonte">Fonte: <a href="https://novonoticias.com.br/final-da-copa-do-nordeste-tem-show-de-xand-presente-de-brahma-para-publico-de-60-mil-pessoas/" target="_blank" rel="noopener">NOVO Notícias, 04/04/2022</a>.</p></div>
+  </div>
+  <figure class="destaque" style="display:block"><img src="../img/midia/brahma-copa-nordeste.webp" alt="Xand Avião canta no gramado cercado de bailarinos, com a torcida ao fundo" width="1024" height="682" loading="lazy" style="max-width:1024px"><figcaption>Foto: divulgação, publicada pelo NOVO Notícias.</figcaption></figure>
+</div></section>
+
+<section class="caso" id="bela-vista"><div class="wrap">
+  <span class="rotulo">Shopping Bela Vista · Salvador · 2025 e 2026</span>
+  <h2>Bela Vista: do metrô ao palco do São João.</h2>
+  <p class="sub">No Natal, a campanha com as Obras Sociais Irmã Dulce ocupou as telas do metrô. No São João, o shopping recebeu o palco do Ao Pé da Fogueira, com transmissão da TV.</p>
+  <div class="ficha">
+    <div><span class="rotulo">Meios</span><b>DOOH no metrô (painel e totem JCDecaux) · evento com palco e mídia no shopping</b></div>
+    <div><span class="rotulo">Meu papel</span><b>Executivo de mídia · planejamento, escolha de pontos, acompanhamento da veiculação e relatório</b></div>
+    <div><span class="rotulo">Datas</span><b>Natal: dezembro de 2025 · São João: maio de 2026</b></div>
+  </div>
+  <div class="galeria">
+    <figure><img src="../img/midia/bela-natal-metro.webp" alt="Painel digital no metrô com o título Natal é tempo de fazer o bem" width="760" height="450" loading="lazy"><figcaption>Painel no metrô: Natal é tempo de fazer o bem.</figcaption></figure>
+    <figure><img src="../img/midia/bela-natal-totem.webp" alt="Totem digital JCDecaux com a campanha de Natal do Bela Vista" width="425" height="690" loading="lazy"><figcaption>Totem digital na estação.</figcaption></figure>
+    <figure><img src="../img/midia/bela-sao-joao.webp" alt="Palco do Ao Pé da Fogueira no shopping, com apresentadores e banners de patrocinadores" width="1400" height="1050" loading="lazy"><figcaption>Ao Pé da Fogueira, São João no shopping.</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="caso" id="martagao"><div class="wrap">
+  <span class="rotulo">Martagão Gesteira · Salvador · maio de 2025</span>
+  <h2>Jantar do Bem, no painel de LED da Rodoviária.</h2>
+  <p class="sub">Divulgação do jantar beneficente do hospital, com show acústico da Banda Mel, num dos pontos de maior fluxo da cidade.</p>
+  <div class="ficha">
+    <div><span class="rotulo">Meio</span><b>Painel de LED na região da Rodoviária</b></div>
+    <div><span class="rotulo">Meu papel</span><b>Executivo de mídia · escolha do ponto, acompanhamento da veiculação e relatório</b></div>
+    <div><span class="rotulo">Data do evento</span><b>22 de maio de 2025</b></div>
+  </div>
+  <figure class="destaque" style="display:block"><img src="../img/midia/martagao-led.webp" alt="Vista aérea do trânsito na região da Rodoviária com o painel de LED do Jantar do Bem" width="1600" height="900" loading="lazy"><figcaption>Foto aérea do ponto, com o trânsito da região.</figcaption></figure>
+</div></section>
+
+<section class="caso" id="outdoor"><div class="wrap">
+  <span class="rotulo">Outdoor, painel e DOOH · Salvador · 2025 e 2026</span>
+  <h2>Mais campanhas na rua.</h2>
+  <p class="sub">Em todas: planejamento, escolha de pontos, acompanhamento da veiculação e relatório.</p>
+  <div class="parede" style="margin-top:40px">
+    <figure><img src="../img/midia/honda-adtsa.webp" alt="Painel rodoviário: Chegou sua nova concessionária Honda, ADTSA" width="1400" height="573" loading="lazy"><figcaption><b>Honda ADTSA</b>Painel rodoviário · novembro de 2025</figcaption></figure>
+    <figure><img src="../img/midia/colegio-sao-paulo.webp" alt="Outdoor do Colégio São Paulo: Eles vão abraçar o mundo" width="942" height="438" loading="lazy"><figcaption><b>Colégio São Paulo</b>Outdoor triplo · novembro de 2025</figcaption></figure>
+    <figure><img src="../img/midia/coopanest.webp" alt="Outdoor iluminado dos 40 anos da Coopanest na Av. Octávio Mangabeira" width="1200" height="769" loading="lazy"><figcaption><b>Coopanest · 40 anos</b>Outdoor premium iluminado, Av. Octávio Mangabeira · novembro de 2025 · 959.810 pessoas alcançadas em duas semanas (estimativa Geofusion)</figcaption></figure>
+    <figure><img src="../img/midia/ademi.webp" alt="Outdoor do Salão Imobiliário ADEMI-BA: 06 a 21 de maio no Salvador Shopping" width="990" height="620" loading="lazy"><figcaption><b>ADEMI-BA · Salão Imobiliário</b>Outdoor · maio de 2026</figcaption></figure>
+    <figure><img src="../img/midia/construnordeste.webp" alt="Outdoor da ConstruNordeste: a maior cada vez melhor em networking" width="760" height="450" loading="lazy"><figcaption><b>ConstruNordeste</b>Outdoor · outubro de 2025</figcaption></figure>
+    <figure><img src="../img/midia/ares.webp" alt="Telas suspensas com a moto Fan 160 em terminal de ônibus" width="980" height="450" loading="lazy"><figcaption><b>Ares · Fan 160</b>Telas em terminal de ônibus · fevereiro de 2026</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="caso" id="sociedade"><div class="wrap">
+  <span class="rotulo">Rádio Sociedade da Bahia 97.9 FM · 2026</span>
+  <h2>Rádio Sociedade: Rumo ao Hexa e ações de marca.</h2>
+  <p class="sub">A cobertura da Copa de 2026 com a equipe da rádio e ações de patrocinadores fora do estúdio, como a da Goob.</p>
+  <div class="galeria" style="margin-top:40px">
+    <figure><img src="../img/midia/sociedade-hexa.webp" alt="Equipe da Rádio Sociedade com camisas Rumo ao Hexa no estúdio" width="1100" height="1102" loading="lazy"><figcaption>Rumo ao Hexa, no estúdio da 97.9 FM.</figcaption></figure>
+    <figure><img src="../img/midia/sociedade-goob.webp" alt="Promotora segurando garrafa de Goob sob placa da marca" width="726" height="1280" loading="lazy"><figcaption>Ação da Goob.</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="fecho"><div class="wrap">
+  <h2>Mídia, conteúdo e direção de arte no mesmo planejamento.</h2>
+  <div class="acoes">
+    <a class="btn cheio" href="https://www.linkedin.com/in/marcelopassosj/" target="_blank" rel="noopener">Veja meu perfil no LinkedIn</a>
+    <a class="btn" href="mailto:mpassosj@gmail.com?subject=Pedido%20de%20curr%C3%ADculo">Peça meu currículo por e-mail</a>
+    <a class="btn" href="../">Veja o portfólio de design</a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Marcelo Passos · as peças pertencem às marcas e às agências de criação</span><span><button type="button" data-cookies>Cookies</button></span></div></footer>
+</body>
+</html>
