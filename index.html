@@ -668,10 +668,22 @@ const PROJETOS = [
         'Lista para salvar e conferir as cinco perguntas na visita técnica.',
         'Na Esquadro, as cinco respostas já vêm no contrato. Sobre a foto de uma sala reformada.',
         'Agende a visita técnica, com a assinatura da marca.'] } },
+  { id: 'veria', nome: 'Véria', segmento: 'Clínica odontológica', cat: 'saude', tipo: 'Marca fictícia', so45: true, pagina: 'projetos/veria-odontologia/',
+    fundo: '#5B4CF0', txt: '#FFFFFF', arroba: '@veria.odonto',
+    desafio: "Apresente uma clínica odontológica de Salvador a quem adia o dentista ou aceita tratamento sem entender, por receio de perguntar, sem prometer resultado nem mostrar antes e depois.",
+    conceito: "\"Pode perguntar.\" A conversa vira interface: cada peça é um chat entre paciente e clínica, e um balão 3D de vidro é o símbolo da marca. A direção parte do que os projetos mais curtidos do nicho no Behance fazem: uma cor dominante, gente em destaque e elementos de interface.",
+    entregas: '4 posts · 2 carrosséis · 3 Stories · Reels em 3D · 4:5 e 9:16 · fotos com IA', fontes: [['Títulos e texto', 'Poppins']],
+    cores: [['Violeta', '#5B4CF0'], ['Noite', '#16123A'], ['Lilás', '#E9E6FF'], ['Coral', '#FF7A59'], ['Branco', '#FFFFFF']],
+    posts: [['p01', 'Antes da cadeira, a conversa.'], ['p02', 'Não precisa doer para valer uma consulta.'], ['p03', 'Gengiva que sangra está pedindo atenção.'],
+            ['p04', 'Pergunta também é parte do tratamento.'], ['c05-1', 'Cinco sinais que merecem uma conversa com o dentista.'], ['c06-1', 'Antes de dizer sim, pergunte.']],
+    reels: { src: 'projetos/veria-odontologia/video/veria-reels.mp4', capa: 'projetos/veria-odontologia/video/capa.webp', titulo: 'Reels em 3D · Do receio à clareza',
+      texto: 'Balões, letras e uma enquete com volume, feitos por código (Three.js). As perguntas chegam, a clínica responde, elas saem de cena e fica a assinatura. Um só movimento, cortes secos e a virada da trilha no corte para "Pergunte."',
+      credito: 'Trilha "Corporate Motivation" (ChrisDjYogi) e efeitos sonoros da Pixabay, sob a Pixabay Content License.' } },
 ];
 
 /* ===== Camada estratégica (Fase 8). Só reorganiza fatos já publicados; nada inventado. ===== */
 const EXTRA = {
+  veria: { decisoes: ['Normas do CFO desde o briefing: sem preço, promessa, antes e depois, depoimento ou responsável técnico inventado.', 'A primeira direção, editorial e bege, foi descartada por não conversar com as referências; a segunda nasceu dos projetos de odontologia mais curtidos do Behance.', 'Toda afirmação de saúde tem fonte pública (Ministério da Saúde, INCA, BVS).', 'O Reels troca as fotos por elementos 3D da identidade, com trilha e efeitos licenciados sem Content ID.'] },
   esquadro: { decisoes: ['Uma dor por peça, tirada de reclamações públicas e da norma de reformas em condomínio (NBR 16280), cada uma respondida com uma prova.', 'O esquadro vira sistema: cantoneira em L sobre as fotos, linhas de cota e régua.', 'No carrossel, a régua corre pelos dez slides e só imagem e linha cruzam a emenda.', 'Marcas reais que a IA colocou nas fotos foram desfocadas, ou a foto foi refeita.'] },
   folego: { destaque: true, resumo: 'Lançamento de uma marca de roupa de treino feminina: conceito, seis posts com a mesma modelo, teste cego de textos e Reels.',
     decisoes: ['Uma respiração dividida em seis comandos, um por pose, para dar ritmo ao grid.', 'Fundo na cor da própria roupa (tom sobre tom) em vez de cenário de academia.', 'Cada título prova um atributo da peça no movimento, sem falar de corpo como troféu.', 'A mesma modelo em todas as fotos, com ficha de consistência.'] },
@@ -742,6 +754,7 @@ function abrirCaso(i, quem) {
   atual = (i + LISTA.length) % LISTA.length; slide = 0;
   const p = LISTA[atual], x = EXTRA[p.id] || {}, prox = LISTA[(atual + 1) % LISTA.length];
   if (p.so34) formato = '34';   // case sem versão 4:5
+  if (p.so45) formato = '45';   // case feito só em 4:5
   document.getElementById('caso-indice').textContent = `${String(atual + 1).padStart(2, '0')} / ${String(LISTA.length).padStart(2, '0')} · ${p.nome}`;
   corpo.style.setProperty('--cor-fundo', p.fundo); corpo.style.setProperty('--cor-txt', p.txt);
   corpo.innerHTML = `
@@ -757,11 +770,12 @@ function abrirCaso(i, quem) {
       <div><h3 class="rotulo">Desafio</h3><p>${esc(p.desafio)}</p></div>
       <div><h3 class="rotulo">Conceito</h3><p>${esc(p.conceito)}</p></div>
       ${x.decisoes ? blocoLista('Decisões', x.decisoes) : ''}
+      ${p.pagina ? `<p class="link-rec">Pesquisa, estratégia, carrosséis, Stories e as telas do Behance: <a href="${p.pagina}">ver o case completo</a></p>` : ''}
     </div>
     <div class="vitrine">
       <div class="palco" id="palco">
         <div class="palco-barra">
-          ${p.so34 ? '<span class="contador">Feed 3:4</span>' : `<div class="alterna" role="group" aria-label="Formato do post">
+          ${p.so34 || p.so45 ? `<span class="contador">Feed ${p.so45 ? '4:5' : '3:4'}</span>` : `<div class="alterna" role="group" aria-label="Formato do post">
             <button data-f="34" aria-pressed="${formato === '34'}">Feed 3:4</button><button data-f="45" aria-pressed="${formato === '45'}">Feed 4:5</button>
           </div>`}
           <span class="contador" id="contador" aria-live="polite"></span>
