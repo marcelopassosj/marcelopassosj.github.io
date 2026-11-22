@@ -679,10 +679,27 @@ const PROJETOS = [
     reels: { src: 'projetos/veria-odontologia/video/veria-reels.mp4', capa: 'projetos/veria-odontologia/video/capa.webp', titulo: 'Reels em 3D · Do receio à clareza',
       texto: 'Balões, letras e uma enquete com volume, feitos por código (Three.js). As perguntas chegam, a clínica responde, elas saem de cena e fica a assinatura. Um só movimento, cortes secos e a virada da trilha no corte para "Pergunte."',
       credito: 'Trilha "Corporate Motivation" (ChrisDjYogi) e efeitos sonoros da Pixabay, sob a Pixabay Content License.' } },
+  { id: 'firmo', nome: 'Firmo', segmento: 'Advocacia trabalhista', cat: 'servicos', tipo: 'Marca fictícia', so34: true,
+    fundo: '#1B1C1E', txt: '#EEECE5', arroba: '@firmo.adv',
+    desafio: "Lance um escritório de advocacia que atende só trabalhadores e fale com quem ainda está na dúvida, num nicho de balança, martelo e \"URGENTE\", sem captar cliente nem prometer resultado.",
+    conceito: "\"Leia o que é seu.\" A prova do trabalhador já está no bolso: holerite, termo de rescisão, cartão de ponto. A marca entra com esse papel na mão e um marca-texto amarelo que destaca só a linha que importa. O amarelo é o único acento e aparece apenas sobre o que se lê.",
+    entregas: 'Branding · 5 posts · 3:4 · carrossel infinito de 7 slides · Reel motion com trilha · editável no Adobe Express', fontes: [['Títulos', 'Neue Haas Unica'], ['Documentos e rótulos', 'IBM Plex Mono']],
+    cores: [['Grafite', '#1B1C1E'], ['Papel', '#EEECE5'], ['Folha', '#F8F7F3'], ['Carbono', '#7A7C7F'], ['Marca-texto', '#F2DE3C']],
+    posts: [['post-01', 'Leia o que é seu.'], ['post-02', 'Hora extra tem linha própria.'], ['post-03', 'Capa do Reel: Trabalhou depois das 22h?'],
+            ['post-04', 'Capa do carrossel: Antes de assinar, leia estas 5 linhas.'], ['post-05', 'A gente lê junto.'], ['post-06', 'Ação trabalhista não exige sair do emprego.']],
+    carrossel: { titulo: 'Carrossel infinito · 5 linhas do termo de rescisão',
+      texto: 'Sete slides cortados de uma tela contínua. Uma tira de papel e uma única faixa de marca-texto atravessam todos eles, e o último slide emenda no primeiro. Só a faixa e as linhas cruzam a emenda; as palavras ficam sempre inteiras.',
+      slides: ['Capa: antes de assinar, leia estas 5 linhas.', 'Linha 1, saldo de salário: os dias do último mês.', 'Linha 2, aviso prévio: 30 dias, mais 3 por ano de casa.',
+        'Linha 3: férias levam um terço a mais.', 'Linha 4, 13º salário: um doze avos por mês trabalhado.', 'Linha 5: este valor vai para a conta do FGTS.',
+        'Fecho: 10 dias para pagar a rescisão e 2 anos após o fim do contrato para cobrar.'] },
+    reels: { src: 'video/firmo-reel.mp4', capa: 'video/firmo-reel-capa.webp', titulo: 'Reel · A linha que importa',
+      texto: 'Motion feito por código. Um holerite sobe na tela, três perguntas aparecem e o marca-texto varre a linha de cada uma: hora extra, adicional noturno e FGTS. No fim, as faixas crescem até virar um bloco amarelo com a assinatura.',
+      credito: 'Trilha "Real Life" (GreenRocketAudio) e efeito de marca-texto da Pixabay, sob a Pixabay Content License.' } },
 ];
 
 /* ===== Camada estratégica (Fase 8). Só reorganiza fatos já publicados; nada inventado. ===== */
 const EXTRA = {
+  firmo: { decisoes: ['Provimento 205/2021 da OAB desde o briefing: informar e nunca convocar, sem preço, resultado ou convite ao processo.', 'A sobriedade obrigatória virou posicionamento: nada de balança, martelo ou dourado; monocromia e um único sinal gráfico, como nos escritórios mais curtidos do Behance.', 'Todo fato jurídico tem fonte (CLT e Constituição) e todo documento é marcado como modelo ilustrativo.', 'O advogado fictício foi gerado por IA com ficha de consistência, em preto e branco, com só o marca-texto em cor.', 'O editável foi feito no Adobe Express, a partir de um script que mede o render e reconstrói cada peça em camadas.'] },
   veria: { decisoes: ['Normas do CFO desde o briefing: sem preço, promessa, antes e depois, depoimento ou responsável técnico inventado.', 'A primeira direção, editorial e bege, foi descartada por não conversar com as referências; a segunda nasceu dos projetos de odontologia mais curtidos do Behance.', 'Toda afirmação de saúde tem fonte pública (Ministério da Saúde, INCA, BVS).', 'O Reels troca as fotos por elementos 3D da identidade, com trilha e efeitos licenciados sem Content ID.'] },
   esquadro: { decisoes: ['Uma dor por peça, tirada de reclamações públicas e da norma de reformas em condomínio (NBR 16280), cada uma respondida com uma prova.', 'O esquadro vira sistema: cantoneira em L sobre as fotos, linhas de cota e régua.', 'No carrossel, a régua corre pelos dez slides e só imagem e linha cruzam a emenda.', 'Marcas reais que a IA colocou nas fotos foram desfocadas, ou a foto foi refeita.'] },
   folego: { destaque: true, resumo: 'Lançamento de uma marca de roupa de treino feminina: conceito, seis posts com a mesma modelo, teste cego de textos e Reels.',
