@@ -358,9 +358,25 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
 .proximo button { text-align: right; } .proximo button b { display: block; font: 800 clamp(32px, 5vw, 56px)/1 var(--sans); letter-spacing: -.04em; }
 /* ===== Mais estudos (índice compacto) ===== */
 .mais { margin-top: 64px; }
-.mais > h3 { font: 800 clamp(26px, 2.6vw, 34px)/1 var(--sans); letter-spacing: -.03em; }
-.mais > p { margin-top: 8px; color: var(--pedra); font-size: 15px; }
-.lista-mais { list-style: none; margin-top: 20px; border-top: 1px solid var(--linha); }
+.mais > summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 0; border-top: 1px solid var(--linha); border-bottom: 1px solid var(--linha); }
+.mais > summary::-webkit-details-marker { display: none; }
+.mais > summary:focus-visible { outline: 2px solid var(--acento-tx); outline-offset: 4px; }
+.mais h3 { font: 800 clamp(26px, 2.6vw, 34px)/1 var(--sans); letter-spacing: -.03em; }
+.mais .mais-n { color: var(--pedra); font-weight: 500; }
+.mais summary p { margin-top: 8px; color: var(--pedra); font-size: 15px; }
+.mais-abre { display: flex; align-items: center; gap: 12px; flex: none; font-weight: 600; font-size: 15px; }
+.mais-abre i { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--linha); position: relative; transition: background .2s, border-color .2s; }
+.mais-abre i::before, .mais-abre i::after { content: ""; position: absolute; left: 50%; top: 50%; width: 14px; height: 2px; background: currentColor; translate: -50% -50%; transition: rotate .3s; }
+.mais-abre i::after { rotate: 90deg; }
+.mais[open] .mais-abre i::after { rotate: 0deg; }
+.mais > summary:hover .mais-abre i { border-color: currentColor; }
+.mais .mais-fechar, .mais[open] .mais-ver { display: none; }
+.mais[open] .mais-fechar { display: inline; }
+.mais[open] .lista-mais { animation: mais-abre .35s ease both; }
+@keyframes mais-abre { from { opacity: 0; translate: 0 -8px; } }
+@media (prefers-reduced-motion: reduce) { .mais[open] .lista-mais { animation: none; } .mais-abre i::after { transition: none; } }
+@media (max-width: 560px) { .mais-ver, .mais-fechar { display: none !important; } }
+.lista-mais { list-style: none; }
 .lista-mais li { border-bottom: 1px solid var(--linha); }
 .lista-mais button { width: 100%; display: grid; grid-template-columns: 48px minmax(8em, 1fr) 1.2fr 1.6fr 24px; gap: 20px; align-items: center; padding: 12px 0; text-align: left; transition: background .2s; }
 .lista-mais button:hover { background: var(--papel-2); }
@@ -445,11 +461,14 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
     <p class="aviso-cases" role="note">Os estudos apresentam marcas fictícias, imagens geradas com IA e, em alguns casos, dados simulados.</p>
     <div class="filtros" id="filtros" role="group" aria-label="Filtrar projetos por segmento"></div>
     <div class="grade" id="grade"></div>
-    <div class="mais" id="mais-estudos">
-      <h3>Mais estudos</h3>
-      <p>Outras marcas fictícias, com o mesmo cuidado de conceito e peça.</p>
+    <details class="mais" id="mais-estudos">
+      <summary>
+        <div class="mais-tit"><h3>Mais estudos <span class="mais-n" id="mais-n"></span></h3>
+        <p>Outras marcas fictícias, com o mesmo cuidado de conceito e peça.</p></div>
+        <span class="mais-abre" aria-hidden="true"><span class="mais-ver">Ver todos</span><span class="mais-fechar">Recolher</span><i></i></span>
+      </summary>
       <ul class="lista-mais" id="lista-mais"></ul>
-    </div>
+    </details>
     <noscript><p>Os estudos de caso abrem com JavaScript. Se preferir, peça os cases em PDF pelo e-mail mpassosj@gmail.com.</p></noscript>
   </section>
 
@@ -819,6 +838,7 @@ document.getElementById('lista-mais').innerHTML = LISTA.filter(p => !DESTAQUES.i
     <span class="nome">${esc(p.nome)}<span class="sr">, estudo de ${esc(p.segmento.toLowerCase())}</span></span><span class="seg" aria-hidden="true">${esc(p.segmento)}</span><span class="ent" aria-hidden="true">${esc(p.entregas)}</span><span class="seta-mais" aria-hidden="true">→</span></button></li>`; }).join('');
 const filtros = document.getElementById('filtros');
 filtros.innerHTML = FILTROS.map(([k, t], i) => `<button data-f="${k}" aria-pressed="${i === 0}">${t}</button>`).join('');
+document.getElementById('mais-n').textContent = '(' + document.querySelectorAll('#lista-mais li').length + ')';
 const cartoes = [...grade.querySelectorAll('.cartao'), ...document.querySelectorAll('#lista-mais li')];
 filtros.addEventListener('click', e => {
   const b = e.target.closest('button');
@@ -828,8 +848,11 @@ filtros.addEventListener('click', e => {
   cartoes.forEach(c => {
     c.hidden = !todos && c.dataset.cat !== b.dataset.f;
   });
-  const vazio = !document.querySelector('#lista-mais li:not([hidden])');
-  document.getElementById('mais-estudos').hidden = vazio;
+  const visiveis = document.querySelectorAll('#lista-mais li:not([hidden])').length;
+  document.getElementById('mais-estudos').hidden = !visiveis;
+  document.getElementById('mais-n').textContent = '(' + visiveis + ')';
+  // filtro de segmento: abre a lista para mostrar o que sobrou; "Todos" volta a recolher
+  document.getElementById('mais-estudos').open = !todos && visiveis > 0;
 });
 grade.addEventListener('click', e => { const b = e.target.closest('.abrir'); if (b) abrirCaso(+b.dataset.i, b); });
 document.getElementById('lista-mais').addEventListener('click', e => { const b = e.target.closest('.abrir-mais'); if (b) abrirCaso(+b.dataset.i, b); });
