@@ -58,6 +58,11 @@ header.topo.rolou { border-color: var(--linha); }
 .logo .lg-clara { display: none; }
 :root[data-theme="light"] .logo .lg-lima { display: none; }
 :root[data-theme="light"] .logo .lg-clara { display: block; }
+/* logo animada (marca/logo-animada.js): escuro = versão lima; claro = versão clara em tinta */
+.logo .logo-anim { display: block; height: 26px; width: auto; }
+.logo-anim .la-letra { fill: #F4F4F0; }
+.logo-anim .la-cor { fill: #C8F54A; }
+:root[data-theme="light"] .logo-anim .la-letra, :root[data-theme="light"] .logo-anim .la-cor { fill: #0F0F0E; }
 nav.menu { display: flex; gap: 22px; align-items: center; font-weight: 500; font-size: 15px; }
 nav.menu a { text-decoration: none; opacity: .75; padding: 6px 0; } nav.menu a:hover { opacity: 1; }
 .tema, .abre-menu { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--linha); display: grid; place-items: center; }
@@ -273,7 +278,8 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
 .inicio { height: 44px; padding: 0 18px 0 14px; border-radius: 999px; border: 1px solid var(--linha); display: inline-flex; align-items: center; gap: 8px; font-weight: 500; font-size: 15px; white-space: nowrap; }
 .inicio:hover, .redondo:hover { background: var(--papel-2); }
 .inicio svg { width: 16px; height: 16px; }
-@media (max-width: 520px) { .caso-topo .esq .rotulo { display: none; } }
+.so-cel { display: none; }
+@media (max-width: 520px) { .caso-topo .esq .rotulo { display: none; } .caso-topo .esq { gap: 8px; } .inicio { padding: 0 12px; } .so-desk { display: none; } .so-cel { display: inline; } }
 .redondo { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--linha); display: grid; place-items: center; font-size: 18px; }
 .caso-corpo { padding: 32px var(--m) 90px; max-width: 1280px; margin: 0 auto; }
 .nota-caso { color: var(--pedra); font-size: 14px; margin-bottom: 24px; }
@@ -350,6 +356,45 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
 .toast.on { opacity: 1; translate: -50% 0; }
 .proximo { margin-top: 70px; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-top: 28px; border-top: 1px solid var(--linha); }
 .proximo button { text-align: right; } .proximo button b { display: block; font: 800 clamp(32px, 5vw, 56px)/1 var(--sans); letter-spacing: -.04em; }
+/* ===== Mais estudos (índice compacto) ===== */
+.mais { margin-top: 64px; }
+.mais > h3 { font: 800 clamp(26px, 2.6vw, 34px)/1 var(--sans); letter-spacing: -.03em; }
+.mais > p { margin-top: 8px; color: var(--pedra); font-size: 15px; }
+.lista-mais { list-style: none; margin-top: 20px; border-top: 1px solid var(--linha); }
+.lista-mais li { border-bottom: 1px solid var(--linha); }
+.lista-mais button { width: 100%; display: grid; grid-template-columns: 48px minmax(8em, 1fr) 1.2fr 1.6fr 24px; gap: 20px; align-items: center; padding: 12px 0; text-align: left; transition: background .2s; }
+.lista-mais button:hover { background: var(--papel-2); }
+.lista-mais img { width: 48px; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; }
+.lista-mais .nome { font: 800 22px/1.1 var(--sans); letter-spacing: -.03em; }
+.lista-mais .seg { color: var(--pedra); font-size: 15px; }
+.lista-mais .ent { color: var(--pedra); font-size: 13.5px; }
+.lista-mais .seta-mais { color: var(--acento-tx); font-weight: 700; }
+@media (max-width: 760px) {
+  .lista-mais button { grid-template-columns: 44px 1fr 20px; gap: 2px 14px; }
+  .lista-mais img { grid-row: span 2; width: 44px; }
+  .lista-mais .seg { grid-column: 2; }
+  .lista-mais .ent { display: none; }
+  .lista-mais .seta-mais { grid-column: 3; grid-row: 1 / span 2; }
+}
+/* ===== Proposta por partes ===== */
+.modulos { margin-top: 34px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; }
+@media (max-width: 1100px) { .modulos { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 26px; } }
+@media (max-width: 600px) { .modulos { grid-template-columns: 1fr; } }
+.ofertas .nota-oferta { margin-top: 28px; color: var(--pedra); font-size: 15px; max-width: 52em; }
+/* ===== Para agências e equipes (faixa discreta) ===== */
+.recrut.discreto { padding-top: 48px; padding-bottom: 48px; align-items: center; }
+.recrut.discreto h2 { font: 800 22px/1.2 var(--sans); letter-spacing: -.02em; }
+.recrut.discreto p { margin-top: 8px; font-size: 15.5px; }
+.links-equipes { display: flex; flex-wrap: wrap; gap: 10px 22px; justify-self: end; font-size: 15px; font-weight: 600; }
+.links-equipes a { color: var(--tinta); text-underline-offset: 4px; }
+@media (max-width: 860px) { .links-equipes { justify-self: start; } }
+/* ===== Ficha do experimento (no estudo) ===== */
+.ficha-exp { grid-column: 1 / -1; border: 1px solid var(--linha); border-radius: 14px; padding: 22px 24px; }
+.ficha-exp dl { margin-top: 14px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px 28px; }
+.ficha-exp dt { font: 700 13px/1.2 var(--sans); color: var(--acento-tx); text-transform: uppercase; letter-spacing: .06em; }
+.ficha-exp dd { margin-top: 6px; font-size: 15.5px; line-height: 1.5; }
+@media (max-width: 900px) { .ficha-exp dl { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .ficha-exp dl { grid-template-columns: 1fr; } }
 [hidden] { display: none !important; }
 </style>
 <noscript><style>
@@ -358,18 +403,19 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
 </style></noscript>
 <!-- Google Analytics 4 com consentimento (LGPD): nada é medido antes do aceite -->
 <script src="consentimento.js" defer></script>
+<script src="marca/logo-animada.js" defer></script>
 </head>
 <body id="inicio">
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 <header class="topo" id="topo">
   <a class="logo" href="#inicio" aria-label="Passos Lab, início"><img class="lg-lima" src="marca/passos-lab-horizontal-lima.svg" alt="Passos Lab" width="157" height="26"><img class="lg-clara" src="marca/passos-lab-horizontal-clara.svg" alt="Passos Lab" width="157" height="26"></a>
   <nav class="menu" aria-label="Principal">
-    <a href="#trabalhos">Trabalhos</a><a href="midia/">Mídia</a><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a><a href="#equipes">Para equipes</a><a href="#contato">Contato</a>
+    <a href="#trabalhos">Trabalhos</a><a href="midia/">Mídia</a><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a>
     <button class="tema" id="tema" aria-label="Alternar tema claro e escuro"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>
     <button class="abre-menu" id="abre-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-cel"><span></span></button>
   </nav>
   <nav class="menu-cel" id="menu-cel" aria-label="Menu do celular">
-    <a href="#trabalhos">Trabalhos</a><a href="midia/">Mídia</a><a href="#servicos">Serviços</a><a href="#processo">Método</a><a href="#sobre">Sobre</a><a href="#equipes">Para equipes</a><a href="#contato">Contato</a>
+    <a href="#trabalhos">Trabalhos</a><a href="midia/">Mídia</a><a href="#servicos">Serviços</a><a href="#processo">Método</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a>
   </nav>
 </header>
 
@@ -399,6 +445,11 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
     <p class="aviso-cases" role="note">Os estudos apresentam marcas fictícias, imagens geradas com IA e, em alguns casos, dados simulados.</p>
     <div class="filtros" id="filtros" role="group" aria-label="Filtrar projetos por segmento"></div>
     <div class="grade" id="grade"></div>
+    <div class="mais" id="mais-estudos">
+      <h3>Mais estudos</h3>
+      <p>Outras marcas fictícias, com o mesmo cuidado de conceito e peça.</p>
+      <ul class="lista-mais" id="lista-mais"></ul>
+    </div>
     <noscript><p>Os estudos de caso abrem com JavaScript. Se preferir, peça os cases em PDF pelo e-mail mpassosj@gmail.com.</p></noscript>
   </section>
 
@@ -416,19 +467,16 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
     </div>
     <p class="fora">Ainda fora do escopo: gestão diária de tráfego pago, loja virtual, CMS, backend, login, integrações, formulários com coleta, edição de vídeo gravado, locução e legendas de fala e atendimento de comentários e directs. Se você precisar, indico um parceiro.</p>
     <div class="ofertas">
-      <h3>Pacotes e serviços avulsos</h3>
-      <p>Peça um orçamento para as entregas que você precisa.</p>
-      <div class="trio" id="ofertas">
-        <article class="oferta revela"><h4>Presença Digital</h4><p class="para">Para quem vai começar ou se reposicionar</p><p>Crie ou atualize sua marca e leve a nova identidade para o site. <span class="situacao">Site sob consulta.</span></p>
-          <dl><div><dt>Inclui</dt><dd>Estratégia de marca, kit visual e site responsivo com instruções de manutenção</dd></div><div><dt>Combinado</dt><dd>Domínio e hospedagem ficam no nome da empresa. Sem loja virtual.</dd></div></dl></article>
-        <article class="oferta revela"><h4>Comunicação Contínua</h4><p class="para">Para marcas que precisam de constância</p><p>Organize a pauta do mês e mantenha suas redes atualizadas. <span class="situacao">Motion e publicação manual sob consulta.</span></p>
-          <dl><div><dt>Inclui</dt><dd>Calendário, posts, carrosséis, Stories e Reels de motion, legendas e visão geral do mês</dd></div><div><dt>Combinado</dt><dd>Você aprova antes de publicar. Sem gravação de vídeo nem atendimento de directs.</dd></div></dl></article>
-        <article class="oferta revela"><h4>Campanhas e Crescimento</h4><p class="para">Para lançamentos e datas importantes</p><p>Planeje o lançamento, crie as peças e defina como medir os resultados. <span class="situacao">Landing e mídia digital paga sob consulta.</span></p>
-          <dl><div><dt>Inclui</dt><dd>Plano de mídia, criativos (com teste A/B se fizer sentido), landing page e plano de mensuração</dd></div><div><dt>Combinado</dt><dd>A verba de mídia é paga direto à plataforma. Nenhum resultado é prometido sem histórico.</dd></div></dl></article>
-        <article class="oferta revela"><h4>Perfil da Empresa no Google</h4><p class="para">Para negócios que atendem em Salvador e região</p><p>Atualize seu perfil para que os clientes encontrem sua empresa na Busca do Google e no Maps.</p>
-          <dl><div><dt>Inclui</dt><dd>Revisão de categoria, descrição, endereço, horários, fotos e links de contato</dd></div><div><dt>Combinado</dt><dd>Você mantém a propriedade do perfil. Implantação por unidade e manutenção opcional.</dd></div></dl></article>
+      <h3>Como a proposta é montada</h3>
+      <p>Sem pacote fechado. A proposta junta só as partes de que você precisa e diz, nesta ordem, o objetivo, o escopo, o critério de aceite e o limite.</p>
+      <div class="modulos" id="ofertas">
+        <article class="oferta revela"><h4>Planejamento</h4><p>Briefing, objetivo, referências, canais e quem aprova cada etapa.</p></article>
+        <article class="oferta revela"><h4>Produção</h4><p>Quantidade de peças, formatos, rodadas de ajuste e arquivos editáveis.</p></article>
+        <article class="oferta revela"><h4>Publicação</h4><p>Quem publica, com que acessos e se é agendado ou manual.</p></article>
+        <article class="oferta revela"><h4>Leitura</h4><p>Quais indicadores, de onde vêm os dados e a cada quanto tempo.</p></article>
+        <article class="oferta revela"><h4>Registro</h4><p>O que fica anotado e entregue a você no fim do trabalho.</p></article>
       </div>
-    </div>
+      <p class="nota-oferta">A verba de mídia é paga direto à plataforma e nenhum resultado é prometido sem histórico. Em fase piloto, também atualizo o Perfil da Empresa no Google de negócios de Salvador e região: categoria, descrição, horários, fotos e links, com o perfil sempre no seu nome.</p>
   </section>
 
   <section class="processo" id="processo" aria-labelledby="titulo-processo">
@@ -467,22 +515,12 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
     </div>
   </section>
 
-  <section class="recrut" id="equipes" aria-labelledby="titulo-equipes">
+  <section class="recrut discreto" id="equipes" aria-labelledby="titulo-equipes">
     <div>
-      <h2 class="titulo" id="titulo-equipes">Para equipes</h2>
-      <p style="margin-top:22px">Busco oportunidades em mídia, social media ou marketing, em agências ou equipes internas. Minha experiência combina planejamento e compra de mídia com estratégia editorial, direção de arte e produção de conteúdo.</p>
-      <ul>
-        <li>Planejamento de mídia offline e digital</li>
-        <li>Estratégia e calendário de conteúdo</li>
-        <li>Direção de arte, peças e Reels de motion</li>
-        <li>Sites e landing pages em HTML e CSS</li>
-      </ul>
+      <h2 id="titulo-equipes">Para agências e equipes</h2>
+      <p>Também busco oportunidades em mídia, social media ou marketing, em agências ou equipes internas.</p>
     </div>
-    <div class="acoes">
-      <a class="btn cheio" href="https://www.linkedin.com/in/marcelopassosj/" target="_blank" rel="noopener">Veja meu perfil no LinkedIn</a>
-      <a class="btn linha" href="mailto:mpassosj@gmail.com?subject=Pedido%20de%20curr%C3%ADculo">Peça meu currículo por e-mail</a>
-      <a class="btn linha" href="midia/">Veja campanhas reais de mídia</a>
-    </div>
+    <p class="links-equipes"><a href="https://www.linkedin.com/in/marcelopassosj/" target="_blank" rel="noopener">Perfil no LinkedIn<span class="sr"> (abre em nova aba)</span></a><a href="mailto:mpassosj@gmail.com?subject=Pedido%20de%20curr%C3%ADculo">Currículo por e-mail</a><a href="midia/">Campanhas reais de mídia</a></p>
   </section>
 
   <section class="contato" id="contato" aria-labelledby="titulo-contato">
@@ -505,7 +543,7 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
       <p class="nota">O site prepara a mensagem sem armazenar os dados do formulário. Revise a mensagem no WhatsApp antes de enviar.</p>
     </form>
     <noscript><p>Use um dos links abaixo para falar sobre seu projeto.</p></noscript>
-    <p class="outros">Fale comigo pelo <a href="https://wa.me/5571983086896" data-whats>WhatsApp (71) 98308-6896</a> · <a href="mailto:mpassosj@gmail.com">mpassosj@gmail.com</a></p>
+    <p class="outros">Fale comigo pelo <a href="https://wa.me/5571983086896" data-whats>WhatsApp (71) 98308-6896</a> · <a href="mailto:mpassosj@gmail.com">mpassosj@gmail.com</a> · <a href="https://www.instagram.com/passos.lab/" target="_blank" rel="noopener">Instagram @passos.lab<span class="sr"> (abre em nova aba)</span></a></p>
     <p class="onde">Lauro de Freitas (BA) · atendo empresas de qualquer cidade</p>
   </section>
 </main>
@@ -515,6 +553,7 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
   <div class="caso-topo">
     <div class="esq">
       <button class="inicio" id="caso-inicio"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5 8 2.5l6 5"/><path d="M3.5 6.5V13.5h9V6.5"/></svg>Início</button>
+      <button class="inicio" id="caso-link" type="button" aria-label="Copiar o link deste estudo"><span class="so-desk">Copiar link</span><span class="so-cel">Link</span></button>
       <span class="rotulo" id="caso-indice"></span>
     </div>
     <div class="nav-casos">
@@ -707,15 +746,40 @@ const EXTRA = {
   firmo: { decisoes: ['Provimento 205/2021 da OAB desde o briefing: informar e nunca convocar, sem preço, resultado ou convite ao processo.', 'A sobriedade obrigatória virou posicionamento: nada de balança, martelo ou dourado; monocromia e um único sinal gráfico, como nos escritórios mais curtidos do Behance.', 'Todo fato jurídico tem fonte (CLT e Constituição) e todo documento é marcado como modelo ilustrativo.', 'O advogado fictício foi gerado por IA com ficha de consistência, em preto e branco, com só o marca-texto em cor.', 'O editável foi feito no Adobe Express, a partir de um script que mede o render e reconstrói cada peça em camadas.'] },
   veria: { decisoes: ['Normas do CFO desde o briefing: sem preço, promessa, antes e depois, depoimento ou responsável técnico inventado.', 'A primeira direção, editorial e bege, foi descartada por não conversar com as referências; a segunda nasceu dos projetos de odontologia mais curtidos do Behance.', 'Toda afirmação de saúde tem fonte pública (Ministério da Saúde, INCA, BVS).', 'O Reels troca as fotos por elementos 3D da identidade, com trilha e efeitos licenciados sem Content ID.'] },
   esquadro: { decisoes: ['Uma dor por peça, tirada de reclamações públicas e da norma de reformas em condomínio (NBR 16280), cada uma respondida com uma prova.', 'O esquadro vira sistema: cantoneira em L sobre as fotos, linhas de cota e régua.', 'No carrossel, a régua corre pelos dez slides e só imagem e linha cruzam a emenda.', 'Marcas reais que a IA colocou nas fotos foram desfocadas, ou a foto foi refeita.'] },
-  folego: { destaque: true, resumo: 'Lançamento de uma marca de roupa de treino feminina: conceito, seis posts com a mesma modelo, teste cego de textos e Reels.',
+  folego: { resumo: 'Lançamento de uma marca de roupa de treino feminina: conceito, seis posts com a mesma modelo, teste cego de textos e Reels.',
     decisoes: ['Uma respiração dividida em seis comandos, um por pose, para dar ritmo ao grid.', 'Fundo na cor da própria roupa (tom sobre tom) em vez de cenário de academia.', 'Cada título prova um atributo da peça no movimento, sem falar de corpo como troféu.', 'A mesma modelo em todas as fotos, com ficha de consistência.'] },
   lume: { decisoes: ['Regras do Código de Ética do CFO aplicadas desde o briefing: sem preço, promoção, antes e depois ou promessa.', 'O arco de luz vira sistema: chapéu, recorte da foto e fundo.', 'Uma explicação clara por post, para reduzir o medo da consulta.'] },
   kaze: { decisoes: ['Rodízio, preço e delivery claros para quem decide pelo Instagram.', 'A treliça vermelha como grafismo único, sempre em malha.', 'Reels com cortes na batida da trilha e preço na volta da bateria.'] },
 };
 
 
+/* ===== Ficha do experimento de cada estudo (identidade verbal § 5: Hipótese, O que fiz, Leitura, Próximo teste).
+   Estudos não foram veiculados: a leitura é sempre "sem veiculação" e nenhum número entra aqui. ===== */
+const FICHAS = {
+  firmo: ['Mostrar a linha do documento (hora extra no holerite, aviso prévio na rescisão) faz o trabalhador reconhecer a própria dúvida e escrever sem ser convocado.', 'Contar as mensagens com dúvida sobre um documento, post a post, por 8 semanas, sempre dentro das regras da OAB.'],
+  esquadro: ['Nomear a dor (orçamento que cresce, prazo que estoura) e mostrar a prova logo ao lado traz mais pedidos de visita técnica do que foto de obra pronta.', 'Comparar os pedidos de visita técnica nos posts de dor com os de obra pronta, em 6 semanas.'],
+  veria: ['O formato de conversa ("Pode perguntar.") faz quem tem receio de dentista mandar a primeira pergunta pelo direct.', 'Contar as perguntas recebidas por post e quantas viram consulta marcada, sem prometer resultado de tratamento.'],
+  folego: ['Título que prova um atributo da peça no movimento (o cós não enrola quando senta) vende mais do que frase motivacional.', 'Comparar cliques no produto e perguntas sobre tamanho entre os dois tipos de título, com a mesma foto.'],
+  kaze: ['Regras e preço do rodízio bem claros (criança paga metade, sem taxa de desperdício) trazem mais reservas do que foto de prato.', 'Contar as reservas pelo direct de sexta a domingo, post a post, por 4 semanas.'],
+  tamborim: ['O post da roda de samba traz mais pedidos de mesa do que o post de petisco.', 'Contar os pedidos de mesa por post, comparando sempre o mesmo dia da semana.'],
+  lume: ['Explicar uma etapa do atendimento por post diminui o medo e traz mais pedidos de primeira consulta do que post institucional.', 'Contar os agendamentos de primeira consulta que citam um post, em 8 semanas.'],
+  raia: ['O post que explica, com fonte, em quanto tempo o sistema se paga gera mais pedidos de orçamento do que o manifesto.', 'Comparar os cliques no WhatsApp e os pedidos de simulação entre os dois posts.'],
+  lento: ['Mostrar o tempo de cada preparo atrai mais quem já passa café em casa do que mostrar a xícara pronta.', 'Comparar salvamentos e perguntas sobre os métodos entre posts de processo e de produto, por 4 semanas.'],
+  brasa: ['A oferta de terça (o segundo smash pela metade) aumenta os pedidos num dia fraco.', 'Comparar os pedidos de terça nas 4 semanas antes e nas 4 semanas depois da oferta.'],
+  ponte: ['O teste de nível de 15 minutos traz mais contatos do que o post sobre os professores.', 'Contar os testes iniciados e as mensagens por post, em 4 semanas.'],
+  bicho: ['A manhã só para gatos atrai tutores que hoje evitam banho e tosa.', 'Contar os agendamentos de gatos por mês, antes e depois da série.'],
+  eixo: ['A aula experimental gratuita converte mais do que o post sobre turma pequena.', 'Contar as aulas experimentais marcadas e quantas viram plano mensal.'],
+  ramo: ['Avisar o dia em que as flores chegam (terça e sexta) concentra os pedidos nesses dias.', 'Comparar os pedidos por dia da semana, antes e depois dos avisos.'],
+  raso: ['Mostrar o uso (reaplicar por cima da maquiagem) vende mais do que o produto em 3D sozinho.', 'Comparar os cliques para a loja entre posts de uso e posts de produto.'],
+  rotina: ['Uma cor por post ("Verde oliva.") vende mais do que mostrar a peça básica sem contexto.', 'Comparar os cliques no produto por cor anunciada.'],
+  ambar: ['Mostrar a peça na orelha, em escala real, vende mais do que a peça sozinha sobre o fundo vinho.', 'Comparar os cliques no link do produto e as mensagens por peça.'],
+  marulho: ['Dado técnico no título (gramatura, congelamento IQF) traz mais contato de compradores de restaurante do que foto de prato.', 'Contar as mensagens de compradores com CNPJ por post.'],
+  assobio: ['Ligar cada chá a um momento do dia faz o cliente lembrar de cada blend pela hora em que ele combina.', 'Comparar as vendas de cada blend antes e depois da série.'],
+};
+
 const FILTROS = [['todos', 'Todos'], ['gastronomia', 'Gastronomia'], ['servicos', 'Serviços'], ['saude', 'Saúde e bem-estar'], ['varejo', 'Varejo e moda'], ['b2b', 'B2B']];
-const ordemDestaques = ['folego', 'esquadro', 'firmo', 'lume', 'kaze', 'raia', 'tamborim', 'lento'];
+const DESTAQUES = ['firmo', 'esquadro', 'veria', 'folego', 'kaze', 'tamborim'];   // 6 em destaque; o resto vai para "Mais estudos"
+const ordemDestaques = DESTAQUES;
 const LISTA = [
   ...ordemDestaques.map(id => PROJETOS.find(p => p.id === id)),
   ...PROJETOS.filter(p => !ordemDestaques.includes(p.id)),
@@ -742,7 +806,7 @@ for (let c = 0; c < 3; c++) {
 
 /* ===== Cartões e filtros ===== */
 const grade = document.getElementById('grade');
-grade.innerHTML = LISTA.map(p => { const x = EXTRA[p.id] || {}; const i = LISTA.indexOf(p);
+grade.innerHTML = LISTA.filter(p => DESTAQUES.includes(p.id)).map(p => { const x = EXTRA[p.id] || {}; const i = LISTA.indexOf(p);
   return `<article class="cartao revela ${x.destaque ? 'destaque' : ''}" data-cat="${p.cat}" style="--cor-fundo:${p.fundo}">
     <div class="capa"><span class="selo">${x.destaque ? 'Case completo · marca fictícia' : 'Case de estudo · marca fictícia'}</span>
       <div class="posts">${[1, 0, 2].map(k => `<img src="${mini(p, p.posts[k][0])}" alt="" loading="lazy" decoding="async" width="480" height="640">`).join('')}</div></div>
@@ -750,9 +814,12 @@ grade.innerHTML = LISTA.map(p => { const x = EXTRA[p.id] || {}; const i = LISTA.
       <button class="abrir" data-i="${i}" aria-haspopup="dialog">Ver estudo de caso<span class="sr"> de ${esc(p.nome)}</span> <span aria-hidden="true">→</span></button></div>
       <div class="amostras" aria-hidden="true">${p.cores.slice(0, 4).map(c => `<i style="background:${c[1]}"></i>`).join('')}</div></div>
   </article>`; }).join('');
+document.getElementById('lista-mais').innerHTML = LISTA.filter(p => !DESTAQUES.includes(p.id)).map(p => { const i = LISTA.indexOf(p);
+  return `<li data-cat="${p.cat}"><button class="abrir-mais" data-i="${i}" aria-haspopup="dialog"><img src="${mini(p, p.posts[0][0])}" alt="" loading="lazy" decoding="async" width="480" height="640">
+    <span class="nome">${esc(p.nome)}<span class="sr">, estudo de ${esc(p.segmento.toLowerCase())}</span></span><span class="seg" aria-hidden="true">${esc(p.segmento)}</span><span class="ent" aria-hidden="true">${esc(p.entregas)}</span><span class="seta-mais" aria-hidden="true">→</span></button></li>`; }).join('');
 const filtros = document.getElementById('filtros');
 filtros.innerHTML = FILTROS.map(([k, t], i) => `<button data-f="${k}" aria-pressed="${i === 0}">${t}</button>`).join('');
-const cartoes = [...grade.querySelectorAll('.cartao')];
+const cartoes = [...grade.querySelectorAll('.cartao'), ...document.querySelectorAll('#lista-mais li')];
 filtros.addEventListener('click', e => {
   const b = e.target.closest('button');
   if (!b) return;
@@ -761,8 +828,11 @@ filtros.addEventListener('click', e => {
   cartoes.forEach(c => {
     c.hidden = !todos && c.dataset.cat !== b.dataset.f;
   });
+  const vazio = !document.querySelector('#lista-mais li:not([hidden])');
+  document.getElementById('mais-estudos').hidden = vazio;
 });
 grade.addEventListener('click', e => { const b = e.target.closest('.abrir'); if (b) abrirCaso(+b.dataset.i, b); });
+document.getElementById('lista-mais').addEventListener('click', e => { const b = e.target.closest('.abrir-mais'); if (b) abrirCaso(+b.dataset.i, b); });
 
 /* ===== Áreas, ofertas, método ===== */
 /* Áreas, ofertas e método estão no HTML (funcionam sem JavaScript). A faixa usa os títulos das áreas no HTML. */
@@ -792,6 +862,11 @@ function abrirCaso(i, quem) {
       <div><h3 class="rotulo">Desafio</h3><p>${esc(p.desafio)}</p></div>
       <div><h3 class="rotulo">Conceito</h3><p>${esc(p.conceito)}</p></div>
       ${x.decisoes ? blocoLista('Decisões', x.decisoes) : ''}
+      ${FICHAS[p.id] ? `<div class="ficha-exp"><h3 class="rotulo">Ficha do experimento</h3><dl>
+        <div><dt>Hipótese</dt><dd>${esc(FICHAS[p.id][0])}</dd></div>
+        <div><dt>O que fiz</dt><dd>${esc(p.entregas)}</dd></div>
+        <div><dt>Leitura</dt><dd>Sem veiculação. É um estudo com marca fictícia, sem dados de desempenho.</dd></div>
+        <div><dt>Próximo teste</dt><dd>${esc(FICHAS[p.id][1])}</dd></div></dl></div>` : ''}
       ${p.pagina ? `<p class="link-rec">Pesquisa, estratégia, carrosséis, Stories e as telas do Behance: <a href="${p.pagina}">ver o case completo</a></p>` : ''}
     </div>
     <div class="vitrine">
@@ -852,6 +927,7 @@ function abrirCaso(i, quem) {
   arrastar(corpo.querySelector('#carrossel'));
   if (!dlg.open) { dlg.showModal(); document.body.style.overflow = 'hidden'; }
   dlg.scrollTop = 0;
+  history.replaceState(null, '', '#estudo-' + p.id);
 }
 function montarFaixa() {
   const p = LISTA[atual];
@@ -895,7 +971,17 @@ function arrastar(el) {
   el.addEventListener('pointerup', e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) ir(slide + (dx < 0 ? 1 : -1)); });
   el.addEventListener('pointercancel', () => { x0 = null; });
 }
-dlg.addEventListener('close', () => { document.body.style.overflow = ''; origem?.focus(); });
+dlg.addEventListener('close', () => { document.body.style.overflow = ''; if (/^#estudo-/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search + '#trabalhos'); origem?.focus(); });
+document.getElementById('caso-link').onclick = () => { const url = location.origin + location.pathname + '#estudo-' + LISTA[atual].id;
+  navigator.clipboard?.writeText(url).then(() => aviso('Link copiado'), () => aviso(url)); };
+/* Link direto para um estudo: /#estudo-firmo */
+function abrirPeloEndereco() {
+  const m = location.hash.match(/^#estudo-([a-z0-9-]+)$/); if (!m) return;
+  const i = LISTA.findIndex(p => p.id === m[1]); if (i < 0) return;
+  if (dlg.open && LISTA[atual].id === m[1]) return;
+  abrirCaso(i, document.querySelector(`[data-i="${i}"]`));
+}
+addEventListener('hashchange', abrirPeloEndereco);
 document.getElementById('caso-fechar').onclick = () => dlg.close();
 document.getElementById('caso-inicio').onclick = () => { origem = null; dlg.close(); scrollTo({ top: 0, behavior: 'instant' }); document.querySelector('.logo').focus(); };
 document.getElementById('caso-ant').onclick = () => abrirCaso(atual - 1);
@@ -927,6 +1013,7 @@ document.addEventListener('click', e => { if (topo.classList.contains('aberto') 
 matchMedia('(min-width: 761px)').addEventListener('change', e => { if (e.matches) menuCel(false); });
 const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visivel'); obs.unobserve(e.target); } }), { threshold: .12 });
 document.querySelectorAll('.revela').forEach(el => obs.observe(el));
+abrirPeloEndereco();
 </script>
 </body>
 </html>
