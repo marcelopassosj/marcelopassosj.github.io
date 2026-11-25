@@ -16,7 +16,9 @@
 <meta property="og:url" content="https://marcelopassosj.github.io/">
 <meta property="og:image" content="https://marcelopassosj.github.io/og-marcelo-passos.jpg">
 <meta name="theme-color" content="#0F0F0E">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F0F0E'/%3E%3Ccircle cx='16' cy='16' r='8' fill='%23C8F54A'/%3E%3C/svg%3E">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="marca/passos-lab-icone-escuro-quadrado.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="marca/passos-lab-icone-escuro-quadrado-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -51,8 +53,11 @@ a { color: inherit; }
 header.topo { position: fixed; inset: 0 0 auto 0; z-index: 30; display: flex; justify-content: space-between; align-items: center; padding: 16px var(--m);
   background: color-mix(in srgb, var(--papel) 82%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
 header.topo.rolou { border-color: var(--linha); }
-.logo { font: 800 21px/1 var(--sans); letter-spacing: -.03em; text-decoration: none; padding: 8px 0; }
-.logo i { color: var(--acento-tx); font-style: normal; }
+.logo { display: block; padding: 8px 0; line-height: 0; text-decoration: none; }
+.logo img { height: 26px; width: auto; }   /* logo oficial Passos Lab (mín. 140 px de largura) */
+.logo .lg-clara { display: none; }
+:root[data-theme="light"] .logo .lg-lima { display: none; }
+:root[data-theme="light"] .logo .lg-clara { display: block; }
 nav.menu { display: flex; gap: 22px; align-items: center; font-weight: 500; font-size: 15px; }
 nav.menu a { text-decoration: none; opacity: .75; padding: 6px 0; } nav.menu a:hover { opacity: 1; }
 .tema, .abre-menu { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--linha); display: grid; place-items: center; }
@@ -357,7 +362,7 @@ dialog.caso[open] { animation: abre .45s cubic-bezier(.2,.8,.2,1); }
 <body id="inicio">
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 <header class="topo" id="topo">
-  <a class="logo" href="#inicio" aria-label="Marcelo Passos, início">Marcelo Passos<i>.</i></a>
+  <a class="logo" href="#inicio" aria-label="Passos Lab, início"><img class="lg-lima" src="marca/passos-lab-horizontal-lima.svg" alt="Passos Lab" width="157" height="26"><img class="lg-clara" src="marca/passos-lab-horizontal-clara.svg" alt="Passos Lab" width="157" height="26"></a>
   <nav class="menu" aria-label="Principal">
     <a href="#trabalhos">Trabalhos</a><a href="midia/">Mídia</a><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a><a href="#equipes">Para equipes</a><a href="#contato">Contato</a>
     <button class="tema" id="tema" aria-label="Alternar tema claro e escuro"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>

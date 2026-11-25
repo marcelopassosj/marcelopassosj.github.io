@@ -6,7 +6,9 @@
 <title>Mídia na rua · Marcelo Passos</title>
 <meta name="description" content="Campanhas reais em que Marcelo Passos atuou como executivo de mídia: planejamento, escolha de pontos, acompanhamento da veiculação e relatórios.">
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F0F0E'/%3E%3Ccircle cx='16' cy='16' r='8' fill='%23C8F54A'/%3E%3C/svg%3E">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="icon" href="../marca/passos-lab-icone-escuro-quadrado.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../marca/passos-lab-icone-escuro-quadrado-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -33,8 +35,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--papel) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--linha); }
 header .wrap { display: flex; justify-content: space-between; align-items: center; height: 64px; }
 header a { text-decoration: none; }
-.logo { font: 800 21px/1 var(--sans); letter-spacing: -.03em; }
-.logo i { color: var(--acento-tx); font-style: normal; }
+.logo { display: block; padding: 8px 0; line-height: 0; text-decoration: none; }
+.logo img { height: 26px; width: auto; }   /* logo oficial Passos Lab (mín. 140 px de largura) */
+.logo .lg-clara { display: none; }
+:root[data-theme="light"] .logo .lg-lima { display: none; }
+:root[data-theme="light"] .logo .lg-clara { display: block; }
 .voltar { font-weight: 500; color: var(--pedra); } .voltar:hover { color: var(--tinta); }
 
 .abertura { padding: clamp(64px, 10vw, 140px) 0 clamp(48px, 7vw, 96px); border-bottom: 1px solid var(--linha); }
@@ -89,7 +94,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 <script src="../consentimento.js" defer></script>
 </head>
 <body>
-<header><div class="wrap"><a class="logo" href="../">Marcelo Passos<i>.</i></a><a class="voltar" href="../#equipes">← Voltar ao portfólio</a></div></header>
+<header><div class="wrap"><a class="logo" href="../" aria-label="Passos Lab, início"><img class="lg-lima" src="../marca/passos-lab-horizontal-lima.svg" alt="Passos Lab" width="157" height="26"><img class="lg-clara" src="../marca/passos-lab-horizontal-clara.svg" alt="Passos Lab" width="157" height="26"></a><a class="voltar" href="../#equipes">← Voltar ao portfólio</a></div></header>
 
 <main>
 <section class="abertura"><div class="wrap">
